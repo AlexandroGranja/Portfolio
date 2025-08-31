@@ -38,22 +38,25 @@ navLinks.forEach(link => {
     });
 });
 
-// Navbar Background on Scroll
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
+// Enhanced Scroll Handler - Unified function
+let ticking = false;
+
+function handleScroll() {
+    const scrolled = window.pageYOffset;
+    
+    // Navbar background on scroll
+    if (scrolled > 100) {
         navbar.classList.add('scrolled');
     } else {
         navbar.classList.remove('scrolled');
     }
-});
-
-// Active Navigation Link Highlighting
-window.addEventListener('scroll', () => {
+    
+    // Active navigation link highlighting
     let current = '';
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-        if (window.scrollY >= (sectionTop - 200)) {
+        if (scrolled >= (sectionTop - 200)) {
             current = section.getAttribute('id');
         }
     });
@@ -64,7 +67,58 @@ window.addEventListener('scroll', () => {
             link.classList.add('active');
         }
     });
-});
+    
+    // Parallax effects
+    updateParallax(scrolled);
+    
+    // Show/Hide Scroll to Top Button
+    if (scrolled > 300) {
+        scrollToTopBtn.style.opacity = '1';
+        scrollToTopBtn.style.visibility = 'visible';
+    } else {
+        scrollToTopBtn.style.opacity = '0';
+        scrollToTopBtn.style.visibility = 'hidden';
+    }
+    
+    ticking = false;
+}
+
+function requestScrollTick() {
+    if (!ticking) {
+        requestAnimationFrame(handleScroll);
+        ticking = true;
+    }
+}
+
+// Replace multiple scroll event listeners with single unified handler
+window.addEventListener('scroll', requestScrollTick);
+
+// Enhanced parallax effect function
+function updateParallax(scrolled) {
+    const rate = scrolled * -0.5;
+    
+    // Hero parallax
+    const hero = document.querySelector('.hero');
+    const heroContent = document.querySelector('.hero-content');
+    
+    if (hero && heroContent) {
+        heroContent.style.transform = `translateY(${rate * 0.3}px)`;
+    }
+
+    // Floating elements parallax
+    const floatingElements = document.querySelectorAll('.floating-element');
+    floatingElements.forEach((element, index) => {
+        const speed = 0.5 + (index * 0.2);
+        element.style.transform += ` translateY(${scrolled * speed * 0.1}px)`;
+    });
+
+    // Background elements parallax
+    const parallaxElements = document.querySelectorAll('.parallax-element');
+    parallaxElements.forEach((element, index) => {
+        const speed = 0.3 + (index * 0.1);
+        element.style.transform = `translateY(${scrolled * speed}px)`;
+    });
+}
 
 // Enhanced Scroll Animations with Intersection Observer
 const observerOptions = {
@@ -121,45 +175,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Enhanced parallax effect
-let ticking = false;
-
-function updateParallax() {
-    const scrolled = window.pageYOffset;
-    const rate = scrolled * -0.5;
-    
-    // Hero parallax
-    const hero = document.querySelector('.hero');
-    const heroContent = document.querySelector('.hero-content');
-    
-    if (hero && heroContent) {
-        heroContent.style.transform = `translateY(${rate * 0.3}px)`;
-    }
-
-    // Floating elements parallax
-    const floatingElements = document.querySelectorAll('.floating-element');
-    floatingElements.forEach((element, index) => {
-        const speed = 0.5 + (index * 0.2);
-        element.style.transform += ` translateY(${scrolled * speed * 0.1}px)`;
-    });
-
-    // Background elements parallax
-    const parallaxElements = document.querySelectorAll('.parallax-element');
-    parallaxElements.forEach((element, index) => {
-        const speed = 0.3 + (index * 0.1);
-        element.style.transform = `translateY(${scrolled * speed}px)`;
-    });
-
-    ticking = false;
-}
-
 function requestTick() {
-    if (!ticking) {
-        requestAnimationFrame(updateParallax);
-        ticking = true;
-    }
+    // This function is now handled by the unified scroll handler
 }
-
-window.addEventListener('scroll', requestTick);
 
 // Typing Effect for Hero Title
 function typeWriter(element, text, speed = 100) {
@@ -219,17 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Parallax Effect for Hero Section
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    const heroContent = document.querySelector('.hero-content');
-    
-    if (hero && heroContent) {
-        const rate = scrolled * -0.5;
-        heroContent.style.transform = `translateY(${rate}px)`;
-    }
-});
+// Parallax Effect for Hero Section - Already handled in unified scroll handler
 
 // Floating Elements Animation
 document.addEventListener('DOMContentLoaded', () => {
@@ -279,16 +287,7 @@ scrollToTopBtn.style.cssText = `
 
 document.body.appendChild(scrollToTopBtn);
 
-// Show/Hide Scroll to Top Button
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        scrollToTopBtn.style.opacity = '1';
-        scrollToTopBtn.style.visibility = 'visible';
-    } else {
-        scrollToTopBtn.style.opacity = '0';
-        scrollToTopBtn.style.visibility = 'hidden';
-    }
-});
+// Scroll to Top Button - Already handled in unified scroll handler
 
 // Scroll to Top Functionality
 scrollToTopBtn.addEventListener('click', () => {

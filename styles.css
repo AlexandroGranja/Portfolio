@@ -1043,3 +1043,199 @@ html {
     }
 }
 
+
+/* Call to Action in Contact Section */
+.contact-cta {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--accent-light);
+    background: rgba(59, 130, 246, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    margin-top: 3rem;
+    font-weight: 500;
+    line-height: 1.6;
+    backdrop-filter: blur(10px);
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+    }
+}
+
+/* Enhanced project image styles */
+.project-image {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    background: var(--gradient-accent);
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
+}
+
+/* Improved mobile responsiveness */
+@media (max-width: 768px) {
+    .contact-cta {
+        font-size: 1rem;
+        padding: 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    .project-image {
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-cta {
+        font-size: 0.9rem;
+        padding: 1rem;
+    }
+    
+    .project-image {
+        height: 160px;
+    }
+}
+
+
+/* Enhanced hover effects and animations */
+.hero-buttons .btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-buttons .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.hero-buttons .btn:hover::before {
+    left: 100%;
+}
+
+/* Smooth transitions for all interactive elements */
+.nav-link,
+.btn,
+.project-card,
+.skill-item,
+.info-item,
+.contact-item {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced project card animations */
+.project-card {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.project-card:hover {
+    transform: translateY(-10px) rotateX(5deg);
+}
+
+/* Subtle glow effect for important elements */
+.hero-title .name {
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+/* Improved loading states */
+.project-image {
+    background: linear-gradient(45deg, #f0f0f0 25%, transparent 25%), 
+                linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, #f0f0f0 75%), 
+                linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    animation: loading-shimmer 1s linear infinite;
+}
+
+@keyframes loading-shimmer {
+    0% {
+        background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    }
+    100% {
+        background-position: 20px 20px, 20px 30px, 30px 10px, 10px 20px;
+    }
+}
+
+/* Micro-interactions for better UX */
+.skill-item:active {
+    transform: scale(0.95);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* Enhanced focus states for accessibility */
+.nav-link:focus,
+.btn:focus,
+.project-link:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Performance optimizations */
+.project-image,
+.floating-element,
+.parallax-element {
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+/* Reduced motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+
+.project-image {
+    height: 160px;
+    background: var(--gradient-accent);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-image video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Preenche o container sem distorcer */
+}
