@@ -1237,5 +1237,14 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Preenche o container sem distorcer */
+    object-fit: cover; 
 }
+
+.project-image .moraes-adesivos-img {
+    object-fit:fill;
+    height: 160px;
+    width: 350px;
+    margin: 0 auto;
+}
+
+
