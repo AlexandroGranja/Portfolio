@@ -4,13 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alexandro Granja | Desenvolvedor em Formação</title>
+    <title>Alexandro Granja | Desenvolvedor Web & Especialista em Automações</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <span class="logo-letter">A</span>
+                <span class="logo-letter">G</span>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <p class="loading-text">Carregando experiência...</p>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -20,6 +34,7 @@
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link">Início</a></li>
                 <li><a href="#about" class="nav-link">Sobre</a></li>
+                <li><a href="#agency" class="nav-link">Agência</a></li>
                 <li><a href="#skills" class="nav-link">Habilidades</a></li>
                 <li><a href="#projects" class="nav-link">Projetos</a></li>
                 <li><a href="#contact" class="nav-link">Contato</a></li>
@@ -40,11 +55,12 @@
                     <h1 class="hero-title">
                         <span class="greeting">Olá, eu sou</span>
                         <span class="name">Alexandro Granja</span>
-                        <span class="role">Desenvolvedor em Formação ✨</span>
+                        <span class="role">Desenvolvedor Web & Especialista em Automações 🚀</span>
                     </h1>
                     <p class="hero-description">
-                        Sou aluno do DevClub e um entusiasta da programação em constante aprendizado.
-                        Atualmente, meu foco está no desenvolvimento web e em otimizar processos com automações.
+                        Analista de Suporte de TI na <strong>Prosper</strong> e fundador da <strong><a href="https://www.aiversetechnologies.com.br/" target="_blank" class="agency-link">AIverse Technologies</a></strong>, 
+                        uma agência especializada em desenvolvimento web e automações inteligentes. 
+                        Transformo ideias em soluções digitais eficientes, criando sites modernos e agentes de WhatsApp personalizados com IA.
                     </p>
                     <div class="hero-buttons">
                         <a href="#projects" class="btn btn-primary">Ver Projetos</a>
@@ -80,24 +96,23 @@
             <div class="about-content">
                 <div class="about-text">
                     <div class="about-card">
-                        <h3>Minha Jornada 🚀</h3>
+                        <h3>Sobre Mim 💼</h3>
                         <p>
-                            Minha jornada começou com a <strong>lógica de algoritmo</strong>, me dando uma base sólida.
-                            Como Analista de TI, meu foco é otimizar processos e sistemas, e no <strong>desenvolvimento
-                                web</strong>, domino HTML e CSS, criando interfaces atraentes e responsivas.
+                            Sou <strong>Analista de Suporte de TI</strong> na <strong>Prosper</strong>, onde aplico diariamente meus conhecimentos 
+                            em infraestrutura, Active Directory, Microsoft 365 e Zabbix para garantir a continuidade e eficiência dos sistemas corporativos. 
+                            Com mais de 1 ano de experiência em TI, desenvolvi uma visão estratégica sobre como a tecnologia pode transformar processos empresariais.
                         </p>
                         <p>
-                            Estou me aprofundando em <strong>JavaScript</strong> para dar vida e interatividade às
-                            aplicações web,
-                            e iniciando meus estudos em <strong>React</strong> para otimizar a criação de interfaces.
+                            Fundei a <strong><a href="https://www.aiversetechnologies.com.br/" target="_blank" class="agency-link">AIverse Technologies</a></strong>, 
+                            uma agência de desenvolvimento e automações, onde atuo como desenvolvedor fullstack e especialista em automações inteligentes. 
+                            Nosso foco é criar <strong>sites modernos e responsivos</strong> e <strong>agentes de WhatsApp personalizados</strong> 
+                            que revolucionam o atendimento ao cliente através da IA.
                         </p>
                         <p>
-                            Também tenho <strong>noções em Python</strong> e <strong>experiência avançada com
-                                automações</strong>,
-                            especializando-me em criar agentes inteligentes de WhatsApp com n8n para atendimento
-                            automatizado,
-                            otimizando tarefas e processos de TI. Minha experiência de 1 anos em TI, incluindo Active
-                            Directory, Microsoft 365 e Zabbix, complementa minha paixão por inovação e desenvolvimento.
+                            No desenvolvimento web, domino <strong>HTML, CSS e JavaScript</strong>, com experiência em <strong>React</strong> e <strong>Python/Flask</strong>. 
+                            Crio interfaces atraentes e funcionais que proporcionam excelente experiência do usuário. 
+                            Na área de automações, sou especialista em <strong>n8n</strong>, desenvolvendo fluxos complexos de trabalho e agentes conversacionais 
+                            inteligentes que automatizam processos, reduzem custos e aumentam a produtividade.
                         </p>
                     </div>
                 </div>
@@ -112,16 +127,97 @@
                         </div>
                         <div class="info-item">
                             <i class="fas fa-briefcase"></i>
-                            <h4>Área</h4>
-                            <p>Analista De TI | Suporte Técnico | Desenvolvedor | Automação de Processos</p>
+                            <h4>Experiência</h4>
+                            <p>Analista de TI - Prosper</p>
+                            <p>Fundador - AIverse Technologies</p>
+                            <p>Desenvolvedor Web & Automações</p>
                         </div>
                         <div class="info-item">
                             <i class="fas fa-map-marker-alt"></i>
                             <h4>Localização</h4>
                             <p>Brasil/Rj</p>
                         </div>
+                        <div class="info-item">
+                            <i class="fas fa-star"></i>
+                            <h4>Especialidades</h4>
+                            <p>Sites Modernos & Responsivos</p>
+                            <p>Agentes de WhatsApp com IA</p>
+                            <p>Automações com n8n</p>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agency Section -->
+    <section id="agency" class="agency-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">AIverse Technologies</h2>
+                <p class="section-subtitle">Transformando ideias em soluções digitais inteligentes</p>
+            </div>
+            <div class="agency-content">
+                <div class="agency-card main-card">
+                    <div class="card-glow"></div>
+                    <div class="agency-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Desenvolvimento Web Profissional</h3>
+                    <p>
+                        Criamos sites modernos, responsivos e otimizados para SEO. Desde landing pages até 
+                        sistemas web complexos, cada projeto é desenvolvido com as melhores práticas e 
+                        tecnologias mais recentes do mercado.
+                    </p>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check-circle"></i> Design Moderno e Responsivo</li>
+                        <li><i class="fas fa-check-circle"></i> Otimização para Conversão</li>
+                        <li><i class="fas fa-check-circle"></i> Performance e SEO</li>
+                    </ul>
+                </div>
+
+                <div class="agency-card main-card">
+                    <div class="card-glow"></div>
+                    <div class="agency-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>Agentes de WhatsApp com IA</h3>
+                    <p>
+                        Revolucione seu atendimento ao cliente com agentes inteligentes personalizados. 
+                        Automatização completa integrada com IA, capaz de responder perguntas, processar 
+                        solicitações e fornecer suporte 24/7 de forma natural e eficiente.
+                    </p>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check-circle"></i> Atendimento 24/7 Automatizado</li>
+                        <li><i class="fas fa-check-circle"></i> Integração com IA Avançada</li>
+                        <li><i class="fas fa-check-circle"></i> Personalização Total</li>
+                    </ul>
+                </div>
+
+                <div class="agency-card main-card">
+                    <div class="card-glow"></div>
+                    <div class="agency-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Automações Inteligentes</h3>
+                    <p>
+                        Especialistas em n8n, criamos fluxos de automação que otimizam processos empresariais, 
+                        reduzem custos operacionais e aumentam a produtividade. Integramos diferentes sistemas 
+                        e ferramentas para trabalhar em harmonia.
+                    </p>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check-circle"></i> Fluxos Complexos com n8n</li>
+                        <li><i class="fas fa-check-circle"></i> Integração de Sistemas</li>
+                        <li><i class="fas fa-check-circle"></i> ROI Comprovado</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="agency-cta">
+                <p>Pronto para transformar seu negócio com tecnologia?</p>
+                <a href="https://www.aiversetechnologies.com.br/" target="_blank" class="btn btn-primary btn-large">
+                    <i class="fas fa-external-link-alt"></i> Visite AIverse Technologies
+                </a>
             </div>
         </div>
     </section>
@@ -209,14 +305,15 @@
                     </div>
                     <div class="project-content">
                         <h3>Moraes Adesivos</h3>
-                        <p>Site completo para empresa especializada em adesivos decorativos e papel de parede. Landing
-                            page moderna com galeria de trabalhos, seção de serviços e integração com WhatsApp para
-                            orçamentos. Design responsivo e otimizado para conversão.</p>
+                        <p>Site completo desenvolvido pela AIverse Technologies para empresa especializada em adesivos decorativos. 
+                            Landing page moderna com galeria de trabalhos, seção de serviços e integração com WhatsApp para orçamentos. 
+                            Design responsivo e otimizado para conversão de leads.</p>
                         <div class="project-tech">
                             <span class="tech-tag">HTML</span>
                             <span class="tech-tag">CSS</span>
                             <span class="tech-tag">JavaScript</span>
                             <span class="tech-tag">Responsive Design</span>
+                            <span class="tech-tag">SEO</span>
                         </div>
                     </div>
                 </div>
@@ -265,12 +362,14 @@
                     </div>
                     <div class="project-content">
                         <h3>Agentes de WhatsApp com n8n</h3>
-                        <p>Sistema completo de automação de atendimento com múltiplos agentes especializados: Assistente
-                            Financeiro, Liberação de Acesso, Avaya, Sistema Target Mob, Solicitação de Impressão, App
-                            PlayStore e outros serviços de TI.</p>
+                        <p>Ecossistema completo de automação de atendimento com múltiplos agentes especializados e integração com IA. 
+                            Inclui: Assistente Financeiro com processamento de solicitações, Sistema de Liberação de Acesso automático, 
+                            Integração Avaya, Target Mob, Solicitações de Impressão, App PlayStore e diversos serviços de TI. 
+                            Reduz tempo de atendimento em até 70% e opera 24/7.</p>
                         <div class="project-tech">
                             <span class="tech-tag">n8n</span>
                             <span class="tech-tag">WhatsApp API</span>
+                            <span class="tech-tag">OpenAI</span>
                             <span class="tech-tag">Automação</span>
                             <span class="tech-tag">IA</span>
                         </div>
