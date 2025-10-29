@@ -4,10 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio de Alexandro Granja — Desenvolvedor Web e Especialista em Automações. Criação de sites modernos, responsivos e agentes de WhatsApp com IA (n8n).">
     <title>Alexandro Granja | Desenvolvedor Web & Especialista em Automações</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Alexandro Granja | Desenvolvedor Web & Automações">
+    <meta property="og:description" content="Crio sites modernos e agentes de WhatsApp com IA (n8n).">
+    <meta property="og:image" content="assets/logo02.png">
+    <meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body>
@@ -31,7 +40,7 @@
             <div class="nav-logo">
                 <span class="logo-text">AG</span>
             </div>
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="primary-navigation">
                 <li><a href="#home" class="nav-link">Início</a></li>
                 <li><a href="#about" class="nav-link">Sobre</a></li>
                 <li><a href="#agency" class="nav-link">Agência</a></li>
@@ -39,11 +48,11 @@
                 <li><a href="#projects" class="nav-link">Projetos</a></li>
                 <li><a href="#contact" class="nav-link">Contato</a></li>
             </ul>
-            <div class="hamburger">
+            <button class="hamburger" aria-label="Abrir menu" aria-controls="primary-navigation" aria-expanded="false">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -100,6 +109,8 @@
                         <p>
                             Sou <strong>Analista de Suporte de TI</strong> na <strong>Prosper</strong>, onde aplico diariamente meus conhecimentos 
                             em infraestrutura, Active Directory, Microsoft 365 e Zabbix para garantir a continuidade e eficiência dos sistemas corporativos. 
+                            Também conheço <strong>sistemas de logística</strong> (ex.: <strong>Target/Target Mob</strong>) e rotinas de operação, suporte e integração com ERP, 
+                            o que me ajuda a conectar o time de negócios à tecnologia com agilidade e segurança. 
                             Com mais de 1 ano de experiência em TI, desenvolvi uma visão estratégica sobre como a tecnologia pode transformar processos empresariais.
                         </p>
                         <p>
@@ -109,10 +120,13 @@
                             que revolucionam o atendimento ao cliente através da IA.
                         </p>
                         <p>
-                            No desenvolvimento web, domino <strong>HTML, CSS e JavaScript</strong>, com experiência em <strong>React</strong> e <strong>Python/Flask</strong>. 
+                            No desenvolvimento web, domino <strong>HTML, CSS e JavaScript</strong>, com experiência em <strong>React</strong>, <strong>TypeScript</strong>, <strong>Next.js</strong> e <strong>Python/Flask</strong>. 
                             Crio interfaces atraentes e funcionais que proporcionam excelente experiência do usuário. 
-                            Na área de automações, sou especialista em <strong>n8n</strong>, desenvolvendo fluxos complexos de trabalho e agentes conversacionais 
-                            inteligentes que automatizam processos, reduzem custos e aumentam a produtividade.
+                            Na área de automações e backend, trabalho com <strong>Node.js</strong> e <strong>Supabase</strong> (Postgres, Auth e Storage), e sou especialista em <strong>n8n</strong> e <strong>Python/Flask</strong>, desenvolvendo fluxos complexos de trabalho e agentes conversacionais 
+                            inteligentes que automatizam processos, reduzem custos e aumentam a produtividade. Tenho experiência com <strong>engenharia de prompts</strong> e soluções com <strong>IA/LLMs</strong> para atendimento, automação e integrações.
+                        </p>
+                        <p>
+                            Também utilizo <strong>Tailwind CSS</strong> para acelerar o design responsivo e <strong>Vercel</strong> para deploy e CI/CD, garantindo projetos rápidos, escaláveis e bem estruturados.
                         </p>
                     </div>
                 </div>
@@ -142,7 +156,7 @@
                             <h4>Especialidades</h4>
                             <p>Sites Modernos & Responsivos</p>
                             <p>Agentes de WhatsApp com IA</p>
-                            <p>Automações com n8n</p>
+                            <p>Automações com n8n | Python Flask</p>
                         </div>
                     </div>
                 </div>
@@ -201,9 +215,9 @@
                     </div>
                     <h3>Automações Inteligentes</h3>
                     <p>
-                        Especialistas em n8n, criamos fluxos de automação que otimizam processos empresariais, 
+                        Especialistas em <strong>n8n</strong> e <strong>Python/Flask</strong>, criamos fluxos de automação que otimizam processos empresariais, 
                         reduzem custos operacionais e aumentam a produtividade. Integramos diferentes sistemas 
-                        e ferramentas para trabalhar em harmonia.
+                        e ferramentas para trabalhar em harmonia, aplicando <strong>engenharia de prompts</strong> e soluções com <strong>IA/LLMs</strong> quando necessário.
                     </p>
                     <ul class="features-list">
                         <li><i class="fas fa-check-circle"></i> Fluxos Complexos com n8n</li>
@@ -229,8 +243,13 @@
                 <h2 class="section-title">Minhas Habilidades</h2>
                 <p class="section-subtitle">Tecnologias que domino e estou aprendendo</p>
             </div>
+                <div class="skills-tabs" role="tablist" aria-label="Categorias de habilidades">
+                    <button class="skills-tab is-active" role="tab" aria-selected="true" aria-controls="tab-frontend" id="tab-btn-frontend" data-tab-target="frontend">Frontend</button>
+                    <button class="skills-tab" role="tab" aria-selected="false" aria-controls="tab-backend" id="tab-btn-backend" data-tab-target="backend">Backend & Automação</button>
+                    <button class="skills-tab" role="tab" aria-selected="false" aria-controls="tab-support" id="tab-btn-support" data-tab-target="support">Analista de Suporte</button>
+                </div>
             <div class="skills-grid">
-                <div class="skill-category">
+                    <div class="skill-category" id="tab-frontend" role="tabpanel" aria-labelledby="tab-btn-frontend" data-tab="frontend">
                     <h3>Frontend</h3>
                     <div class="skills-list">
                         <div class="skill-item">
@@ -257,9 +276,37 @@
                             </div>
                             <span>React</span>
                         </div>
+                        <div class="skill-item">
+                            <div class="skill-icon" aria-hidden="true">
+                                <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" role="img">
+                                    <rect width="60" height="60" rx="10" fill="#3178C6"/>
+                                    <text x="50%" y="56%" text-anchor="middle" font-size="26" font-family="Poppins, Inter, sans-serif" font-weight="700" fill="#fff">TS</text>
+                                </svg>
+                            </div>
+                            <span>TypeScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon" aria-hidden="true">
+                                <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" role="img">
+                                    <rect width="60" height="60" rx="10" fill="#111827"/>
+                                    <path d="M18 40 L30 18 L42 40" stroke="#fff" stroke-width="3" fill="none"/>
+                                    <circle cx="38" cy="40" r="2.5" fill="#fff"/>
+                                </svg>
+                            </div>
+                            <span>Next.js</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon" aria-hidden="true">
+                                <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" role="img">
+                                    <rect width="60" height="60" rx="10" fill="#0EA5E9"/>
+                                    <path d="M15 33c3.5-7 9-10 15-6 6-4 11 0 15 6-3 7-9 10-15 6-6 4-11 1-15-6z" fill="#fff"/>
+                                </svg>
+                            </div>
+                            <span>Tailwind CSS</span>
+                        </div>
                     </div>
                 </div>
-                <div class="skill-category">
+                    <div class="skill-category hidden" id="tab-backend" role="tabpanel" aria-labelledby="tab-btn-backend" data-tab="backend">
                     <h3>Backend & Automação</h3>
                     <div class="skills-list">
                         <div class="skill-item">
@@ -274,8 +321,121 @@
                             </div>
                             <span>n8n</span>
                         </div>
+                        <div class="skill-item">
+                            <div class="skill-icon" aria-hidden="true">
+                                <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" role="img">
+                                    <rect width="60" height="60" rx="10" fill="#3C873A"/>
+                                    <text x="50%" y="56%" text-anchor="middle" font-size="20" font-family="Poppins, Inter, sans-serif" font-weight="800" fill="#fff">Node</text>
+                                </svg>
+                            </div>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon" aria-hidden="true">
+                                <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" role="img">
+                                    <rect width="60" height="60" rx="10" fill="#3FCF8E"/>
+                                    <path d="M23 42V18l14 6-8 4 8 4-14 6z" fill="#0C0C0C"/>
+                                </svg>
+                            </div>
+                            <span>Supabase</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon" aria-hidden="true">
+                                <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" role="img">
+                                    <rect width="60" height="60" rx="10" fill="#0F172A"/>
+                                    <path d="M30 16 L46 44 H14 Z" fill="#fff"/>
+                                </svg>
+                            </div>
+                            <span>Vercel (Deploy)</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon" aria-hidden="true">
+                                <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" role="img">
+                                    <rect width="60" height="60" rx="10" fill="#111827"/>
+                                    <text x="50%" y="56%" text-anchor="middle" font-size="16" font-family="Poppins, Inter, sans-serif" font-weight="700" fill="#fff">IA/LLMs</text>
+                                </svg>
+                            </div>
+                            <span>IA/LLMs</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon" aria-hidden="true">
+                                <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" role="img">
+                                    <rect width="60" height="60" rx="10" fill="#3b82f6"/>
+                                    <text x="50%" y="56%" text-anchor="middle" font-size="14" font-family="Poppins, Inter, sans-serif" font-weight="700" fill="#fff">Prompts</text>
+                                </svg>
+                            </div>
+                            <span>Engenharia de Prompts</span>
+                        </div>
                     </div>
                 </div>
+                    <div class="skill-category hidden" id="tab-support" role="tabpanel" aria-labelledby="tab-btn-support" data-tab="support">
+                        <h3>Analista de Suporte de TI</h3>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <div class="skill-icon" aria-hidden="true"><i class="fas fa-headset"></i></div>
+                                <span>Sistema de Chamados</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <img src="assets/Zabbix.png" alt="Zabbix" loading="lazy" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/zabbix/ffffff'" />
+                                </div>
+                                <span>Zabbix</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <img src="assets/Target.png" alt="ERP Target" loading="lazy" />
+                                </div>
+                                <span>ERP (Target)</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <img src="assets/Target.png" alt="Painel Target" loading="lazy" />
+                                </div>
+                                <span>Painel Target</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <img src="assets/windows-logo.png" alt="Windows" loading="lazy" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/windows/ffffff'" />
+                                </div>
+                                <span>Sistemas Operacionais</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon" aria-hidden="true"><i class="fas fa-screwdriver-wrench"></i></div>
+                                <span>Config. de Computadores</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <div class="dual-icons">
+                                        <img src="https://cdn.simpleicons.org/hp/ffffff" alt="HP" loading="lazy" />
+                                        <img src="https://cdn.simpleicons.org/kyocera/ffffff" alt="Kyocera" loading="lazy" />
+                                    </div>
+                                </div>
+                                <span>Impressoras (HP e Kyocera)</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <img src="assets/office-logo.png" alt="Microsoft 365/Office" loading="lazy" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/microsoftoffice/ffffff'" />
+                                </div>
+                                <span>Microsoft 365/Office</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <img src="assets/azure-ad-logo.png" alt="Active Directory" loading="lazy" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/microsoftazure/ffffff'" />
+                                </div>
+                                <span>Active Directory</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon" aria-hidden="true"><i class="fas fa-wifi"></i></div>
+                                <span>Rede & Wi‑Fi</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <img src="https://cdn.simpleicons.org/anydesk/ffffff" alt="AnyDesk" loading="lazy" />
+                                </div>
+                                <span>Suporte Remoto (AnyDesk)</span>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
     </section>
@@ -562,6 +722,9 @@
     </footer>
 
     <script src="script.js"></script>
+</body>
+
+</html>
 </body>
 
 </html>

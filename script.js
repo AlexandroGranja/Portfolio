@@ -1,14 +1,19 @@
 // Portfolio JavaScript - Alexandro Granja
 
 // DOM Elements
+const ENABLE_CURSOR = false;
+const ENABLE_PARTICLES = false;
+const ENABLE_CARD_TILT = false;
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('section');
 const navbar = document.querySelector('.navbar');
 
-// Mobile Menu Toggle
+// Mobile Menu Toggle (com ARIA)
 hamburger.addEventListener('click', () => {
+    const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+    hamburger.setAttribute('aria-expanded', String(!expanded));
     hamburger.classList.toggle('active');
     navMenu.classList.toggle('active');
 });
@@ -104,13 +109,6 @@ function updateParallax(scrolled) {
     if (hero && heroContent) {
         heroContent.style.transform = `translateY(${rate * 0.3}px)`;
     }
-
-    // Floating elements parallax
-    const floatingElements = document.querySelectorAll('.floating-element');
-    floatingElements.forEach((element, index) => {
-        const speed = 0.5 + (index * 0.2);
-        element.style.transform += ` translateY(${scrolled * speed * 0.1}px)`;
-    });
 
     // Background elements parallax
     const parallaxElements = document.querySelectorAll('.parallax-element');
@@ -239,20 +237,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Parallax Effect for Hero Section - Already handled in unified scroll handler
 
-// Floating Elements Animation
+// Floating Elements Animation (somente atraso de animação, sem acumular transforms)
 document.addEventListener('DOMContentLoaded', () => {
     const floatingElements = document.querySelectorAll('.floating-element');
-    
     floatingElements.forEach((element, index) => {
         const delay = index * 2;
         element.style.animationDelay = `${delay}s`;
-        
-        // Add random floating motion
-        setInterval(() => {
-            const randomX = Math.random() * 20 - 10;
-            const randomY = Math.random() * 20 - 10;
-            element.style.transform += ` translate(${randomX}px, ${randomY}px)`;
-        }, 3000 + index * 1000);
     });
 });
 
@@ -454,7 +444,7 @@ window.addEventListener('load', () => {
 // ============================================
 
 // Cursor personalizado com efeito de partículas
-document.addEventListener('DOMContentLoaded', () => {
+if (ENABLE_CURSOR) document.addEventListener('DOMContentLoaded', () => {
     const cursor = document.createElement('div');
     cursor.className = 'custom-cursor';
     cursor.style.cssText = `
@@ -627,7 +617,7 @@ class ParticleSystem {
 }
 
 // Inicializar sistema de partículas
-window.addEventListener('load', () => {
+if (ENABLE_PARTICLES) window.addEventListener('load', () => {
     new ParticleSystem();
 });
 
@@ -664,7 +654,7 @@ rippleExpandStyle.textContent = `
 document.head.appendChild(rippleExpandStyle);
 
 // Efeito parallax no mouse para cards
-document.addEventListener('DOMContentLoaded', () => {
+if (ENABLE_CARD_TILT) document.addEventListener('DOMContentLoaded', () => {
     const cards = document.querySelectorAll('.project-card, .agency-card, .skill-category');
     
     cards.forEach(card => {
@@ -782,4 +772,37 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 console.log('✨ Animações avançadas carregadas com sucesso!');
+
+// Abas da seção de habilidades
+document.addEventListener('DOMContentLoaded', () => {
+    const tabButtons = Array.from(document.querySelectorAll('.skills-tab'));
+    const panels = Array.from(document.querySelectorAll('.skill-category[role="tabpanel"]'));
+    if (!tabButtons.length || !panels.length) return;
+
+    function activateTab(target) {
+        tabButtons.forEach(btn => {
+            const isActive = btn.dataset.tabTarget === target;
+            btn.classList.toggle('is-active', isActive);
+            btn.setAttribute('aria-selected', String(isActive));
+        });
+        panels.forEach(panel => {
+            const show = panel.dataset.tab === target;
+            panel.classList.toggle('hidden', !show);
+        });
+    }
+
+    tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => activateTab(btn.dataset.tabTarget));
+    });
+});
+
+// Segurança: garantir rel="noopener noreferrer" em links que abrem em nova aba
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('a[target="_blank"]').forEach(a => {
+        const rel = (a.getAttribute('rel') || '').split(' ').filter(Boolean);
+        if (!rel.includes('noopener')) rel.push('noopener');
+        if (!rel.includes('noreferrer')) rel.push('noreferrer');
+        a.setAttribute('rel', rel.join(' '));
+    });
+});
 

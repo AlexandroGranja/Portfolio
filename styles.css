@@ -157,9 +157,10 @@ body {
 
 .hero-title {
     font-size: 3.5rem;
-    font-weight: 700;
+    font-weight: 800;
     line-height: 1.2;
     margin-bottom: 1.5rem;
+    font-family: 'Poppins', 'Inter', sans-serif;
 }
 
 .greeting {
@@ -366,13 +367,12 @@ section:nth-child(odd) {
 
 .section-title {
     font-size: 2.5rem;
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 1rem;
-    background: var(--gradient-accent);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-primary);
     position: relative;
+    font-family: 'Poppins', 'Inter', sans-serif;
+    letter-spacing: 0.3px;
 }
 
 .section-title::after {
@@ -422,6 +422,9 @@ section:nth-child(odd) {
     font-size: 1.5rem;
     margin-bottom: 1rem;
     color: var(--accent-light);
+    font-family: 'Poppins', 'Inter', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.2px;
 }
 
 .about-card p {
@@ -429,6 +432,8 @@ section:nth-child(odd) {
     color: var(--text-secondary);
     line-height: 1.8;
 }
+
+/* Quick summary inside About */
 
 .info-grid {
     display: grid;
@@ -486,8 +491,8 @@ section:nth-child(odd) {
 /* Skills Section */
 .skills-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
 }
 
 .skill-category {
@@ -498,11 +503,39 @@ section:nth-child(odd) {
     backdrop-filter: blur(10px);
 }
 
+/* Tabs for skills */
+.skills-tabs {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.skills-tab {
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    background: rgba(15, 23, 42, 0.6);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.skills-tab.is-active {
+    color: #fff;
+    background: var(--gradient-accent);
+    box-shadow: var(--shadow-accent);
+}
+
+.hidden { display: none; }
+
 .skill-category h3 {
     font-size: 1.5rem;
     margin-bottom: 2rem;
     color: var(--accent-light);
     text-align: center;
+    font-family: 'Poppins', 'Inter', sans-serif;
+    font-weight: 700;
 }
 
 .skills-list {
@@ -551,13 +584,64 @@ section:nth-child(odd) {
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    position: relative;
 }
 
 .skill-icon img {
-    width: 100%;
-    height: 100%;
+    width: 78%;
+    height: 78%;
     object-fit: contain;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.35));
+    transition: transform 0.25s ease, filter 0.25s ease;
 }
+.
+.skill-icon i {
+    font-size: 28px;
+    color: #ffffff;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25));
+    transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+/* Badge style to harmonize with Backend cards */
+.brand-badge {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(2,6,23,0.35) inset;
+}
+
+.brand-badge img { width: 34px; height: 34px; }
+.brand-badge i { color: #fff; font-size: 26px; }
+
+/* Dual brand icons inside a single skill-icon */
+.dual-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+.dual-icons img {
+    width: 26px;
+    height: 26px;
+}
+
+/* Shine on hover */
+/* Remove diagonal shine to evitar linhas visuais ao passar o cursor */
+.skill-icon::after { content: none; }
+.skill-item:hover .skill-icon img,
+.skill-item:hover .skill-icon i { transform: scale(1.08); filter: drop-shadow(0 6px 14px rgba(59,130,246,0.35)); }
+
+/* Icon-only cards: make FA icons pop */
+.skill-item .skill-icon i { color: #e5e7eb; }
+.skill-item:hover .skill-icon i { color: #ffffff; }
 
 .skill-item span {
     font-weight: 600;
@@ -674,6 +758,8 @@ section:nth-child(odd) {
     font-size: 1.3rem;
     margin-bottom: 1rem;
     color: var(--text-primary);
+    font-family: 'Poppins', 'Inter', sans-serif;
+    font-weight: 700;
 }
 
 .project-content p {
@@ -1312,10 +1398,9 @@ html {
 }
 
 .project-image .moraes-adesivos-img {
-    object-fit:fill;
-    height: 160px;
-    width: 350px;
-    margin: 0 auto;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
 
 /* ============================================
@@ -1567,6 +1652,7 @@ html {
     margin-bottom: 1.5rem;
     text-align: center;
     font-weight: 700;
+    font-family: 'Poppins', 'Inter', sans-serif;
 }
 
 .agency-card p {
@@ -1710,7 +1796,7 @@ html {
     }
 }
 
-.section-title {
+.section-title.rainbow {
     background: var(--gradient-rainbow);
     background-size: 200% 200%;
     animation: rainbow-flow 4s ease infinite;
@@ -1912,21 +1998,11 @@ html {
 }
 
 .profile-image {
-    animation: rotate-gradient 10s linear infinite;
     position: relative;
 }
 
 .profile-image::before {
-    content: '';
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    background: var(--gradient-rainbow);
-    border-radius: 50%;
-    z-index: -1;
-    animation: rotate-gradient 3s linear infinite;
+    content: none;
 }
 
 /* Efeito de ondulação ao clicar */
