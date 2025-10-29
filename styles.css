@@ -509,6 +509,7 @@ section:nth-child(odd) {
     gap: 0.75rem;
     justify-content: center;
     margin-bottom: 1.5rem;
+    flex-wrap: wrap;
 }
 
 .skills-tab {
@@ -642,6 +643,23 @@ section:nth-child(odd) {
 /* Icon-only cards: make FA icons pop */
 .skill-item .skill-icon i { color: #e5e7eb; }
 .skill-item:hover .skill-icon i { color: #ffffff; }
+
+/* Global responsive media tweaks */
+@media (max-width: 640px) {
+    section { padding: 3.5rem 0; }
+    .section-title { font-size: 1.75rem; }
+    .nav-container { padding: 0.75rem 1rem; }
+    .skills-tab { font-size: 0.9rem; padding: 0.4rem 0.8rem; }
+    .skills-list { gap: 1rem; }
+    .skill-item { padding: 1rem; }
+    .skill-icon { width: 48px; height: 48px; }
+    .project-image { height: 160px; }
+}
+
+@media (max-width: 380px) {
+    .section-title { font-size: 1.5rem; }
+    .hero-buttons .btn { width: 100%; }
+}
 
 .skill-item span {
     font-weight: 600;
