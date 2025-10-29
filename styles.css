@@ -104,6 +104,11 @@ body {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 0;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 .bar {
@@ -923,6 +928,8 @@ section:nth-child(odd) {
         text-align: center;
         gap: 2rem;
     }
+    /* Evitar que a navbar fixa sobreponha o título no mobile */
+    .hero { padding-top: 80px; }
     
     .hero-title {
         font-size: 2.5rem;
