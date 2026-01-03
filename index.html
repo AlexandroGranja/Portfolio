@@ -100,33 +100,25 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Sobre Mim</h2>
-                <p class="section-subtitle">Conheça um pouco da minha jornada</p>
             </div>
             <div class="about-content">
                 <div class="about-text">
                     <div class="about-card">
-                        <h3>Sobre Mim 💼</h3>
+                        <h3>Experiência Profissional</h3>
                         <p>
-                            Sou <strong>Analista de Suporte de TI</strong> na <strong>Prosper</strong>, onde aplico diariamente meus conhecimentos 
-                            em infraestrutura, Active Directory, Microsoft 365 e Zabbix para garantir a continuidade e eficiência dos sistemas corporativos. 
-                            Também conheço <strong>sistemas de logística</strong> (ex.: <strong>Target/Target Mob</strong>) e rotinas de operação, suporte e integração com ERP, 
-                            o que me ajuda a conectar o time de negócios à tecnologia com agilidade e segurança. 
-                            Com mais de 1 ano de experiência em TI, desenvolvi uma visão estratégica sobre como a tecnologia pode transformar processos empresariais.
+                            <strong>Analista de Suporte de TI</strong> na <strong>Prosper</strong> — Atuo com infraestrutura, Active Directory, Microsoft 365 e Zabbix. 
+                            Experiência com sistemas de logística (Target/Target Mob) e integração com ERP. Mais de 1 ano de experiência em suporte técnico e operações de TI.
                         </p>
                         <p>
-                            Fundei a <strong><a href="https://www.aiversetechnologies.com.br/" target="_blank" class="agency-link">AIverse Technologies</a></strong>, 
-                            uma agência de desenvolvimento e automações, onde atuo como desenvolvedor fullstack e especialista em automações inteligentes. 
-                            Nosso foco é criar <strong>sites modernos e responsivos</strong> e <strong>agentes de WhatsApp personalizados</strong> 
-                            que revolucionam o atendimento ao cliente através da IA.
+                            <strong>Fundador e Desenvolvedor Fullstack</strong> na <strong><a href="https://www.aiversetechnologies.com.br/" target="_blank" class="agency-link">AIverse Technologies</a></strong> — 
+                            Desenvolvimento de sites responsivos e sistemas de automação com agentes de WhatsApp e IA.
                         </p>
+                        <h3>Tecnologias e Ferramentas</h3>
                         <p>
-                            No desenvolvimento web, domino <strong>HTML, CSS e JavaScript</strong>, com experiência em <strong>React</strong>, <strong>TypeScript</strong>, <strong>Next.js</strong> e <strong>Python/Flask</strong>. 
-                            Crio interfaces atraentes e funcionais que proporcionam excelente experiência do usuário. 
-                            Na área de automações e backend, trabalho com <strong>Node.js</strong> e <strong>Supabase</strong> (Postgres, Auth e Storage), e sou especialista em <strong>n8n</strong> e <strong>Python/Flask</strong>, desenvolvendo fluxos complexos de trabalho e agentes conversacionais 
-                            inteligentes que automatizam processos, reduzem custos e aumentam a produtividade. Tenho experiência com <strong>engenharia de prompts</strong> e soluções com <strong>IA/LLMs</strong> para atendimento, automação e integrações.
-                        </p>
-                        <p>
-                            Também utilizo <strong>Tailwind CSS</strong> para acelerar o design responsivo e <strong>Vercel</strong> para deploy e CI/CD, garantindo projetos rápidos, escaláveis e bem estruturados.
+                            <strong>Frontend:</strong> React, Next.js, TypeScript, HTML, CSS, JavaScript, Tailwind CSS<br>
+                            <strong>Backend:</strong> Node.js, Python, Flask, Supabase (PostgreSQL, Auth, Storage)<br>
+                            <strong>Automação:</strong> n8n, integração com APIs, engenharia de prompts, IA/LLMs<br>
+                            <strong>Deploy:</strong> Vercel, Railway
                         </p>
                     </div>
                 </div>
@@ -357,6 +349,16 @@
                         <div class="skill-item">
                             <div class="skill-icon" aria-hidden="true">
                                 <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" role="img">
+                                    <rect width="60" height="60" rx="10" fill="#0B0D0E"/>
+                                    <path d="M30 15 L45 25 L45 35 L30 45 L15 35 L15 25 Z" fill="#fff"/>
+                                    <path d="M30 20 L40 27 L40 33 L30 40 L20 33 L20 27 Z" fill="#0B0D0E"/>
+                                </svg>
+                            </div>
+                            <span>Railway (Deploy)</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon" aria-hidden="true">
+                                <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" role="img">
                                     <rect width="60" height="60" rx="10" fill="#111827"/>
                                     <text x="50%" y="56%" text-anchor="middle" font-size="16" font-family="Poppins, Inter, sans-serif" font-weight="700" fill="#fff">IA/LLMs</text>
                                 </svg>
@@ -456,14 +458,85 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="./assets/logo02.png" alt="Moraes Adesivos" class="moraes-adesivos-img" />
+                        <div class="project-images-grid">
+                            <img src="./assets/FortaoPremios.png" alt="Fortão Prêmios - Página Inicial" />
+                            <img src="./assets/FortaoPremioadmin.png" alt="Fortão Prêmios - Painel Administrativo" />
+                        </div>
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="https://moraesadesivos.com.br/" target="_blank" class="project-link">
+                                <a href="https://xn--fortoprmios-c8a8g.com.br/" target="_blank" class="project-link" title="Visitar Site">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Fortão Prêmios</h3>
+                        <p>Sistema completo de rifas online desenvolvido com Next.js 14 e React. Inclui painel administrativo completo, 
+                            autenticação segura com JWT e bcrypt, sistema de cache inteligente em 5 camadas que reduz o tempo de carregamento em 40%, 
+                            gerenciamento de imagens otimizado, dashboard com estatísticas em tempo real e design responsivo. 
+                            Deploy realizado na Railway com otimizações de performance e segurança.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">Supabase</span>
+                            <span class="tech-tag">JWT</span>
+                            <span class="tech-tag">Railway</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-images-grid">
+                            <img src="./assets/CardapioPrincipal.png" alt="Burger House - Página Principal do Cardápio" />
+                            <img src="./assets/CardapioAdmin.png" alt="Burger House - Painel Administrativo" />
+                        </div>
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://cardapio.up.railway.app/" target="_blank" class="project-link" title="Ver Cardápio">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="https://cardapio.up.railway.app/adm-pagina.html" target="_blank" class="project-link" title="Painel Administrativo">
+                                    <i class="fas fa-cog"></i>
+                                </a>
+                                <a href="https://github.com/AlexandroGranja/Projeto05-Burger-House" target="_blank"
+                                    class="project-link" title="Ver Código no GitHub">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Cardápio Online</h3>
+                        <p>Sistema completo de cardápio online com painel administrativo avançado. Desenvolvido com React 18 e integração total com Supabase. 
+                            Inclui cardápio dinâmico, carrinho de compras, checkout completo, gerenciamento de pedidos, upload de imagens, 
+                            configurações personalizáveis (cores, logo, endereço, redes sociais) e sistema de autenticação. 
+                            Backend opcional em Flask/Python. Deploy realizado na Railway.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">Supabase</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">Railway</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="./assets/logo02.png" alt="Moraes Adesivos - Site Completo" />
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://moraesadesivos.com.br/" target="_blank" class="project-link" title="Visitar Site">
                                     <i class="fas fa-external-link-alt"></i>
                                 </a>
                                 <a href="https://github.com/AlexandroGranja/MoraisAdesivos" target="_blank"
-                                    class="project-link">
+                                    class="project-link" title="Ver Código no GitHub">
                                     <i class="fab fa-github"></i>
                                 </a>
                             </div>
@@ -486,45 +559,8 @@
 
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="./assets/project-burger-house.png" alt="Burger House" />
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://burger-house.up.railway.app/" target="_blank" class="project-link" title="Cardápio">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="https://burger-house.up.railway.app/adm-pagina.html" target="_blank" class="project-link" title="Painel Administrativo">
-                                    <i class="fas fa-cog"></i>
-                                </a>
-                                <a href="https://github.com/AlexandroGranja/Projeto05-Burger-House" target="_blank"
-                                    class="project-link" title="Código Fonte">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Burger House</h3>
-                        <p>Landing page completa para hamburguerias com React e Flask. Sistema de pedidos integrado,
-                            carrinho dinâmico, painel administrativo e design responsivo. Inclui página do cardápio e painel de administração.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Flask</span>
-                            <span class="tech-tag">JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="./assets/project-whatsapp-n8n.png" alt="Agentes de WhatsApp com n8n" />
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" target="_blank" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
+                        <img src="./assets/project-whatsapp-n8n.png" alt="Agentes de WhatsApp com n8n - Automação Inteligente" />
+                        <!-- Overlay será adicionado quando os links estiverem prontos -->
                     </div>
                     <div class="project-content">
                         <h3>Agentes de WhatsApp com n8n</h3>
@@ -542,126 +578,6 @@
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <video autoplay muted loop playsinline>
-                            <source src="./assets/Foto-login-cadastro.mp4" type="video/mp4">
-                            Seu navegador não suporta vídeo.
-                        </video>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/AlexandroGranja/Projeto00-Login-Cadastro-Sistema-Solar"
-                                    target="_blank" class="project-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-content">
-                        <h3>Sistema de Login e Cadastro</h3>
-                        <p>Página de login e cadastro com backend em Python/Flask. Inclui validações, criptografia de
-                            senhas e design com animações espaciais.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Flask</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">CSS</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="./assets/project-dietia.png" alt="Aplicativo DietIA" />
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/AlexandroGranja/Aplicativo-DietIA" target="_blank"
-                                    class="project-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Aplicativo DietIA</h3>
-                        <p>Aplicativo com inteligência artificial para dietas. Combina JavaScript e Python para uma
-                            experiência completa.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="./assets/project-facil-de-comprar-mobile.png" alt="Fácil de Comprar Mobile" />
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/AlexandroGranja/Projeto03-Facil-de-Comprar-Mobile"
-                                    target="_blank" class="project-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Fácil de Comprar Mobile</h3>
-                        <p>Landing page moderna e responsiva focada na experiência mobile. Design otimizado para
-                            dispositivos móveis.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">HTML</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="./assets/project-assistente-financeiro.png" alt="Assistente Financeiro" />
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/AlexandroGranja/Assistente-Financeiro" target="_blank"
-                                    class="project-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Assistente Financeiro</h3>
-                        <p>Sistema de assistente financeiro desenvolvido em Python com interface web em HTML.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">HTML</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="./assets/project-assistente-ia.png" alt="Assistente IA" />
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/AlexandroGranja/assistente-ia" target="_blank"
-                                    class="project-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Assistente IA</h3>
-                        <p>Backend com inteligência artificial local e integração com n8n para automações avançadas.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">n8n</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>

@@ -736,40 +736,7 @@ function animateCounter(element, target, duration = 2000) {
     }, 16);
 }
 
-// Efeito de brilho que segue o mouse nos cards
-document.addEventListener('DOMContentLoaded', () => {
-    const cards = document.querySelectorAll('.project-card, .agency-card');
-    
-    cards.forEach(card => {
-        const glow = document.createElement('div');
-        glow.className = 'mouse-glow';
-        glow.style.cssText = `
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, transparent 70%);
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        `;
-        card.appendChild(glow);
-        
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            glow.style.left = (x - 100) + 'px';
-            glow.style.top = (y - 100) + 'px';
-            glow.style.opacity = '1';
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            glow.style.opacity = '0';
-        });
-    });
-});
+// Efeito de brilho removido conforme solicitado
 
 console.log('✨ Animações avançadas carregadas com sucesso!');
 
@@ -803,6 +770,82 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!rel.includes('noopener')) rel.push('noopener');
         if (!rel.includes('noreferrer')) rel.push('noreferrer');
         a.setAttribute('rel', rel.join(' '));
+    });
+});
+
+// ============================================
+// CARROSSEL DE IMAGENS DO PROJETO
+// ============================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    const carousels = document.querySelectorAll('.image-carousel');
+    
+    carousels.forEach(carousel => {
+        const images = carousel.querySelectorAll('.carousel-image');
+        const prevBtn = carousel.querySelector('.carousel-btn.prev');
+        const nextBtn = carousel.querySelector('.carousel-btn.next');
+        const indicators = carousel.querySelectorAll('.indicator');
+        
+        let currentIndex = 0;
+        
+        function showImage(index) {
+            // Remove active de todas as imagens e indicadores
+            images.forEach(img => img.classList.remove('active'));
+            indicators.forEach(ind => ind.classList.remove('active'));
+            
+            // Adiciona active na imagem e indicador atual
+            images[index].classList.add('active');
+            if (indicators[index]) {
+                indicators[index].classList.add('active');
+            }
+            
+            currentIndex = index;
+        }
+        
+        function nextImage() {
+            const nextIndex = (currentIndex + 1) % images.length;
+            showImage(nextIndex);
+        }
+        
+        function prevImage() {
+            const prevIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(prevIndex);
+        }
+        
+        // Event listeners para botões
+        if (nextBtn) {
+            nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                nextImage();
+            });
+        }
+        
+        if (prevBtn) {
+            prevBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                prevImage();
+            });
+        }
+        
+        // Event listeners para indicadores
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', (e) => {
+                e.stopPropagation();
+                showImage(index);
+            });
+        });
+        
+        // Auto-play opcional (desabilitado por padrão)
+        // Descomente as linhas abaixo se quiser auto-play
+        // let autoPlayInterval = setInterval(nextImage, 5000);
+        // 
+        // carousel.addEventListener('mouseenter', () => {
+        //     clearInterval(autoPlayInterval);
+        // });
+        // 
+        // carousel.addEventListener('mouseleave', () => {
+        //     autoPlayInterval = setInterval(nextImage, 5000);
+        // });
     });
 });
 
