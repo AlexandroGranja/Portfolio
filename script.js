@@ -123,7 +123,8 @@ const translations = {
             seekingDesc: "Estou aberto a novas oportunidades nas áreas de:",
             seeking1: "Desenvolvimento Fullstack (React + Python/Flask)",
             seeking2: "Automações e Integrações (n8n, APIs, Webhooks)",
-            seeking3: "Desenvolvimento Web & IA"
+            seeking3: "Desenvolvimento Web & IA",
+            contactButton: "Entre em contato"
         },
         // Skills Section
         skills: {
@@ -140,7 +141,9 @@ const translations = {
             subtitle: "Alguns dos meus trabalhos em desenvolvimento web e automações",
             readMore: "Ver mais",
             readLess: "Ver menos",
-            visitSite: "Visitar Site"
+            visitSite: "Visitar Site",
+            viewMenu: "Ver Cardápio",
+            viewCode: "Ver Código"
         },
         // Contact Section
         contact: {
@@ -183,7 +186,53 @@ const translations = {
             technologies: "25+ Tecnologias",
             frontend: "Frontend",
             backend: "Backend & Automação",
-            tools: "Ferramentas"
+            tools: "Ferramentas",
+            // Níveis de proficiência
+            expert: "Expert",
+            advanced: "Avançado",
+            intermediate: "Intermediário",
+            specialist: "Especialista",
+            // Categorias de habilidades
+            versioning: "Versionamento",
+            automation: "Automação",
+            backendSkill: "Backend",
+            database: "Database",
+            nosql: "NoSQL",
+            containerization: "Containerização",
+            integration: "Integração",
+            systems: "Sistemas",
+            wms: "WMS",
+            aiFlows: "Fluxos IA",
+            framework: "Framework",
+            api: "API",
+            monitoring: "Monitoramento",
+            office: "Office",
+            management: "Gerenciamento",
+            server: "Servidor",
+            system: "Sistema",
+            scripting: "Scripting",
+            projectManagement: "Gestão",
+            itsm: "ITSM",
+            logistics: "Logística"
+        },
+        // Projects Section
+        projects: {
+            title: "Meus Projetos",
+            subtitle: "Alguns dos meus trabalhos em desenvolvimento web e automações",
+            readMore: "Ver mais",
+            readLess: "Ver menos",
+            visitSite: "Visitar Site",
+            viewMenu: "Ver Cardápio",
+            viewCode: "Ver Código",
+            // Projeto 1: Fortão Prêmios
+            project1Title: "Fortão Prêmios",
+            project1Description: "Sistema completo de rifas online desenvolvido com Next.js 14 e React. Inclui painel administrativo completo, autenticação segura com JWT e bcrypt, sistema de cache inteligente em 5 camadas que reduz o tempo de carregamento em 40%, gerenciamento de imagens otimizado, dashboard com estatísticas em tempo real e design responsivo. Deploy realizado na Railway com otimizações de performance e segurança.",
+            // Projeto 2: Cardápio Online
+            project2Title: "Cardápio Online",
+            project2Description: "Sistema completo de cardápio online com painel administrativo avançado. Desenvolvido com React 18 e integração total com Supabase. Inclui cardápio dinâmico, carrinho de compras, checkout completo, gerenciamento de pedidos, upload de imagens, configurações personalizáveis (cores, logo, endereço, redes sociais) e sistema de autenticação. Backend opcional em Flask/Python. Deploy realizado na Railway.",
+            // Projeto 3: Moraes Adesivos
+            project3Title: "Moraes Adesivos",
+            project3Description: "Site completo desenvolvido pela AIverse Technologies para empresa especializada em adesivos decorativos. Landing page moderna com galeria de trabalhos, seção de serviços e integração com WhatsApp para orçamentos. Design responsivo e otimizado para conversão de leads."
         }
     },
     en: {
@@ -232,7 +281,8 @@ const translations = {
             seekingDesc: "I am open to new opportunities in the areas of:",
             seeking1: "Fullstack Development (React + Python/Flask)",
             seeking2: "Automations and Integrations (n8n, APIs, Webhooks)",
-            seeking3: "Web & AI Development"
+            seeking3: "Web & AI Development",
+            contactButton: "Get in Touch"
         },
         // Skills Section
         skills: {
@@ -246,7 +296,9 @@ const translations = {
             subtitle: "Some of my work in web development and automations",
             readMore: "Read more",
             readLess: "Read less",
-            visitSite: "Visit Site"
+            visitSite: "Visit Site",
+            viewMenu: "View Menu",
+            viewCode: "View Code"
         },
         // Contact Section
         contact: {
@@ -289,7 +341,53 @@ const translations = {
             technologies: "25+ Technologies",
             frontend: "Frontend",
             backend: "Backend & Automation",
-            tools: "Tools"
+            tools: "Tools",
+            // Níveis de proficiência
+            expert: "Expert",
+            advanced: "Advanced",
+            intermediate: "Intermediate",
+            specialist: "Specialist",
+            // Categorias de habilidades
+            versioning: "Version Control",
+            automation: "Automation",
+            backendSkill: "Backend",
+            database: "Database",
+            nosql: "NoSQL",
+            containerization: "Containerization",
+            integration: "Integration",
+            systems: "Systems",
+            wms: "WMS",
+            aiFlows: "AI Flows",
+            framework: "Framework",
+            api: "API",
+            monitoring: "Monitoring",
+            office: "Office",
+            management: "Management",
+            server: "Server",
+            system: "System",
+            scripting: "Scripting",
+            projectManagement: "Project Management",
+            itsm: "ITSM",
+            logistics: "Logistics"
+        },
+        // Projects Section
+        projects: {
+            title: "My Projects",
+            subtitle: "Some of my work in web development and automations",
+            readMore: "Read more",
+            readLess: "Read less",
+            visitSite: "Visit Site",
+            viewMenu: "View Menu",
+            viewCode: "View Code",
+            // Projeto 1: Fortão Prêmios
+            project1Title: "Fortão Prêmios",
+            project1Description: "Complete online raffle system developed with Next.js 14 and React. Includes complete admin panel, secure authentication with JWT and bcrypt, intelligent 5-layer cache system that reduces loading time by 40%, optimized image management, real-time statistics dashboard and responsive design. Deploy performed on Railway with performance and security optimizations.",
+            // Projeto 2: Cardápio Online
+            project2Title: "Online Menu",
+            project2Description: "Complete online menu system with advanced admin panel. Developed with React 18 and full Supabase integration. Includes dynamic menu, shopping cart, complete checkout, order management, image upload, customizable settings (colors, logo, address, social media) and authentication system. Optional Flask/Python backend. Deploy performed on Railway.",
+            // Projeto 3: Moraes Adesivos
+            project3Title: "Moraes Adesivos",
+            project3Description: "Complete website developed by AIverse Technologies for a company specialized in decorative stickers. Modern landing page with work gallery, services section and WhatsApp integration for quotes. Responsive design optimized for lead conversion."
         }
     }
 };
@@ -304,6 +402,20 @@ function setLanguage(lang) {
     localStorage.setItem('language', lang);
     document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
     updatePageLanguage(lang);
+    // Atualizar título da página
+    if (lang === 'pt') {
+        document.title = 'Alexandro Granja | Desenvolvedor Web & Especialista em Automações';
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) {
+            metaDesc.setAttribute('content', 'Portfólio de Alexandro Granja — Desenvolvedor Web e Especialista em Automações. Criação de sites modernos, responsivos e agentes de WhatsApp com IA (n8n).');
+        }
+    } else {
+        document.title = 'Alexandro Granja | Web Developer & Automation Specialist';
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) {
+            metaDesc.setAttribute('content', 'Alexandro Granja Portfolio — Web Developer and Automation Specialist. Creating modern, responsive websites and WhatsApp agents with AI (n8n).');
+        }
+    }
 }
 
 // Função para atualizar todos os textos da página
@@ -330,6 +442,29 @@ function updatePageLanguage(lang) {
     document.querySelectorAll('[data-i18n="about.experience"]').forEach(el => el.textContent = t.about.experience);
     document.querySelectorAll('[data-i18n="about.education"]').forEach(el => el.textContent = t.about.education);
     document.querySelectorAll('[data-i18n="about.current"]').forEach(el => el.textContent = t.about.current);
+    document.querySelectorAll('[data-i18n="about.techSupport"]').forEach(el => el.textContent = t.about.techSupport);
+    document.querySelectorAll('[data-i18n="about.techSupportDesc"]').forEach(el => el.textContent = t.about.techSupportDesc);
+    document.querySelectorAll('[data-i18n="about.founder"]').forEach(el => el.textContent = t.about.founder);
+    document.querySelectorAll('[data-i18n="about.founderDesc"]').forEach(el => el.textContent = t.about.founderDesc);
+    document.querySelectorAll('[data-i18n="about.techEducation"]').forEach(el => el.textContent = t.about.techEducation);
+    document.querySelectorAll('[data-i18n="about.techEducationLevel"]').forEach(el => el.textContent = t.about.techEducationLevel);
+    document.querySelectorAll('[data-i18n="about.devclub"]').forEach(el => el.textContent = t.about.devclub);
+    document.querySelectorAll('[data-i18n="about.devclubLevel"]').forEach(el => el.textContent = t.about.devclubLevel);
+    document.querySelectorAll('[data-i18n="about.automation"]').forEach(el => el.textContent = t.about.automation);
+    document.querySelectorAll('[data-i18n="about.automationLevel"]').forEach(el => el.textContent = t.about.automationLevel);
+    document.querySelectorAll('[data-i18n="about.achievements"]').forEach(el => el.textContent = t.about.achievements);
+    document.querySelectorAll('[data-i18n="about.achievement1"]').forEach(el => el.textContent = t.about.achievement1);
+    document.querySelectorAll('[data-i18n="about.achievement2"]').forEach(el => el.textContent = t.about.achievement2);
+    document.querySelectorAll('[data-i18n="about.achievement3"]').forEach(el => el.textContent = t.about.achievement3);
+    document.querySelectorAll('[data-i18n="about.location"]').forEach(el => el.textContent = t.about.location);
+    document.querySelectorAll('[data-i18n="about.locationPlace"]').forEach(el => el.textContent = t.about.locationPlace);
+    document.querySelectorAll('[data-i18n="about.seeking"]').forEach(el => el.textContent = t.about.seeking);
+    document.querySelectorAll('[data-i18n="about.seekingDesc"]').forEach(el => el.textContent = t.about.seekingDesc);
+    document.querySelectorAll('[data-i18n="about.seeking1"]').forEach(el => el.textContent = t.about.seeking1);
+    document.querySelectorAll('[data-i18n="about.seeking2"]').forEach(el => el.textContent = t.about.seeking2);
+    document.querySelectorAll('[data-i18n="about.seeking3"]').forEach(el => el.textContent = t.about.seeking3);
+    document.querySelectorAll('[data-i18n="about.contactButton"]').forEach(el => el.textContent = t.about.contactButton);
+    document.querySelectorAll('[data-i18n="about.subtitle"]').forEach(el => el.textContent = t.about.subtitle);
     
     // Atualizar Skills
     document.querySelectorAll('[data-i18n="skills.techStack"]').forEach(el => el.textContent = t.skills.techStack);
@@ -379,6 +514,36 @@ function updatePageLanguage(lang) {
     document.querySelectorAll('[data-i18n="projects.readMore"]').forEach(el => el.textContent = t.projects.readMore);
     document.querySelectorAll('[data-i18n="projects.readLess"]').forEach(el => el.textContent = t.projects.readLess);
     document.querySelectorAll('[data-i18n="projects.visitSite"]').forEach(el => el.textContent = t.projects.visitSite);
+    document.querySelectorAll('[data-i18n="projects.viewMenu"]').forEach(el => el.textContent = t.projects.viewMenu);
+    document.querySelectorAll('[data-i18n="projects.viewCode"]').forEach(el => el.textContent = t.projects.viewCode);
+    // Atualizar títulos e descrições dos projetos
+    document.querySelectorAll('[data-i18n="projects.project1Title"]').forEach(el => {
+        const parts = t.projects.project1Title.split(' ');
+        if (el.classList && el.classList.contains('text-primary')) {
+            el.textContent = parts[1] || parts[0];
+        } else {
+            el.textContent = parts[0];
+        }
+    });
+    document.querySelectorAll('[data-i18n="projects.project1Description"]').forEach(el => el.textContent = t.projects.project1Description);
+    document.querySelectorAll('[data-i18n="projects.project2Title"]').forEach(el => {
+        const parts = t.projects.project2Title.split(' ');
+        if (el.classList && el.classList.contains('text-primary')) {
+            el.textContent = parts[1] || parts[0];
+        } else {
+            el.textContent = parts[0];
+        }
+    });
+    document.querySelectorAll('[data-i18n="projects.project2Description"]').forEach(el => el.textContent = t.projects.project2Description);
+    document.querySelectorAll('[data-i18n="projects.project3Title"]').forEach(el => {
+        const parts = t.projects.project3Title.split(' ');
+        if (el.classList && el.classList.contains('text-primary')) {
+            el.textContent = parts[1] || parts[0];
+        } else {
+            el.textContent = parts[0];
+        }
+    });
+    document.querySelectorAll('[data-i18n="projects.project3Description"]').forEach(el => el.textContent = t.projects.project3Description);
     
     // Atualizar Contact
     document.querySelectorAll('[data-i18n="contact.title"]').forEach(el => {
