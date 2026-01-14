@@ -4,99 +4,124 @@
 const ENABLE_CURSOR = false;
 const ENABLE_PARTICLES = false;
 const ENABLE_CARD_TILT = false;
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
-const navLinks = document.querySelectorAll('.nav-link');
+const navLinks = document.querySelectorAll('.nav-link-sidebar');
 const sections = document.querySelectorAll('section');
-const navbar = document.querySelector('.navbar');
 
-// Mobile Menu Toggle (com ARIA)
-hamburger.addEventListener('click', () => {
-    const expanded = hamburger.getAttribute('aria-expanded') === 'true';
-    hamburger.setAttribute('aria-expanded', String(!expanded));
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
+// Sidebar navigation active state
 
-// Close mobile menu when clicking on a link
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
+// Section Navigation - Show/Hide with Animation (No Scroll)
+window.showSection = function(sectionId) {
+    // Hide all sections first
+    const allSections = document.querySelectorAll('.section-content');
+    allSections.forEach(section => {
+        section.classList.remove('active');
     });
-});
+    
+    // Show target section with animation
+    const targetSection = document.querySelector(sectionId);
+    if (targetSection) {
+        // Small delay to allow fade out first
+        setTimeout(() => {
+            targetSection.classList.add('active');
+        }, 100);
+    }
+    
+    // Save current section to localStorage
+    localStorage.setItem('currentSection', sectionId);
+    
+    // Update active nav link
+    navLinks.forEach(link => {
+        const icon = link.querySelector('.material-icons-round');
+        const text = link.querySelector('span:last-child');
+        
+        // Remove active state
+        link.classList.remove('text-primary');
+        link.classList.add('text-slate-400');
+        if (icon) {
+            icon.classList.remove('text-primary');
+            icon.classList.add('text-slate-400');
+        }
+        if (text) {
+            text.classList.remove('text-primary');
+            text.classList.add('text-slate-400');
+        }
+        
+        // Add active state to current link
+        const linkHref = link.getAttribute('href');
+        const linkDataSection = link.getAttribute('data-section');
+        const sectionIdClean = sectionId.replace('#', '');
+        
+        if (linkHref === sectionId || linkDataSection === sectionIdClean) {
+            link.classList.remove('text-slate-400');
+            link.classList.add('text-primary');
+            if (icon) {
+                icon.classList.remove('text-slate-400');
+                icon.classList.add('text-primary');
+            }
+            if (text) {
+                text.classList.remove('text-slate-400');
+                text.classList.add('text-primary');
+            }
+        }
+    });
+};
 
-// Smooth Scrolling for Navigation Links
+// Navigation Links Click Handler
 navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
         const targetId = link.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-        
-        if (targetSection) {
-            const offsetTop = targetSection.offsetTop - 80;
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
-        }
+        showSection(targetId);
     });
 });
 
 // Enhanced Scroll Handler - Unified function
 let ticking = false;
 
-function handleScroll() {
-    const scrolled = window.pageYOffset;
-    
-    // Navbar background on scroll
-    if (scrolled > 100) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-    
-    // Active navigation link highlighting
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (scrolled >= (sectionTop - 200)) {
-            current = section.getAttribute('id');
-        }
-    });
+// Removed scroll handler - using section navigation instead
 
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
+// Initialize - Show saved section or home section by default
+document.addEventListener('DOMContentLoaded', () => {
+    // Hide all sections first
+    const allSections = document.querySelectorAll('.section-content');
+    allSections.forEach(section => {
+        section.classList.remove('active');
     });
     
-    // Parallax effects
-    updateParallax(scrolled);
+    // Get saved section from localStorage or default to home
+    const savedSection = localStorage.getItem('currentSection') || '#home';
+    const targetSection = document.querySelector(savedSection);
     
-    // Show/Hide Scroll to Top Button
-    if (scrolled > 300) {
-        scrollToTopBtn.style.opacity = '1';
-        scrollToTopBtn.style.visibility = 'visible';
+    // Show saved section or home section
+    if (targetSection) {
+        targetSection.classList.add('active');
+        // Update active nav link
+        const targetLink = document.querySelector(`[href="${savedSection}"], [data-section="${savedSection.replace('#', '')}"]`);
+        if (targetLink) {
+            const icon = targetLink.querySelector('.material-icons-round');
+            const text = targetLink.querySelector('span:last-child');
+            targetLink.classList.remove('text-slate-400');
+            targetLink.classList.add('text-primary');
+            if (icon) icon.classList.add('text-primary');
+            if (text) text.classList.add('text-primary');
+        }
     } else {
-        scrollToTopBtn.style.opacity = '0';
-        scrollToTopBtn.style.visibility = 'hidden';
+        // Fallback to home if saved section doesn't exist
+        const homeSection = document.querySelector('#home');
+        if (homeSection) {
+            homeSection.classList.add('active');
+        }
+        const homeLink = document.querySelector('[href="#home"]');
+        if (homeLink) {
+            const icon = homeLink.querySelector('.material-icons-round');
+            const text = homeLink.querySelector('span:last-child');
+            homeLink.classList.remove('text-slate-400');
+            homeLink.classList.add('text-primary');
+            if (icon) icon.classList.add('text-primary');
+            if (text) text.classList.add('text-primary');
+        }
     }
-    
-    ticking = false;
-}
-
-function requestScrollTick() {
-    if (!ticking) {
-        requestAnimationFrame(handleScroll);
-        ticking = true;
-    }
-}
-
-// Replace multiple scroll event listeners with single unified handler
-window.addEventListener('scroll', requestScrollTick);
+});
 
 // Enhanced parallax effect function
 function updateParallax(scrolled) {
@@ -218,22 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Project Cards Hover Effects
-document.addEventListener('DOMContentLoaded', () => {
-    const projectCards = document.querySelectorAll('.project-card');
-    
-    projectCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-10px)';
-            card.style.boxShadow = '0 0 30px rgba(59, 130, 246, 0.3)';
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0)';
-            card.style.boxShadow = 'none';
-        });
-    });
-});
+// Project Cards Hover Effects - Removido para evitar efeito de subir
 
 // Parallax Effect for Hero Section - Already handled in unified scroll handler
 
@@ -279,13 +289,18 @@ document.body.appendChild(scrollToTopBtn);
 
 // Scroll to Top Button - Already handled in unified scroll handler
 
-// Scroll to Top Functionality
-scrollToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+// Scroll to Top Functionality (for main container)
+if (scrollToTopBtn) {
+    scrollToTopBtn.addEventListener('click', () => {
+        const mainContent = document.querySelector('main');
+        if (mainContent) {
+            mainContent.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
     });
-});
+}
 
 // Add hover effect to scroll to top button
 scrollToTopBtn.addEventListener('mouseenter', () => {
@@ -683,6 +698,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                // Pular títulos que já têm spans com classes de cor (projetos e contato)
+                if (entry.target.querySelector('.title-text-white') || entry.target.querySelector('.title-text-orange')) {
+                    entry.target.style.opacity = '1';
+                    observer.unobserve(entry.target);
+                    return;
+                }
+                
                 const text = entry.target.textContent;
                 entry.target.textContent = '';
                 entry.target.style.opacity = '1';
@@ -742,20 +764,33 @@ console.log('✨ Animações avançadas carregadas com sucesso!');
 
 // Abas da seção de habilidades
 document.addEventListener('DOMContentLoaded', () => {
-    const tabButtons = Array.from(document.querySelectorAll('.skills-tab'));
-    const panels = Array.from(document.querySelectorAll('.skill-category[role="tabpanel"]'));
-    if (!tabButtons.length || !panels.length) return;
+    const tabButtons = Array.from(document.querySelectorAll('.skills-tab-btn'));
+    const skillCards = Array.from(document.querySelectorAll('.skill-card-group'));
+    if (!tabButtons.length || !skillCards.length) return;
 
     function activateTab(target) {
+        // Atualizar botões
         tabButtons.forEach(btn => {
             const isActive = btn.dataset.tabTarget === target;
-            btn.classList.toggle('is-active', isActive);
-            btn.setAttribute('aria-selected', String(isActive));
+            if (isActive) {
+                btn.classList.remove('bg-white', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'border-slate-200', 'dark:border-slate-700');
+                btn.classList.add('bg-primary', 'text-white', 'font-semibold', 'shadow-lg', 'shadow-primary/25');
+            } else {
+                btn.classList.remove('bg-primary', 'text-white', 'font-semibold', 'shadow-lg', 'shadow-primary/25');
+                btn.classList.add('bg-white', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300', 'font-medium', 'border', 'border-slate-200', 'dark:border-slate-700');
+            }
         });
-        panels.forEach(panel => {
-            const show = panel.dataset.tab === target;
-            panel.classList.toggle('hidden', !show);
+        
+        // Atualizar cards
+        skillCards.forEach(card => {
+            const show = card.dataset.tab === target;
+            card.classList.toggle('hidden', !show);
         });
+    }
+
+    // Ativar primeira aba por padrão
+    if (tabButtons.length > 0) {
+        activateTab(tabButtons[0].dataset.tabTarget);
     }
 
     tabButtons.forEach(btn => {
@@ -849,3 +884,268 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// ============================================
+// CARROSSEL DE PROJETOS
+// ============================================
+
+let currentProjectIndex = 0;
+const totalProjects = 3;
+
+// Função para mudar de projeto
+window.changeProject = function(direction) {
+    const projects = document.querySelectorAll('.project-card');
+    const indicators = document.querySelectorAll('.project-indicator');
+    
+    if (!projects.length || !indicators.length) {
+        console.error('Projetos ou indicadores não encontrados');
+        return;
+    }
+    
+    // Remove active do projeto atual
+    if (projects[currentProjectIndex]) {
+        projects[currentProjectIndex].classList.remove('active');
+    }
+    if (indicators[currentProjectIndex]) {
+        indicators[currentProjectIndex].classList.remove('active');
+    }
+    
+    // Calcula novo índice
+    currentProjectIndex += direction;
+    if (currentProjectIndex < 0) {
+        currentProjectIndex = totalProjects - 1;
+    } else if (currentProjectIndex >= totalProjects) {
+        currentProjectIndex = 0;
+    }
+    
+    // Adiciona active ao novo projeto
+    if (projects[currentProjectIndex]) {
+        projects[currentProjectIndex].classList.add('active');
+        resetImageCarousel(projects[currentProjectIndex]);
+    }
+    if (indicators[currentProjectIndex]) {
+        indicators[currentProjectIndex].classList.add('active');
+    }
+};
+
+// Função para ir diretamente a um projeto
+window.goToProject = function(index) {
+    if (index < 0 || index >= totalProjects) return;
+    
+    const projects = document.querySelectorAll('.project-card');
+    const indicators = document.querySelectorAll('.project-indicator');
+    
+    // Remove active de todos
+    projects.forEach(p => p.classList.remove('active'));
+    indicators.forEach(i => i.classList.remove('active'));
+    
+    // Adiciona active ao projeto selecionado
+    currentProjectIndex = index;
+    projects[currentProjectIndex].classList.add('active');
+    indicators[currentProjectIndex].classList.add('active');
+    
+    // Reseta o carrossel de imagens
+    resetImageCarousel(projects[currentProjectIndex]);
+};
+
+// Função para mudar imagem dentro de um projeto
+window.changeImage = function(button, direction) {
+    if (!button) {
+        return;
+    }
+    
+    const imageContainer = button.closest('.project-image-container');
+    if (!imageContainer) {
+        return;
+    }
+    
+    const imageCarousel = imageContainer.querySelector('.project-image-carousel');
+    if (!imageCarousel) {
+        return;
+    }
+    
+    const slides = Array.from(imageCarousel.querySelectorAll('.carousel-slide'));
+    const indicators = Array.from(imageContainer.querySelectorAll('.carousel-indicators .indicator'));
+    
+    if (!slides.length || slides.length <= 1) {
+        return;
+    }
+    
+    // Encontra o slide ativo ANTES de remover qualquer classe
+    let currentIndex = 0;
+    for (let i = 0; i < slides.length; i++) {
+        if (slides[i].classList.contains('active')) {
+            currentIndex = i;
+            break;
+        }
+    }
+    
+    // Remove active de todos os slides e indicadores
+    slides.forEach((slide) => {
+        slide.classList.remove('active');
+    });
+    indicators.forEach(ind => ind.classList.remove('active'));
+    
+    // Calcula novo índice
+    let newIndex = currentIndex + direction;
+    if (newIndex < 0) {
+        newIndex = slides.length - 1;
+    } else if (newIndex >= slides.length) {
+        newIndex = 0;
+    }
+    
+    // Adiciona active ao novo slide e indicador
+    if (slides[newIndex]) {
+        slides[newIndex].classList.add('active');
+    }
+    if (indicators[newIndex]) {
+        indicators[newIndex].classList.add('active');
+    }
+};
+
+// Função para ir diretamente a uma imagem
+window.goToImage = function(indicator, index) {
+    const imageContainer = indicator.closest('.project-image-container');
+    if (!imageContainer) return;
+    
+    const imageCarousel = imageContainer.querySelector('.project-image-carousel');
+    if (!imageCarousel) return;
+    
+    const slides = Array.from(imageCarousel.querySelectorAll('.carousel-slide'));
+    const indicators = Array.from(imageContainer.querySelectorAll('.carousel-indicators .indicator'));
+    
+    if (index < 0 || index >= slides.length) return;
+    
+    // Remove active de todos
+    slides.forEach(s => s.classList.remove('active'));
+    indicators.forEach(i => i.classList.remove('active'));
+    
+    // Adiciona active ao slide selecionado
+    if (slides[index]) {
+        slides[index].classList.add('active');
+    }
+    if (indicators[index]) {
+        indicators[index].classList.add('active');
+    }
+};
+
+// Função para resetar o carrossel de imagens
+function resetImageCarousel(projectCard) {
+    const imageCarousel = projectCard.querySelector('.project-image-carousel');
+    if (!imageCarousel) return;
+    
+    const slides = imageCarousel.querySelectorAll('.carousel-slide');
+    const indicators = projectCard.querySelectorAll('.carousel-indicators .indicator');
+    
+    // Remove active de todos
+    slides.forEach(s => s.classList.remove('active'));
+    indicators.forEach(i => i.classList.remove('active'));
+    
+    // Ativa o primeiro slide
+    if (slides[0]) {
+        slides[0].classList.add('active');
+    }
+    if (indicators[0]) {
+        indicators[0].classList.add('active');
+    }
+}
+
+// Inicializa o primeiro projeto ao carregar
+document.addEventListener('DOMContentLoaded', function() {
+    // Aguarda um pouco para garantir que o DOM está totalmente carregado
+    setTimeout(() => {
+        const firstProject = document.querySelector('.project-card[data-project="0"]');
+        const firstIndicator = document.querySelector('.project-indicator');
+        
+        if (firstProject) {
+            firstProject.classList.add('active');
+            resetImageCarousel(firstProject);
+        }
+        
+        if (firstIndicator) {
+            firstIndicator.classList.add('active');
+        }
+        
+        // Esconde botões de navegação de imagens se houver apenas 1 imagem
+        document.querySelectorAll('.project-image-carousel').forEach(carousel => {
+            const imageCount = parseInt(carousel.getAttribute('data-images'));
+            const container = carousel.closest('.project-image-container');
+            
+            if (imageCount === 1 && container) {
+                const prevBtn = container.querySelector('.carousel-prev');
+                const nextBtn = container.querySelector('.carousel-next');
+                const indicators = container.querySelector('.carousel-indicators');
+                
+                if (prevBtn) prevBtn.style.display = 'none';
+                if (nextBtn) nextBtn.style.display = 'none';
+                if (indicators) indicators.style.display = 'none';
+            }
+        });
+        
+        // Garante que os botões de navegação estão funcionando
+        const prevBtn = document.querySelector('.project-nav-left');
+        const nextBtn = document.querySelector('.project-nav-right');
+        
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                changeProject(-1);
+            });
+        }
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                changeProject(1);
+            });
+        }
+        
+        // Também adiciona listeners aos indicadores de projetos
+        const projectIndicators = document.querySelectorAll('.project-indicator');
+        projectIndicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                goToProject(index);
+            });
+        });
+        
+        // Os botões do carrossel já têm onclick inline no HTML, não precisamos adicionar listeners
+        
+        // Adiciona listeners aos indicadores de imagens
+        const imageIndicators = document.querySelectorAll('.carousel-indicators .indicator');
+        imageIndicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                goToImage(indicator, index);
+            });
+        });
+    }, 100);
+});
+
+// ============================================
+// BOTÃO VER MAIS / VER MENOS NA DESCRIÇÃO
+// ============================================
+
+window.toggleDescription = function(button) {
+    const wrapper = button.closest('.project-description-wrapper');
+    const description = wrapper.querySelector('.project-description');
+    const readMoreText = button.querySelector('.read-more-text');
+    const readLessText = button.querySelector('.read-less-text');
+    
+    if (description.classList.contains('expanded')) {
+        // Colapsar
+        description.classList.remove('expanded');
+        readMoreText.style.display = 'inline';
+        readLessText.style.display = 'none';
+        button.classList.remove('expanded');
+    } else {
+        // Expandir
+        description.classList.add('expanded');
+        readMoreText.style.display = 'none';
+        readLessText.style.display = 'inline';
+        button.classList.add('expanded');
+    }
+};
