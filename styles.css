@@ -1790,7 +1790,55 @@ section:nth-child(odd) {
     }
     
     .contact-info {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    
+    .contact-item {
+        padding: 1.25rem !important;
+        gap: 0.75rem !important;
+    }
+    
+    .contact-icon {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 1.25rem !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .contact-details h4 {
+        font-size: 1rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+    
+    .contact-details p {
+        font-size: 0.875rem !important;
+        word-break: break-word;
+    }
+    
+    .contact-content {
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
+    
+    #contact {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
+    }
+    
+    #contact .section-header {
+        margin-bottom: 1.5rem !important;
+    }
+    
+    #contact .section-title {
+        font-size: 1.75rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    #contact .section-subtitle {
+        font-size: 0.9rem !important;
     }
     
     .projects-grid {
@@ -2112,6 +2160,60 @@ html {
     .contact-cta {
         font-size: 0.9rem;
         padding: 1rem;
+    }
+    
+    /* Ajustes adicionais para contato em telas muito pequenas */
+    #contact {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+    }
+    
+    .contact-item {
+        padding: 1rem !important;
+        gap: 0.5rem !important;
+        flex-direction: row !important;
+    }
+    
+    .contact-icon {
+        width: 45px !important;
+        height: 45px !important;
+        font-size: 1.1rem !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .contact-details {
+        flex: 1;
+        min-width: 0;
+    }
+    
+    .contact-details h4 {
+        font-size: 0.95rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+    
+    .contact-details p {
+        font-size: 0.8rem !important;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+    
+    #contact .section-title {
+        font-size: 1.5rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    #contact .section-subtitle {
+        font-size: 0.85rem !important;
+    }
+    
+    .contact-content {
+        max-width: 100% !important;
+    }
+    
+    .contact-info {
+        gap: 0.75rem !important;
     }
     
     .projects-grid {

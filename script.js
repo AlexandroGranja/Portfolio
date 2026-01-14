@@ -75,6 +75,345 @@ navLinks.forEach(link => {
     });
 });
 
+// ========== SISTEMA DE TRADUÇÃO ==========
+const translations = {
+    pt: {
+        // Navegação
+        nav: {
+            home: "Início",
+            about: "Sobre",
+            agency: "Agência",
+            skills: "Habilidades",
+            projects: "Projetos",
+            contact: "Contato"
+        },
+        // Hero Section
+        hero: {
+            greeting: "Olá, eu sou",
+            subtitle: "Desenvolvedor Web & Especialista em Automações 🚀",
+            description: "Analista de Suporte de TI na Prosper e fundador da AIverse Technologies, uma agência especializada em desenvolvimento web e automações inteligentes. Transformo ideias em soluções digitais eficientes, criando sites modernos e agentes de WhatsApp personalizados com IA.",
+            viewProjects: "Ver Projetos",
+            contactMe: "Entre em Contato",
+            loading: "Carregando experiência..."
+        },
+        // About Section
+        about: {
+            title: "Alexandro Granja",
+            subtitle: "Desenvolvedor Fullstack & Especialista em Automações 🚀",
+            experience: "Experiência Profissional",
+            education: "Formação",
+            current: "Atual",
+            techSupport: "Analista de Suporte de TI",
+            techSupportDesc: "Desenvolvimento de automações para tarefas recorrentes, integração com sistemas logísticos (Target/Target Mob), administração de Active Directory, Microsoft 365 e monitoramento Zabbix.",
+            founder: "Fundador & Fullstack Dev",
+            founderDesc: "Desenvolvimento de aplicações Fullstack (React + Python/Flask + PostgreSQL), automações com n8n, integrações via APIs/webhooks e agentes de WhatsApp com IA.",
+            techEducation: "Técnico em Informática",
+            techEducationLevel: "Ensino Médio Técnico",
+            devclub: "DevClub Fullstack Pro",
+            devclubLevel: "Formação Intensiva",
+            automation: "Gestão de Automação",
+            automationLevel: "Especialização IA & n8n",
+            achievements: "Principais Conquistas",
+            achievement1: "Redução de 80% no tempo de atendimento com automações",
+            achievement2: "Aplicações Fullstack escaláveis com React + Python",
+            achievement3: "Integrações multicanal via APIs e webhooks",
+            location: "Localização",
+            locationPlace: "Brasil, Rio de Janeiro",
+            seeking: "Buscando Oportunidades",
+            seekingDesc: "Estou aberto a novas oportunidades nas áreas de:",
+            seeking1: "Desenvolvimento Fullstack (React + Python/Flask)",
+            seeking2: "Automações e Integrações (n8n, APIs, Webhooks)",
+            seeking3: "Desenvolvimento Web & IA"
+        },
+        // Skills Section
+        skills: {
+            techStack: "Tech Stack",
+            mySkills: "Minhas Habilidades",
+            technologies: "25+ Tecnologias",
+            frontend: "Frontend",
+            backend: "Backend & Automação",
+            tools: "Ferramentas"
+        },
+        // Projects Section
+        projects: {
+            title: "Meus Projetos",
+            subtitle: "Alguns dos meus trabalhos em desenvolvimento web e automações",
+            readMore: "Ver mais",
+            readLess: "Ver menos",
+            visitSite: "Visitar Site"
+        },
+        // Contact Section
+        contact: {
+            title: "Entre em Contato",
+            subtitle: "Estou sempre aberto a novas conexões, aprendizado e colaborações"
+        },
+        // Agency Section
+        agency: {
+            tagline: "Transformando ideias em soluções digitais inteligentes",
+            webDev: {
+                title: "Desenvolvimento Web Profissional",
+                description: "Criamos sites modernos, responsivos e otimizados para SEO. Desde landing pages até sistemas web complexos, cada projeto é desenvolvido com as melhores práticas e tecnologias mais recentes do mercado.",
+                feature1: "Design Moderno e Responsivo",
+                feature2: "Otimização para Conversão",
+                feature3: "Performance e SEO"
+            },
+            whatsapp: {
+                title: "Agentes de WhatsApp com IA",
+                description: "Revolucione seu atendimento ao cliente com agentes inteligentes personalizados. Automatização completa integrada com IA, capaz de responder perguntas, processar solicitações e fornecer suporte 24/7 de forma natural e eficiente.",
+                feature1: "Atendimento 24/7 Automatizado",
+                feature2: "Integração com IA Avançada",
+                feature3: "Personalização Total"
+            },
+            automation: {
+                title: "Automações Inteligentes",
+                description: "Especialistas em n8n e Python/Flask, criamos fluxos de automação que otimizam processos empresariais, reduzem custos operacionais e aumentam a produtividade. Integramos diferentes sistemas e ferramentas para trabalhar em harmonia, aplicando engenharia de prompts e soluções com IA/LLMs quando necessário.",
+                feature1: "Fluxos Complexos com n8n",
+                feature2: "Integração de Sistemas",
+                feature3: "ROI Comprovado"
+            },
+            cta: {
+                question: "Pronto para transformar seu negócio com tecnologia?",
+                button: "Visite AIverse Technologies"
+            }
+        },
+        // Skills Section
+        skills: {
+            techStack: "Tech Stack",
+            mySkills: "Minhas Habilidades",
+            technologies: "25+ Tecnologias",
+            frontend: "Frontend",
+            backend: "Backend & Automação",
+            tools: "Ferramentas"
+        }
+    },
+    en: {
+        // Navigation
+        nav: {
+            home: "Home",
+            about: "About",
+            agency: "Agency",
+            skills: "Skills",
+            projects: "Projects",
+            contact: "Contact"
+        },
+        // Hero Section
+        hero: {
+            greeting: "Hello, I'm",
+            subtitle: "Web Developer & Automation Specialist 🚀",
+            description: "IT Support Analyst at Prosper and founder of AIverse Technologies, an agency specialized in web development and intelligent automations. I transform ideas into efficient digital solutions, creating modern websites and customized WhatsApp agents with AI.",
+            viewProjects: "View Projects",
+            contactMe: "Get in Touch",
+            loading: "Loading experience..."
+        },
+        // About Section
+        about: {
+            title: "Alexandro Granja",
+            subtitle: "Fullstack Developer & Automation Specialist 🚀",
+            experience: "Professional Experience",
+            education: "Education",
+            current: "Current",
+            techSupport: "IT Support Analyst",
+            techSupportDesc: "Development of automations for recurring tasks, integration with logistics systems (Target/Target Mob), Active Directory administration, Microsoft 365, and Zabbix monitoring.",
+            founder: "Founder & Fullstack Dev",
+            founderDesc: "Development of Fullstack applications (React + Python/Flask + PostgreSQL), automations with n8n, integrations via APIs/webhooks, and WhatsApp agents with AI.",
+            techEducation: "IT Technician",
+            techEducationLevel: "Technical High School",
+            devclub: "DevClub Fullstack Pro",
+            devclubLevel: "Intensive Training",
+            automation: "Automation Management",
+            automationLevel: "AI & n8n Specialization",
+            achievements: "Main Achievements",
+            achievement1: "80% reduction in service time with automations",
+            achievement2: "Scalable Fullstack applications with React + Python",
+            achievement3: "Multi-channel integrations via APIs and webhooks",
+            location: "Location",
+            locationPlace: "Brazil, Rio de Janeiro",
+            seeking: "Seeking Opportunities",
+            seekingDesc: "I am open to new opportunities in the areas of:",
+            seeking1: "Fullstack Development (React + Python/Flask)",
+            seeking2: "Automations and Integrations (n8n, APIs, Webhooks)",
+            seeking3: "Web & AI Development"
+        },
+        // Skills Section
+        skills: {
+            frontend: "Frontend",
+            backend: "Backend & Automation",
+            tools: "Tools"
+        },
+        // Projects Section
+        projects: {
+            title: "My Projects",
+            subtitle: "Some of my work in web development and automations",
+            readMore: "Read more",
+            readLess: "Read less",
+            visitSite: "Visit Site"
+        },
+        // Contact Section
+        contact: {
+            title: "Get in Touch",
+            subtitle: "I'm always open to new connections, learning and collaborations"
+        },
+        // Agency Section
+        agency: {
+            tagline: "Transforming ideas into intelligent digital solutions",
+            webDev: {
+                title: "Professional Web Development",
+                description: "We create modern, responsive, and SEO-optimized websites. From landing pages to complex web systems, each project is developed with best practices and the latest market technologies.",
+                feature1: "Modern and Responsive Design",
+                feature2: "Conversion Optimization",
+                feature3: "Performance and SEO"
+            },
+            whatsapp: {
+                title: "WhatsApp Agents with AI",
+                description: "Revolutionize your customer service with personalized intelligent agents. Complete automation integrated with AI, capable of answering questions, processing requests, and providing 24/7 support naturally and efficiently.",
+                feature1: "24/7 Automated Service",
+                feature2: "Advanced AI Integration",
+                feature3: "Total Personalization"
+            },
+            automation: {
+                title: "Intelligent Automations",
+                description: "Specialists in n8n and Python/Flask, we create automation flows that optimize business processes, reduce operational costs, and increase productivity. We integrate different systems and tools to work in harmony, applying prompt engineering and solutions with AI/LLMs when necessary.",
+                feature1: "Complex Flows with n8n",
+                feature2: "System Integration",
+                feature3: "Proven ROI"
+            },
+            cta: {
+                question: "Ready to transform your business with technology?",
+                button: "Visit AIverse Technologies"
+            }
+        },
+        // Skills Section
+        skills: {
+            techStack: "Tech Stack",
+            mySkills: "My Skills",
+            technologies: "25+ Technologies",
+            frontend: "Frontend",
+            backend: "Backend & Automation",
+            tools: "Tools"
+        }
+    }
+};
+
+// Função para obter o idioma atual
+function getCurrentLanguage() {
+    return localStorage.getItem('language') || 'pt';
+}
+
+// Função para definir o idioma
+function setLanguage(lang) {
+    localStorage.setItem('language', lang);
+    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+    updatePageLanguage(lang);
+}
+
+// Função para atualizar todos os textos da página
+function updatePageLanguage(lang) {
+    const t = translations[lang];
+    
+    // Atualizar navegação
+    document.querySelectorAll('[data-i18n="nav.home"]').forEach(el => el.textContent = t.nav.home);
+    document.querySelectorAll('[data-i18n="nav.about"]').forEach(el => el.textContent = t.nav.about);
+    document.querySelectorAll('[data-i18n="nav.agency"]').forEach(el => el.textContent = t.nav.agency);
+    document.querySelectorAll('[data-i18n="nav.skills"]').forEach(el => el.textContent = t.nav.skills);
+    document.querySelectorAll('[data-i18n="nav.projects"]').forEach(el => el.textContent = t.nav.projects);
+    document.querySelectorAll('[data-i18n="nav.contact"]').forEach(el => el.textContent = t.nav.contact);
+    
+    // Atualizar Hero
+    document.querySelectorAll('[data-i18n="hero.greeting"]').forEach(el => el.textContent = t.hero.greeting);
+    document.querySelectorAll('[data-i18n="hero.subtitle"]').forEach(el => el.textContent = t.hero.subtitle);
+    document.querySelectorAll('[data-i18n="hero.description"]').forEach(el => el.textContent = t.hero.description);
+    document.querySelectorAll('[data-i18n="hero.viewProjects"]').forEach(el => el.textContent = t.hero.viewProjects);
+    document.querySelectorAll('[data-i18n="hero.contactMe"]').forEach(el => el.textContent = t.hero.contactMe);
+    document.querySelectorAll('[data-i18n="hero.loading"]').forEach(el => el.textContent = t.hero.loading);
+    
+    // Atualizar About
+    document.querySelectorAll('[data-i18n="about.experience"]').forEach(el => el.textContent = t.about.experience);
+    document.querySelectorAll('[data-i18n="about.education"]').forEach(el => el.textContent = t.about.education);
+    document.querySelectorAll('[data-i18n="about.current"]').forEach(el => el.textContent = t.about.current);
+    
+    // Atualizar Skills
+    document.querySelectorAll('[data-i18n="skills.techStack"]').forEach(el => el.textContent = t.skills.techStack);
+    document.querySelectorAll('[data-i18n="skills.mySkills"]').forEach(el => {
+        if (el.classList && el.classList.contains('text-primary')) {
+            el.textContent = lang === 'pt' ? 'Habilidades' : 'Skills';
+        } else if (el.textContent.trim() === 'Minhas ' || el.textContent.trim() === 'My ') {
+            el.textContent = lang === 'pt' ? 'Minhas ' : 'My ';
+        } else {
+            el.textContent = t.skills.mySkills;
+        }
+    });
+    document.querySelectorAll('[data-i18n="skills.technologies"]').forEach(el => el.textContent = t.skills.technologies);
+    document.querySelectorAll('[data-i18n="skills.frontend"]').forEach(el => el.textContent = t.skills.frontend);
+    document.querySelectorAll('[data-i18n="skills.backend"]').forEach(el => el.textContent = t.skills.backend);
+    document.querySelectorAll('[data-i18n="skills.tools"]').forEach(el => el.textContent = t.skills.tools);
+    
+    // Atualizar Agency
+    document.querySelectorAll('[data-i18n="agency.tagline"]').forEach(el => el.textContent = t.agency.tagline);
+    document.querySelectorAll('[data-i18n="agency.webDev.title"]').forEach(el => el.textContent = t.agency.webDev.title);
+    document.querySelectorAll('[data-i18n="agency.webDev.description"]').forEach(el => el.textContent = t.agency.webDev.description);
+    document.querySelectorAll('[data-i18n="agency.webDev.feature1"]').forEach(el => el.textContent = t.agency.webDev.feature1);
+    document.querySelectorAll('[data-i18n="agency.webDev.feature2"]').forEach(el => el.textContent = t.agency.webDev.feature2);
+    document.querySelectorAll('[data-i18n="agency.webDev.feature3"]').forEach(el => el.textContent = t.agency.webDev.feature3);
+    document.querySelectorAll('[data-i18n="agency.whatsapp.title"]').forEach(el => el.textContent = t.agency.whatsapp.title);
+    document.querySelectorAll('[data-i18n="agency.whatsapp.description"]').forEach(el => el.textContent = t.agency.whatsapp.description);
+    document.querySelectorAll('[data-i18n="agency.whatsapp.feature1"]').forEach(el => el.textContent = t.agency.whatsapp.feature1);
+    document.querySelectorAll('[data-i18n="agency.whatsapp.feature2"]').forEach(el => el.textContent = t.agency.whatsapp.feature2);
+    document.querySelectorAll('[data-i18n="agency.whatsapp.feature3"]').forEach(el => el.textContent = t.agency.whatsapp.feature3);
+    document.querySelectorAll('[data-i18n="agency.automation.title"]').forEach(el => el.textContent = t.agency.automation.title);
+    document.querySelectorAll('[data-i18n="agency.automation.description"]').forEach(el => el.textContent = t.agency.automation.description);
+    document.querySelectorAll('[data-i18n="agency.automation.feature1"]').forEach(el => el.textContent = t.agency.automation.feature1);
+    document.querySelectorAll('[data-i18n="agency.automation.feature2"]').forEach(el => el.textContent = t.agency.automation.feature2);
+    document.querySelectorAll('[data-i18n="agency.automation.feature3"]').forEach(el => el.textContent = t.agency.automation.feature3);
+    document.querySelectorAll('[data-i18n="agency.cta.question"]').forEach(el => el.textContent = t.agency.cta.question);
+    document.querySelectorAll('[data-i18n="agency.cta.button"]').forEach(el => el.textContent = t.agency.cta.button);
+    
+    // Atualizar Projects
+    document.querySelectorAll('[data-i18n="projects.title"]').forEach(el => {
+        if (el.classList.contains('title-text-white')) {
+            el.textContent = lang === 'pt' ? 'Meus ' : 'My ';
+        } else if (el.classList.contains('title-text-orange')) {
+            el.textContent = lang === 'pt' ? 'Projetos' : 'Projects';
+        }
+    });
+    document.querySelectorAll('[data-i18n="projects.subtitle"]').forEach(el => el.textContent = t.projects.subtitle);
+    document.querySelectorAll('[data-i18n="projects.readMore"]').forEach(el => el.textContent = t.projects.readMore);
+    document.querySelectorAll('[data-i18n="projects.readLess"]').forEach(el => el.textContent = t.projects.readLess);
+    document.querySelectorAll('[data-i18n="projects.visitSite"]').forEach(el => el.textContent = t.projects.visitSite);
+    
+    // Atualizar Contact
+    document.querySelectorAll('[data-i18n="contact.title"]').forEach(el => {
+        if (el.classList.contains('title-text-white')) {
+            el.textContent = lang === 'pt' ? 'Entre em ' : 'Get in ';
+        } else if (el.classList.contains('title-text-orange')) {
+            el.textContent = lang === 'pt' ? 'Contato' : 'Touch';
+        }
+    });
+    document.querySelectorAll('[data-i18n="contact.subtitle"]').forEach(el => el.textContent = t.contact.subtitle);
+    
+    // Atualizar botão de idioma
+    const langText = document.getElementById('language-text');
+    const langBtn = document.getElementById('language-btn');
+    if (langText) {
+        langText.textContent = lang === 'pt' ? 'EN' : 'PT';
+    }
+    if (langBtn) {
+        langBtn.setAttribute('title', lang === 'pt' ? 'Switch to English' : 'Mudar para Português');
+    }
+}
+
+// Função para alternar idioma
+function toggleLanguage() {
+    const currentLang = getCurrentLanguage();
+    const newLang = currentLang === 'pt' ? 'en' : 'pt';
+    setLanguage(newLang);
+}
+
+// Inicializar idioma ao carregar a página
+document.addEventListener('DOMContentLoaded', () => {
+    const currentLang = getCurrentLanguage();
+    setLanguage(currentLang);
+});
+
 // Enhanced Scroll Handler - Unified function
 let ticking = false;
 
