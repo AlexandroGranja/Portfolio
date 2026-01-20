@@ -30,6 +30,20 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
+    /* Fix para mobile - altura dinâmica */
+    height: 100%;
+    height: -webkit-fill-available;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    min-height: 100dvh;
+}
+
+/* Safe area insets para dispositivos com notch */
+@supports (padding: max(0px)) {
+    body {
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+    }
 }
 
 .container {
@@ -1676,6 +1690,185 @@ section:nth-child(odd) {
 .footer-content p {
     color: var(--text-secondary);
     margin-bottom: 0.5rem;
+}
+
+/* Mobile Fixes - Altura e Centralização */
+@media (max-width: 640px) {
+    /* Garantir que html e body ocupem toda a altura disponível */
+    html {
+        height: 100%;
+        height: -webkit-fill-available;
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+        min-height: 100dvh;
+        overflow: hidden;
+    }
+    
+    /* Seção home - conteúdo no topo no mobile */
+    #home.section-content {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        padding-top: 1rem !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        padding-bottom: 1.5rem !important;
+        min-height: 100vh !important;
+        min-height: -webkit-fill-available !important;
+        min-height: 100dvh !important;
+    }
+    
+    /* Em telas maiores, centralizar novamente */
+    @media (min-width: 768px) {
+        #home.section-content {
+            justify-content: center !important;
+        }
+    }
+    
+    #home .relative {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+    }
+    
+    /* Garantir que o conteúdo não seja cortado */
+    #home .text-center {
+        width: 100%;
+    }
+    
+    /* Ajustar espaçamento dos botões no mobile */
+    #home .flex.flex-col {
+        width: 100%;
+        gap: 0.75rem;
+    }
+    
+    /* Garantir que os botões não ultrapassem a largura */
+    #home button {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    /* Fix para foto de perfil e indicador de status */
+    #home .relative.inline-flex {
+        position: relative !important;
+        display: inline-flex !important;
+        flex-shrink: 0 !important;
+    }
+    
+    #home .profile-ring {
+        position: relative !important;
+        display: block !important;
+        flex-shrink: 0 !important;
+        width: 7rem !important; /* 112px no mobile */
+        height: 7rem !important;
+        max-width: 7rem !important;
+        max-height: 7rem !important;
+    }
+    
+    /* Ajustar tamanho da foto em telas maiores */
+    @media (min-width: 640px) {
+        #home .profile-ring {
+            width: 7rem !important; /* 112px */
+            height: 7rem !important;
+            max-width: 7rem !important;
+            max-height: 7rem !important;
+        }
+    }
+    
+    @media (min-width: 768px) {
+        #home .profile-ring {
+            width: 9rem !important; /* 144px */
+            height: 9rem !important;
+            max-width: 9rem !important;
+            max-height: 9rem !important;
+        }
+    }
+    
+    @media (min-width: 1024px) {
+        #home .profile-ring {
+            width: 10rem !important; /* 160px */
+            height: 10rem !important;
+            max-width: 10rem !important;
+            max-height: 10rem !important;
+        }
+    }
+    
+    /* Indicador de status online - posicionamento fixo relativo à foto */
+    #home .relative.inline-flex > .absolute {
+        position: absolute !important;
+        bottom: 0 !important;
+        right: 0 !important;
+        transform: translate(10%, 10%) !important;
+        z-index: 10 !important;
+        pointer-events: none !important;
+    }
+    
+    /* Garantir que o container da foto mantenha posição relativa e centralização */
+    #home .mb-6,
+    #home .mb-8 {
+        position: relative !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+    
+    /* Garantir que a foto não saia do lugar e mantenha proporções */
+    #home .relative.inline-flex {
+        width: auto !important;
+        height: auto !important;
+    }
+    
+    /* Garantir que a imagem dentro da foto de perfil ocupe todo o espaço */
+    #home .profile-ring img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        display: block !important;
+    }
+    
+    /* Garantir que aside e main tenham altura correta */
+    aside {
+        min-height: 100vh !important;
+        min-height: -webkit-fill-available !important;
+        min-height: 100dvh !important;
+        height: 100vh !important;
+        height: -webkit-fill-available !important;
+        height: 100dvh !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+    }
+    
+    /* Garantir que nav não ocupe todo o espaço e permita scroll se necessário */
+    aside nav {
+        flex: 1 1 auto !important;
+        min-height: 0 !important;
+        overflow-y: auto !important;
+    }
+    
+    /* Garantir que os botões inferiores sejam sempre visíveis */
+    aside .mt-auto {
+        flex-shrink: 0 !important;
+        margin-top: auto !important;
+        padding-bottom: 0.75rem !important;
+    }
+    
+    main {
+        min-height: 100vh !important;
+        min-height: -webkit-fill-available !important;
+        min-height: 100dvh !important;
+        height: 100vh !important;
+        height: -webkit-fill-available !important;
+        height: 100dvh !important;
+    }
+    
+    /* Prevenir cortes no conteúdo */
+    .section-content {
+        min-height: 100vh !important;
+        min-height: -webkit-fill-available !important;
+        min-height: 100dvh !important;
+    }
 }
 
 /* Responsive Design */

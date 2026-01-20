@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
     <meta name="description" content="Portfólio de Alexandro Granja — Desenvolvedor Web e Especialista em Automações. Criação de sites modernos, responsivos e agentes de WhatsApp com IA (n8n).">
     <title>Alexandro Granja | Desenvolvedor Web & Especialista em Automações</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
@@ -64,30 +64,73 @@
         }
         /* Mobile optimizations */
         @media (max-width: 640px) {
+            /* Fix para altura no mobile - usar dvh (dynamic viewport height) */
+            html, body {
+                height: 100%;
+                height: -webkit-fill-available;
+                overflow: hidden;
+            }
+            
+            body {
+                min-height: 100vh;
+                min-height: -webkit-fill-available;
+                min-height: 100dvh;
+            }
+            
             .section-content {
                 padding-left: 1rem;
                 padding-right: 1rem;
             }
+            
+            /* Centralizar conteúdo da seção home no mobile */
+            #home.section-content {
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center !important;
+                padding: 1rem !important;
+                min-height: 100vh;
+                min-height: -webkit-fill-available;
+                min-height: 100dvh;
+            }
+            
+            #home .relative {
+                width: 100%;
+                max-width: 100%;
+            }
+            
             /* Garantir que a sidebar tenha altura suficiente e mostre todos os elementos */
             aside {
                 min-height: 100vh !important;
+                min-height: -webkit-fill-available !important;
+                min-height: 100dvh !important;
                 height: 100vh !important;
+                height: -webkit-fill-available !important;
+                height: 100dvh !important;
                 overflow-y: visible !important;
                 overflow-x: visible !important;
             }
             /* Reduzir espaçamento entre itens de navegação no mobile */
             aside nav {
                 gap: 0.5rem !important;
+                flex-shrink: 1 !important;
+                min-height: 0 !important;
             }
             /* Garantir que o botão de contato seja visível */
             aside .mt-auto {
                 margin-top: auto !important;
-                padding-bottom: 0.5rem !important;
+                padding-bottom: 0.75rem !important;
                 flex-shrink: 0 !important;
+                margin-bottom: 0 !important;
             }
             /* Reduzir margem do logo no mobile */
             aside > div:first-child {
-                margin-bottom: 1rem !important;
+                margin-bottom: 0.75rem !important;
+            }
+            /* Reduzir padding da sidebar no mobile */
+            aside {
+                padding-top: 0.75rem !important;
+                padding-bottom: 0.5rem !important;
             }
         }
         /* Ensure proper spacing on very small screens */
@@ -109,6 +152,9 @@
             left: 0 !important;
             width: 100% !important;
             height: 100% !important;
+            min-height: 100vh !important;
+            min-height: -webkit-fill-available !important;
+            min-height: 100dvh !important;
             opacity: 0 !important;
             transform: translateY(20px) !important;
             pointer-events: none !important;
@@ -177,7 +223,7 @@
     <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 overflow-hidden h-screen w-full flex">
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 overflow-hidden w-full flex" style="height: 100vh; height: -webkit-fill-available; height: 100dvh;">
     <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">
         <div class="loading-content">
@@ -193,11 +239,11 @@
     </div>
 
     <!-- Sidebar Navigation -->
-    <aside class="w-16 sm:w-20 md:w-24 h-full bg-navy-card dark:bg-navy-card border-r border-slate-700 dark:border-slate-700 flex flex-col items-center py-4 sm:py-8 z-50">
-        <div class="mb-6 sm:mb-12">
+    <aside class="w-16 sm:w-20 md:w-24 bg-navy-card dark:bg-navy-card border-r border-slate-700 dark:border-slate-700 flex flex-col items-center py-4 sm:py-8 z-50" style="height: 100vh; height: -webkit-fill-available; height: 100dvh; min-height: 100vh; min-height: -webkit-fill-available; min-height: 100dvh; overflow-y: auto; overflow-x: hidden;">
+        <div class="mb-4 sm:mb-6 md:mb-12 flex-shrink-0">
             <span class="text-xl sm:text-2xl font-extrabold text-white">A<span class="text-primary">G</span></span>
         </div>
-        <nav class="flex-1 flex flex-col gap-4 sm:gap-6 md:gap-8 items-center">
+        <nav class="flex-1 flex flex-col gap-4 sm:gap-6 md:gap-8 items-center min-h-0">
             <a class="flex flex-col items-center gap-0.5 sm:gap-1 text-primary nav-link-sidebar" href="#home" data-section="home">
                 <span class="material-icons-round text-xl sm:text-2xl">home</span>
                 <span class="text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider" data-i18n="nav.home">Início</span>
@@ -219,39 +265,39 @@
                 <span class="text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider" data-i18n="nav.projects">Projetos</span>
             </a>
         </nav>
-        <div class="mt-auto flex flex-col gap-2 items-center">
-            <button id="language-btn" onclick="toggleLanguage()" class="flex flex-col items-center gap-0.5 sm:gap-1 text-slate-400 hover:text-primary transition-colors cursor-pointer bg-transparent border-none p-2 rounded-lg hover:bg-slate-800/50" title="Mudar para Inglês">
-                <span class="material-icons-round text-xl sm:text-2xl">language</span>
-                <span class="text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider" id="language-text">EN</span>
+        <div class="mt-auto flex flex-col gap-1.5 sm:gap-2 items-center flex-shrink-0 pb-1 sm:pb-2">
+            <button id="language-btn" onclick="toggleLanguage()" class="flex flex-col items-center gap-0.5 sm:gap-1 text-slate-400 hover:text-primary transition-colors cursor-pointer bg-transparent border-none p-1.5 sm:p-2 rounded-lg hover:bg-slate-800/50" title="Mudar para Inglês">
+                <span class="material-icons-round text-lg sm:text-xl md:text-2xl">language</span>
+                <span class="text-[8px] sm:text-[9px] md:text-[10px] font-semibold uppercase tracking-wider" id="language-text">EN</span>
             </button>
             <a class="flex flex-col items-center gap-0.5 sm:gap-1 text-slate-400 hover:text-primary transition-colors nav-link-sidebar" href="#contact" data-section="contact">
-            <span class="material-icons-round text-xl sm:text-2xl">mail</span>
-                <span class="text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider" data-i18n="nav.contact">Contato</span>
-        </a>
+                <span class="material-icons-round text-lg sm:text-xl md:text-2xl">mail</span>
+                <span class="text-[8px] sm:text-[9px] md:text-[10px] font-semibold uppercase tracking-wider" data-i18n="nav.contact">Contato</span>
+            </a>
         </div>
     </aside>
 
     <!-- Main Content Area -->
-    <main class="flex-1 h-full overflow-hidden relative bg-background-dark dark:bg-background-dark">
+    <main class="flex-1 overflow-hidden relative bg-background-dark dark:bg-background-dark" style="height: 100vh; height: -webkit-fill-available; height: 100dvh;">
     <!-- Hero Section -->
-    <section id="home" class="section-content active h-full flex flex-col justify-center px-4 sm:px-6 md:px-12 py-6 sm:py-8 relative bg-slate-50 dark:bg-background-dark">
+    <section id="home" class="section-content active flex flex-col justify-start items-center px-4 sm:px-6 md:px-12 pt-4 sm:pt-6 md:pt-8 pb-6 sm:pb-8 relative bg-slate-50 dark:bg-background-dark" style="min-height: 100vh; min-height: -webkit-fill-available; min-height: 100dvh;">
         <!-- Background Effects -->
         <div class="absolute top-[-10%] right-[-10%] w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] bg-primary/10 rounded-full blur-[100px]"></div>
         <div class="absolute bottom-[-5%] left-[-5%] w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] bg-blue-500/5 rounded-full blur-[80px]"></div>
         
-        <div class="relative z-10 max-w-lg mx-auto w-full">
+        <div class="relative z-10 max-w-lg w-full mx-auto">
             <!-- Profile Picture -->
-            <div class="mb-6 sm:mb-8 flex justify-center lg:justify-start">
-                <div class="relative">
-                    <div class="w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-2 sm:border-4 border-white dark:border-navy-card profile-ring">
+            <div class="mb-4 sm:mb-6 md:mb-8 flex justify-center lg:justify-start w-full">
+                <div class="relative inline-flex">
+                    <div class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 rounded-full overflow-hidden border-2 sm:border-4 border-white dark:border-navy-card profile-ring">
                         <img alt="Alexandro Granja" class="w-full h-full object-cover" src="./assets/Minha-Foto.jpg" />
                     </div>
-                    <div class="absolute bottom-0.5 right-0.5 sm:bottom-1 sm:right-1 bg-green-500 w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 sm:border-4 border-background-light dark:border-background-dark"></div>
+                    <div class="absolute bottom-0 right-0 bg-green-500 w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 rounded-full border-2 sm:border-3 md:border-4 border-background-light dark:border-background-dark z-10" style="transform: translate(5%, 5%);"></div>
                 </div>
             </div>
             
             <!-- Text Content -->
-            <div class="text-center lg:text-left space-y-4 sm:space-y-6">
+            <div class="text-center lg:text-left space-y-4 sm:space-y-6 w-full">
                 <div class="space-y-1">
                     <p class="text-primary font-medium tracking-wide uppercase text-xs sm:text-sm" data-i18n="hero.greeting">Olá, eu sou</p>
                     <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
