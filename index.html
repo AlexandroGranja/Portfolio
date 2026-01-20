@@ -176,6 +176,12 @@
             overflow-y: auto !important;
             overflow-x: hidden !important;
         }
+        
+        /* Permitir scroll na seção agency */
+        #agency.section-content.active {
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+        }
         /* Smaller font sizes - except for home section */
         .section-content:not(#home) h1 { font-size: 1.75rem; }
         .section-content:not(#home) h2 { font-size: 1.5rem; }
@@ -462,7 +468,7 @@
     </section>
 
     <!-- Agency Section -->
-    <section id="agency" class="section-content agency-section h-full px-4 sm:px-6 md:px-10 lg:px-12 py-6 sm:py-8 relative">
+    <section id="agency" class="section-content agency-section h-full px-4 sm:px-6 md:px-10 lg:px-12 py-6 sm:py-8 overflow-y-auto hide-scrollbar relative">
         <header class="mb-8 sm:mb-10 text-center relative z-10">
             <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 text-white">
                 <a href="https://www.aiversetechnologies.com.br/" target="_blank" class="hover:opacity-80 transition-colors">AIverse <span class="text-primary">Technologies</span></a>

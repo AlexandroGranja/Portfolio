@@ -1917,6 +1917,12 @@ section:nth-child(odd) {
         overflow-x: hidden !important;
     }
     
+    /* Permitir scroll na seção agency */
+    #agency.section-content {
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+    }
+    
     /* Melhorar espaçamento na seção about */
     #about header {
         margin-bottom: 1.5rem;
@@ -2719,7 +2725,8 @@ html {
 .agency-section {
     background: transparent;
     position: relative;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .agency-section::before {
