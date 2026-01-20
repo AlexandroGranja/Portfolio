@@ -1480,7 +1480,7 @@ window.changeImage = function(button, direction) {
         if (slides[i].classList.contains('active')) {
             currentIndex = i;
             break;
-        }
+    }
     }
     
     // Remove active de todos os slides e indicadores
@@ -1525,10 +1525,10 @@ window.goToImage = function(indicator, index) {
     
     // Adiciona active ao slide selecionado
     if (slides[index]) {
-        slides[index].classList.add('active');
+    slides[index].classList.add('active');
     }
     if (indicators[index]) {
-        indicators[index].classList.add('active');
+    indicators[index].classList.add('active');
     }
 };
 

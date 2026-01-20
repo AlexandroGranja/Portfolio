@@ -761,28 +761,13 @@ section:nth-child(odd) {
 
 /* Global responsive media tweaks */
 @media (max-width: 640px) {
-    section { padding: 1rem 0 !important; }
+    section { padding: 3.5rem 0; }
     .section-title { font-size: 1.75rem; }
     .nav-container { padding: 0.75rem 1rem; }
     .skills-tab { font-size: 0.9rem; padding: 0.4rem 0.8rem; }
     .skills-list { gap: 1rem; }
     .skill-item { padding: 1rem; }
     .skill-icon { width: 48px; height: 48px; }
-    /* Reduzir padding superior de todas as seções */
-    .section-content {
-        padding-top: 0.5rem !important;
-    }
-    /* Garantir que sidebar seja scrollável e mostre todos os elementos */
-    aside {
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: space-between !important;
-    }
-    aside nav {
-        flex: 1 1 auto !important;
-        min-height: 0 !important;
-        overflow-y: auto !important;
-    }
 }
 
 /* Responsividade específica para seção de habilidades */
@@ -1523,7 +1508,7 @@ section:nth-child(odd) {
     background: transparent;
     border: none;
     color: #f59e0b;
-    font-size: 0.85rem;
+        font-size: 0.85rem;
     font-weight: 600;
     cursor: pointer;
     padding: 0.4rem 0;
@@ -1547,7 +1532,7 @@ section:nth-child(odd) {
     font-size: 0.7rem;
     transition: transform 0.3s ease;
     margin-left: 0.15rem;
-}
+    }
 
 .read-more-btn.expanded i {
     transform: rotate(180deg);
@@ -1839,12 +1824,12 @@ section:nth-child(odd) {
     #contact {
         padding-left: 1rem !important;
         padding-right: 1rem !important;
-        padding-top: 0.75rem !important;
+        padding-top: 1.5rem !important;
         padding-bottom: 1.5rem !important;
     }
     
     #contact .section-header {
-        margin-bottom: 1rem !important;
+        margin-bottom: 1.5rem !important;
     }
     
     #contact .section-title {
@@ -2169,24 +2154,6 @@ html {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
-    
-    /* Reduzir padding superior de todas as seções */
-    .section-content {
-        padding-top: 0.5rem !important;
-    }
-    
-    /* Garantir que sidebar seja scrollável e mostre todos os elementos */
-    aside {
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: space-between !important;
-    }
-    
-    aside nav {
-        flex: 1 1 auto !important;
-        min-height: 0 !important;
-        overflow-y: auto !important;
-    }
 }
 
 @media (max-width: 480px) {
@@ -2199,28 +2166,8 @@ html {
     #contact {
         padding-left: 0.75rem !important;
         padding-right: 0.75rem !important;
-        padding-top: 0.5rem !important;
+        padding-top: 1rem !important;
         padding-bottom: 1rem !important;
-    }
-    
-    #contact .section-header {
-        margin-bottom: 0.75rem !important;
-    }
-    
-    /* Ajustar sidebar para telas muito pequenas */
-    aside {
-        padding-top: 0.25rem !important;
-        padding-bottom: 0.25rem !important;
-    }
-    
-    aside nav {
-        gap: 0.25rem !important;
-    }
-    
-    aside .mt-auto {
-        gap: 0.25rem !important;
-        padding-top: 0.25rem !important;
-        padding-bottom: 0.25rem !important;
     }
     
     .contact-item {
