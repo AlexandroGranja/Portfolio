@@ -568,8 +568,8 @@
     <section id="skills" class="section-content skills h-full flex flex-col relative">
         <div class="absolute top-[-10%] right-[-10%] w-[400px] h-[400px] bg-primary/10 blur-[120px] rounded-full pointer-events-none"></div>
         <div class="absolute bottom-[-5%] left-[5%] w-[300px] h-[300px] bg-blue-500/10 blur-[100px] rounded-full pointer-events-none"></div>
-        <header class="pt-4 sm:pt-6 md:pt-8 px-3 sm:px-6 md:px-12 shrink-0" style="overflow-x: visible;">
-            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-4 sm:mb-6 gap-3 sm:gap-0">
+        <header class="pt-1 sm:pt-6 md:pt-8 px-3 sm:px-6 md:px-12 shrink-0" style="overflow-x: visible; padding-top: 0.25rem !important;">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-2 sm:mb-6 gap-2 sm:gap-0" style="margin-bottom: 0.5rem !important;">
                 <div>
                     <p class="text-primary font-semibold tracking-wider uppercase text-xs mb-1" data-i18n="skills.techStack">Tech Stack</p>
                     <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold dark:text-white"><span data-i18n="skills.mySkills">Minhas </span><span class="text-primary" data-i18n="skills.mySkills">Habilidades</span></h1>
@@ -580,7 +580,7 @@
                     </span>
                 </div>
             </div>
-            <div class="flex gap-1.5 sm:gap-2 pb-2 flex-nowrap" style="overflow-x: visible;">
+            <div class="flex gap-1.5 sm:gap-2 pb-2 flex-nowrap" style="overflow-x: visible; padding-bottom: 0.5rem !important; margin-top: 0 !important;">
                 <button class="skills-tab-btn px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-primary text-white font-semibold text-xs sm:text-sm whitespace-nowrap shadow-lg shadow-primary/25" data-tab-target="frontend">
                     <span data-i18n="skills.frontend">Frontend</span>
                 </button>
@@ -592,7 +592,7 @@
                 </button>
             </div>
         </header>
-        <div class="flex-1 px-4 sm:px-6 md:px-12 pt-4 sm:pt-6 pb-4 sm:py-6 overflow-y-auto hide-scrollbar">
+        <div class="flex-1 px-4 sm:px-6 md:px-12 pt-1 sm:pt-6 pb-4 sm:py-6 overflow-y-auto hide-scrollbar" style="padding-top: 0.25rem !important;">
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 pb-8 sm:pb-12">
                 <!-- Frontend Skills -->
                 <div class="skill-card-group" data-tab="frontend">
@@ -1228,6 +1228,120 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Projeto 4: Prosper Roteiros -->
+                    <div class="project-card" data-project="3">
+                        <div class="project-image-container">
+                            <div class="project-image-carousel" data-images="4">
+                                <div class="carousel-slide active" data-index="0">
+                                    <img src="./assets/Roteiro01.png" alt="Prosper Roteiros - Página Inicial" />
+                                </div>
+                                <div class="carousel-slide" data-index="1">
+                                    <img src="./assets/Roteiro02.png" alt="Prosper Roteiros - Gerenciar Roteiros" />
+                                </div>
+                                <div class="carousel-slide" data-index="2">
+                                    <img src="./assets/Roteiro03.png" alt="Prosper Roteiros - Dashboard e Métricas" />
+                                </div>
+                                <div class="carousel-slide" data-index="3">
+                                    <img src="./assets/Roteiro04.png" alt="Prosper Roteiros - Visualização de Rota no Mapa" />
+                                </div>
+                            </div>
+                            <button class="carousel-btn carousel-prev" onclick="changeImage(this, -1)">
+                                <span class="material-icons-round">chevron_left</span>
+                            </button>
+                            <button class="carousel-btn carousel-next" onclick="changeImage(this, 1)">
+                                <span class="material-icons-round">chevron_right</span>
+                            </button>
+                            <div class="carousel-indicators">
+                                <span class="indicator active" onclick="goToImage(this, 0)"></span>
+                                <span class="indicator" onclick="goToImage(this, 1)"></span>
+                                <span class="indicator" onclick="goToImage(this, 2)"></span>
+                                <span class="indicator" onclick="goToImage(this, 3)"></span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3><span data-i18n="projects.project4Title">Prosper</span> <span class="text-primary" data-i18n="projects.project4Title">Roteiros</span></h3>
+                            <div class="project-description-wrapper">
+                                <p class="project-description" data-i18n="projects.project4Description">Sistema inteligente de geração de roteiros otimizados para vendedores. Desenvolvido com React e Flask/Python, utiliza algoritmo do vizinho mais próximo para otimização geográfica. 
+                                Inclui agrupamento de clientes por proximidade usando coordenadas GPS e CEPs, geração automática de rotas com 6-8 visitas por rota, 
+                                visualização interativa de rotas em mapas (Leaflet), dashboard com métricas detalhadas (total de visitas, dias de trabalho, distância média), 
+                                gerenciamento de arquivos Excel/CSV, filtros por vendedor e data, e exportação de roteiros em CSV. 
+                                Interface moderna e responsiva com design intuitivo.</p>
+                                <button class="read-more-btn" onclick="toggleDescription(this)">
+                                    <span class="read-more-text" data-i18n="projects.readMore">Ver mais</span>
+                                    <span class="read-less-text" style="display: none;" data-i18n="projects.readLess">Ver menos</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Flask</span>
+                                <span class="tech-tag">Leaflet</span>
+                                <span class="tech-tag">Tailwind CSS</span>
+                                <span class="tech-tag">Algoritmos</span>
+                                <span class="tech-tag">Geolocalização</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/AlexandroGranja/Roteiro-Prosper" target="_blank" class="project-link" title="Ver Código no GitHub">
+                                    <i class="fab fa-github"></i>
+                                    <span data-i18n="projects.viewCode">Ver Código</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projeto 5: Processador de XML -->
+                    <div class="project-card" data-project="4">
+                        <div class="project-image-container">
+                            <div class="project-image-carousel" data-images="2">
+                                <div class="carousel-slide active" data-index="0">
+                                    <img src="./assets/XML01.png" alt="Processador de XML - Interface Principal" />
+                                </div>
+                                <div class="carousel-slide" data-index="1">
+                                    <img src="./assets/XML02.png" alt="Processador de XML - Como Funciona" />
+                                </div>
+                            </div>
+                            <button class="carousel-btn carousel-prev" onclick="changeImage(this, -1)">
+                                <span class="material-icons-round">chevron_left</span>
+                            </button>
+                            <button class="carousel-btn carousel-next" onclick="changeImage(this, 1)">
+                                <span class="material-icons-round">chevron_right</span>
+                            </button>
+                            <div class="carousel-indicators">
+                                <span class="indicator active" onclick="goToImage(this, 0)"></span>
+                                <span class="indicator" onclick="goToImage(this, 1)"></span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3><span data-i18n="projects.project5Title">Processador de</span> <span class="text-primary" data-i18n="projects.project5Title">XML</span></h3>
+                            <div class="project-description-wrapper">
+                                <p class="project-description" data-i18n="projects.project5Description">Sistema web para processamento e seleção de arquivos XML baseado em planilhas Excel. Desenvolvido com Flask e Python, permite fazer upload de uma planilha Excel (.xlsx) com números de NF na coluna B e um arquivo ZIP contendo XMLs de notas fiscais. 
+                                O sistema verifica automaticamente se os números da planilha estão contidos nos XMLs, seleciona os arquivos correspondentes e gera um novo arquivo ZIP compactado com apenas os XMLs selecionados. 
+                                Interface moderna e intuitiva com drag-and-drop, feedback visual durante o processamento e download automático do resultado.</p>
+                                <button class="read-more-btn" onclick="toggleDescription(this)">
+                                    <span class="read-more-text" data-i18n="projects.readMore">Ver mais</span>
+                                    <span class="read-less-text" style="display: none;" data-i18n="projects.readLess">Ver menos</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Flask</span>
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">OpenPyXL</span>
+                                <span class="tech-tag">XML Processing</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/AlexandroGranja/site-converter-xml" target="_blank" class="project-link" title="Ver Código no GitHub">
+                                    <i class="fab fa-github"></i>
+                                    <span data-i18n="projects.viewCode">Ver Código</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Controles do carrossel principal -->
@@ -1239,9 +1353,11 @@
                 </button>
                 <div class="projects-carousel-controls">
                     <div class="project-indicators">
-                        <span class="project-indicator active" onclick="goToProject(0)"></span>
-                        <span class="project-indicator" onclick="goToProject(1)"></span>
-                        <span class="project-indicator" onclick="goToProject(2)"></span>
+                        <span class="project-indicator active" data-project-index="0"></span>
+                        <span class="project-indicator" data-project-index="1"></span>
+                        <span class="project-indicator" data-project-index="2"></span>
+                        <span class="project-indicator" data-project-index="3"></span>
+                        <span class="project-indicator" data-project-index="4"></span>
                     </div>
                 </div>
             </div>

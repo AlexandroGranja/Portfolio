@@ -232,7 +232,13 @@ const translations = {
             project2Description: "Sistema completo de cardápio online com painel administrativo avançado. Desenvolvido com React 18 e integração total com Supabase. Inclui cardápio dinâmico, carrinho de compras, checkout completo, gerenciamento de pedidos, upload de imagens, configurações personalizáveis (cores, logo, endereço, redes sociais) e sistema de autenticação. Backend opcional em Flask/Python. Deploy realizado na Railway.",
             // Projeto 3: Moraes Adesivos
             project3Title: "Moraes Adesivos",
-            project3Description: "Site completo desenvolvido pela AIverse Technologies para empresa especializada em adesivos decorativos. Landing page moderna com galeria de trabalhos, seção de serviços e integração com WhatsApp para orçamentos. Design responsivo e otimizado para conversão de leads."
+            project3Description: "Site completo desenvolvido pela AIverse Technologies para empresa especializada em adesivos decorativos. Landing page moderna com galeria de trabalhos, seção de serviços e integração com WhatsApp para orçamentos. Design responsivo e otimizado para conversão de leads.",
+            // Projeto 4: Prosper Roteiros
+            project4Title: "Prosper Roteiros",
+            project4Description: "Sistema inteligente de geração de roteiros otimizados para vendedores. Desenvolvido com React e Flask/Python, utiliza algoritmo do vizinho mais próximo para otimização geográfica. Inclui agrupamento de clientes por proximidade usando coordenadas GPS e CEPs, geração automática de rotas com 6-8 visitas por rota, visualização interativa de rotas em mapas (Leaflet), dashboard com métricas detalhadas (total de visitas, dias de trabalho, distância média), gerenciamento de arquivos Excel/CSV, filtros por vendedor e data, e exportação de roteiros em CSV. Interface moderna e responsiva com design intuitivo.",
+            // Projeto 5: Processador de XML
+            project5Title: "Processador de XML",
+            project5Description: "Sistema web para processamento e seleção de arquivos XML baseado em planilhas Excel. Desenvolvido com Flask e Python, permite fazer upload de uma planilha Excel (.xlsx) com números de NF na coluna B e um arquivo ZIP contendo XMLs de notas fiscais. O sistema verifica automaticamente se os números da planilha estão contidos nos XMLs, seleciona os arquivos correspondentes e gera um novo arquivo ZIP compactado com apenas os XMLs selecionados. Interface moderna e intuitiva com drag-and-drop, feedback visual durante o processamento e download automático do resultado."
         }
     },
     en: {
@@ -387,7 +393,13 @@ const translations = {
             project2Description: "Complete online menu system with advanced admin panel. Developed with React 18 and full Supabase integration. Includes dynamic menu, shopping cart, complete checkout, order management, image upload, customizable settings (colors, logo, address, social media) and authentication system. Optional Flask/Python backend. Deploy performed on Railway.",
             // Projeto 3: Moraes Adesivos
             project3Title: "Moraes Adesivos",
-            project3Description: "Complete website developed by AIverse Technologies for a company specialized in decorative stickers. Modern landing page with work gallery, services section and WhatsApp integration for quotes. Responsive design optimized for lead conversion."
+            project3Description: "Complete website developed by AIverse Technologies for a company specialized in decorative stickers. Modern landing page with work gallery, services section and WhatsApp integration for quotes. Responsive design optimized for lead conversion.",
+            // Projeto 4: Prosper Roteiros
+            project4Title: "Prosper Roteiros",
+            project4Description: "Intelligent system for generating optimized routes for salespeople. Developed with React and Flask/Python, uses nearest neighbor algorithm for geographic optimization. Includes customer grouping by proximity using GPS coordinates and ZIP codes, automatic route generation with 6-8 visits per route, interactive route visualization on maps (Leaflet), dashboard with detailed metrics (total visits, work days, average distance), Excel/CSV file management, filters by seller and date, and CSV route export. Modern and responsive interface with intuitive design.",
+            // Projeto 5: Processador de XML
+            project5Title: "XML Processor",
+            project5Description: "Web system for processing and selecting XML files based on Excel spreadsheets. Developed with Flask and Python, allows uploading an Excel spreadsheet (.xlsx) with NF numbers in column B and a ZIP file containing invoice XMLs. The system automatically checks if the spreadsheet numbers are contained in the XMLs, selects the corresponding files and generates a new compressed ZIP file with only the selected XMLs. Modern and intuitive interface with drag-and-drop, visual feedback during processing and automatic result download."
         }
     }
 };
@@ -1393,62 +1405,104 @@ document.addEventListener('DOMContentLoaded', () => {
 // ============================================
 
 let currentProjectIndex = 0;
-const totalProjects = 3;
+const totalProjects = 5;
+let isChangingProject = false; // Flag para evitar mudanças simultâneas
 
 // Função para mudar de projeto
 window.changeProject = function(direction) {
-    const projects = document.querySelectorAll('.project-card');
-    const indicators = document.querySelectorAll('.project-indicator');
-    
-    if (!projects.length || !indicators.length) {
-        console.error('Projetos ou indicadores não encontrados');
-        return;
+    // Calcula novo índice primeiro
+    let newIndex = currentProjectIndex + direction;
+    if (newIndex < 0) {
+        newIndex = totalProjects - 1;
+    } else if (newIndex >= totalProjects) {
+        newIndex = 0;
     }
     
-    // Remove active do projeto atual
-    if (projects[currentProjectIndex]) {
-        projects[currentProjectIndex].classList.remove('active');
-    }
-    if (indicators[currentProjectIndex]) {
-        indicators[currentProjectIndex].classList.remove('active');
-    }
-    
-    // Calcula novo índice
-    currentProjectIndex += direction;
-    if (currentProjectIndex < 0) {
-        currentProjectIndex = totalProjects - 1;
-    } else if (currentProjectIndex >= totalProjects) {
-        currentProjectIndex = 0;
-    }
-    
-    // Adiciona active ao novo projeto
-    if (projects[currentProjectIndex]) {
-        projects[currentProjectIndex].classList.add('active');
-        resetImageCarousel(projects[currentProjectIndex]);
-    }
-    if (indicators[currentProjectIndex]) {
-        indicators[currentProjectIndex].classList.add('active');
-    }
+    // Usa goToProject para garantir que tudo seja atualizado corretamente
+    goToProject(newIndex);
 };
 
 // Função para ir diretamente a um projeto
 window.goToProject = function(index) {
-    if (index < 0 || index >= totalProjects) return;
+    if (index < 0 || index >= totalProjects) {
+        return;
+    }
     
-    const projects = document.querySelectorAll('.project-card');
-    const indicators = document.querySelectorAll('.project-indicator');
+    // Evita mudanças simultâneas
+    if (isChangingProject) {
+        return;
+    }
     
-    // Remove active de todos
-    projects.forEach(p => p.classList.remove('active'));
-    indicators.forEach(i => i.classList.remove('active'));
+    // Se já está no projeto solicitado, não faz nada
+    if (currentProjectIndex === index) {
+        return;
+    }
+    
+    isChangingProject = true;
+    
+    // Atualiza o índice atual ANTES de fazer qualquer coisa
+    currentProjectIndex = index;
+    
+    // Primeiro, remover active de TODOS os projetos
+    const allProjects = document.querySelectorAll('.project-card');
+    const allIndicators = document.querySelectorAll('.project-indicator');
+    
+    // Remove active de todos e força display none imediatamente
+    allProjects.forEach((p) => {
+        p.classList.remove('active');
+        // Força display none imediatamente sem transição
+        p.style.transition = 'none';
+        p.style.display = 'none';
+        p.style.opacity = '0';
+    });
+    
+    allIndicators.forEach((ind) => {
+        ind.classList.remove('active');
+    });
+    
+    // Agora encontrar o projeto específico pelo data-project
+    const targetProject = document.querySelector(`.project-card[data-project="${index}"]`);
+    const targetIndicator = allIndicators[index];
+    
+    if (!targetProject) {
+        console.error(`Projeto ${index} não encontrado!`);
+        return;
+    }
     
     // Adiciona active ao projeto selecionado
-    currentProjectIndex = index;
-    projects[currentProjectIndex].classList.add('active');
-    indicators[currentProjectIndex].classList.add('active');
+    targetProject.classList.add('active');
     
-    // Reseta o carrossel de imagens
-    resetImageCarousel(projects[currentProjectIndex]);
+    // Força display flex imediatamente sem transição
+    targetProject.style.transition = 'none';
+    targetProject.style.display = 'flex';
+    targetProject.style.opacity = '1';
+    targetProject.style.transform = 'translateX(0)';
+    
+    // Força reflow
+    void targetProject.offsetHeight;
+    
+    // Restaura transição após um frame
+    requestAnimationFrame(() => {
+        targetProject.style.transition = '';
+        allProjects.forEach((p) => {
+            if (p !== targetProject) {
+                p.style.transition = '';
+            }
+        });
+    });
+    
+    resetImageCarousel(targetProject);
+    
+    if (targetIndicator) {
+        targetIndicator.classList.add('active');
+    }
+    
+    // Reinicializar swipe para o novo projeto
+    setTimeout(() => {
+        initSwipeForCarousels();
+        initProjectCardDrag();
+        isChangingProject = false; // Libera a flag após tudo estar pronto
+    }, 100);
 };
 
 // Função para mudar imagem dentro de um projeto
@@ -1557,6 +1611,15 @@ function resetImageCarousel(projectCard) {
 document.addEventListener('DOMContentLoaded', function() {
     // Aguarda um pouco para garantir que o DOM está totalmente carregado
     setTimeout(() => {
+        // Garantir que apenas o primeiro projeto está ativo
+        const allProjects = document.querySelectorAll('.project-card');
+        const allIndicators = document.querySelectorAll('.project-indicator');
+        
+        // Remove active de todos os projetos
+        allProjects.forEach(p => p.classList.remove('active'));
+        allIndicators.forEach(i => i.classList.remove('active'));
+        
+        // Ativa apenas o primeiro projeto
         const firstProject = document.querySelector('.project-card[data-project="0"]');
         const firstIndicator = document.querySelector('.project-indicator');
         
@@ -1568,6 +1631,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (firstIndicator) {
             firstIndicator.classList.add('active');
         }
+        
         
         // Esconde botões de navegação de imagens se houver apenas 1 imagem
         document.querySelectorAll('.project-image-carousel').forEach(carousel => {
@@ -1607,8 +1671,15 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Também adiciona listeners aos indicadores de projetos
         const projectIndicators = document.querySelectorAll('.project-indicator');
-        projectIndicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', function(e) {
+        projectIndicators.forEach((indicator) => {
+            // Remove listeners anteriores se existirem
+            const newIndicator = indicator.cloneNode(true);
+            indicator.parentNode.replaceChild(newIndicator, indicator);
+            
+            // Pega o índice do data-project-index
+            const index = parseInt(newIndicator.getAttribute('data-project-index'));
+            
+            newIndicator.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
                 goToProject(index);
@@ -1626,8 +1697,436 @@ document.addEventListener('DOMContentLoaded', function() {
                 goToImage(indicator, index);
             });
         });
+        
+        // Adicionar funcionalidade de swipe/touch para mobile
+        setTimeout(() => {
+            initSwipeForCarousels();
+        }, 200);
     }, 100);
 });
+
+// ============================================
+// FUNCIONALIDADE DE ARRASTO (DRAG) PARA CARROSSEL DE IMAGENS
+// ============================================
+
+function initSwipeForCarousels() {
+    const imageContainers = document.querySelectorAll('.project-image-container');
+    
+    if (imageContainers.length === 0) {
+        return;
+    }
+    
+    imageContainers.forEach((container) => {
+        // Verificar se já tem listeners (evitar duplicação)
+        if (container.dataset.swipeInitialized === 'true') {
+            return;
+        }
+        
+        const imageCarousel = container.querySelector('.project-image-carousel');
+        if (!imageCarousel) return;
+        
+        const slides = Array.from(imageCarousel.querySelectorAll('.carousel-slide'));
+        if (slides.length <= 1) return;
+        
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let currentX = 0;
+        let isDragging = false;
+        let currentIndex = 0;
+        let startIndex = 0;
+        
+        const getContainerWidth = () => container.offsetWidth || container.clientWidth;
+        const getThreshold = () => getContainerWidth() * 0.3; // 30% da largura para mudar de slide
+        
+        // Encontrar índice inicial
+        const findCurrentIndex = () => {
+            for (let i = 0; i < slides.length; i++) {
+                if (slides[i].classList.contains('active')) {
+                    return i;
+                }
+            }
+            return 0;
+        };
+        
+        const updateIndicators = (index) => {
+            const indicators = Array.from(container.querySelectorAll('.carousel-indicators .indicator'));
+            indicators.forEach(i => i.classList.remove('active'));
+            if (indicators[index]) indicators[index].classList.add('active');
+        };
+        
+        const goToSlide = (index, animate = true) => {
+            if (index < 0) index = slides.length - 1;
+            if (index >= slides.length) index = 0;
+            
+            currentIndex = index;
+            
+            // Remover active de todos e resetar estilos
+            slides.forEach(s => {
+                s.classList.remove('active');
+                if (animate) {
+                    s.style.transition = 'transform 0.3s ease-out, opacity 0.3s ease-out';
+                } else {
+                    s.style.transition = 'none';
+                }
+                const slideIndex = parseInt(s.dataset.index);
+                const offset = slideIndex - currentIndex;
+                s.style.transform = `translateX(${offset * 100}%)`;
+                s.style.opacity = offset === 0 ? 1 : 0;
+            });
+            
+            // Adicionar active ao slide atual
+            if (slides[currentIndex]) {
+                slides[currentIndex].classList.add('active');
+                slides[currentIndex].style.transform = 'translateX(0%)';
+                slides[currentIndex].style.opacity = 1;
+                slides[currentIndex].style.display = 'flex';
+                slides[currentIndex].style.visibility = 'visible';
+            }
+            
+            updateIndicators(currentIndex);
+            
+            // Resetar transformações após animação
+            if (animate) {
+                setTimeout(() => {
+                    slides.forEach(s => {
+                        if (!s.classList.contains('active')) {
+                            s.style.transition = '';
+                            s.style.transform = '';
+                            s.style.opacity = '';
+                            s.style.display = '';
+                            s.style.visibility = '';
+                        }
+                    });
+                }, 300);
+            }
+        };
+        
+        // Inicializar índices dos slides
+        slides.forEach((slide, index) => {
+            slide.dataset.index = index;
+        });
+        
+        currentIndex = findCurrentIndex();
+        startIndex = currentIndex;
+        
+        const handleTouchStart = (e) => {
+            const touch = e.touches ? e.touches[0] : e.changedTouches[0];
+            touchStartX = touch.clientX;
+            touchStartY = touch.clientY;
+            isDragging = false;
+            currentIndex = findCurrentIndex();
+            startIndex = currentIndex;
+            
+            // Remover transições durante o arrasto
+            slides.forEach(s => {
+                s.style.transition = 'none';
+            });
+        };
+        
+        const handleTouchMove = (e) => {
+            if (!touchStartX) return;
+            
+            const touch = e.touches ? e.touches[0] : e.changedTouches[0];
+            currentX = touch.clientX;
+            const deltaX = currentX - touchStartX;
+            const deltaY = Math.abs(touch.clientY - touchStartY);
+            
+            // Se o movimento horizontal for maior que o vertical, é um arrasto horizontal
+            if (Math.abs(deltaX) > 5 && Math.abs(deltaX) > deltaY * 1.5) {
+                if (!isDragging) {
+                    isDragging = true;
+                }
+                
+                // Prevenir scroll da página durante o arrasto horizontal
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Calcular offset baseado no índice atual
+                const containerWidth = getContainerWidth();
+                const offset = deltaX / containerWidth;
+                
+                // Mover todos os slides
+                slides.forEach((slide) => {
+                    const slideIndex = parseInt(slide.dataset.index);
+                    const baseOffset = slideIndex - currentIndex;
+                    const totalOffset = baseOffset + offset;
+                    slide.style.transform = `translateX(${totalOffset * 100}%)`;
+                    slide.style.opacity = Math.max(0.3, 1 - Math.abs(totalOffset) * 0.5);
+                    // Mostrar o slide durante o arrasto
+                    if (Math.abs(totalOffset) < 1.5) {
+                        slide.style.display = 'flex';
+                        slide.style.visibility = 'visible';
+                    }
+                });
+            }
+        };
+        
+        const handleTouchEnd = (e) => {
+            if (!touchStartX || !isDragging) {
+                touchStartX = 0;
+                isDragging = false;
+                return;
+            }
+            
+            const touchEndX = e.changedTouches[0].clientX;
+            const deltaX = touchEndX - touchStartX;
+            const absDeltaX = Math.abs(deltaX);
+            const threshold = getThreshold();
+            
+            // Determinar se deve mudar de slide
+            if (absDeltaX > threshold) {
+                // Mudar de slide
+                if (deltaX > 0) {
+                    // Arrastou para a direita - slide anterior
+                    goToSlide(currentIndex - 1);
+                } else {
+                    // Arrastou para a esquerda - próximo slide
+                    goToSlide(currentIndex + 1);
+                }
+            } else {
+                // Voltar para o slide atual
+                goToSlide(currentIndex);
+            }
+            
+            isDragging = false;
+            touchStartX = 0;
+        };
+        
+        // Adicionar listeners
+        container.addEventListener('touchstart', handleTouchStart, { passive: false });
+        container.addEventListener('touchmove', handleTouchMove, { passive: false });
+        container.addEventListener('touchend', handleTouchEnd, { passive: true });
+        
+        imageCarousel.addEventListener('touchstart', handleTouchStart, { passive: false });
+        imageCarousel.addEventListener('touchmove', handleTouchMove, { passive: false });
+        imageCarousel.addEventListener('touchend', handleTouchEnd, { passive: true });
+        
+        // Marcar como inicializado
+        container.dataset.swipeInitialized = 'true';
+    });
+}
+
+// Inicializar swipe quando a página carregar e quando projetos mudarem
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        initSwipeForCarousels();
+        initProjectCardDrag();
+    }, 800);
+});
+
+// Também inicializar quando a seção de projetos for ativada
+document.addEventListener('DOMContentLoaded', () => {
+    const projectsSection = document.querySelector('#projects');
+    if (projectsSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        initProjectCardDrag();
+                    }, 300);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        observer.observe(projectsSection);
+    }
+});
+
+// ============================================
+// ARRASTO DO CARD COMPLETO PARA TROCAR PROJETOS
+// ============================================
+
+// Variáveis globais para o arrasto do card
+let cardDragHandlers = {
+    touchStartX: 0,
+    touchStartY: 0,
+    isDragging: false,
+    currentCard: null
+};
+
+function initProjectCardDrag() {
+    // Função para adicionar listeners ao card ativo
+    const setupCardDrag = () => {
+        const activeCard = document.querySelector('.project-card.active');
+        if (!activeCard) return;
+        
+        // Remover listeners anteriores do card se existirem
+        if (activeCard.dataset.dragSetup === 'true') {
+            // Remover listeners antigos antes de adicionar novos
+            const oldHandlers = activeCard._dragHandlers;
+            if (oldHandlers) {
+                activeCard.removeEventListener('touchstart', oldHandlers.start, { capture: true });
+                activeCard.removeEventListener('touchmove', oldHandlers.move, { capture: true });
+                activeCard.removeEventListener('touchend', oldHandlers.end, { capture: true });
+            }
+        }
+        
+        const getCardWidth = () => activeCard.offsetWidth || activeCard.clientWidth;
+        const getThreshold = () => getCardWidth() * 0.25;
+        
+        const handleTouchStart = (e) => {
+            // Verificar se o toque começou na área da imagem
+            const imageContainer = activeCard.querySelector('.project-image-container');
+            const touch = e.touches ? e.touches[0] : e.changedTouches[0];
+            
+            if (imageContainer) {
+                const rect = imageContainer.getBoundingClientRect();
+                const isInImageArea = touch.clientX >= rect.left && 
+                                     touch.clientX <= rect.right && 
+                                     touch.clientY >= rect.top && 
+                                     touch.clientY <= rect.bottom;
+                
+                // Se o toque começou na área da imagem, não iniciar arrasto do card
+                if (isInImageArea) {
+                    return;
+                }
+            }
+            
+            cardDragHandlers.currentCard = activeCard;
+            cardDragHandlers.touchStartX = touch.clientX;
+            cardDragHandlers.touchStartY = touch.clientY;
+            cardDragHandlers.isDragging = false;
+            
+            // Remover transições durante o arrasto
+            activeCard.style.transition = 'none';
+        };
+        
+        const handleTouchMove = (e) => {
+            if (!cardDragHandlers.currentCard || !cardDragHandlers.touchStartX || cardDragHandlers.currentCard !== activeCard) return;
+            
+            const touch = e.touches ? e.touches[0] : e.changedTouches[0];
+            if (!touch) return;
+            
+            const currentX = touch.clientX;
+            const currentY = touch.clientY;
+            const deltaX = currentX - cardDragHandlers.touchStartX;
+            const deltaY = Math.abs(currentY - cardDragHandlers.touchStartY);
+            
+            // Se o movimento horizontal for maior que o vertical, é um arrasto horizontal
+            if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY * 1.2) {
+                if (!cardDragHandlers.isDragging) {
+                    cardDragHandlers.isDragging = true;
+                }
+                
+                // Prevenir scroll da página durante o arrasto horizontal
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Mover o card
+                const offset = deltaX;
+                activeCard.style.transform = `translateX(${offset}px)`;
+                activeCard.style.opacity = Math.max(0.4, 1 - Math.abs(offset) / getCardWidth() * 0.6);
+            }
+        };
+        
+        const handleTouchEnd = (e) => {
+            if (!cardDragHandlers.currentCard || !cardDragHandlers.touchStartX || cardDragHandlers.currentCard !== activeCard) {
+                cardDragHandlers.touchStartX = 0;
+                cardDragHandlers.isDragging = false;
+                cardDragHandlers.currentCard = null;
+                return;
+            }
+            
+            if (!cardDragHandlers.isDragging) {
+                cardDragHandlers.touchStartX = 0;
+                cardDragHandlers.currentCard = null;
+                return;
+            }
+            
+            const touch = e.changedTouches[0];
+            if (!touch) return;
+            
+            const touchEndX = touch.clientX;
+            const deltaX = touchEndX - cardDragHandlers.touchStartX;
+            const absDeltaX = Math.abs(deltaX);
+            const threshold = getThreshold();
+            
+            // Restaurar transição
+            activeCard.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            
+            // Determinar se deve mudar de projeto
+            if (absDeltaX > threshold) {
+                if (deltaX > 0) {
+                    // Arrastou para a direita - projeto anterior
+                    changeProject(-1);
+                } else {
+                    // Arrastou para a esquerda - próximo projeto
+                    changeProject(1);
+                }
+            } else {
+                // Voltar para a posição original
+                activeCard.style.transform = '';
+                activeCard.style.opacity = '';
+            }
+            
+            cardDragHandlers.isDragging = false;
+            cardDragHandlers.touchStartX = 0;
+            
+            // Resetar transição após animação
+            setTimeout(() => {
+                if (activeCard && activeCard.classList.contains('active')) {
+                    activeCard.style.transition = '';
+                }
+                cardDragHandlers.currentCard = null;
+            }, 300);
+        };
+        
+        // Adicionar listeners diretamente no card ativo usando capture
+        activeCard.addEventListener('touchstart', handleTouchStart, { passive: false, capture: true });
+        activeCard.addEventListener('touchmove', handleTouchMove, { passive: false, capture: true });
+        activeCard.addEventListener('touchend', handleTouchEnd, { passive: true, capture: true });
+        
+        // Salvar referências para poder remover depois
+        activeCard._dragHandlers = {
+            start: handleTouchStart,
+            move: handleTouchMove,
+            end: handleTouchEnd
+        };
+        
+        activeCard.dataset.dragSetup = 'true';
+    };
+    
+    // Configurar o card ativo inicial
+    setupCardDrag();
+    
+    // Observar mudanças no card ativo
+    const projectsCarouselWrapper = document.querySelector('.projects-carousel');
+    if (projectsCarouselWrapper) {
+        // Remover observer anterior se existir
+        if (projectsCarouselWrapper._dragObserver) {
+            projectsCarouselWrapper._dragObserver.disconnect();
+        }
+        
+        const observer = new MutationObserver(() => {
+            // Pequeno delay para garantir que a classe active foi aplicada
+            setTimeout(() => {
+                // Remover setup de todos os cards
+                document.querySelectorAll('.project-card').forEach(card => {
+                    if (card.dataset.dragSetup === 'true') {
+                        const oldHandlers = card._dragHandlers;
+                        if (oldHandlers) {
+                            card.removeEventListener('touchstart', oldHandlers.start, { capture: true });
+                            card.removeEventListener('touchmove', oldHandlers.move, { capture: true });
+                            card.removeEventListener('touchend', oldHandlers.end, { capture: true });
+                        }
+                        card.dataset.dragSetup = 'false';
+                    }
+                });
+                // Configurar o novo card ativo
+                setupCardDrag();
+            }, 50);
+        });
+        
+        observer.observe(projectsCarouselWrapper, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ['class']
+        });
+        
+        projectsCarouselWrapper._dragObserver = observer;
+    }
+}
 
 // ============================================
 // BOTÃO VER MAIS / VER MENOS NA DESCRIÇÃO
