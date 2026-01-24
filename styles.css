@@ -1065,8 +1065,13 @@ section:nth-child(odd) {
     }
     
     /* Esconder botões de seta no mobile - usar swipe */
+    /* Manter setas visíveis no mobile com cor laranja */
     .project-image-container .carousel-btn {
-        display: none !important;
+        opacity: 0.8 !important;
+        width: 36px !important;
+        height: 36px !important;
+        background: rgba(15, 23, 42, 0.85) !important;
+        border: 1px solid #F59E0B !important;
     }
     
     /* Tornar indicadores mais visíveis no mobile */
@@ -1320,8 +1325,13 @@ section:nth-child(odd) {
     }
     
     /* Esconder botões de seta no mobile - usar swipe */
+    /* Manter setas visíveis no mobile com cor laranja */
     .project-image-container .carousel-btn {
-        display: none !important;
+        opacity: 0.8 !important;
+        width: 36px !important;
+        height: 36px !important;
+        background: rgba(15, 23, 42, 0.85) !important;
+        border: 1px solid #F59E0B !important;
     }
     
     .project-nav-btn {
@@ -1400,42 +1410,46 @@ section:nth-child(odd) {
     position: absolute !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
-    background: transparent !important;
-    border: none !important;
-    color: rgba(255, 255, 255, 0) !important;
+    background: rgba(15, 23, 42, 0.7) !important;
+    border: 1px solid rgba(245, 158, 11, 0.5) !important;
+    color: #F59E0B !important;
     width: 32px !important;
     height: 32px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     cursor: pointer !important;
-    transition: color 0.3s ease, opacity 0.3s ease !important;
+    transition: all 0.3s ease !important;
     z-index: 30 !important;
     pointer-events: auto !important;
     -webkit-user-select: none !important;
     user-select: none !important;
     margin: 0 !important;
     padding: 0 !important;
-    opacity: 0 !important;
+    opacity: 0.7 !important;
     outline: none !important;
-    box-shadow: none !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+    border-radius: 50% !important;
 }
 
 .project-image-container:hover .carousel-btn,
 .project-image-container .carousel-btn:hover {
-    color: rgba(255, 255, 255, 0.8) !important;
+    color: #F59E0B !important;
     opacity: 1 !important;
+    border-color: #F59E0B !important;
+    background: rgba(15, 23, 42, 0.9) !important;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4) !important;
 }
 
 .project-image-container .carousel-btn:active,
 .project-image-container .carousel-btn:focus,
 .project-image-container .carousel-btn:focus-visible {
-    color: rgba(255, 255, 255, 0.8) !important;
+    color: #F59E0B !important;
     opacity: 1 !important;
     outline: none !important;
-    box-shadow: none !important;
-    background: transparent !important;
-    border: none !important;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4) !important;
+    background: rgba(15, 23, 42, 0.9) !important;
+    border-color: #F59E0B !important;
 }
 
 /* Sobrescrever estilos globais de carousel-btn */
@@ -1454,6 +1468,7 @@ section:nth-child(odd) {
 .project-image-container .carousel-btn .material-icons-round {
     font-size: 24px !important;
     font-weight: 300 !important;
+    color: #F59E0B !important;
 }
 
 .project-image-container .carousel-prev {
