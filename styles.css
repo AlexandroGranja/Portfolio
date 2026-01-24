@@ -1019,6 +1019,8 @@ section:nth-child(odd) {
     opacity: 1 !important;
     transform: translateX(0) !important;
     cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .project-card.active:active {
@@ -1184,25 +1186,12 @@ section:nth-child(odd) {
 }
 
 /* Botões laterais do carrossel de projetos - estilo minimalista */
+/* OCULTOS - Navegação agora é feita por arrasto */
 .project-nav-btn.project-nav-left,
 .project-nav-btn.project-nav-right {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: transparent;
-    border: none;
-    color: rgba(255, 255, 255, 0.5);
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: color 0.2s ease;
-    z-index: 100;
-    pointer-events: auto;
-    -webkit-user-select: none;
-    user-select: none;
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
 }
 
 .project-nav-btn.project-nav-left {

@@ -1955,9 +1955,12 @@ function initProjectCardDrag() {
             // Remover listeners antigos antes de adicionar novos
             const oldHandlers = activeCard._dragHandlers;
             if (oldHandlers) {
-                activeCard.removeEventListener('touchstart', oldHandlers.start, { capture: true });
-                activeCard.removeEventListener('touchmove', oldHandlers.move, { capture: true });
-                activeCard.removeEventListener('touchend', oldHandlers.end, { capture: true });
+                activeCard.removeEventListener('touchstart', oldHandlers.start, { passive: false, capture: true });
+                activeCard.removeEventListener('touchmove', oldHandlers.move, { passive: false, capture: true });
+                activeCard.removeEventListener('touchend', oldHandlers.end, { passive: true, capture: true });
+                activeCard.removeEventListener('mousedown', oldHandlers.mouseDown, { passive: false });
+                document.removeEventListener('mousemove', oldHandlers.mouseMove, { passive: false });
+                document.removeEventListener('mouseup', oldHandlers.mouseUp, { passive: true });
             }
         }
         
@@ -1965,6 +1968,12 @@ function initProjectCardDrag() {
         const getThreshold = () => getCardWidth() * 0.25;
         
         const handleTouchStart = (e) => {
+            // Verificar se o toque começou em um botão ou link (não arrastar nesses casos)
+            const target = e.target;
+            if (target.closest('button') || target.closest('a') || target.closest('.carousel-btn') || target.closest('.carousel-indicators')) {
+                return;
+            }
+            
             // Verificar se o toque começou na área da imagem
             const imageContainer = activeCard.querySelector('.project-image-container');
             const touch = e.touches ? e.touches[0] : e.changedTouches[0];
@@ -1989,6 +1998,105 @@ function initProjectCardDrag() {
             
             // Remover transições durante o arrasto
             activeCard.style.transition = 'none';
+        };
+        
+        // Handlers para mouse (desktop)
+        const handleMouseDown = (e) => {
+            // Verificar se o clique começou em um botão ou link
+            const target = e.target;
+            if (target.closest('button') || target.closest('a') || target.closest('.carousel-btn') || target.closest('.carousel-indicators')) {
+                return;
+            }
+            
+            // Verificar se o clique começou na área da imagem
+            const imageContainer = activeCard.querySelector('.project-image-container');
+            
+            if (imageContainer) {
+                const rect = imageContainer.getBoundingClientRect();
+                const isInImageArea = e.clientX >= rect.left && 
+                                     e.clientX <= rect.right && 
+                                     e.clientY >= rect.top && 
+                                     e.clientY <= rect.bottom;
+                
+                if (isInImageArea) {
+                    return;
+                }
+            }
+            
+            cardDragHandlers.currentCard = activeCard;
+            cardDragHandlers.touchStartX = e.clientX;
+            cardDragHandlers.touchStartY = e.clientY;
+            cardDragHandlers.isDragging = false;
+            
+            activeCard.style.transition = 'none';
+            activeCard.style.cursor = 'grabbing';
+        };
+        
+        const handleMouseMove = (e) => {
+            if (!cardDragHandlers.currentCard || !cardDragHandlers.touchStartX || cardDragHandlers.currentCard !== activeCard) return;
+            
+            const currentX = e.clientX;
+            const currentY = e.clientY;
+            const deltaX = currentX - cardDragHandlers.touchStartX;
+            const deltaY = Math.abs(currentY - cardDragHandlers.touchStartY);
+            
+            if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY * 1.2) {
+                if (!cardDragHandlers.isDragging) {
+                    cardDragHandlers.isDragging = true;
+                }
+                
+                e.preventDefault();
+                
+                const offset = deltaX;
+                activeCard.style.transform = `translateX(${offset}px)`;
+                activeCard.style.opacity = Math.max(0.4, 1 - Math.abs(offset) / getCardWidth() * 0.6);
+            }
+        };
+        
+        const handleMouseUp = (e) => {
+            if (!cardDragHandlers.currentCard || !cardDragHandlers.touchStartX || cardDragHandlers.currentCard !== activeCard) {
+                cardDragHandlers.touchStartX = 0;
+                cardDragHandlers.isDragging = false;
+                cardDragHandlers.currentCard = null;
+                activeCard.style.cursor = 'grab';
+                return;
+            }
+            
+            if (!cardDragHandlers.isDragging) {
+                cardDragHandlers.touchStartX = 0;
+                cardDragHandlers.currentCard = null;
+                activeCard.style.cursor = 'grab';
+                return;
+            }
+            
+            const touchEndX = e.clientX;
+            const deltaX = touchEndX - cardDragHandlers.touchStartX;
+            const absDeltaX = Math.abs(deltaX);
+            const threshold = getThreshold();
+            
+            activeCard.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            activeCard.style.cursor = 'grab';
+            
+            if (absDeltaX > threshold) {
+                if (deltaX > 0) {
+                    changeProject(-1);
+                } else {
+                    changeProject(1);
+                }
+            } else {
+                activeCard.style.transform = '';
+                activeCard.style.opacity = '';
+            }
+            
+            cardDragHandlers.isDragging = false;
+            cardDragHandlers.touchStartX = 0;
+            
+            setTimeout(() => {
+                if (activeCard && activeCard.classList.contains('active')) {
+                    activeCard.style.transition = '';
+                }
+                cardDragHandlers.currentCard = null;
+            }, 300);
         };
         
         const handleTouchMove = (e) => {
@@ -2076,11 +2184,19 @@ function initProjectCardDrag() {
         activeCard.addEventListener('touchmove', handleTouchMove, { passive: false, capture: true });
         activeCard.addEventListener('touchend', handleTouchEnd, { passive: true, capture: true });
         
+        // Adicionar listeners para mouse (desktop)
+        activeCard.addEventListener('mousedown', handleMouseDown, { passive: false });
+        document.addEventListener('mousemove', handleMouseMove, { passive: false });
+        document.addEventListener('mouseup', handleMouseUp, { passive: true });
+        
         // Salvar referências para poder remover depois
         activeCard._dragHandlers = {
             start: handleTouchStart,
             move: handleTouchMove,
-            end: handleTouchEnd
+            end: handleTouchEnd,
+            mouseDown: handleMouseDown,
+            mouseMove: handleMouseMove,
+            mouseUp: handleMouseUp
         };
         
         activeCard.dataset.dragSetup = 'true';
@@ -2089,43 +2205,50 @@ function initProjectCardDrag() {
     // Configurar o card ativo inicial
     setupCardDrag();
     
-    // Observar mudanças no card ativo
-    const projectsCarouselWrapper = document.querySelector('.projects-carousel');
-    if (projectsCarouselWrapper) {
-        // Remover observer anterior se existir
-        if (projectsCarouselWrapper._dragObserver) {
-            projectsCarouselWrapper._dragObserver.disconnect();
-        }
-        
-        const observer = new MutationObserver(() => {
-            // Pequeno delay para garantir que a classe active foi aplicada
-            setTimeout(() => {
-                // Remover setup de todos os cards
-                document.querySelectorAll('.project-card').forEach(card => {
-                    if (card.dataset.dragSetup === 'true') {
-                        const oldHandlers = card._dragHandlers;
-                        if (oldHandlers) {
-                            card.removeEventListener('touchstart', oldHandlers.start, { capture: true });
-                            card.removeEventListener('touchmove', oldHandlers.move, { capture: true });
-                            card.removeEventListener('touchend', oldHandlers.end, { capture: true });
+        // Observar mudanças no card ativo
+        const projectsCarouselWrapper = document.querySelector('.projects-carousel');
+        if (projectsCarouselWrapper) {
+            // Remover observer anterior se existir
+            if (projectsCarouselWrapper._dragObserver) {
+                projectsCarouselWrapper._dragObserver.disconnect();
+            }
+            
+            const observer = new MutationObserver(() => {
+                // Pequeno delay para garantir que a classe active foi aplicada
+                setTimeout(() => {
+                    // Remover setup de todos os cards
+                    document.querySelectorAll('.project-card').forEach(card => {
+                        if (card.dataset.dragSetup === 'true') {
+                            const oldHandlers = card._dragHandlers;
+                            if (oldHandlers) {
+                                card.removeEventListener('touchstart', oldHandlers.start, { passive: false, capture: true });
+                                card.removeEventListener('touchmove', oldHandlers.move, { passive: false, capture: true });
+                                card.removeEventListener('touchend', oldHandlers.end, { passive: true, capture: true });
+                                card.removeEventListener('mousedown', oldHandlers.mouseDown, { passive: false });
+                                if (oldHandlers.mouseMove) {
+                                    document.removeEventListener('mousemove', oldHandlers.mouseMove, { passive: false });
+                                }
+                                if (oldHandlers.mouseUp) {
+                                    document.removeEventListener('mouseup', oldHandlers.mouseUp, { passive: true });
+                                }
+                            }
+                            card.dataset.dragSetup = 'false';
                         }
-                        card.dataset.dragSetup = 'false';
-                    }
-                });
-                // Configurar o novo card ativo
-                setupCardDrag();
-            }, 50);
-        });
-        
-        observer.observe(projectsCarouselWrapper, {
-            childList: true,
-            subtree: true,
-            attributes: true,
-            attributeFilter: ['class']
-        });
-        
-        projectsCarouselWrapper._dragObserver = observer;
-    }
+                    });
+                    // Configurar o novo card ativo
+                    setupCardDrag();
+                }, 50);
+            });
+            
+            observer.observe(projectsCarouselWrapper, {
+                childList: true,
+                subtree: true,
+                attributes: true,
+                attributeFilter: ['class']
+            });
+            
+            projectsCarouselWrapper._dragObserver = observer;
+        }
 }
 
 // ============================================
