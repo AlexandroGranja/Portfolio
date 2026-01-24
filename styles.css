@@ -1402,24 +1402,53 @@ section:nth-child(odd) {
     transform: translateY(-50%) !important;
     background: transparent !important;
     border: none !important;
-    color: rgba(255, 255, 255, 0.6) !important;
+    color: rgba(255, 255, 255, 0) !important;
     width: 32px !important;
     height: 32px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     cursor: pointer !important;
-    transition: color 0.2s ease !important;
+    transition: color 0.3s ease, opacity 0.3s ease !important;
     z-index: 30 !important;
     pointer-events: auto !important;
     -webkit-user-select: none !important;
     user-select: none !important;
     margin: 0 !important;
     padding: 0 !important;
+    opacity: 0 !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.project-image-container:hover .carousel-btn,
+.project-image-container .carousel-btn:hover {
+    color: rgba(255, 255, 255, 0.8) !important;
+    opacity: 1 !important;
+}
+
+.project-image-container .carousel-btn:active,
+.project-image-container .carousel-btn:focus,
+.project-image-container .carousel-btn:focus-visible {
+    color: rgba(255, 255, 255, 0.8) !important;
+    opacity: 1 !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+/* Sobrescrever estilos globais de carousel-btn */
+.project-image-container .carousel-btn::before {
+    display: none !important;
+    content: none !important;
 }
 
 .project-image-container .carousel-btn:hover {
-    color: rgba(255, 255, 255, 1) !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    transform: translateY(-50%) !important;
+    background: transparent !important;
 }
 
 .project-image-container .carousel-btn .material-icons-round {
