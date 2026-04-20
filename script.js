@@ -90,8 +90,8 @@ const translations = {
         // Hero Section
         hero: {
             greeting: "Olá, eu sou",
-            subtitle: "Desenvolvedor Web & Especialista em Automações 🚀",
-            description: "Analista de Suporte de TI na Prosper e fundador da AIverse Technologies, uma agência especializada em desenvolvimento web e automações inteligentes. Transformo ideias em soluções digitais eficientes, criando sites modernos e agentes de WhatsApp personalizados com IA.",
+            subtitle: "Desenvolvedor Fullstack & Especialista em Automações 🚀",
+            description: "Desenvolvedor Fullstack com 5+ projetos em produção. Uso React, Next.js, Python/Flask e n8n para transformar ideias em soluções digitais reais — com foco em performance, automação e IA.",
             viewProjects: "Ver Projetos",
             contactMe: "Entre em Contato",
             loading: "Carregando experiência..."
@@ -162,7 +162,7 @@ const translations = {
             },
             whatsapp: {
                 title: "Agentes de WhatsApp com IA",
-                description: "Revolucione seu atendimento ao cliente com agentes inteligentes personalizados. Automatização completa integrada com IA, capaz de responder perguntas, processar solicitações e fornecer suporte 24/7 de forma natural e eficiente.",
+                description: "Revolucione seu atendimento ao cliente com agentes inteligentes personalizados. Automação completa integrada com IA, capaz de responder perguntas, processar solicitações e fornecer suporte 24/7 de forma natural e eficiente.",
                 feature1: "Atendimento 24/7 Automatizado",
                 feature2: "Integração com IA Avançada",
                 feature3: "Personalização Total"
@@ -254,8 +254,8 @@ const translations = {
         // Hero Section
         hero: {
             greeting: "Hello, I'm",
-            subtitle: "Web Developer & Automation Specialist 🚀",
-            description: "IT Support Analyst at Prosper and founder of AIverse Technologies, an agency specialized in web development and intelligent automations. I transform ideas into efficient digital solutions, creating modern websites and customized WhatsApp agents with AI.",
+            subtitle: "Fullstack Developer & Automation Specialist 🚀",
+            description: "Fullstack Developer with 5+ projects in production. I use React, Next.js, Python/Flask and n8n to turn ideas into real digital solutions — focused on performance, automation and AI.",
             viewProjects: "View Projects",
             contactMe: "Get in Touch",
             loading: "Loading experience..."
