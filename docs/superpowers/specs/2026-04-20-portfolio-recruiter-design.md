@@ -73,9 +73,9 @@ O card laranja já está bom. Apenas garantir que a lista de oportunidades lista
 
 ### Bônus
 
-**8. Gerar PDF do currículo**
+**8. Adicionar PDF do currículo**
 
-Converter `Curriculo_Alexandro_Granja.md` para `assets/cv.pdf` para que o botão "Baixar CV" funcione. Pode ser feito manualmente via browser (imprimir como PDF) ou via ferramenta CLI (pandoc, wkhtmltopdf).
+Copiar o arquivo PDF existente para `assets/cv.pdf` para que o botão "Baixar CV" funcione.
 
 ---
 

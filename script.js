@@ -91,10 +91,14 @@ const translations = {
         hero: {
             greeting: "Olá, eu sou",
             subtitle: "Desenvolvedor Fullstack & Especialista em Automações 🚀",
-            description: "Desenvolvedor Fullstack com 5+ projetos em produção. Uso React, Next.js, Python/Flask e n8n para transformar ideias em soluções digitais reais — com foco em performance, automação e IA.",
+            description: "Desenvolvedor Fullstack com foco em entregas que funcionam de verdade. Construo aplicações de ponta a ponta — React, Python/Flask, PostgreSQL — e integro sistemas e automatizo fluxos com IA. Foco em código limpo, performance e soluções que escalam.",
             viewProjects: "Ver Projetos",
             contactMe: "Entre em Contato",
-            loading: "Carregando experiência..."
+            downloadCV: "Baixar CV",
+            loading: "Carregando experiência...",
+            statProjects: "Projetos",
+            statAutomations: "Automações",
+            statExperience: "Anos Exp."
         },
         // About Section
         about: {
@@ -113,6 +117,7 @@ const translations = {
             devclubLevel: "Formação Intensiva",
             automation: "Gestão de Automação",
             automationLevel: "Especialização IA & n8n",
+            onlineCerts: "Certificados Online",
             achievements: "Principais Conquistas",
             achievement1: "Redução de 80% no tempo de atendimento com automações",
             achievement2: "Aplicações Fullstack escaláveis com React + Python",
@@ -130,10 +135,13 @@ const translations = {
         skills: {
             techStack: "Tech Stack",
             mySkills: "Minhas Habilidades",
+            mySkillsLabel: "Minhas ",
+            mySkillsHighlight: "Habilidades",
             technologies: "25+ Tecnologias",
             frontend: "Frontend",
             backend: "Backend & Automação",
-            tools: "Ferramentas"
+            tools: "Ferramentas",
+            courses: "Certificados"
         },
         // Projects Section
         projects: {
@@ -183,10 +191,13 @@ const translations = {
         skills: {
             techStack: "Tech Stack",
             mySkills: "Minhas Habilidades",
+            mySkillsLabel: "Minhas ",
+            mySkillsHighlight: "Habilidades",
             technologies: "25+ Tecnologias",
             frontend: "Frontend",
             backend: "Backend & Automação",
             tools: "Ferramentas",
+            courses: "Certificados",
             // Níveis de proficiência
             expert: "Expert",
             advanced: "Avançado",
@@ -255,10 +266,14 @@ const translations = {
         hero: {
             greeting: "Hello, I'm",
             subtitle: "Fullstack Developer & Automation Specialist 🚀",
-            description: "Fullstack Developer with 5+ projects in production. I use React, Next.js, Python/Flask and n8n to turn ideas into real digital solutions — focused on performance, automation and AI.",
+            description: "Fullstack Developer focused on delivering things that actually work. I build end-to-end applications — React, Python/Flask, PostgreSQL — and integrate systems and automate workflows with AI. Clean code, performance, scalable solutions.",
             viewProjects: "View Projects",
             contactMe: "Get in Touch",
-            loading: "Loading experience..."
+            downloadCV: "Download CV",
+            loading: "Loading experience...",
+            statProjects: "Projects",
+            statAutomations: "Automations",
+            statExperience: "Yrs Exp."
         },
         // About Section
         about: {
@@ -277,6 +292,7 @@ const translations = {
             devclubLevel: "Intensive Training",
             automation: "Automation Management",
             automationLevel: "AI & n8n Specialization",
+            onlineCerts: "Online Certificates",
             achievements: "Main Achievements",
             achievement1: "80% reduction in service time with automations",
             achievement2: "Scalable Fullstack applications with React + Python",
@@ -294,7 +310,8 @@ const translations = {
         skills: {
             frontend: "Frontend",
             backend: "Backend & Automation",
-            tools: "Tools"
+            tools: "Tools",
+            courses: "Courses"
         },
         // Projects Section
         projects: {
@@ -344,10 +361,13 @@ const translations = {
         skills: {
             techStack: "Tech Stack",
             mySkills: "My Skills",
+            mySkillsLabel: "My ",
+            mySkillsHighlight: "Skills",
             technologies: "25+ Technologies",
             frontend: "Frontend",
             backend: "Backend & Automation",
             tools: "Tools",
+            courses: "Certificates",
             // Níveis de proficiência
             expert: "Expert",
             advanced: "Advanced",
@@ -416,7 +436,7 @@ function setLanguage(lang) {
     updatePageLanguage(lang);
     // Atualizar título da página
     if (lang === 'pt') {
-        document.title = 'Alexandro Granja | Desenvolvedor Web & Especialista em Automações';
+        document.title = 'Alexandro Granja | Desenvolvedor Fullstack & Especialista em Automações';
         const metaDesc = document.querySelector('meta[name="description"]');
         if (metaDesc) {
             metaDesc.setAttribute('content', 'Portfólio de Alexandro Granja — Desenvolvedor Web e Especialista em Automações. Criação de sites modernos, responsivos e agentes de WhatsApp com IA (n8n).');
@@ -448,8 +468,12 @@ function updatePageLanguage(lang) {
     document.querySelectorAll('[data-i18n="hero.description"]').forEach(el => el.textContent = t.hero.description);
     document.querySelectorAll('[data-i18n="hero.viewProjects"]').forEach(el => el.textContent = t.hero.viewProjects);
     document.querySelectorAll('[data-i18n="hero.contactMe"]').forEach(el => el.textContent = t.hero.contactMe);
+    document.querySelectorAll('[data-i18n="hero.downloadCV"]').forEach(el => el.textContent = t.hero.downloadCV);
     document.querySelectorAll('[data-i18n="hero.loading"]').forEach(el => el.textContent = t.hero.loading);
-    
+    document.querySelectorAll('[data-i18n="hero.statProjects"]').forEach(el => el.textContent = t.hero.statProjects);
+    document.querySelectorAll('[data-i18n="hero.statAutomations"]').forEach(el => el.textContent = t.hero.statAutomations);
+    document.querySelectorAll('[data-i18n="hero.statExperience"]').forEach(el => el.textContent = t.hero.statExperience);
+
     // Atualizar About
     document.querySelectorAll('[data-i18n="about.experience"]').forEach(el => el.textContent = t.about.experience);
     document.querySelectorAll('[data-i18n="about.education"]').forEach(el => el.textContent = t.about.education);
@@ -464,6 +488,7 @@ function updatePageLanguage(lang) {
     document.querySelectorAll('[data-i18n="about.devclubLevel"]').forEach(el => el.textContent = t.about.devclubLevel);
     document.querySelectorAll('[data-i18n="about.automation"]').forEach(el => el.textContent = t.about.automation);
     document.querySelectorAll('[data-i18n="about.automationLevel"]').forEach(el => el.textContent = t.about.automationLevel);
+    document.querySelectorAll('[data-i18n="about.onlineCerts"]').forEach(el => el.textContent = t.about.onlineCerts);
     document.querySelectorAll('[data-i18n="about.achievements"]').forEach(el => el.textContent = t.about.achievements);
     document.querySelectorAll('[data-i18n="about.achievement1"]').forEach(el => el.textContent = t.about.achievement1);
     document.querySelectorAll('[data-i18n="about.achievement2"]').forEach(el => el.textContent = t.about.achievement2);
@@ -480,20 +505,14 @@ function updatePageLanguage(lang) {
     
     // Atualizar Skills
     document.querySelectorAll('[data-i18n="skills.techStack"]').forEach(el => el.textContent = t.skills.techStack);
-    document.querySelectorAll('[data-i18n="skills.mySkills"]').forEach(el => {
-        if (el.classList && el.classList.contains('text-primary')) {
-            el.textContent = lang === 'pt' ? 'Habilidades' : 'Skills';
-        } else if (el.textContent.trim() === 'Minhas ' || el.textContent.trim() === 'My ') {
-            el.textContent = lang === 'pt' ? 'Minhas ' : 'My ';
-        } else {
-            el.textContent = t.skills.mySkills;
-        }
-    });
+    document.querySelectorAll('[data-i18n="skills.mySkillsLabel"]').forEach(el => el.textContent = t.skills.mySkillsLabel);
+    document.querySelectorAll('[data-i18n="skills.mySkillsHighlight"]').forEach(el => el.textContent = t.skills.mySkillsHighlight);
     document.querySelectorAll('[data-i18n="skills.technologies"]').forEach(el => el.textContent = t.skills.technologies);
     document.querySelectorAll('[data-i18n="skills.frontend"]').forEach(el => el.textContent = t.skills.frontend);
     document.querySelectorAll('[data-i18n="skills.backend"]').forEach(el => el.textContent = t.skills.backend);
     document.querySelectorAll('[data-i18n="skills.tools"]').forEach(el => el.textContent = t.skills.tools);
-    
+    document.querySelectorAll('[data-i18n="skills.courses"]').forEach(el => el.textContent = t.skills.courses);
+
     // Atualizar Agency
     document.querySelectorAll('[data-i18n="agency.tagline"]').forEach(el => el.textContent = t.agency.tagline);
     document.querySelectorAll('[data-i18n="agency.webDev.title"]').forEach(el => el.textContent = t.agency.webDev.title);
@@ -570,12 +589,8 @@ function updatePageLanguage(lang) {
     // Atualizar botão de idioma
     const langText = document.getElementById('language-text');
     const langBtn = document.getElementById('language-btn');
-    if (langText) {
-        langText.textContent = lang === 'pt' ? 'EN' : 'PT';
-    }
-    if (langBtn) {
-        langBtn.setAttribute('title', lang === 'pt' ? 'Switch to English' : 'Mudar para Português');
-    }
+    if (langText) langText.textContent = lang === 'pt' ? 'EN' : 'PT';
+    if (langBtn) langBtn.setAttribute('title', lang === 'pt' ? 'Switch to English' : 'Mudar para Português');
 }
 
 // Função para alternar idioma
@@ -2260,18 +2275,170 @@ window.toggleDescription = function(button) {
     const description = wrapper.querySelector('.project-description');
     const readMoreText = button.querySelector('.read-more-text');
     const readLessText = button.querySelector('.read-less-text');
-    
+
     if (description.classList.contains('expanded')) {
-        // Colapsar
         description.classList.remove('expanded');
         readMoreText.style.display = 'inline';
         readLessText.style.display = 'none';
         button.classList.remove('expanded');
     } else {
-        // Expandir
         description.classList.add('expanded');
         readMoreText.style.display = 'none';
         readLessText.style.display = 'inline';
         button.classList.add('expanded');
     }
 };
+
+// ============================================
+// HERO v2 — Canvas Particles
+// ============================================
+(function initHeroCanvas() {
+    const canvas = document.getElementById('hero-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let raf;
+
+    function resize() {
+        canvas.width = canvas.offsetWidth || window.innerWidth;
+        canvas.height = canvas.offsetHeight || window.innerHeight;
+    }
+
+    function mkParticle() {
+        return {
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.4,
+            vy: (Math.random() - 0.5) * 0.4,
+            r: Math.random() * 1.5 + 0.5,
+            a: Math.random() * 0.45 + 0.1
+        };
+    }
+
+    function init() {
+        resize();
+        const count = Math.min(55, Math.floor((canvas.width * canvas.height) / 14000));
+        particles = Array.from({ length: count }, mkParticle);
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const MAX_DIST = 130;
+
+        for (let i = 0; i < particles.length; i++) {
+            const p = particles[i];
+            p.x += p.vx;
+            p.y += p.vy;
+            if (p.x < 0 || p.x > canvas.width)  p.vx *= -1;
+            if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(245,158,11,${p.a})`;
+            ctx.fill();
+
+            for (let j = i + 1; j < particles.length; j++) {
+                const q = particles[j];
+                const dx = p.x - q.x, dy = p.y - q.y;
+                const d = Math.sqrt(dx * dx + dy * dy);
+                if (d < MAX_DIST) {
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(q.x, q.y);
+                    ctx.strokeStyle = `rgba(245,158,11,${(1 - d / MAX_DIST) * 0.12})`;
+                    ctx.lineWidth = 0.6;
+                    ctx.stroke();
+                }
+            }
+        }
+        raf = requestAnimationFrame(draw);
+    }
+
+    init();
+    draw();
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => { init(); }, 200);
+    });
+})();
+
+// ============================================
+// HERO v2 — Typewriter
+// ============================================
+(function initTypewriter() {
+    const el = document.getElementById('typewriter-text');
+    if (!el) return;
+
+    const roles = {
+        pt: ['Desenvolvedor Web', 'Especialista em Automações', 'Fundador da AIverse', 'Full Stack Dev'],
+        en: ['Web Developer', 'Automation Specialist', 'AIverse Founder', 'Full Stack Dev']
+    };
+
+    let roleIdx = 0, charIdx = 0, deleting = false;
+
+    function getLang() {
+        return document.documentElement.lang === 'en' ? 'en' : 'pt';
+    }
+
+    function tick() {
+        const list = roles[getLang()];
+        const current = list[roleIdx % list.length];
+        if (deleting) {
+            el.textContent = current.slice(0, charIdx--);
+        } else {
+            el.textContent = current.slice(0, charIdx++);
+        }
+
+        let delay = deleting ? 45 : 95;
+        if (!deleting && charIdx > current.length) {
+            delay = 2200; deleting = true;
+        } else if (deleting && charIdx < 0) {
+            deleting = false; charIdx = 0;
+            roleIdx = (roleIdx + 1) % list.length;
+            delay = 350;
+        }
+        setTimeout(tick, delay);
+    }
+
+    setTimeout(tick, 2400);
+})();
+
+// ============================================
+// HERO v2 — Counter Animation
+// ============================================
+(function initCounters() {
+    const counters = document.querySelectorAll('[data-counter]');
+    if (!counters.length) return;
+
+    let done = false;
+    function run() {
+        if (done) return;
+        done = true;
+        counters.forEach(el => {
+            const target = parseInt(el.getAttribute('data-counter'), 10);
+            let current = 0;
+            const steps = 35;
+            const inc = target / steps;
+            const timer = setInterval(() => {
+                current += inc;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                el.textContent = Math.floor(current) + '+';
+            }, 40);
+        });
+    }
+
+    // Run when home section is visible
+    const homeSection = document.getElementById('home');
+    if (!homeSection) return;
+    const obs = new MutationObserver(() => {
+        if (homeSection.classList.contains('active')) run();
+    });
+    obs.observe(homeSection, { attributes: true, attributeFilter: ['class'] });
+    // Also run on first load if active
+    if (homeSection.classList.contains('active')) setTimeout(run, 2400);
+})()

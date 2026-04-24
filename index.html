@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script>
         tailwind.config = {
@@ -88,7 +89,7 @@
                 flex-direction: column !important;
                 justify-content: center !important;
                 align-items: center !important;
-                padding: 1rem !important;
+                padding: 0.35rem !important;
                 min-height: 100vh;
                 min-height: -webkit-fill-available;
                 min-height: 100dvh;
@@ -229,7 +230,8 @@
     <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 overflow-hidden w-full flex" style="height: 100vh; height: -webkit-fill-available; height: 100dvh;">
+<body class=
+"bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 overflow-hidden w-full flex" style="height: 100vh; height: -webkit-fill-available; height: 100dvh;">
     <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">
         <div class="loading-content">
@@ -245,90 +247,168 @@
     </div>
 
     <!-- Sidebar Navigation -->
-    <aside class="w-16 sm:w-20 md:w-24 bg-navy-card dark:bg-navy-card border-r border-slate-700 dark:border-slate-700 flex flex-col items-center py-4 sm:py-8 z-50" style="height: 100vh; height: -webkit-fill-available; height: 100dvh; min-height: 100vh; min-height: -webkit-fill-available; min-height: 100dvh; overflow-y: auto; overflow-x: hidden;">
-        <div class="mb-4 sm:mb-6 md:mb-12 flex-shrink-0">
-            <span class="text-xl sm:text-2xl font-extrabold text-white">A<span class="text-primary">G</span></span>
+    <aside class="w-16 sm:w-20 md:w-24 bg-navy-card dark:bg-navy-card border-r border-slate-700/60 dark:border-slate-700/60 flex flex-col items-center py-5 sm:py-7 z-50" style="height: 100vh; height: -webkit-fill-available; height: 100dvh; min-height: 100vh; min-height: -webkit-fill-available; min-height: 100dvh; overflow-y: auto; overflow-x: hidden;">
+        <!-- Logo -->
+        <div class="mb-6 sm:mb-8 md:mb-10 flex-shrink-0">
+            <span class="text-xl sm:text-2xl font-extrabold text-white tracking-tight">A<span class="text-primary">G</span></span>
         </div>
-        <nav class="flex-1 flex flex-col gap-4 sm:gap-6 md:gap-8 items-center min-h-0">
-            <a class="flex flex-col items-center gap-0.5 sm:gap-1 text-primary nav-link-sidebar" href="#home" data-section="home">
-                <span class="material-icons-round text-xl sm:text-2xl">home</span>
-                <span class="text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider" data-i18n="nav.home">Início</span>
+        <!-- Main nav -->
+        <nav class="flex-1 flex flex-col items-center justify-center min-h-0 w-full px-2 gap-0.5">
+            <a class="sidebar-item text-primary nav-link-sidebar w-full" href="#home" data-section="home">
+                <span class="material-icons-round" style="font-size:20px;">home</span>
+                <span class="sidebar-label" data-i18n="nav.home">Início</span>
             </a>
-            <a class="flex flex-col items-center gap-0.5 sm:gap-1 text-slate-400 hover:text-primary transition-colors nav-link-sidebar" href="#about" data-section="about">
-                <span class="material-icons-round text-xl sm:text-2xl">person</span>
-                <span class="text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider" data-i18n="nav.about">Sobre</span>
+            <a class="sidebar-item text-slate-300 hover:text-primary nav-link-sidebar w-full" href="#about" data-section="about">
+                <span class="material-icons-round" style="font-size:20px;">person</span>
+                <span class="sidebar-label" data-i18n="nav.about">Sobre</span>
             </a>
-            <a class="flex flex-col items-center gap-0.5 sm:gap-1 text-slate-400 hover:text-primary transition-colors nav-link-sidebar" href="#agency" data-section="agency">
-                <span class="material-icons-round text-xl sm:text-2xl">business</span>
-                <span class="text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider" data-i18n="nav.agency">Agência</span>
+            <a class="sidebar-item text-slate-300 hover:text-primary nav-link-sidebar w-full" href="#agency" data-section="agency">
+                <span class="material-icons-round" style="font-size:20px;">business</span>
+                <span class="sidebar-label" data-i18n="nav.agency">Agência</span>
             </a>
-            <a class="flex flex-col items-center gap-0.5 sm:gap-1 text-slate-400 hover:text-primary transition-colors nav-link-sidebar" href="#skills" data-section="skills">
-                <span class="material-icons-round text-xl sm:text-2xl">bolt</span>
-                <span class="text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider" data-i18n="nav.skills">Habilidades</span>
+            <a class="sidebar-item text-slate-300 hover:text-primary nav-link-sidebar w-full" href="#skills" data-section="skills">
+                <span class="material-icons-round" style="font-size:20px;">bolt</span>
+                <span class="sidebar-label" data-i18n="nav.skills">Skills</span>
             </a>
-            <a class="flex flex-col items-center gap-0.5 sm:gap-1 text-slate-400 hover:text-primary transition-colors nav-link-sidebar" href="#projects" data-section="projects">
-                <span class="material-icons-round text-xl sm:text-2xl">grid_view</span>
-                <span class="text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider" data-i18n="nav.projects">Projetos</span>
+            <a class="sidebar-item text-slate-300 hover:text-primary nav-link-sidebar w-full" href="#projects" data-section="projects">
+                <span class="material-icons-round" style="font-size:20px;">grid_view</span>
+                <span class="sidebar-label" data-i18n="nav.projects">Projetos</span>
             </a>
         </nav>
-        <div class="mt-auto flex flex-col gap-1.5 sm:gap-2 items-center flex-shrink-0 pb-1 sm:pb-2">
-            <button id="language-btn" onclick="toggleLanguage()" class="flex flex-col items-center gap-0.5 sm:gap-1 text-slate-400 hover:text-primary transition-colors cursor-pointer bg-transparent border-none p-1.5 sm:p-2 rounded-lg hover:bg-slate-800/50" title="Mudar para Inglês">
-                <span class="material-icons-round text-lg sm:text-xl md:text-2xl">language</span>
-                <span class="text-[8px] sm:text-[9px] md:text-[10px] font-semibold uppercase tracking-wider" id="language-text">EN</span>
+        <!-- Bottom controls -->
+        <div class="mt-auto flex flex-col items-center flex-shrink-0 pb-3 w-full px-2 gap-0.5">
+            <div class="w-8 h-px bg-slate-700 mb-1"></div>
+            <button id="language-btn" onclick="toggleLanguage()" class="sidebar-item text-slate-300 hover:text-primary cursor-pointer bg-transparent border-none w-full" title="Mudar para Inglês">
+                <span class="material-icons-round" style="font-size:18px;">language</span>
+                <span class="sidebar-label" id="language-text">EN</span>
             </button>
-            <a class="flex flex-col items-center gap-0.5 sm:gap-1 text-slate-400 hover:text-primary transition-colors nav-link-sidebar" href="#contact" data-section="contact">
-                <span class="material-icons-round text-lg sm:text-xl md:text-2xl">mail</span>
-                <span class="text-[8px] sm:text-[9px] md:text-[10px] font-semibold uppercase tracking-wider" data-i18n="nav.contact">Contato</span>
+            <a class="sidebar-item text-slate-300 hover:text-primary nav-link-sidebar w-full" href="#contact" data-section="contact">
+                <span class="material-icons-round" style="font-size:18px;">mail</span>
+                <span class="sidebar-label" data-i18n="nav.contact">Contato</span>
             </a>
         </div>
     </aside>
 
     <!-- Main Content Area -->
     <main class="flex-1 overflow-hidden relative bg-background-dark dark:bg-background-dark" style="height: 100vh; height: -webkit-fill-available; height: 100dvh;">
-    <!-- Hero Section -->
-    <section id="home" class="section-content active flex flex-col justify-start items-center px-4 sm:px-6 md:px-12 pt-4 sm:pt-6 md:pt-8 pb-6 sm:pb-8 relative bg-slate-50 dark:bg-background-dark" style="min-height: 100vh; min-height: -webkit-fill-available; min-height: 100dvh;">
-        <!-- Background Effects -->
-        <div class="absolute top-[-10%] right-[-10%] w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] bg-primary/10 rounded-full blur-[100px]"></div>
-        <div class="absolute bottom-[-5%] left-[-5%] w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] bg-blue-500/5 rounded-full blur-[80px]"></div>
-        
-        <div class="relative z-10 max-w-lg w-full mx-auto">
-            <!-- Profile Picture -->
-            <div class="mb-4 sm:mb-6 md:mb-8 flex justify-center lg:justify-start w-full">
-                <div class="relative inline-flex">
-                    <div class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 rounded-full overflow-hidden border-2 sm:border-4 border-white dark:border-navy-card profile-ring">
-                        <img alt="Alexandro Granja" class="w-full h-full object-cover" src="./assets/Minha-Foto.jpg" />
+    <!-- Hero Section v2 -->
+    <section id="home" class="section-content active relative bg-background-dark" style="min-height: 100vh; min-height: -webkit-fill-available; min-height: 100dvh;">
+        <!-- Canvas particle network -->
+        <canvas id="hero-canvas" class="absolute inset-0 w-full h-full" style="z-index:0;pointer-events:none;"></canvas>
+        <!-- Grid overlay -->
+        <div class="hero-grid-overlay absolute inset-0" style="z-index:1;pointer-events:none;"></div>
+        <!-- Ambient glows -->
+        <div class="absolute top-0 right-0 w-96 h-96 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(245,158,11,0.12) 0%,transparent 70%);z-index:1;"></div>
+        <div class="absolute bottom-0 left-0 w-72 h-72 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(59,130,246,0.06) 0%,transparent 70%);z-index:1;"></div>
+
+        <!-- Content wrapper -->
+        <div class="relative w-full flex items-center md:items-start justify-center px-3 sm:px-6 md:px-10 pt-3 md:pt-4 lg:pt-4 pb-4" style="z-index:10;min-height:100%;min-height:inherit;">
+            <div class="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-start">
+
+                <!-- LEFT: Text -->
+                <div class="space-y-3 sm:space-y-5 text-center md:text-left order-2 md:order-1 hero-text-animate">
+
+                    <!-- Name block -->
+                    <div class="space-y-1">
+                        <p class="text-primary font-semibold tracking-[0.22em] uppercase text-xs" data-i18n="hero.greeting">Olá, eu sou</p>
+                        <h1 class="hero-display-name text-4xl sm:text-5xl lg:text-6xl font-black leading-none text-white">
+                            Alexandro<br>
+                            <span class="text-primary">Granja</span>
+                        </h1>
+                        <div class="flex items-center justify-center md:justify-start gap-0 h-7">
+                            <span id="typewriter-text" class="text-base sm:text-lg text-slate-300 font-medium"></span><span class="hero-cursor text-primary font-thin">|</span>
+                        </div>
                     </div>
-                    <div class="absolute bottom-0 right-0 bg-green-500 w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 rounded-full border-2 sm:border-3 md:border-4 border-background-light dark:border-background-dark z-10" style="transform: translate(5%, 5%);"></div>
+
+                    <!-- Description -->
+                    <p class="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-sm mx-auto md:mx-0" data-i18n="hero.description">
+                        Desenvolvedor Fullstack com foco em entregas que funcionam de verdade. Construo aplicações de ponta a ponta — React, Python/Flask, PostgreSQL — e integro sistemas e automatizo fluxos com IA. Foco em código limpo, performance e soluções que escalam.
+                    </p>
+
+                    <!-- Stats -->
+                    <div class="flex items-center gap-4 sm:gap-8 justify-center md:justify-start">
+                        <div class="text-center md:text-left">
+                            <div class="text-2xl sm:text-3xl font-black text-primary font-mono" data-counter="10">0+</div>
+                            <div class="text-[10px] text-slate-500 font-semibold uppercase tracking-widest" data-i18n="hero.statProjects">Projetos</div>
+                        </div>
+                        <div class="w-px h-9 bg-slate-700"></div>
+                        <div class="text-center md:text-left">
+                            <div class="text-2xl sm:text-3xl font-black text-primary font-mono" data-counter="5">0+</div>
+                            <div class="text-[10px] text-slate-500 font-semibold uppercase tracking-widest" data-i18n="hero.statAutomations">Automações</div>
+                        </div>
+                        <div class="w-px h-9 bg-slate-700"></div>
+                        <div class="text-center md:text-left">
+                            <div class="text-2xl sm:text-3xl font-black text-primary font-mono" data-counter="2">0+</div>
+                            <div class="text-[10px] text-slate-500 font-semibold uppercase tracking-widest" data-i18n="hero.statExperience">Anos Exp.</div>
+                        </div>
+                    </div>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+                        <button onclick="showSection('#projects')" class="hero-btn-primary px-7 py-3 rounded-full font-bold text-sm flex items-center justify-center gap-2">
+                            <span data-i18n="hero.viewProjects">Ver Projetos</span>
+                            <span class="material-icons-round text-base">arrow_forward</span>
+                        </button>
+                        <button onclick="showSection('#contact')" class="hero-btn-secondary px-7 py-3 rounded-full font-bold text-sm flex items-center justify-center gap-2">
+                            <span data-i18n="hero.contactMe">Entre em Contato</span>
+                            <span class="material-icons-round text-base">mail_outline</span>
+                        </button>
+                    </div>
+
+                    <!-- Tech marquee -->
+                    <div class="hero-marquee-outer hidden sm:block">
+                        <div class="hero-marquee-track">
+                            <div class="hero-marquee-inner">
+                                <span class="hero-tech-tag">React</span>
+                                <span class="hero-tech-tag">Python</span>
+                                <span class="hero-tech-tag">n8n</span>
+                                <span class="hero-tech-tag">Node.js</span>
+                                <span class="hero-tech-tag">Flask</span>
+                                <span class="hero-tech-tag">PostgreSQL</span>
+                                <span class="hero-tech-tag">WhatsApp API</span>
+                                <span class="hero-tech-tag">Tailwind CSS</span>
+                                <span class="hero-tech-tag">TypeScript</span>
+                                <span class="hero-tech-tag">Docker</span>
+                                <span class="hero-tech-tag">React</span>
+                                <span class="hero-tech-tag">Python</span>
+                                <span class="hero-tech-tag">n8n</span>
+                                <span class="hero-tech-tag">Node.js</span>
+                                <span class="hero-tech-tag">Flask</span>
+                                <span class="hero-tech-tag">PostgreSQL</span>
+                                <span class="hero-tech-tag">WhatsApp API</span>
+                                <span class="hero-tech-tag">Tailwind CSS</span>
+                                <span class="hero-tech-tag">TypeScript</span>
+                                <span class="hero-tech-tag">Docker</span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
-            
-            <!-- Text Content -->
-            <div class="text-center lg:text-left space-y-4 sm:space-y-6 w-full">
-                <div class="space-y-1">
-                    <p class="text-primary font-medium tracking-wide uppercase text-xs sm:text-sm" data-i18n="hero.greeting">Olá, eu sou</p>
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
-                        Alexandro <span class="text-primary">Granja</span>
-                    </h1>
-                    <h2 class="text-base sm:text-lg md:text-xl font-medium text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="hero.subtitle">
-                        Desenvolvedor Web & Especialista em Automações 🚀
-                    </h2>
+
+                <!-- RIGHT: Profile -->
+                <div class="flex justify-center order-1 md:order-2 hero-profile-animate">
+                    <div class="hero-profile-wrap">
+                        <div class="hero-ring-1"></div>
+                        <div class="hero-ring-2"></div>
+                        <div class="hero-photo">
+                            <img src="./assets/Minha-Foto.jpg" alt="Alexandro Granja" class="w-full h-full object-cover">
+                        </div>
+                        <!-- Floating badges -->
+                        <div class="hero-float-1">
+                            <span class="material-icons-round text-primary" style="font-size:13px;">code</span>
+                            <span class="text-[11px] font-bold text-white">Full Stack</span>
+                        </div>
+                        <div class="hero-float-2">
+                            <span class="material-icons-round text-primary" style="font-size:13px;">smart_toy</span>
+                            <span class="text-[11px] font-bold text-white">IA</span>
+                        </div>
+                    </div>
                 </div>
-                <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm sm:text-base px-2 sm:px-0" data-i18n="hero.description">
-                    Analista de Suporte de TI na <span class="font-bold text-primary">Prosper</span> e fundador da 
-                    <a href="https://www.aiversetechnologies.com.br/" target="_blank" class="text-primary font-semibold hover:underline">AIverse Technologies</a>, uma agência especializada em desenvolvimento web e automações inteligentes. Transformo ideias em soluções digitais eficientes, criando sites modernos e agentes de WhatsApp personalizados com IA.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4">
-                    <button onclick="showSection('#projects')" class="bg-primary hover:bg-opacity-90 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold shadow-lg shadow-primary/20 transition-all active:scale-95 flex items-center justify-center gap-2 text-sm sm:text-base w-full sm:w-auto">
-                        <span data-i18n="hero.viewProjects">Ver Projetos</span>
-                        <span class="material-icons-round text-lg sm:text-xl">arrow_forward</span>
-                    </button>
-                    <button onclick="showSection('#contact')" class="bg-white dark:bg-navy-card border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-all active:scale-95 flex items-center justify-center gap-2 text-sm sm:text-base w-full sm:w-auto">
-                        <span data-i18n="hero.contactMe">Entre em Contato</span>
-                    </button>
-                </div>
+
             </div>
         </div>
-        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-slate-400/20 rounded-full md:hidden"></div>
+
+        <div class="absolute bottom-3 left-1/2 -translate-x-1/2 w-28 h-0.5 bg-slate-400/20 rounded-full sm:hidden" style="z-index:10;"></div>
     </section>
 
     <!-- About Section -->
@@ -388,6 +468,33 @@
                     <li class="flex flex-col">
                         <span class="text-sm font-bold" data-i18n="about.automation">Gestão de Automação</span>
                         <span class="text-xs text-slate-500" data-i18n="about.automationLevel">Especialização IA & n8n</span>
+                    </li>
+                    <li class="pt-3 border-t border-slate-200 dark:border-slate-700">
+                        <span class="text-[10px] uppercase tracking-widest text-slate-400 font-semibold block mb-2" data-i18n="about.onlineCerts">Certificados Online</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <span class="text-sm font-bold">Lógica de Algoritmos</span>
+                        <span class="text-xs text-slate-500">Curso em Vídeo</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <span class="text-sm font-bold">CS50x</span>
+                        <span class="text-xs text-slate-500">Harvard · edX</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <span class="text-sm font-bold">JS Algorithms</span>
+                        <span class="text-xs text-slate-500">freeCodeCamp</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <span class="text-sm font-bold">n8n Academy</span>
+                        <span class="text-xs text-slate-500">n8n</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <span class="text-sm font-bold">IA Essentials</span>
+                        <span class="text-xs text-slate-500">Google · Coursera</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <span class="text-sm font-bold">Discover</span>
+                        <span class="text-xs text-slate-500">Rocketseat</span>
                     </li>
                 </ul>
             </div>
@@ -572,7 +679,7 @@
             <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-2 sm:mb-6 gap-2 sm:gap-0" style="margin-bottom: 0.5rem !important;">
                 <div>
                     <p class="text-primary font-semibold tracking-wider uppercase text-xs mb-1" data-i18n="skills.techStack">Tech Stack</p>
-                    <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold dark:text-white"><span data-i18n="skills.mySkills">Minhas </span><span class="text-primary" data-i18n="skills.mySkills">Habilidades</span></h1>
+                    <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold dark:text-white"><span data-i18n="skills.mySkillsLabel">Minhas </span><span class="text-primary" data-i18n="skills.mySkillsHighlight">Habilidades</span></h1>
                 </div>
                 <div class="hidden md:block">
                     <span class="px-4 py-2 rounded-full glass-card text-xs font-medium border border-slate-700/50" data-i18n="skills.technologies">
@@ -589,6 +696,9 @@
                 </button>
                 <button class="skills-tab-btn px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-medium text-xs sm:text-sm whitespace-nowrap border border-slate-200 dark:border-slate-700" data-tab-target="support">
                     <span data-i18n="skills.tools">Ferramentas</span>
+                </button>
+                <button class="skills-tab-btn px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-medium text-xs sm:text-sm whitespace-nowrap border border-slate-200 dark:border-slate-700" data-tab-target="courses">
+                    <span data-i18n="skills.courses">Certificados</span>
                 </button>
             </div>
         </header>
@@ -1065,6 +1175,73 @@
                         <div>
                             <h3 class="font-bold text-slate-900 dark:text-white">Integração ERP</h3>
                             <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.systems">Sistemas</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Courses -->
+                <div class="skill-card-group hidden" data-tab="courses">
+                    <div class="group p-5 rounded-2xl glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
+                        <div class="w-14 h-14 rounded-xl bg-[#4CAF50]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <span class="material-icons-round text-[#4CAF50] text-2xl">functions</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 dark:text-white">Lógica de Algoritmos</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Curso em Vídeo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-card-group hidden" data-tab="courses">
+                    <div class="group p-5 rounded-2xl glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
+                        <div class="w-14 h-14 rounded-xl bg-[#A51C30]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <span class="material-icons-round text-[#A51C30] text-2xl">school</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 dark:text-white">CS50x</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Harvard · edX</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-card-group hidden" data-tab="courses">
+                    <div class="group p-5 rounded-2xl glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
+                        <div class="w-14 h-14 rounded-xl bg-[#0A0A23]/60 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <span class="material-icons-round text-[#00C300] text-2xl">code</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 dark:text-white">JS Algorithms</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">freeCodeCamp</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-card-group hidden" data-tab="courses">
+                    <div class="group p-5 rounded-2xl glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
+                        <div class="w-14 h-14 rounded-xl bg-[#EA4B71]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <span class="material-icons-round text-[#EA4B71] text-2xl">auto_fix_high</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 dark:text-white">n8n Academy</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">n8n Academy</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-card-group hidden" data-tab="courses">
+                    <div class="group p-5 rounded-2xl glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
+                        <div class="w-14 h-14 rounded-xl bg-[#4285F4]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <span class="material-icons-round text-[#4285F4] text-2xl">psychology</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 dark:text-white">IA Essentials</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Google · Coursera</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-card-group hidden" data-tab="courses">
+                    <div class="group p-5 rounded-2xl glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
+                        <div class="w-14 h-14 rounded-xl bg-[#8257E5]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <span class="material-icons-round text-[#8257E5] text-2xl">rocket_launch</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 dark:text-white">Discover</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Rocketseat</p>
                         </div>
                     </div>
                 </div>
