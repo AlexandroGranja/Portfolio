@@ -581,7 +581,24 @@ function updatePageLanguage(lang) {
         }
     });
     document.querySelectorAll('[data-i18n="projects.project3Description"]').forEach(el => el.textContent = t.projects.project3Description);
-    
+    document.querySelectorAll('[data-i18n="projects.project4Title"]').forEach(el => {
+        const parts = t.projects.project4Title.split(' ');
+        if (el.classList && el.classList.contains('text-primary')) {
+            el.textContent = parts[1] || parts[0];
+        } else {
+            el.textContent = parts[0];
+        }
+    });
+    document.querySelectorAll('[data-i18n="projects.project4Description"]').forEach(el => el.textContent = t.projects.project4Description);
+    document.querySelectorAll('[data-i18n="projects.project5Title"]').forEach(el => {
+        if (el.classList && el.classList.contains('text-primary')) {
+            el.textContent = lang === 'pt' ? 'XML' : 'Processor';
+        } else {
+            el.textContent = lang === 'pt' ? 'Processador de' : 'XML';
+        }
+    });
+    document.querySelectorAll('[data-i18n="projects.project5Description"]').forEach(el => el.textContent = t.projects.project5Description);
+
     // Atualizar Contact
     document.querySelectorAll('[data-i18n="contact.title"]').forEach(el => {
         if (el.classList.contains('title-text-white')) {
