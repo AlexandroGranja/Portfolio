@@ -90,8 +90,8 @@ const translations = {
         // Hero Section
         hero: {
             greeting: "Olá, eu sou",
-            subtitle: "Desenvolvedor Fullstack & Especialista em Automações 🚀",
-            description: "Desenvolvedor Fullstack com foco em entregas que funcionam de verdade. Construo aplicações de ponta a ponta — React, Python/Flask, PostgreSQL — e integro sistemas e automatizo fluxos com IA. Foco em código limpo, performance e soluções que escalam.",
+            subtitle: "Desenvolvedor Fullstack & Especialista em Automações com IA 🚀",
+            description: "Desenvolvedor Fullstack focado em React, Python/Flask e PostgreSQL. Construí o Fortão Prêmios — sistema em produção com cache em 5 camadas que reduziu 40% do tempo de carregamento — e automatizo fluxos com n8n e IA na rotina de TI da Prosper. Gosto de problemas onde a aplicação inteira precisa funcionar bem.",
             viewProjects: "Ver Projetos",
             contactMe: "Entre em Contato",
             downloadCV: "Baixar CV",
@@ -103,7 +103,7 @@ const translations = {
         // About Section
         about: {
             title: "Alexandro Granja",
-            subtitle: "Desenvolvedor Fullstack & Especialista em Automações 🚀",
+            subtitle: "Desenvolvedor Fullstack & Especialista em Automações com IA 🚀",
             experience: "Experiência Profissional",
             education: "Formação",
             current: "Atual",
@@ -239,7 +239,7 @@ const translations = {
             viewCode: "Ver Código",
             // Projeto 1: Fortão Prêmios
             project1Title: "Fortão Prêmios",
-            project1Description: "Sistema completo de rifas online desenvolvido com Next.js 14 e React. Inclui painel administrativo completo, autenticação segura com JWT e bcrypt, sistema de cache inteligente em 5 camadas que reduz o tempo de carregamento em 40%, gerenciamento de imagens otimizado, dashboard com estatísticas em tempo real e design responsivo. Deploy realizado na Railway com otimizações de performance e segurança.",
+            project1Description: "Sistema completo de campanhas promocionais online com Next.js 14, React e TypeScript. Implementei autenticação com JWT/bcrypt, cache em 5 camadas que reduziu o tempo de carregamento em 40%, dashboard administrativo com estatísticas em tempo real e design responsivo. Deploy na Railway com otimizações de performance e segurança.",
             // Projeto 2: Cardápio Online
             project2Title: "Cardápio Online",
             project2Description: "Sistema completo de cardápio online com painel administrativo avançado. Desenvolvido com React 18 e integração total com Supabase. Inclui cardápio dinâmico, carrinho de compras, checkout completo, gerenciamento de pedidos, upload de imagens, configurações personalizáveis (cores, logo, endereço, redes sociais) e sistema de autenticação. Backend opcional em Flask/Python. Deploy realizado na Railway.",
@@ -267,8 +267,8 @@ const translations = {
         // Hero Section
         hero: {
             greeting: "Hello, I'm",
-            subtitle: "Fullstack Developer & Automation Specialist 🚀",
-            description: "Fullstack Developer focused on delivering things that actually work. I build end-to-end applications — React, Python/Flask, PostgreSQL — and integrate systems and automate workflows with AI. Clean code, performance, scalable solutions.",
+            subtitle: "Fullstack Developer & AI Automation Specialist 🚀",
+            description: "Fullstack Developer working with React, Python/Flask and PostgreSQL. I built Fortão Prêmios — a production system with a 5-layer cache that cut load time by 40% — and I automate workflows with n8n and AI in my IT role at Prosper. I'm drawn to problems where the whole stack has to work together.",
             viewProjects: "View Projects",
             contactMe: "Get in Touch",
             downloadCV: "Download CV",
@@ -280,7 +280,7 @@ const translations = {
         // About Section
         about: {
             title: "Alexandro Granja",
-            subtitle: "Fullstack Developer & Automation Specialist 🚀",
+            subtitle: "Fullstack Developer & AI Automation Specialist 🚀",
             experience: "Professional Experience",
             education: "Education",
             current: "Current",
@@ -411,7 +411,7 @@ const translations = {
             viewCode: "View Code",
             // Projeto 1: Fortão Prêmios
             project1Title: "Fortão Prêmios",
-            project1Description: "Complete online raffle system developed with Next.js 14 and React. Includes complete admin panel, secure authentication with JWT and bcrypt, intelligent 5-layer cache system that reduces loading time by 40%, optimized image management, real-time statistics dashboard and responsive design. Deploy performed on Railway with performance and security optimizations.",
+            project1Description: "Complete online promotional campaign system built with Next.js 14, React and TypeScript. Implemented JWT/bcrypt authentication, a 5-layer cache that cut loading time by 40%, an admin dashboard with real-time statistics, and responsive design. Deployed on Railway with performance and security optimizations.",
             // Projeto 2: Cardápio Online
             project2Title: "Online Menu",
             project2Description: "Complete online menu system with advanced admin panel. Developed with React 18 and full Supabase integration. Includes dynamic menu, shopping cart, complete checkout, order management, image upload, customizable settings (colors, logo, address, social media) and authentication system. Optional Flask/Python backend. Deploy performed on Railway.",
@@ -440,16 +440,16 @@ function setLanguage(lang) {
     updatePageLanguage(lang);
     // Atualizar título da página
     if (lang === 'pt') {
-        document.title = 'Alexandro Granja | Desenvolvedor Fullstack & Especialista em Automações';
+        document.title = 'Alexandro Granja | Desenvolvedor Fullstack & Especialista em Automações com IA';
         const metaDesc = document.querySelector('meta[name="description"]');
         if (metaDesc) {
-            metaDesc.setAttribute('content', 'Portfólio de Alexandro Granja — Desenvolvedor Web e Especialista em Automações. Criação de sites modernos, responsivos e agentes de WhatsApp com IA (n8n).');
+            metaDesc.setAttribute('content', 'Portfólio de Alexandro Granja — Desenvolvedor Fullstack & Especialista em Automações com IA. React, Python/Flask, PostgreSQL e n8n.');
         }
     } else {
-        document.title = 'Alexandro Granja | Web Developer & Automation Specialist';
+        document.title = 'Alexandro Granja | Fullstack Developer & AI Automation Specialist';
         const metaDesc = document.querySelector('meta[name="description"]');
         if (metaDesc) {
-            metaDesc.setAttribute('content', 'Alexandro Granja Portfolio — Web Developer and Automation Specialist. Creating modern, responsive websites and WhatsApp agents with AI (n8n).');
+            metaDesc.setAttribute('content', 'Alexandro Granja Portfolio — Fullstack Developer & AI Automation Specialist. React, Python/Flask, PostgreSQL and n8n.');
         }
     }
 }
@@ -917,7 +917,7 @@ document.head.appendChild(style);
 // Console welcome message
 console.log(`
 %c🚀 Portfólio de Alexandro Granja
-%c👨‍💻 Desenvolvedor Web & Especialista em Automações
+%c👨‍💻 Desenvolvedor Fullstack & Especialista em Automações com IA
 %c💼 Analista de TI - Prosper | Fundador - AIverse Technologies
 %c📧 Alex.granjaaa@hotmail.com
 %c🔗 GitHub: github.com/AlexandroGranja
