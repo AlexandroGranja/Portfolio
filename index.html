@@ -172,10 +172,12 @@
             z-index: 10 !important;
         }
         
-        /* Permitir scroll na seção about */
-        #about.section-content.active {
-            overflow-y: auto !important;
-            overflow-x: hidden !important;
+        /* About: scroll só em mobile (desktop cabe sem scroll) */
+        @media (max-width: 767px) {
+            #about.section-content.active {
+                overflow-y: auto !important;
+                overflow-x: hidden !important;
+            }
         }
         
         /* Permitir scroll na seção agency */
@@ -230,8 +232,7 @@
     <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class=
-"bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 overflow-hidden w-full flex" style="height: 100vh; height: -webkit-fill-available; height: 100dvh;">
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 overflow-hidden w-full flex" style="height: 100vh; height: -webkit-fill-available; height: 100dvh;">
     <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">
         <div class="loading-content">
@@ -322,7 +323,7 @@
 
                     <!-- Description -->
                     <p class="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-sm mx-auto md:mx-0" data-i18n="hero.description">
-                        Desenvolvedor Fullstack com foco em entregas que funcionam de verdade. Construo aplicações de ponta a ponta — React, Python/Flask, PostgreSQL — e integro sistemas e automatizo fluxos com IA. Foco em código limpo, performance e soluções que escalam.
+                        Desenvolvedor Fullstack com 5+ projetos em produção. Construo aplicações de ponta a ponta — React, Python/Flask, PostgreSQL — e automatizo processos com n8n e IA. Foco em código limpo, performance e soluções que escalam.
                     </p>
 
                     <!-- Stats -->
@@ -412,166 +413,181 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section-content about h-full px-4 sm:px-6 md:px-10 lg:px-12 py-4 sm:py-6 md:py-8 overflow-y-auto hide-scrollbar">
-        <header class="mb-6 sm:mb-8 md:mb-10">
-            <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">Alexandro <span class="text-primary">Granja</span></h1>
-            <p class="text-slate-500 dark:text-slate-400 text-base sm:text-lg flex items-center gap-2">
-                <span data-i18n="about.subtitle">Desenvolvedor Fullstack & Especialista em Automações</span> <span class="animate-bounce">🚀</span>
-            </p>
-        </header>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
-            <!-- Experiência Profissional -->
-            <div class="md:col-span-2 lg:col-span-2 bg-white dark:bg-card-dark p-6 rounded-2xl border-2 border-primary/30 dark:border-primary/40 shadow-lg flex flex-col">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="p-3 rounded-xl bg-primary/10 text-primary">
-                        <span class="material-icons-round">work</span>
+    <section id="about" class="section-content about h-full relative bg-background-dark overflow-hidden">
+        <!-- Grid overlay -->
+        <div class="about-grid-overlay absolute inset-0" style="z-index:0;pointer-events:none;"></div>
+        <!-- Ambient glows -->
+        <div class="absolute top-0 right-1/4 w-96 h-96 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(245,158,11,0.10) 0%,transparent 70%);z-index:0;"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(59,130,246,0.06) 0%,transparent 70%);z-index:0;"></div>
+        <!-- Content -->
+        <div class="relative h-full flex flex-col px-4 sm:px-6 md:px-10 lg:px-12 pt-2 sm:pt-3 pb-2 sm:pb-3 overflow-hidden" style="z-index:10;">
+            <header class="mb-2 sm:mb-3 flex-shrink-0">
+                <p class="text-primary font-semibold tracking-[0.22em] uppercase text-xs mb-0.5" data-i18n="nav.about">Sobre</p>
+                <h1 class="text-xl sm:text-2xl md:text-3xl font-bold mb-0.5 text-white">Alexandro <span class="text-primary">Granja</span></h1>
+                <p class="text-slate-400 text-xs sm:text-sm flex items-center gap-2">
+                    <span data-i18n="about.subtitle">Desenvolvedor Fullstack & Especialista em Automações</span> <span>🚀</span>
+                </p>
+            </header>
+
+            <!-- Main grid: 2/3 + 1/3 columns, fills viewport height -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3 flex-1 min-h-0">
+
+                <!-- LEFT: Experiência Profissional (2/3) -->
+                <div class="md:col-span-2 about-glass-card p-3 sm:p-4 rounded-2xl flex flex-col min-h-0">
+                    <div class="flex items-center gap-2 mb-2 sm:mb-3 flex-shrink-0">
+                        <div class="p-2 rounded-xl bg-primary/10 text-primary">
+                            <span class="material-icons-round text-[18px]">work</span>
+                        </div>
+                        <h2 class="text-sm sm:text-base font-bold text-white" data-i18n="about.experience">Experiência Profissional</h2>
                     </div>
-                    <h2 class="text-xl font-bold" data-i18n="about.experience">Experiência Profissional</h2>
+
+                    <div class="space-y-3 sm:space-y-4 flex-1 min-h-0">
+                        <!-- Job 1 -->
+                        <div class="relative pl-5 border-l-2 border-primary/30">
+                            <div class="absolute -left-[7px] top-1 w-3 h-3 rounded-full bg-primary ring-2 ring-primary/20 ring-offset-1 ring-offset-[#0f172a]"></div>
+                            <div class="flex flex-wrap items-center gap-2 mb-0.5">
+                                <h3 class="font-bold text-primary text-sm" data-i18n="about.techSupport">Analista de Suporte de TI</h3>
+                                <span class="text-[10px] bg-green-500/10 text-green-400 border border-green-500/20 px-2 py-0.5 rounded-full font-semibold leading-none" data-i18n="about.current">Atual</span>
+                            </div>
+                            <p class="text-[11px] text-slate-400 font-medium mb-2">Prosper <span class="mx-1 opacity-40">·</span> Nov/2024 – Presente</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="about-tag">Active Directory</span>
+                                <span class="about-tag">Microsoft 365</span>
+                                <span class="about-tag">Zabbix</span>
+                                <span class="about-tag">n8n</span>
+                                <span class="about-tag">Target/TargetMob</span>
+                                <span class="about-tag">Suporte N1/N2</span>
+                            </div>
+                        </div>
+
+                        <!-- Job 2 -->
+                        <div class="relative pl-5 border-l-2 border-slate-600/40">
+                            <div class="absolute -left-[7px] top-1 w-3 h-3 rounded-full bg-slate-500 ring-2 ring-slate-500/20 ring-offset-1 ring-offset-[#0f172a]"></div>
+                            <div class="flex flex-wrap items-center gap-2 mb-0.5">
+                                <h3 class="font-bold text-primary text-sm" data-i18n="about.founder">Fundador & Fullstack Dev</h3>
+                            </div>
+                            <p class="text-[11px] text-slate-400 font-medium mb-2">
+                                <a href="https://www.aiversetechnologies.com.br/" target="_blank" class="text-primary/80 hover:text-primary transition-colors">AIverse Technologies</a>
+                                <span class="mx-1 opacity-40">·</span> Jun/2025
+                            </p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="about-tag">React</span>
+                                <span class="about-tag">Python/Flask</span>
+                                <span class="about-tag">PostgreSQL</span>
+                                <span class="about-tag">n8n</span>
+                                <span class="about-tag">WhatsApp AI</span>
+                                <span class="about-tag">APIs/Webhooks</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Conquistas footer -->
+                    <div class="mt-3 pt-2.5 border-t border-white/5 flex-shrink-0 grid grid-cols-3 gap-2">
+                        <div class="flex items-start gap-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-0.5"></span>
+                            <span class="text-[10px] text-slate-400 leading-tight" data-i18n="about.achievement1">80% menos tempo de atendimento</span>
+                        </div>
+                        <div class="flex items-start gap-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-0.5"></span>
+                            <span class="text-[10px] text-slate-400 leading-tight" data-i18n="about.achievement2">Apps Fullstack escaláveis</span>
+                        </div>
+                        <div class="flex items-start gap-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-0.5"></span>
+                            <span class="text-[10px] text-slate-400 leading-tight" data-i18n="about.achievement3">Integrações multicanal</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="space-y-6">
-                    <div class="relative pl-6 border-l-2 border-primary/20">
-                        <div class="absolute -left-1.5 top-0 w-3 h-3 rounded-full bg-primary"></div>
-                        <h3 class="font-bold text-primary" data-i18n="about.techSupport">Analista de Suporte de TI</h3>
-                        <p class="text-sm font-semibold mb-2">Prosper <span class="text-slate-400 mx-2">—</span> 11/2024 - <span data-i18n="about.current">Atual</span></p>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="about.techSupportDesc">
-                            Desenvolvimento de automações para tarefas recorrentes, integração com sistemas logísticos (Target/Target Mob), administração de Active Directory, Microsoft 365 e monitoramento Zabbix.
-                        </p>
+
+                <!-- RIGHT column: Formação + Localização + Oportunidades stacked -->
+                <div class="flex flex-col gap-2 sm:gap-3 min-h-0">
+
+                    <!-- Formação -->
+                    <div class="about-glass-card p-3 sm:p-4 rounded-2xl flex flex-col flex-1 min-h-0">
+                        <div class="flex items-center gap-2 mb-2 sm:mb-3 flex-shrink-0">
+                            <div class="p-2 rounded-xl bg-primary/10 text-primary">
+                                <span class="material-icons-round text-[18px]">school</span>
+                            </div>
+                            <h2 class="text-sm sm:text-base font-bold text-white" data-i18n="about.education">Formação</h2>
+                        </div>
+                        <ul class="space-y-2 sm:space-y-2.5">
+                            <li class="flex items-start gap-2">
+                                <span class="w-1 h-1 rounded-full bg-primary mt-1.5 flex-shrink-0"></span>
+                                <div>
+                                    <span class="text-xs font-bold block leading-tight" data-i18n="about.techEducation">Técnico em Informática</span>
+                                    <span class="text-[10px] text-slate-500" data-i18n="about.techEducationLevel">Ensino Médio Técnico</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="w-1 h-1 rounded-full bg-primary mt-1.5 flex-shrink-0"></span>
+                                <div>
+                                    <span class="text-xs font-bold block leading-tight" data-i18n="about.devclub">DevClub Fullstack Pro</span>
+                                    <span class="text-[10px] text-slate-500" data-i18n="about.devclubLevel">Formação Intensiva</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="w-1 h-1 rounded-full bg-primary mt-1.5 flex-shrink-0"></span>
+                                <div>
+                                    <span class="text-xs font-bold block leading-tight" data-i18n="about.automation">Gestão de Automação</span>
+                                    <span class="text-[10px] text-slate-500" data-i18n="about.automationLevel">Especialização IA & n8n</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="w-1 h-1 rounded-full bg-primary mt-1.5 flex-shrink-0"></span>
+                                <div>
+                                    <span class="text-xs font-bold block leading-tight" data-i18n="about.pixelCommunity">Comunidade Pixel</span>
+                                    <span class="text-[10px] text-slate-500" data-i18n="about.pixelCommunityLevel">n8n & Agentes IA</span>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="relative pl-6 border-l-2 border-primary/20">
-                        <div class="absolute -left-1.5 top-0 w-3 h-3 rounded-full bg-slate-300 dark:bg-slate-600"></div>
-                        <h3 class="font-bold text-primary" data-i18n="about.founder">Fundador & Fullstack Dev</h3>
-                        <p class="text-sm font-semibold mb-2"><a href="https://www.aiversetechnologies.com.br/" target="_blank" class="text-primary hover:underline">AIverse Technologies</a> <span class="text-slate-400 mx-2">—</span> 06/2025</p>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="about.founderDesc">
-                            Desenvolvimento de aplicações Fullstack (React + Python/Flask + PostgreSQL), automações com n8n, integrações via APIs/webhooks e agentes de WhatsApp com IA.
-                        </p>
+
+                    <!-- Localização -->
+                    <div class="about-glass-card px-3 py-2.5 rounded-2xl flex items-center gap-3 flex-shrink-0">
+                        <div class="p-1.5 rounded-full bg-primary/10 text-primary flex-shrink-0">
+                            <span class="material-icons-round text-[16px]">place</span>
+                        </div>
+                        <div>
+                            <h4 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest" data-i18n="about.location">Localização</h4>
+                            <p class="text-xs font-bold text-white" data-i18n="about.locationPlace">Brasil, Rio de Janeiro</p>
+                        </div>
                     </div>
+
+                    <!-- Oportunidades -->
+                    <div class="about-opp-card px-3 py-3 rounded-2xl flex-shrink-0 text-white">
+                        <div class="flex items-center gap-1.5 mb-2">
+                            <span class="material-icons-round text-[15px]">search</span>
+                            <h3 class="text-xs font-bold" data-i18n="about.seeking">Buscando Oportunidades</h3>
+                        </div>
+                        <ul class="space-y-1 text-[10px] text-white/80 mb-2.5">
+                            <li class="flex items-center gap-1.5">
+                                <span class="opacity-60">•</span>
+                                <span data-i18n="about.seeking1">Fullstack (React + Python/Flask)</span>
+                            </li>
+                            <li class="flex items-center gap-1.5">
+                                <span class="opacity-60">•</span>
+                                <span data-i18n="about.seeking2">Automações (n8n, APIs)</span>
+                            </li>
+                            <li class="flex items-center gap-1.5">
+                                <span class="opacity-60">•</span>
+                                <span data-i18n="about.seeking3">Web & IA</span>
+                            </li>
+                        </ul>
+                        <div class="flex items-center justify-between pt-2 border-t border-white/20">
+                            <button onclick="showSection('#contact')" class="bg-white text-primary px-2.5 py-1 rounded-xl text-[10px] font-bold flex items-center gap-1 hover:bg-slate-50 transition-colors">
+                                <span data-i18n="about.contactButton">Contato</span>
+                                <span class="material-icons-round" style="font-size:10px;">arrow_forward</span>
+                            </button>
+                            <div class="flex -space-x-1.5">
+                                <div class="w-6 h-6 rounded-full border-2 border-primary/60 bg-slate-800 flex items-center justify-center text-[8px] text-primary font-bold">JS</div>
+                                <div class="w-6 h-6 rounded-full border-2 border-primary/60 bg-slate-800 flex items-center justify-center text-[8px] text-primary font-bold">Py</div>
+                                <div class="w-6 h-6 rounded-full border-2 border-primary/60 bg-slate-800 flex items-center justify-center text-[8px] text-primary font-bold">TS</div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-            
-            <!-- Formação -->
-            <div class="bg-white dark:bg-card-dark p-6 rounded-2xl border-2 border-primary/30 dark:border-primary/40 shadow-lg">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="p-3 rounded-xl bg-primary/10 text-primary">
-                        <span class="material-icons-round">school</span>
-                    </div>
-                    <h2 class="text-xl font-bold" data-i18n="about.education">Formação</h2>
-                </div>
-                <ul class="space-y-4">
-                    <li class="flex flex-col">
-                        <span class="text-sm font-bold" data-i18n="about.techEducation">Técnico em Informática</span>
-                        <span class="text-xs text-slate-500" data-i18n="about.techEducationLevel">Ensino Médio Técnico</span>
-                    </li>
-                    <li class="flex flex-col">
-                        <span class="text-sm font-bold" data-i18n="about.devclub">DevClub Fullstack Pro</span>
-                        <span class="text-xs text-slate-500" data-i18n="about.devclubLevel">Formação Intensiva</span>
-                    </li>
-                    <li class="flex flex-col">
-                        <span class="text-sm font-bold" data-i18n="about.automation">Gestão de Automação</span>
-                        <span class="text-xs text-slate-500" data-i18n="about.automationLevel">Especialização IA & n8n</span>
-                    </li>
-                    <li class="pt-3 border-t border-slate-200 dark:border-slate-700">
-                        <span class="text-[10px] uppercase tracking-widest text-slate-400 font-semibold block mb-2" data-i18n="about.onlineCerts">Certificados Online</span>
-                    </li>
-                    <li class="flex justify-between items-center">
-                        <span class="text-sm font-bold">Lógica de Algoritmos</span>
-                        <span class="text-xs text-slate-500">Curso em Vídeo</span>
-                    </li>
-                    <li class="flex justify-between items-center">
-                        <span class="text-sm font-bold">CS50x</span>
-                        <span class="text-xs text-slate-500">Harvard · edX</span>
-                    </li>
-                    <li class="flex justify-between items-center">
-                        <span class="text-sm font-bold">JS Algorithms</span>
-                        <span class="text-xs text-slate-500">freeCodeCamp</span>
-                    </li>
-                    <li class="flex justify-between items-center">
-                        <span class="text-sm font-bold">n8n Academy</span>
-                        <span class="text-xs text-slate-500">n8n</span>
-                    </li>
-                    <li class="flex justify-between items-center">
-                        <span class="text-sm font-bold">IA Essentials</span>
-                        <span class="text-xs text-slate-500">Google · Coursera</span>
-                    </li>
-                    <li class="flex justify-between items-center">
-                        <span class="text-sm font-bold">Discover</span>
-                        <span class="text-xs text-slate-500">Rocketseat</span>
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- Principais Conquistas -->
-            <div class="bg-white dark:bg-card-dark p-6 rounded-2xl border-2 border-primary/30 dark:border-primary/40 shadow-lg lg:col-span-1">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="p-3 rounded-xl bg-primary/10 text-primary">
-                        <span class="material-icons-round">star</span>
-                    </div>
-                    <h2 class="text-xl font-bold" data-i18n="about.achievements">Principais Conquistas</h2>
-                </div>
-                <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-400">
-                    <li class="flex items-start gap-2">
-                        <span class="text-primary mt-0.5">•</span>
-                        <span data-i18n="about.achievement1">Redução de 80% no tempo de atendimento com automações</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <span class="text-primary mt-0.5">•</span>
-                        <span data-i18n="about.achievement2">Aplicações Fullstack escaláveis com React + Python</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <span class="text-primary mt-0.5">•</span>
-                        <span data-i18n="about.achievement3">Integrações multicanal via APIs e webhooks</span>
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- Localização -->
-            <div class="bg-white dark:bg-card-dark p-6 rounded-2xl border-2 border-primary/30 dark:border-primary/40 shadow-lg flex items-center gap-5">
-                <div class="p-4 rounded-full bg-slate-100 dark:bg-slate-800 text-primary">
-                    <span class="material-icons-round">place</span>
-                </div>
-                <div>
-                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest" data-i18n="about.location">Localização</h4>
-                    <p class="text-lg font-bold" data-i18n="about.locationPlace">Brasil, Rio de Janeiro</p>
-                </div>
-            </div>
-            
-            <!-- Oportunidades Card -->
-            <div class="bg-primary p-6 rounded-2xl shadow-lg shadow-primary/20 flex flex-col justify-between text-white md:col-span-1">
-                <div>
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="material-icons-round">search</span>
-                        <h3 class="text-lg font-bold" data-i18n="about.seeking">Buscando Oportunidades</h3>
-                    </div>
-                    <p class="text-white/90 text-sm mb-3 leading-relaxed" data-i18n="about.seekingDesc">
-                        Estou aberto a novas oportunidades nas áreas de:
-                    </p>
-                    <ul class="space-y-1.5 text-sm text-white/90 mb-3">
-                        <li class="flex items-start gap-2">
-                            <span class="mt-0.5">•</span>
-                            <span data-i18n="about.seeking1">Desenvolvimento Fullstack (React + Python/Flask)</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="mt-0.5">•</span>
-                            <span data-i18n="about.seeking2">Automações e Integrações (n8n, APIs, Webhooks)</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="mt-0.5">•</span>
-                            <span data-i18n="about.seeking3">Desenvolvimento Web & IA</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="flex items-center justify-between mt-4 pt-3 border-t border-white/20">
-                    <button onclick="showSection('#contact')" class="bg-white text-primary px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 hover:bg-slate-50 transition-colors">
-                        <span data-i18n="about.contactButton">Entre em contato</span>
-                        <span class="material-icons-round text-sm">arrow_forward</span>
-                    </button>
-                    <div class="flex -space-x-2">
-                        <div class="w-8 h-8 rounded-full border-2 border-primary bg-slate-200 flex items-center justify-center text-[10px] text-primary font-bold">JS</div>
-                        <div class="w-8 h-8 rounded-full border-2 border-primary bg-slate-200 flex items-center justify-center text-[10px] text-primary font-bold">Py</div>
-                        <div class="w-8 h-8 rounded-full border-2 border-primary bg-slate-200 flex items-center justify-center text-[10px] text-primary font-bold">TS</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div><!-- end content wrapper -->
     </section>
 
     <!-- Agency Section -->
@@ -696,9 +712,6 @@
                 </button>
                 <button class="skills-tab-btn px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-medium text-xs sm:text-sm whitespace-nowrap border border-slate-200 dark:border-slate-700" data-tab-target="support">
                     <span data-i18n="skills.tools">Ferramentas</span>
-                </button>
-                <button class="skills-tab-btn px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-medium text-xs sm:text-sm whitespace-nowrap border border-slate-200 dark:border-slate-700" data-tab-target="courses">
-                    <span data-i18n="skills.courses">Certificados</span>
                 </button>
             </div>
         </header>
@@ -1175,73 +1188,6 @@
                         <div>
                             <h3 class="font-bold text-slate-900 dark:text-white">Integração ERP</h3>
                             <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.systems">Sistemas</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Courses -->
-                <div class="skill-card-group hidden" data-tab="courses">
-                    <div class="group p-5 rounded-2xl glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded-xl bg-[#4CAF50]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <span class="material-icons-round text-[#4CAF50] text-2xl">functions</span>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">Lógica de Algoritmos</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Curso em Vídeo</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="courses">
-                    <div class="group p-5 rounded-2xl glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded-xl bg-[#A51C30]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <span class="material-icons-round text-[#A51C30] text-2xl">school</span>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">CS50x</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Harvard · edX</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="courses">
-                    <div class="group p-5 rounded-2xl glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded-xl bg-[#0A0A23]/60 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <span class="material-icons-round text-[#00C300] text-2xl">code</span>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">JS Algorithms</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">freeCodeCamp</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="courses">
-                    <div class="group p-5 rounded-2xl glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded-xl bg-[#EA4B71]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <span class="material-icons-round text-[#EA4B71] text-2xl">auto_fix_high</span>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">n8n Academy</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">n8n Academy</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="courses">
-                    <div class="group p-5 rounded-2xl glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded-xl bg-[#4285F4]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <span class="material-icons-round text-[#4285F4] text-2xl">psychology</span>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">IA Essentials</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Google · Coursera</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="courses">
-                    <div class="group p-5 rounded-2xl glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded-xl bg-[#8257E5]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <span class="material-icons-round text-[#8257E5] text-2xl">rocket_launch</span>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">Discover</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Rocketseat</p>
                         </div>
                     </div>
                 </div>

@@ -108,7 +108,7 @@ const translations = {
             education: "Formação",
             current: "Atual",
             techSupport: "Analista de Suporte de TI",
-            techSupportDesc: "Desenvolvimento de automações para tarefas recorrentes, integração com sistemas logísticos (Target/Target Mob), administração de Active Directory, Microsoft 365 e monitoramento Zabbix.",
+            techSupportDesc: "Suporte técnico N1/N2, manutenção de hardware e software, administração de Active Directory e Microsoft 365, gestão de chamados e suporte ao ERP Target/Target Mob em ambiente de logística e distribuição. Também desenvolvi ferramentas internas para otimização de processos.",
             founder: "Fundador & Fullstack Dev",
             founderDesc: "Desenvolvimento de aplicações Fullstack (React + Python/Flask + PostgreSQL), automações com n8n, integrações via APIs/webhooks e agentes de WhatsApp com IA.",
             techEducation: "Técnico em Informática",
@@ -117,6 +117,8 @@ const translations = {
             devclubLevel: "Formação Intensiva",
             automation: "Gestão de Automação",
             automationLevel: "Especialização IA & n8n",
+            pixelCommunity: "Comunidade Pixel",
+            pixelCommunityLevel: "n8n & Agentes IA",
             onlineCerts: "Certificados Online",
             achievements: "Principais Conquistas",
             achievement1: "Redução de 80% no tempo de atendimento com automações",
@@ -283,7 +285,7 @@ const translations = {
             education: "Education",
             current: "Current",
             techSupport: "IT Support Analyst",
-            techSupportDesc: "Development of automations for recurring tasks, integration with logistics systems (Target/Target Mob), Active Directory administration, Microsoft 365, and Zabbix monitoring.",
+            techSupportDesc: "N1/N2 technical support, hardware and software maintenance, Active Directory and Microsoft 365 administration, ticket management, and ERP Target/Target Mob support in a logistics and distribution environment. Also developed internal tools to optimize team processes.",
             founder: "Founder & Fullstack Dev",
             founderDesc: "Development of Fullstack applications (React + Python/Flask + PostgreSQL), automations with n8n, integrations via APIs/webhooks, and WhatsApp agents with AI.",
             techEducation: "IT Technician",
@@ -292,6 +294,8 @@ const translations = {
             devclubLevel: "Intensive Training",
             automation: "Automation Management",
             automationLevel: "AI & n8n Specialization",
+            pixelCommunity: "Pixel Community",
+            pixelCommunityLevel: "n8n & AI Agents",
             onlineCerts: "Online Certificates",
             achievements: "Main Achievements",
             achievement1: "80% reduction in service time with automations",
@@ -488,6 +492,8 @@ function updatePageLanguage(lang) {
     document.querySelectorAll('[data-i18n="about.devclubLevel"]').forEach(el => el.textContent = t.about.devclubLevel);
     document.querySelectorAll('[data-i18n="about.automation"]').forEach(el => el.textContent = t.about.automation);
     document.querySelectorAll('[data-i18n="about.automationLevel"]').forEach(el => el.textContent = t.about.automationLevel);
+    document.querySelectorAll('[data-i18n="about.pixelCommunity"]').forEach(el => el.textContent = t.about.pixelCommunity);
+    document.querySelectorAll('[data-i18n="about.pixelCommunityLevel"]').forEach(el => el.textContent = t.about.pixelCommunityLevel);
     document.querySelectorAll('[data-i18n="about.onlineCerts"]').forEach(el => el.textContent = t.about.onlineCerts);
     document.querySelectorAll('[data-i18n="about.achievements"]').forEach(el => el.textContent = t.about.achievements);
     document.querySelectorAll('[data-i18n="about.achievement1"]').forEach(el => el.textContent = t.about.achievement1);
