@@ -2012,8 +2012,9 @@ section:nth-child(odd) {
         overflow: hidden !important;
     }
     
-    /* Sem scroll na seção agency */
-    #agency.section-content {
+    /* Sem scroll agency e contact */
+    #agency.section-content,
+    #contact.section-content {
         overflow: hidden !important;
     }
     

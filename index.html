@@ -597,111 +597,118 @@
     </section>
 
     <!-- Agency Section -->
-    <section id="agency" class="section-content agency-section h-full px-4 sm:px-6 md:px-10 lg:px-12 py-6 sm:py-8 overflow-y-auto hide-scrollbar relative">
-        <header class="mb-8 sm:mb-10 text-center relative z-10">
-            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 text-white">
-                <a href="https://www.aiversetechnologies.com.br/" target="_blank" class="hover:opacity-80 transition-colors">AIverse <span class="text-primary">Technologies</span></a>
-            </h1>
-            <div class="w-24 h-0.5 bg-primary mx-auto mb-3"></div>
-            <p class="text-slate-300 text-base sm:text-lg" data-i18n="agency.tagline">Transformando ideias em soluções digitais inteligentes</p>
-        </header>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 relative z-10">
-            <!-- Card 1: Desenvolvimento Web -->
-            <div class="bg-card-dark p-5 sm:p-6 rounded-2xl border-2 border-primary/30 dark:border-primary/40 shadow-lg flex flex-col">
-                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4">
-                    <span class="material-icons-round text-primary text-2xl sm:text-3xl">rocket_launch</span>
+    <section id="agency" class="section-content h-full relative bg-background-dark overflow-hidden">
+        <div class="about-grid-overlay absolute inset-0" style="z-index:0;pointer-events:none;"></div>
+        <div class="absolute top-0 left-1/3 w-96 h-96 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(245,158,11,0.09) 0%,transparent 70%);z-index:0;"></div>
+        <div class="absolute bottom-0 right-0 w-64 h-64 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(59,130,246,0.06) 0%,transparent 70%);z-index:0;"></div>
+
+        <div class="relative h-full flex flex-col px-4 sm:px-6 md:px-10 lg:px-12 pt-2 sm:pt-3 pb-2 sm:pb-3 overflow-hidden" style="z-index:10;">
+            <header class="mb-2 sm:mb-3 flex-shrink-0">
+                <p class="text-primary font-semibold tracking-[0.22em] uppercase text-xs mb-0.5">AIverse Technologies</p>
+                <h1 class="text-xl sm:text-2xl md:text-3xl font-bold mb-0.5 text-white">Soluções <span class="text-primary">Digitais</span></h1>
+                <p class="text-slate-400 text-xs sm:text-sm" data-i18n="agency.tagline">Transformando ideias em soluções digitais inteligentes</p>
+            </header>
+
+            <!-- 3 service cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3 flex-1 min-h-0">
+
+                <!-- Card 1: Web Dev -->
+                <div class="about-glass-card p-3 sm:p-4 rounded-2xl flex flex-col min-h-0">
+                    <div class="flex items-center gap-2 mb-2 sm:mb-3 flex-shrink-0">
+                        <div class="p-2 rounded-xl bg-primary/10 text-primary">
+                            <span class="material-icons-round text-[18px]">rocket_launch</span>
+                        </div>
+                        <h2 class="text-sm sm:text-base font-bold text-white" data-i18n="agency.webDev.title">Desenvolvimento Web</h2>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed flex-1 min-h-0 overflow-hidden" data-i18n="agency.webDev.description">Criamos sites modernos, responsivos e otimizados para SEO. Desde landing pages até sistemas web complexos, cada projeto é desenvolvido com as melhores práticas e tecnologias mais recentes do mercado.</p>
+                    <ul class="space-y-1.5 mt-2 sm:mt-3 flex-shrink-0">
+                        <li class="flex items-center gap-2">
+                            <span class="w-1 h-1 rounded-full bg-primary flex-shrink-0"></span>
+                            <span class="text-xs text-slate-300" data-i18n="agency.webDev.feature1">Design Moderno e Responsivo</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-1 h-1 rounded-full bg-primary flex-shrink-0"></span>
+                            <span class="text-xs text-slate-300" data-i18n="agency.webDev.feature2">Otimização para Conversão</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-1 h-1 rounded-full bg-primary flex-shrink-0"></span>
+                            <span class="text-xs text-slate-300" data-i18n="agency.webDev.feature3">Performance e SEO</span>
+                        </li>
+                    </ul>
                 </div>
-                <h3 class="text-lg sm:text-xl font-bold text-white mb-3" data-i18n="agency.webDev.title">Desenvolvimento Web Profissional</h3>
-                <p class="text-sm sm:text-base text-slate-300 mb-4 leading-relaxed flex-grow" data-i18n="agency.webDev.description">
-                    Criamos sites modernos, responsivos e otimizados para SEO. Desde landing pages até sistemas web complexos, cada projeto é desenvolvido com as melhores práticas e tecnologias mais recentes do mercado.
-                </p>
-                <ul class="space-y-2 text-sm text-slate-300">
-                    <li class="flex items-center gap-2"> 
-                        <span class="material-icons-round text-primary text-base">check_circle</span>
-                        <span data-i18n="agency.webDev.feature1">Design Moderno e Responsivo</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <span class="material-icons-round text-primary text-base">check_circle</span>
-                        <span data-i18n="agency.webDev.feature2">Otimização para Conversão</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <span class="material-icons-round text-primary text-base">check_circle</span>
-                        <span data-i18n="agency.webDev.feature3">Performance e SEO</span>
-                    </li>
-                </ul>
+
+                <!-- Card 2: WhatsApp AI -->
+                <div class="about-glass-card p-3 sm:p-4 rounded-2xl flex flex-col min-h-0">
+                    <div class="flex items-center gap-2 mb-2 sm:mb-3 flex-shrink-0">
+                        <div class="p-2 rounded-xl bg-primary/10 text-primary">
+                            <span class="material-icons-round text-[18px]">chat</span>
+                        </div>
+                        <h2 class="text-sm sm:text-base font-bold text-white" data-i18n="agency.whatsapp.title">Agentes WhatsApp com IA</h2>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed flex-1 min-h-0 overflow-hidden" data-i18n="agency.whatsapp.description">Revolucione seu atendimento ao cliente com agentes inteligentes personalizados. Automação completa integrada com IA, capaz de responder perguntas e fornecer suporte 24/7 de forma natural e eficiente.</p>
+                    <ul class="space-y-1.5 mt-2 sm:mt-3 flex-shrink-0">
+                        <li class="flex items-center gap-2">
+                            <span class="w-1 h-1 rounded-full bg-primary flex-shrink-0"></span>
+                            <span class="text-xs text-slate-300" data-i18n="agency.whatsapp.feature1">Atendimento 24/7 Automatizado</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-1 h-1 rounded-full bg-primary flex-shrink-0"></span>
+                            <span class="text-xs text-slate-300" data-i18n="agency.whatsapp.feature2">Integração com IA Avançada</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-1 h-1 rounded-full bg-primary flex-shrink-0"></span>
+                            <span class="text-xs text-slate-300" data-i18n="agency.whatsapp.feature3">Personalização Total</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Card 3: Automações -->
+                <div class="about-glass-card p-3 sm:p-4 rounded-2xl flex flex-col min-h-0">
+                    <div class="flex items-center gap-2 mb-2 sm:mb-3 flex-shrink-0">
+                        <div class="p-2 rounded-xl bg-primary/10 text-primary">
+                            <span class="material-icons-round text-[18px]">hub</span>
+                        </div>
+                        <h2 class="text-sm sm:text-base font-bold text-white" data-i18n="agency.automation.title">Automações Inteligentes</h2>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed flex-1 min-h-0 overflow-hidden" data-i18n="agency.automation.description">Especialistas em n8n e Python/Flask, criamos fluxos de automação que otimizam processos empresariais, reduzem custos operacionais e aumentam a produtividade com IA/LLMs.</p>
+                    <ul class="space-y-1.5 mt-2 sm:mt-3 flex-shrink-0">
+                        <li class="flex items-center gap-2">
+                            <span class="w-1 h-1 rounded-full bg-primary flex-shrink-0"></span>
+                            <span class="text-xs text-slate-300" data-i18n="agency.automation.feature1">Fluxos Complexos com n8n</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-1 h-1 rounded-full bg-primary flex-shrink-0"></span>
+                            <span class="text-xs text-slate-300" data-i18n="agency.automation.feature2">Integração de Sistemas</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-1 h-1 rounded-full bg-primary flex-shrink-0"></span>
+                            <span class="text-xs text-slate-300" data-i18n="agency.automation.feature3">ROI Comprovado</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
-            <!-- Card 2: Agentes WhatsApp -->
-            <div class="bg-card-dark p-5 sm:p-6 rounded-2xl border-2 border-primary/30 dark:border-primary/40 shadow-lg flex flex-col">
-                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4">
-                    <span class="material-icons-round text-primary text-2xl sm:text-3xl">chat</span>
-                </div>
-                <h3 class="text-lg sm:text-xl font-bold text-white mb-3" data-i18n="agency.whatsapp.title">Agentes de WhatsApp com IA</h3>
-                <p class="text-sm sm:text-base text-slate-300 mb-4 leading-relaxed flex-grow" data-i18n="agency.whatsapp.description">
-                    Revolucione seu atendimento ao cliente com agentes inteligentes personalizados. Automatização completa integrada com IA, capaz de responder perguntas, processar solicitações e fornecer suporte 24/7 de forma natural e eficiente.
-                </p>
-                <ul class="space-y-2 text-sm text-slate-300">
-                    <li class="flex items-center gap-2">
-                        <span class="material-icons-round text-primary text-base">check_circle</span>
-                        <span data-i18n="agency.whatsapp.feature1">Atendimento 24/7 Automatizado</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <span class="material-icons-round text-primary text-base">check_circle</span>
-                        <span data-i18n="agency.whatsapp.feature2">Integração com IA Avançada</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <span class="material-icons-round text-primary text-base">check_circle</span>
-                        <span data-i18n="agency.whatsapp.feature3">Personalização Total</span>
-                    </li>
-                </ul>
+            <!-- CTA strip -->
+            <div class="flex-shrink-0 mt-2 sm:mt-3 flex items-center justify-between pt-2.5 border-t border-white/5">
+                <p class="text-xs text-slate-400" data-i18n="agency.cta.question">Pronto para transformar seu negócio com tecnologia?</p>
+                <a href="https://www.aiversetechnologies.com.br/" target="_blank" class="bg-primary hover:bg-amber-500 text-white px-4 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 transition-colors flex-shrink-0 ml-4">
+                    <span data-i18n="agency.cta.button">Visite AIverse</span>
+                    <span class="material-icons-round text-[14px]">arrow_forward</span>
+                </a>
             </div>
-
-            <!-- Card 3: Automações -->
-            <div class="bg-card-dark p-5 sm:p-6 rounded-2xl border-2 border-primary/30 dark:border-primary/40 shadow-lg flex flex-col md:col-span-2 lg:col-span-1">
-                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4">
-                    <span class="material-icons-round text-primary text-2xl sm:text-3xl">settings</span>
-                </div>
-                <h3 class="text-lg sm:text-xl font-bold text-white mb-3" data-i18n="agency.automation.title">Automações Inteligentes</h3>
-                <p class="text-sm sm:text-base text-slate-300 mb-4 leading-relaxed flex-grow" data-i18n="agency.automation.description">
-                    Especialistas em <strong class="text-primary">n8n</strong> e <strong class="text-primary">Python/Flask</strong>, criamos fluxos de automação que otimizam processos empresariais, reduzem custos operacionais e aumentam a produtividade. Integramos diferentes sistemas e ferramentas para trabalhar em harmonia, aplicando <strong class="text-primary">engenharia de prompts</strong> e soluções com <strong class="text-primary">IA/LLMs</strong> quando necessário.
-                </p>
-                <ul class="space-y-2 text-sm text-slate-300">
-                    <li class="flex items-center gap-2">
-                        <span class="material-icons-round text-primary text-base">check_circle</span>
-                        <span data-i18n="agency.automation.feature1">Fluxos Complexos com n8n</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <span class="material-icons-round text-primary text-base">check_circle</span>
-                        <span data-i18n="agency.automation.feature2">Integração de Sistemas</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <span class="material-icons-round text-primary text-base">check_circle</span>
-                        <span data-i18n="agency.automation.feature3">ROI Comprovado</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- CTA Section -->
-        <div class="text-center relative z-10">
-            <p class="text-slate-300 mb-4 text-sm sm:text-base" data-i18n="agency.cta.question">Pronto para transformar seu negócio com tecnologia?</p>
-            <a href="https://www.aiversetechnologies.com.br/" target="_blank" class="inline-flex items-center gap-2 bg-primary hover:bg-opacity-90 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold shadow-lg shadow-primary/20 transition-all active:scale-95">
-                <span data-i18n="agency.cta.button">Visite AIverse Technologies</span>
-                <span class="material-icons-round text-lg sm:text-xl">arrow_forward</span>
-            </a>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="section-content skills h-full flex flex-col relative">
-        <div class="absolute top-[-10%] right-[-10%] w-[400px] h-[400px] bg-primary/10 blur-[120px] rounded-full pointer-events-none"></div>
-        <div class="absolute bottom-[-5%] left-[5%] w-[300px] h-[300px] bg-blue-500/10 blur-[100px] rounded-full pointer-events-none"></div>
-        <header class="pt-1 sm:pt-6 md:pt-8 px-3 sm:px-6 md:px-12 shrink-0" style="overflow-x: visible; padding-top: 0.25rem !important;">
+    <section id="skills" class="section-content skills h-full flex flex-col relative bg-background-dark">
+        <div class="about-grid-overlay absolute inset-0" style="z-index:0;pointer-events:none;"></div>
+        <div class="absolute top-[-10%] right-[-10%] w-[400px] h-[400px] bg-primary/10 blur-[120px] rounded-full pointer-events-none" style="z-index:0;"></div>
+        <div class="absolute bottom-[-5%] left-[5%] w-[300px] h-[300px] bg-blue-500/10 blur-[100px] rounded-full pointer-events-none" style="z-index:0;"></div>
+        <header class="pt-1 sm:pt-6 md:pt-8 px-3 sm:px-6 md:px-12 shrink-0" style="overflow-x: visible; padding-top: 0.25rem !important; position:relative; z-index:10;">
             <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-2 sm:mb-6 gap-2 sm:gap-0" style="margin-bottom: 0.5rem !important;">
                 <div>
-                    <p class="text-primary font-semibold tracking-wider uppercase text-xs mb-1" data-i18n="skills.techStack">Tech Stack</p>
-                    <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold dark:text-white"><span data-i18n="skills.mySkills">Minhas </span><span class="text-primary" data-i18n="skills.mySkills">Habilidades</span></h1>
+                    <p class="text-primary font-semibold tracking-[0.22em] uppercase text-xs mb-0.5" data-i18n="skills.techStack">Tech Stack</p>
+                    <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-white"><span data-i18n="skills.mySkillsLabel">Minhas </span><span class="text-primary" data-i18n="skills.mySkillsHighlight">Habilidades</span></h1>
                 </div>
                 <div class="hidden md:block">
                     <span class="px-4 py-2 rounded-full glass-card text-xs font-medium border border-slate-700/50" data-i18n="skills.technologies">
@@ -709,7 +716,7 @@
                     </span>
                 </div>
             </div>
-            <div class="flex gap-1.5 sm:gap-2 pb-2 flex-nowrap" style="overflow-x: visible; padding-bottom: 0.5rem !important; margin-top: 0 !important;">
+            <div class="flex gap-1.5 sm:gap-2 pb-2 flex-nowrap" style="overflow-x: visible; padding-bottom: 0.5rem !important; margin-top: 0 !important; position:relative; z-index:10;">
                 <button class="skills-tab-btn px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-primary text-white font-semibold text-xs sm:text-sm whitespace-nowrap shadow-lg shadow-primary/25" data-tab-target="frontend">
                     <span data-i18n="skills.frontend">Frontend</span>
                 </button>
@@ -721,7 +728,7 @@
                 </button>
             </div>
         </header>
-        <div class="flex-1 px-4 sm:px-6 md:px-12 pt-1 sm:pt-6 pb-4 sm:py-6 overflow-y-auto hide-scrollbar" style="padding-top: 0.25rem !important;">
+        <div class="flex-1 px-4 sm:px-6 md:px-12 pt-1 sm:pt-6 pb-4 sm:py-6 overflow-y-auto hide-scrollbar" style="padding-top: 0.25rem !important; position:relative; z-index:10;">
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 pb-8 sm:pb-12">
                 <!-- Frontend Skills -->
                 <div class="skill-card-group" data-tab="frontend">
@@ -1202,9 +1209,13 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="section-content projects h-full px-6 md:px-12 py-4">
-        <div class="container">
+    <section id="projects" class="section-content projects h-full px-6 md:px-12 py-4 relative bg-background-dark">
+        <div class="about-grid-overlay absolute inset-0" style="z-index:0;pointer-events:none;"></div>
+        <div class="absolute top-0 right-0 w-80 h-80 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(245,158,11,0.08) 0%,transparent 70%);z-index:0;"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(59,130,246,0.05) 0%,transparent 70%);z-index:0;"></div>
+        <div class="container" style="position:relative;z-index:10;">
             <div class="section-header">
+                <p class="text-primary font-semibold tracking-[0.22em] uppercase text-xs mb-1" data-i18n="nav.projects">Projetos</p>
                 <h2 class="section-title"><span class="title-text-white" style="color: #f8fafc !important;" data-i18n="projects.title">Meus </span><span class="title-text-orange" style="color: #F59E0B !important; -webkit-text-fill-color: #F59E0B !important;" data-i18n="projects.title">Projetos</span></h2>
                 <p class="section-subtitle" data-i18n="projects.subtitle">Alguns dos meus trabalhos em desenvolvimento web e automações</p>
             </div>
@@ -1491,51 +1502,65 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section-content contact h-full px-4 sm:px-6 md:px-12 py-4 sm:py-8 overflow-y-auto hide-scrollbar">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title"><span class="title-text-white" style="color: #f8fafc !important;" data-i18n="contact.title">Entre em </span><span class="title-text-orange" style="color: #F59E0B !important; -webkit-text-fill-color: #F59E0B !important;" data-i18n="contact.title">Contato</span></h2>
-                <p class="section-subtitle" data-i18n="contact.subtitle">Estou sempre aberto a novas conexões, aprendizado e colaborações</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <a href="mailto:Alex.granjaaa@hotmail.com" class="contact-item contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Email</h4>
-                            <p>Alex.granjaaa@hotmail.com</p>
-                        </div>
-                    </a>
-                    <a href="https://www.linkedin.com/in/alexandro-granja-1b1393157" target="_blank" class="contact-item contact-card">
-                        <div class="contact-icon">
-                            <i class="fab fa-linkedin"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>LinkedIn</h4>
-                            <p>Alexandro Granja</p>
-                        </div>
-                    </a>
-                    <a href="https://github.com/AlexandroGranja" target="_blank" class="contact-item contact-card">
-                        <div class="contact-icon">
-                            <i class="fab fa-github"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>GitHub</h4>
-                            <p>AlexandroGranja</p>
-                        </div>
-                    </a>
-                    <a href="https://instagram.com/alexsandrogranja" target="_blank" class="contact-item contact-card">
-                        <div class="contact-icon">
-                            <i class="fab fa-instagram"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Instagram</h4>
-                            <p>@alexsandrogranja</p>
-                        </div>
-                    </a>
-                </div>
+    <section id="contact" class="section-content contact h-full relative bg-background-dark overflow-hidden">
+        <div class="about-grid-overlay absolute inset-0" style="z-index:0;pointer-events:none;"></div>
+        <div class="absolute top-0 right-0 w-96 h-96 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(245,158,11,0.09) 0%,transparent 70%);z-index:0;"></div>
+        <div class="absolute bottom-0 left-1/4 w-64 h-64 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(59,130,246,0.06) 0%,transparent 70%);z-index:0;"></div>
+
+        <div class="relative h-full flex flex-col px-4 sm:px-6 md:px-10 lg:px-12 pt-2 sm:pt-3 pb-2 sm:pb-3 overflow-hidden" style="z-index:10;">
+            <header class="mb-3 sm:mb-4 flex-shrink-0">
+                <p class="text-primary font-semibold tracking-[0.22em] uppercase text-xs mb-0.5" data-i18n="nav.contact">Contato</p>
+                <h1 class="text-xl sm:text-2xl md:text-3xl font-bold mb-0.5 text-white">
+                    <span data-i18n="contact.title">Entre em </span><span class="text-primary">Contato</span>
+                </h1>
+                <p class="text-slate-400 text-xs sm:text-sm" data-i18n="contact.subtitle">Estou sempre aberto a novas conexões, aprendizado e colaborações</p>
+            </header>
+
+            <!-- 2x2 contact glass cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 flex-1 min-h-0 content-start">
+                <a href="mailto:alexxx.granja@gmail.com" class="about-glass-card px-4 py-3 sm:p-5 rounded-2xl flex items-center gap-4 group transition-all">
+                    <div class="p-2.5 rounded-xl bg-primary/10 text-primary flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                        <i class="fas fa-envelope text-base sm:text-lg"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Email</h4>
+                        <p class="text-sm font-bold text-white group-hover:text-primary transition-colors">alexxx.granja@gmail.com</p>
+                    </div>
+                    <span class="material-icons-round text-slate-600 group-hover:text-primary ml-auto transition-colors text-[16px]">arrow_forward</span>
+                </a>
+
+                <a href="https://www.linkedin.com/in/alexandro-granja-1b1393157" target="_blank" class="about-glass-card px-4 py-3 sm:p-5 rounded-2xl flex items-center gap-4 group transition-all">
+                    <div class="p-2.5 rounded-xl bg-primary/10 text-primary flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                        <i class="fab fa-linkedin text-base sm:text-lg"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">LinkedIn</h4>
+                        <p class="text-sm font-bold text-white group-hover:text-primary transition-colors">Alexandro Granja</p>
+                    </div>
+                    <span class="material-icons-round text-slate-600 group-hover:text-primary ml-auto transition-colors text-[16px]">arrow_forward</span>
+                </a>
+
+                <a href="https://github.com/AlexandroGranja" target="_blank" class="about-glass-card px-4 py-3 sm:p-5 rounded-2xl flex items-center gap-4 group transition-all">
+                    <div class="p-2.5 rounded-xl bg-primary/10 text-primary flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                        <i class="fab fa-github text-base sm:text-lg"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">GitHub</h4>
+                        <p class="text-sm font-bold text-white group-hover:text-primary transition-colors">AlexandroGranja</p>
+                    </div>
+                    <span class="material-icons-round text-slate-600 group-hover:text-primary ml-auto transition-colors text-[16px]">arrow_forward</span>
+                </a>
+
+                <a href="https://instagram.com/alexsandrogranja" target="_blank" class="about-glass-card px-4 py-3 sm:p-5 rounded-2xl flex items-center gap-4 group transition-all">
+                    <div class="p-2.5 rounded-xl bg-primary/10 text-primary flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                        <i class="fab fa-instagram text-base sm:text-lg"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Instagram</h4>
+                        <p class="text-sm font-bold text-white group-hover:text-primary transition-colors">@alexsandrogranja</p>
+                    </div>
+                    <span class="material-icons-round text-slate-600 group-hover:text-primary ml-auto transition-colors text-[16px]">arrow_forward</span>
+                </a>
             </div>
         </div>
     </section>
