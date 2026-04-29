@@ -504,84 +504,78 @@
                     </div>
                 </div>
 
-                <!-- RIGHT column: Formação + Localização + Oportunidades stacked -->
+                <!-- RIGHT column: Formação + Oportunidades (2 cards) -->
                 <div class="flex flex-col gap-2 sm:gap-3 min-h-0">
 
                     <!-- Formação -->
                     <div class="about-glass-card p-3 sm:p-4 rounded-2xl flex flex-col flex-1 min-h-0">
-                        <div class="flex items-center gap-2 mb-2 sm:mb-3 flex-shrink-0">
+                        <div class="flex items-center gap-2 mb-3 flex-shrink-0">
                             <div class="p-2 rounded-xl bg-primary/10 text-primary">
                                 <span class="material-icons-round text-[18px]">school</span>
                             </div>
                             <h2 class="text-sm sm:text-base font-bold text-white" data-i18n="about.education">Formação</h2>
                         </div>
-                        <ul class="space-y-2 sm:space-y-2.5">
+                        <ul class="space-y-3 flex-1">
                             <li class="flex items-start gap-2">
-                                <span class="w-1 h-1 rounded-full bg-primary mt-1.5 flex-shrink-0"></span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-primary mt-1 flex-shrink-0"></span>
                                 <div>
                                     <span class="text-xs font-bold block leading-tight" data-i18n="about.techEducation">Técnico em Informática</span>
                                     <span class="text-[10px] text-slate-500" data-i18n="about.techEducationLevel">Ensino Médio Técnico</span>
                                 </div>
                             </li>
                             <li class="flex items-start gap-2">
-                                <span class="w-1 h-1 rounded-full bg-primary mt-1.5 flex-shrink-0"></span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-primary mt-1 flex-shrink-0"></span>
                                 <div>
                                     <span class="text-xs font-bold block leading-tight" data-i18n="about.devclub">DevClub Fullstack Pro</span>
                                     <span class="text-[10px] text-slate-500" data-i18n="about.devclubLevel">Formação Intensiva</span>
                                 </div>
                             </li>
                             <li class="flex items-start gap-2">
-                                <span class="w-1 h-1 rounded-full bg-primary mt-1.5 flex-shrink-0"></span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-primary mt-1 flex-shrink-0"></span>
                                 <div>
                                     <span class="text-xs font-bold block leading-tight" data-i18n="about.automation">Gestão de Automação</span>
                                     <span class="text-[10px] text-slate-500" data-i18n="about.automationLevel">Especialização IA & n8n</span>
                                 </div>
                             </li>
                             <li class="flex items-start gap-2">
-                                <span class="w-1 h-1 rounded-full bg-primary mt-1.5 flex-shrink-0"></span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-primary mt-1 flex-shrink-0"></span>
                                 <div>
                                     <span class="text-xs font-bold block leading-tight" data-i18n="about.pixelCommunity">Comunidade Pixel</span>
                                     <span class="text-[10px] text-slate-500" data-i18n="about.pixelCommunityLevel">n8n & Agentes IA</span>
                                 </div>
                             </li>
                         </ul>
-                    </div>
-
-                    <!-- Localização -->
-                    <div class="about-glass-card px-3 py-2.5 rounded-2xl flex items-center gap-3 flex-shrink-0">
-                        <div class="p-1.5 rounded-full bg-primary/10 text-primary flex-shrink-0">
-                            <span class="material-icons-round text-[16px]">place</span>
-                        </div>
-                        <div>
-                            <h4 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest" data-i18n="about.location">Localização</h4>
-                            <p class="text-xs font-bold text-white" data-i18n="about.locationPlace">Brasil, Rio de Janeiro</p>
+                        <!-- Localização inline no rodapé do card -->
+                        <div class="mt-3 pt-2.5 border-t border-white/5 flex items-center gap-2 flex-shrink-0">
+                            <span class="material-icons-round text-primary text-[14px]">place</span>
+                            <span class="text-[10px] text-slate-400 font-medium" data-i18n="about.locationPlace">Brasil, Rio de Janeiro</span>
                         </div>
                     </div>
 
                     <!-- Oportunidades -->
-                    <div class="about-opp-card px-3 py-3 rounded-2xl flex-shrink-0 text-white">
-                        <div class="flex items-center gap-1.5 mb-2">
-                            <span class="material-icons-round text-[15px]">search</span>
+                    <div class="about-opp-card p-3 sm:p-4 rounded-2xl flex-shrink-0 text-white">
+                        <div class="flex items-center gap-1.5 mb-2.5">
+                            <span class="material-icons-round text-[16px]">search</span>
                             <h3 class="text-xs font-bold" data-i18n="about.seeking">Buscando Oportunidades</h3>
                         </div>
-                        <ul class="space-y-1 text-[10px] text-white/80 mb-2.5">
+                        <ul class="space-y-1.5 text-[11px] text-white/85 mb-3">
                             <li class="flex items-center gap-1.5">
-                                <span class="opacity-60">•</span>
+                                <span class="opacity-50">•</span>
                                 <span data-i18n="about.seeking1">Fullstack (React + Python/Flask)</span>
                             </li>
                             <li class="flex items-center gap-1.5">
-                                <span class="opacity-60">•</span>
+                                <span class="opacity-50">•</span>
                                 <span data-i18n="about.seeking2">Automações (n8n, APIs)</span>
                             </li>
                             <li class="flex items-center gap-1.5">
-                                <span class="opacity-60">•</span>
+                                <span class="opacity-50">•</span>
                                 <span data-i18n="about.seeking3">Web & IA</span>
                             </li>
                         </ul>
-                        <div class="flex items-center justify-between pt-2 border-t border-white/20">
-                            <button onclick="showSection('#contact')" class="bg-white text-primary px-2.5 py-1 rounded-xl text-[10px] font-bold flex items-center gap-1 hover:bg-slate-50 transition-colors">
+                        <div class="flex items-center justify-between pt-2.5 border-t border-white/20">
+                            <button onclick="showSection('#contact')" class="bg-white text-primary px-3 py-1.5 rounded-xl text-[11px] font-bold flex items-center gap-1.5 hover:bg-slate-50 transition-colors">
                                 <span data-i18n="about.contactButton">Contato</span>
-                                <span class="material-icons-round" style="font-size:10px;">arrow_forward</span>
+                                <span class="material-icons-round" style="font-size:11px;">arrow_forward</span>
                             </button>
                             <div class="flex -space-x-1.5">
                                 <div class="w-6 h-6 rounded-full border-2 border-primary/60 bg-slate-800 flex items-center justify-center text-[8px] text-primary font-bold">JS</div>
