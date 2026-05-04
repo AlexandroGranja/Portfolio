@@ -103,35 +103,49 @@ const translations = {
         // About Section
         about: {
             title: "Alexandro Granja",
-            subtitle: "Desenvolvedor Fullstack & Especialista em Automações com IA 🚀",
+            subtitle: "Desenvolvedor Fullstack & Especialista em Automações com IA",
             experience: "Experiência Profissional",
             education: "Formação",
             current: "Atual",
             techSupport: "Analista de Suporte de TI",
-            techSupportDesc: "Suporte técnico N1/N2, manutenção de hardware e software, administração de Active Directory e Microsoft 365, gestão de chamados e suporte ao ERP Target/Target Mob em ambiente de logística e distribuição. Também desenvolvi ferramentas internas para otimização de processos.",
+            techSupportDesc: "Atuação em suporte técnico e operações de TI, com administração de acessos (Active Directory e Microsoft 365), monitoramento via Zabbix e integração com sistemas de logística (Target/Target Mob). Também desenvolvi automações para rotinas recorrentes, reduzindo esforço manual e aumentando a padronização dos processos.",
             founder: "Fundador & Fullstack Dev",
-            founderDesc: "Desenvolvimento de aplicações Fullstack (React + Python/Flask + PostgreSQL), automações com n8n, integrações via APIs/webhooks e agentes de WhatsApp com IA.",
+            founderDesc: "Criação de soluções web e automações inteligentes para acelerar operações de negócio: sites e sistemas responsivos, integrações entre plataformas e agentes para atendimento automatizado.",
             techEducation: "Técnico em Informática",
             techEducationLevel: "Ensino Médio Técnico",
             devclub: "DevClub Fullstack Pro",
             devclubLevel: "Formação Intensiva",
             automation: "Gestão de Automação",
-            automationLevel: "Especialização IA & n8n",
+            automationLevel: "Especialização IA & Ferramentas NoCode",
             pixelCommunity: "Comunidade Pixel",
-            pixelCommunityLevel: "n8n & Agentes IA",
+            pixelCommunityLevel: "Criação de Agentes de IA e fluxos automatizados",
+            freeCourse1: "Lógica de Programação",
+            freeCourse1Level: "Fundação Bradesco · Certificado",
+            freeCourse2: "Git & Versionamento",
+            freeCourse2Level: "DIO · Certificado",
+            freeCourse3: "Algoritmos & Estrutura de Dados",
+            freeCourse3Level: "Curso em Vídeo · Certificado",
             onlineCerts: "Certificados Online",
             achievements: "Principais Conquistas",
-            achievement1: "Redução de 80% no tempo de atendimento com automações",
-            achievement2: "Aplicações Fullstack escaláveis com React + Python",
-            achievement3: "Integrações multicanal via APIs e webhooks",
+            achievement1: "redução atendimento",
+            achievement2: "apps fullstack",
+            achievement3: "integrações",
             location: "Localização",
             locationPlace: "Brasil, Rio de Janeiro",
+            availability: "Disponível",
             seeking: "Buscando Oportunidades",
             seekingDesc: "Estou aberto a novas oportunidades nas áreas de:",
-            seeking1: "Desenvolvimento Fullstack (React + Python/Flask)",
-            seeking2: "Automações e Integrações (n8n, APIs, Webhooks)",
-            seeking3: "Desenvolvimento Web & IA",
-            contactButton: "Entre em contato"
+            seeking1: "Fullstack (React + Python/Flask)",
+            seeking2: "Automações",
+            seeking3: "Web & IA",
+            seekingDetail1: "Frontend moderno + APIs robustas",
+            seekingDetail2: "Fluxos inteligentes e integrações",
+            seekingDetail3: "Agentes e soluções com LLMs",
+            contactButton: "Entre em contato",
+            stat1: "2+ Anos Exp.",
+            stat2: "5+ Projetos",
+            stat3: "10+ Tecnologias",
+            techStackLabel: "Stack Principal"
         },
         // Skills Section
         skills: {
@@ -280,14 +294,14 @@ const translations = {
         // About Section
         about: {
             title: "Alexandro Granja",
-            subtitle: "Fullstack Developer & AI Automation Specialist 🚀",
+            subtitle: "Fullstack Developer & AI Automation Specialist",
             experience: "Professional Experience",
             education: "Education",
             current: "Current",
             techSupport: "IT Support Analyst",
-            techSupportDesc: "N1/N2 technical support, hardware and software maintenance, Active Directory and Microsoft 365 administration, ticket management, and ERP Target/Target Mob support in a logistics and distribution environment. Also developed internal tools to optimize team processes.",
+            techSupportDesc: "Technical support and IT operations with access management (Active Directory and Microsoft 365), Zabbix monitoring, and logistics systems integration (Target/Target Mob). I also built automations for recurring routines, reducing manual effort and increasing process standardization.",
             founder: "Founder & Fullstack Dev",
-            founderDesc: "Development of Fullstack applications (React + Python/Flask + PostgreSQL), automations with n8n, integrations via APIs/webhooks, and WhatsApp agents with AI.",
+            founderDesc: "Built web solutions and smart automations to accelerate business operations: responsive websites and systems, cross-platform integrations, and automated support agents. End-to-end ownership from architecture to deployment (Vercel/Railway), focused on efficiency and scalability.",
             techEducation: "IT Technician",
             techEducationLevel: "Technical High School",
             devclub: "DevClub Fullstack Pro",
@@ -296,19 +310,33 @@ const translations = {
             automationLevel: "AI & n8n Specialization",
             pixelCommunity: "Pixel Community",
             pixelCommunityLevel: "n8n & AI Agents",
+            freeCourse1: "Programming Logic",
+            freeCourse1Level: "Fundação Bradesco · Certificate",
+            freeCourse2: "Git & Version Control",
+            freeCourse2Level: "DIO · Certificate",
+            freeCourse3: "Algorithms & Data Structures",
+            freeCourse3Level: "Curso em Vídeo · Certificate",
             onlineCerts: "Online Certificates",
             achievements: "Main Achievements",
-            achievement1: "80% reduction in service time with automations",
-            achievement2: "Scalable Fullstack applications with React + Python",
-            achievement3: "Multi-channel integrations via APIs and webhooks",
+            achievement1: "less service time",
+            achievement2: "fullstack apps",
+            achievement3: "integrations",
             location: "Location",
             locationPlace: "Brazil, Rio de Janeiro",
+            availability: "Available",
             seeking: "Seeking Opportunities",
             seekingDesc: "I am open to new opportunities in the areas of:",
-            seeking1: "Fullstack Development (React + Python/Flask)",
-            seeking2: "Automations and Integrations (n8n, APIs, Webhooks)",
-            seeking3: "Web & AI Development",
-            contactButton: "Get in Touch"
+            seeking1: "Fullstack (React + Python/Flask)",
+            seeking2: "Automations (n8n, APIs)",
+            seeking3: "Web & AI",
+            seekingDetail1: "Modern frontend + robust APIs",
+            seekingDetail2: "Smart workflows & integrations",
+            seekingDetail3: "AI agents & LLM solutions",
+            contactButton: "Get in Touch",
+            stat1: "2+ Years Exp.",
+            stat2: "5+ Projects",
+            stat3: "10+ Technologies",
+            techStackLabel: "Main Stack"
         },
         // Skills Section
         skills: {
@@ -494,6 +522,12 @@ function updatePageLanguage(lang) {
     document.querySelectorAll('[data-i18n="about.automationLevel"]').forEach(el => el.textContent = t.about.automationLevel);
     document.querySelectorAll('[data-i18n="about.pixelCommunity"]').forEach(el => el.textContent = t.about.pixelCommunity);
     document.querySelectorAll('[data-i18n="about.pixelCommunityLevel"]').forEach(el => el.textContent = t.about.pixelCommunityLevel);
+    document.querySelectorAll('[data-i18n="about.freeCourse1"]').forEach(el => el.textContent = t.about.freeCourse1);
+    document.querySelectorAll('[data-i18n="about.freeCourse1Level"]').forEach(el => el.textContent = t.about.freeCourse1Level);
+    document.querySelectorAll('[data-i18n="about.freeCourse2"]').forEach(el => el.textContent = t.about.freeCourse2);
+    document.querySelectorAll('[data-i18n="about.freeCourse2Level"]').forEach(el => el.textContent = t.about.freeCourse2Level);
+    document.querySelectorAll('[data-i18n="about.freeCourse3"]').forEach(el => el.textContent = t.about.freeCourse3);
+    document.querySelectorAll('[data-i18n="about.freeCourse3Level"]').forEach(el => el.textContent = t.about.freeCourse3Level);
     document.querySelectorAll('[data-i18n="about.onlineCerts"]').forEach(el => el.textContent = t.about.onlineCerts);
     document.querySelectorAll('[data-i18n="about.achievements"]').forEach(el => el.textContent = t.about.achievements);
     document.querySelectorAll('[data-i18n="about.achievement1"]').forEach(el => el.textContent = t.about.achievement1);
@@ -506,8 +540,16 @@ function updatePageLanguage(lang) {
     document.querySelectorAll('[data-i18n="about.seeking1"]').forEach(el => el.textContent = t.about.seeking1);
     document.querySelectorAll('[data-i18n="about.seeking2"]').forEach(el => el.textContent = t.about.seeking2);
     document.querySelectorAll('[data-i18n="about.seeking3"]').forEach(el => el.textContent = t.about.seeking3);
+    document.querySelectorAll('[data-i18n="about.seekingDetail1"]').forEach(el => el.textContent = t.about.seekingDetail1);
+    document.querySelectorAll('[data-i18n="about.seekingDetail2"]').forEach(el => el.textContent = t.about.seekingDetail2);
+    document.querySelectorAll('[data-i18n="about.seekingDetail3"]').forEach(el => el.textContent = t.about.seekingDetail3);
     document.querySelectorAll('[data-i18n="about.contactButton"]').forEach(el => el.textContent = t.about.contactButton);
     document.querySelectorAll('[data-i18n="about.subtitle"]').forEach(el => el.textContent = t.about.subtitle);
+    document.querySelectorAll('[data-i18n="about.availability"]').forEach(el => el.textContent = t.about.availability);
+    document.querySelectorAll('[data-i18n="about.stat1"]').forEach(el => el.textContent = t.about.stat1);
+    document.querySelectorAll('[data-i18n="about.stat2"]').forEach(el => el.textContent = t.about.stat2);
+    document.querySelectorAll('[data-i18n="about.stat3"]').forEach(el => el.textContent = t.about.stat3);
+    document.querySelectorAll('[data-i18n="about.techStackLabel"]').forEach(el => el.textContent = t.about.techStackLabel);
     
     // Atualizar Skills
     document.querySelectorAll('[data-i18n="skills.techStack"]').forEach(el => el.textContent = t.skills.techStack);
