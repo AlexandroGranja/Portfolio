@@ -604,6 +604,12 @@ section:nth-child(odd) {
     font-size: 0.9rem;
 }
 
+/* Skills Section — fill height */
+#skills .skill-card-group,
+#skills .skill-card-group > div {
+    height: 100%;
+}
+
 /* Skills Section */
 .skills-grid {
     display: grid;
