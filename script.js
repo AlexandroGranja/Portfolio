@@ -182,6 +182,20 @@ const translations = {
             service2: "Automações",
             service3: "Agentes de IA",
             projectsLabel: "Projetos Entregues",
+            titleMain: "Soluções ",
+            titleHighlight: "Digitais",
+            card1Desc: "Plataforma de campanhas promocionais com auth JWT/bcrypt, cache em 5 camadas (↓40% no carregamento), integração com link de pagamento e emissão automática de notas fiscais via Nota Nacional. Dashboard admin com estatísticas em tempo real e deploy na Railway.",
+            card1Highlight: "Cache 5 camadas · Pagamento · Nota Fiscal",
+            card2Desc: "Sistema SaaS de cardápio digital com painel administrativo completo: gestão de produtos por categoria, controle de pedidos em tempo real e banco de dados reativo via Supabase. Interface responsiva para clientes e operadores.",
+            card2Highlight: "Gestão completa de pedidos em tempo real",
+            card3Desc: "Landing page de alta conversão para empresa de adesivos decorativos: galeria interativa de trabalhos, seção de serviços, integração direta com WhatsApp para orçamentos e SEO on-page otimizado para captação de leads orgânicos.",
+            card3Highlight: "SEO otimizado para leads orgânicos",
+            card4Type: "Ferramenta Web",
+            card4Desc: "Ferramenta web que automatiza 100% da seleção de XMLs de notas fiscais: cruza os números de NF de uma planilha Excel com os arquivos XML de um ZIP e exporta novo ZIP contendo apenas os correspondentes, com drag-and-drop e download automático.",
+            card4Highlight: "Elimina 100% do processo manual de seleção",
+            readMore: "Ler mais →",
+            chatContactBtn: "Ir para Contato",
+            chatAiverseBtn: "Visitar AIverse Technologies",
             cta: {
                 question: "Pronto para transformar seu negócio com tecnologia?",
                 button: "Visitar AIverse"
@@ -352,6 +366,20 @@ const translations = {
             service2: "Automations",
             service3: "AI Agents",
             projectsLabel: "Delivered Projects",
+            titleMain: "Digital ",
+            titleHighlight: "Solutions",
+            card1Desc: "Promotional campaign platform with JWT/bcrypt auth, 5-layer cache (↓40% load time), payment link integration and automatic invoice issuance via Nota Nacional. Admin dashboard with real-time statistics, deployed on Railway.",
+            card1Highlight: "5-layer Cache · Payment · Tax Invoice",
+            card2Desc: "Digital menu SaaS with full admin panel: product management by category, real-time order tracking, and reactive database via Supabase. Responsive interface for customers and operators.",
+            card2Highlight: "Full real-time order management",
+            card3Desc: "High-conversion landing page for a decorative sticker company: interactive work gallery, services section, direct WhatsApp integration for quotes, and on-page SEO optimized for organic lead generation.",
+            card3Highlight: "SEO optimized for organic leads",
+            card4Type: "Web Tool",
+            card4Desc: "Web tool that automates 100% of XML invoice selection: cross-references NF numbers from an Excel spreadsheet with XML files in a ZIP, and exports a new ZIP with only the matching files — with drag-and-drop and automatic download.",
+            card4Highlight: "Eliminates 100% of manual selection process",
+            readMore: "Read more →",
+            chatContactBtn: "Go to Contact",
+            chatAiverseBtn: "Visit AIverse Technologies",
             cta: {
                 question: "Ready to transform your business with technology?",
                 button: "Visit AIverse"
@@ -538,6 +566,19 @@ function updatePageLanguage(lang) {
     document.querySelectorAll('[data-i18n="agency.projectsLabel"]').forEach(el => el.textContent = t.agency.projectsLabel);
     document.querySelectorAll('[data-i18n="agency.cta.question"]').forEach(el => el.textContent = t.agency.cta.question);
     document.querySelectorAll('[data-i18n="agency.cta.button"]').forEach(el => el.textContent = t.agency.cta.button);
+    document.querySelectorAll('[data-i18n="agency.titleMain"]').forEach(el => el.textContent = t.agency.titleMain);
+    document.querySelectorAll('[data-i18n="agency.titleHighlight"]').forEach(el => el.textContent = t.agency.titleHighlight);
+    document.querySelectorAll('[data-i18n="agency.card1Desc"]').forEach(el => el.textContent = t.agency.card1Desc);
+    document.querySelectorAll('[data-i18n="agency.card1Highlight"]').forEach(el => el.textContent = t.agency.card1Highlight);
+    document.querySelectorAll('[data-i18n="agency.card2Desc"]').forEach(el => el.textContent = t.agency.card2Desc);
+    document.querySelectorAll('[data-i18n="agency.card2Highlight"]').forEach(el => el.textContent = t.agency.card2Highlight);
+    document.querySelectorAll('[data-i18n="agency.card3Desc"]').forEach(el => el.textContent = t.agency.card3Desc);
+    document.querySelectorAll('[data-i18n="agency.card3Highlight"]').forEach(el => el.textContent = t.agency.card3Highlight);
+    document.querySelectorAll('[data-i18n="agency.card4Type"]').forEach(el => el.textContent = t.agency.card4Type);
+    document.querySelectorAll('[data-i18n="agency.card4Desc"]').forEach(el => el.textContent = t.agency.card4Desc);
+    document.querySelectorAll('[data-i18n="agency.card4Highlight"]').forEach(el => el.textContent = t.agency.card4Highlight);
+    document.querySelectorAll('[data-i18n="agency.readMore"]').forEach(el => el.textContent = t.agency.readMore);
+    if (window.agentWidgetRestart) window.agentWidgetRestart(lang);
     
     // Atualizar Projects
     document.querySelectorAll('[data-i18n="projects.title"]').forEach(el => {
