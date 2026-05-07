@@ -3926,10 +3926,9 @@ html {
     background: rgba(245, 158, 11, 0.08);
 }
 
-/* Active state */
+/* Active state — only color, no border/background */
 .sidebar-item.text-primary {
-    background: rgba(245, 158, 11, 0.15);
-    box-shadow: inset 0 0 0 1px rgba(245, 158, 11, 0.25);
+    background: transparent;
 }
 
 /* ================================================================
