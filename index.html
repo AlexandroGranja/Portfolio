@@ -1776,32 +1776,51 @@
     </main>
     <script src="script.js"></script>
     <script>
-    /* Skills — diamond pip level indicators + staggered tab entrance */
+    /* Skills — level progress bars + staggered tab entrance */
     (function() {
         var levelMap = {
-            'expert': 5, 'especialista': 5, 'specialist': 5,
-            'avançado': 4, 'advanced': 4,
-            'intermediário': 3, 'intermediate': 3
+            'expert': 95, 'especialista': 95, 'specialist': 95,
+            'avançado': 78, 'advanced': 78,
+            'intermediário': 55, 'intermediate': 55
+        };
+        var labelMap = {
+            'expert': 'Expert', 'especialista': 'Expert', 'specialist': 'Expert',
+            'avançado': 'Avançado', 'advanced': 'Advanced',
+            'intermediário': 'Intermediário', 'intermediate': 'Intermediate'
         };
 
-        function buildPips(card) {
-            var existing = card.querySelector('.skill-pips');
+        function buildBar(card) {
+            var existing = card.querySelector('.skill-level-bar');
             if (existing) existing.remove();
             var levelEl = card.querySelector('p[data-i18n]');
             var lvlText = levelEl ? levelEl.textContent.trim().toLowerCase() : '';
-            var lvl = levelMap[lvlText] !== undefined ? levelMap[lvlText] : 3;
-            var pips = document.createElement('div');
-            pips.className = 'skill-pips';
-            for (var i = 0; i < 5; i++) {
-                var pip = document.createElement('span');
-                pip.className = 'skill-pip ' + (i < lvl ? 'skill-pip-on' : 'skill-pip-off');
-                pips.appendChild(pip);
-            }
-            card.appendChild(pips);
+            var pct = levelMap[lvlText] !== undefined ? levelMap[lvlText] : 65;
+            var lbl = labelMap[lvlText] || (levelEl ? levelEl.textContent.trim() : '');
+
+            var bar = document.createElement('div');
+            bar.className = 'skill-level-bar';
+            bar.innerHTML =
+                '<span class="skill-level-label">' + lbl + '</span>' +
+                '<div class="skill-level-track"><div class="skill-level-fill" data-pct="' + pct + '"></div></div>';
+            card.appendChild(bar);
         }
 
-        function buildAllPips() {
-            document.querySelectorAll('#skills .skill-card-group > div').forEach(buildPips);
+        function buildAllBars() {
+            document.querySelectorAll('#skills .skill-card-group > div').forEach(buildBar);
+        }
+
+        function animateBars(cards) {
+            cards.forEach(function(card) {
+                var fill = card.querySelector('.skill-level-fill');
+                if (!fill) return;
+                fill.style.width = '0%';
+                var pct = fill.dataset.pct;
+                requestAnimationFrame(function() {
+                    requestAnimationFrame(function() {
+                        fill.style.width = pct + '%';
+                    });
+                });
+            });
         }
 
         function animateTab() {
@@ -1812,22 +1831,18 @@
                 card.style.animationDelay = (i * 32) + 'ms';
                 card.classList.add('skill-reveal');
             });
+            setTimeout(function() { animateBars(visible); }, 80);
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            buildAllPips();
-            /* Hook tab buttons for staggered animation */
+            buildAllBars();
             document.querySelectorAll('.skills-tab-btn').forEach(function(btn) {
-                btn.addEventListener('click', function() {
-                    setTimeout(animateTab, 0);
-                });
+                btn.addEventListener('click', function() { setTimeout(animateTab, 0); });
             });
-            /* Initial tab animation */
-            setTimeout(animateTab, 80);
+            setTimeout(animateTab, 120);
         });
 
-        /* Expose for language change */
-        window.rebuildSkillPips = buildAllPips;
+        window.rebuildSkillPips = function() { buildAllBars(); };
     })();
     </script>
     <script>
