@@ -32,7 +32,7 @@
                         sans: ["Plus Jakarta Sans", "sans-serif"],
                     },
                     borderRadius: {
-                        DEFAULT: "1rem",
+                        DEFAULT: "6px",
                     },
                 },
             },
@@ -755,7 +755,7 @@
                 <!-- AI Agent Widget — mobile + desktop -->
                 <div class="flex items-center justify-center h-[460px] md:flex-1 md:items-end py-4 md:pb-4 md:pt-0" id="agentWidget">
                     <!-- Phone: dimensões fixas, nunca muda com conteúdo -->
-                    <div style="width:215px;height:430px;flex-shrink:0;background:#0B141A;border-radius:32px;border:2px solid rgba(255,255,255,0.12);overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.75),inset 0 1px 0 rgba(255,255,255,0.06);display:flex;flex-direction:column;">
+                    <div style="width:215px;height:430px;flex-shrink:0;background:#0B141A;border-radius:14px;border:2px solid rgba(255,255,255,0.12);overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.75),inset 0 1px 0 rgba(255,255,255,0.06);display:flex;flex-direction:column;">
                         <!-- Status bar -->
                         <div style="background:#1F2C34;padding:5px 14px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;">
                             <span style="font-size:9px;color:#8696a0;font-weight:700;letter-spacing:0.02em;">9:41</span>
@@ -779,11 +779,11 @@
                             <span class="material-icons-round" style="font-size:18px;color:#8696a0;">more_vert</span>
                         </div>
                         <!-- Chat area — scroll suave, fade no topo, wallpaper -->
-                        <div id="agentChatArea" class="hide-scrollbar" style="background-color:#0D1117;padding:10px 10px 8px;display:flex;flex-direction:column;gap:6px;flex:1;overflow-y:scroll;position:relative;-webkit-mask-image:linear-gradient(to bottom,transparent 0%,black 22%,black 100%);mask-image:linear-gradient(to bottom,transparent 0%,black 22%,black 100%);"></div>
+                        <div id="agentChatArea" class="hide-scrollbar" style="background-color:#0D1117;padding:10px 10px 8px;display:flex;flex-direction:column;gap:6px;flex:1;overflow-y:scroll;position:relative;"></div>
                         <!-- Input bar -->
                         <div style="background:#1F2C34;padding:7px 10px;display:flex;align-items:center;gap:6px;flex-shrink:0;">
                             <span class="material-icons-round" style="font-size:18px;color:#8696a0;">mood</span>
-                            <div style="flex:1;background:#2A3942;border-radius:16px;padding:7px 12px;min-width:0;pointer-events:none;user-select:none;">
+                            <div style="flex:1;background:#2A3942;border-radius:6px;padding:7px 12px;min-width:0;pointer-events:none;user-select:none;">
                                 <span id="agentInputText" style="font-size:10px;color:#8696a0;display:block;white-space:pre-wrap;word-break:break-word;line-height:1.4;pointer-events:none;user-select:none;"></span>
                             </div>
                             <div id="agentSendBtn" style="width:34px;height:34px;border-radius:50%;background:#374151;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:default;opacity:0.5;transition:all 0.2s ease;user-select:none;-webkit-tap-highlight-color:transparent;outline:none;">
@@ -812,7 +812,7 @@
                         </div>
                         <p class="text-xs text-slate-300 leading-relaxed line-clamp-3 sm:line-clamp-none">Plataforma de campanhas promocionais com auth JWT/bcrypt, cache em 5 camadas (↓40% no carregamento), integração com link de pagamento e emissão automática de notas fiscais via Nota Nacional. Dashboard admin com estatísticas em tempo real e deploy na Railway.</p>
                         <button class="sm:hidden text-[10px] text-primary/80 font-semibold hover:text-primary transition-colors text-left w-fit" onclick="this.previousElementSibling.classList.remove('line-clamp-3');this.remove()">Ler mais →</button>
-                        <div class="flex items-center gap-1.5 px-2 py-1.5 rounded-lg flex-shrink-0" style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.15);">
+                        <div class="flex items-center gap-1.5 px-2 py-1.5 rounded-sm flex-shrink-0" style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.15);">
                             <span class="material-icons-round text-primary text-[12px]">bolt</span>
                             <span class="text-xs text-primary font-semibold">Cache 5 camadas · Pagamento · Nota Fiscal</span>
                         </div>
@@ -837,7 +837,7 @@
                         </div>
                         <p class="text-xs text-slate-300 leading-relaxed line-clamp-3 sm:line-clamp-none">Sistema SaaS de cardápio digital com painel administrativo completo: gestão de produtos por categoria, controle de pedidos em tempo real e banco de dados reativo via Supabase. Interface responsiva para clientes e operadores.</p>
                         <button class="sm:hidden text-[10px] text-primary/80 font-semibold hover:text-primary transition-colors text-left w-fit" onclick="this.previousElementSibling.classList.remove('line-clamp-3');this.remove()">Ler mais →</button>
-                        <div class="flex items-center gap-1.5 px-2 py-1.5 rounded-lg flex-shrink-0" style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.15);">
+                        <div class="flex items-center gap-1.5 px-2 py-1.5 rounded-sm flex-shrink-0" style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.15);">
                             <span class="material-icons-round text-primary text-[12px]">storefront</span>
                             <span class="text-xs text-primary font-semibold">Gestão completa de pedidos em tempo real</span>
                         </div>
@@ -861,7 +861,7 @@
                         </div>
                         <p class="text-xs text-slate-300 leading-relaxed line-clamp-3 sm:line-clamp-none">Landing page de alta conversão para empresa de adesivos decorativos: galeria interativa de trabalhos, seção de serviços, integração direta com WhatsApp para orçamentos e SEO on-page otimizado para captação de leads orgânicos.</p>
                         <button class="sm:hidden text-[10px] text-primary/80 font-semibold hover:text-primary transition-colors text-left w-fit" onclick="this.previousElementSibling.classList.remove('line-clamp-3');this.remove()">Ler mais →</button>
-                        <div class="flex items-center gap-1.5 px-2 py-1.5 rounded-lg flex-shrink-0" style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.15);">
+                        <div class="flex items-center gap-1.5 px-2 py-1.5 rounded-sm flex-shrink-0" style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.15);">
                             <span class="material-icons-round text-primary text-[12px]">trending_up</span>
                             <span class="text-xs text-primary font-semibold">SEO otimizado para leads orgânicos</span>
                         </div>
@@ -885,7 +885,7 @@
                         </div>
                         <p class="text-xs text-slate-300 leading-relaxed line-clamp-3 sm:line-clamp-none">Ferramenta web que automatiza 100% da seleção de XMLs de notas fiscais: cruza os números de NF de uma planilha Excel com os arquivos XML de um ZIP e exporta novo ZIP contendo apenas os correspondentes, com drag-and-drop e download automático.</p>
                         <button class="sm:hidden text-[10px] text-primary/80 font-semibold hover:text-primary transition-colors text-left w-fit" onclick="this.previousElementSibling.classList.remove('line-clamp-3');this.remove()">Ler mais →</button>
-                        <div class="flex items-center gap-1.5 px-2 py-1.5 rounded-lg flex-shrink-0" style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.15);">
+                        <div class="flex items-center gap-1.5 px-2 py-1.5 rounded-sm flex-shrink-0" style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.15);">
                             <span class="material-icons-round text-primary text-[12px]">auto_fix_high</span>
                             <span class="text-xs text-primary font-semibold">Elimina 100% do processo manual de seleção</span>
                         </div>
