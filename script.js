@@ -176,31 +176,15 @@ const translations = {
         },
         // Agency Section
         agency: {
-            tagline: "Transformando ideias em soluções digitais inteligentes",
-            webDev: {
-                title: "Desenvolvimento Web Profissional",
-                description: "Criamos sites modernos, responsivos e otimizados para SEO. Desde landing pages até sistemas web complexos, cada projeto é desenvolvido com as melhores práticas e tecnologias mais recentes do mercado.",
-                feature1: "Design Moderno e Responsivo",
-                feature2: "Otimização para Conversão",
-                feature3: "Performance e SEO"
-            },
-            whatsapp: {
-                title: "Agentes de WhatsApp com IA",
-                description: "Revolucione seu atendimento ao cliente com agentes inteligentes personalizados. Automação completa integrada com IA, capaz de responder perguntas, processar solicitações e fornecer suporte 24/7 de forma natural e eficiente.",
-                feature1: "Atendimento 24/7 Automatizado",
-                feature2: "Integração com IA Avançada",
-                feature3: "Personalização Total"
-            },
-            automation: {
-                title: "Automações Inteligentes",
-                description: "Especialistas em n8n e Python/Flask, criamos fluxos de automação que otimizam processos empresariais, reduzem custos operacionais e aumentam a produtividade. Integramos diferentes sistemas e ferramentas para trabalhar em harmonia, aplicando engenharia de prompts e soluções com IA/LLMs quando necessário.",
-                feature1: "Fluxos Complexos com n8n",
-                feature2: "Integração de Sistemas",
-                feature3: "ROI Comprovado"
-            },
+            roleLabel: "Freelancer & Dev",
+            tagline: "Pelo AIverse entrego sites, sistemas e automações com IA — projetos reais, em produção.",
+            service1: "Desenvolvimento Web",
+            service2: "Automações",
+            service3: "Agentes de IA",
+            projectsLabel: "Projetos Entregues",
             cta: {
                 question: "Pronto para transformar seu negócio com tecnologia?",
-                button: "Visite AIverse Technologies"
+                button: "Visitar AIverse"
             }
         },
         // Skills Section
@@ -362,31 +346,15 @@ const translations = {
         },
         // Agency Section
         agency: {
-            tagline: "Transforming ideas into intelligent digital solutions",
-            webDev: {
-                title: "Professional Web Development",
-                description: "We create modern, responsive, and SEO-optimized websites. From landing pages to complex web systems, each project is developed with best practices and the latest market technologies.",
-                feature1: "Modern and Responsive Design",
-                feature2: "Conversion Optimization",
-                feature3: "Performance and SEO"
-            },
-            whatsapp: {
-                title: "WhatsApp Agents with AI",
-                description: "Revolutionize your customer service with personalized intelligent agents. Complete automation integrated with AI, capable of answering questions, processing requests, and providing 24/7 support naturally and efficiently.",
-                feature1: "24/7 Automated Service",
-                feature2: "Advanced AI Integration",
-                feature3: "Total Personalization"
-            },
-            automation: {
-                title: "Intelligent Automations",
-                description: "Specialists in n8n and Python/Flask, we create automation flows that optimize business processes, reduce operational costs, and increase productivity. We integrate different systems and tools to work in harmony, applying prompt engineering and solutions with AI/LLMs when necessary.",
-                feature1: "Complex Flows with n8n",
-                feature2: "System Integration",
-                feature3: "Proven ROI"
-            },
+            roleLabel: "Freelancer & Dev",
+            tagline: "Through AIverse I deliver websites, systems and AI automations — real projects, in production.",
+            service1: "Web Development",
+            service2: "Automations",
+            service3: "AI Agents",
+            projectsLabel: "Delivered Projects",
             cta: {
                 question: "Ready to transform your business with technology?",
-                button: "Visit AIverse Technologies"
+                button: "Visit AIverse"
             }
         },
         // Skills Section
@@ -562,22 +530,12 @@ function updatePageLanguage(lang) {
     document.querySelectorAll('[data-i18n="skills.courses"]').forEach(el => el.textContent = t.skills.courses);
 
     // Atualizar Agency
+    document.querySelectorAll('[data-i18n="agency.roleLabel"]').forEach(el => el.textContent = t.agency.roleLabel);
     document.querySelectorAll('[data-i18n="agency.tagline"]').forEach(el => el.textContent = t.agency.tagline);
-    document.querySelectorAll('[data-i18n="agency.webDev.title"]').forEach(el => el.textContent = t.agency.webDev.title);
-    document.querySelectorAll('[data-i18n="agency.webDev.description"]').forEach(el => el.textContent = t.agency.webDev.description);
-    document.querySelectorAll('[data-i18n="agency.webDev.feature1"]').forEach(el => el.textContent = t.agency.webDev.feature1);
-    document.querySelectorAll('[data-i18n="agency.webDev.feature2"]').forEach(el => el.textContent = t.agency.webDev.feature2);
-    document.querySelectorAll('[data-i18n="agency.webDev.feature3"]').forEach(el => el.textContent = t.agency.webDev.feature3);
-    document.querySelectorAll('[data-i18n="agency.whatsapp.title"]').forEach(el => el.textContent = t.agency.whatsapp.title);
-    document.querySelectorAll('[data-i18n="agency.whatsapp.description"]').forEach(el => el.textContent = t.agency.whatsapp.description);
-    document.querySelectorAll('[data-i18n="agency.whatsapp.feature1"]').forEach(el => el.textContent = t.agency.whatsapp.feature1);
-    document.querySelectorAll('[data-i18n="agency.whatsapp.feature2"]').forEach(el => el.textContent = t.agency.whatsapp.feature2);
-    document.querySelectorAll('[data-i18n="agency.whatsapp.feature3"]').forEach(el => el.textContent = t.agency.whatsapp.feature3);
-    document.querySelectorAll('[data-i18n="agency.automation.title"]').forEach(el => el.textContent = t.agency.automation.title);
-    document.querySelectorAll('[data-i18n="agency.automation.description"]').forEach(el => el.textContent = t.agency.automation.description);
-    document.querySelectorAll('[data-i18n="agency.automation.feature1"]').forEach(el => el.textContent = t.agency.automation.feature1);
-    document.querySelectorAll('[data-i18n="agency.automation.feature2"]').forEach(el => el.textContent = t.agency.automation.feature2);
-    document.querySelectorAll('[data-i18n="agency.automation.feature3"]').forEach(el => el.textContent = t.agency.automation.feature3);
+    document.querySelectorAll('[data-i18n="agency.service1"]').forEach(el => el.textContent = t.agency.service1);
+    document.querySelectorAll('[data-i18n="agency.service2"]').forEach(el => el.textContent = t.agency.service2);
+    document.querySelectorAll('[data-i18n="agency.service3"]').forEach(el => el.textContent = t.agency.service3);
+    document.querySelectorAll('[data-i18n="agency.projectsLabel"]').forEach(el => el.textContent = t.agency.projectsLabel);
     document.querySelectorAll('[data-i18n="agency.cta.question"]').forEach(el => el.textContent = t.agency.cta.question);
     document.querySelectorAll('[data-i18n="agency.cta.button"]').forEach(el => el.textContent = t.agency.cta.button);
     

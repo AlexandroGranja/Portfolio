@@ -529,7 +529,7 @@ section:nth-child(odd) {
 .about-card {
     background: rgba(59, 130, 246, 0.1);
     padding: 2rem;
-    border-radius: 20px;
+    border-radius: 6px;
     border: 1px solid rgba(59, 130, 246, 0.2);
     backdrop-filter: blur(10px);
 }
@@ -561,7 +561,7 @@ section:nth-child(odd) {
     text-align: center;
     padding: 1.5rem;
     background: rgba(15, 23, 42, 0.5);
-    border-radius: 15px;
+    border-radius: 6px;
     border: 1px solid rgba(59, 130, 246, 0.2);
     transition: all 0.3s ease;
     opacity: 0;
@@ -614,7 +614,7 @@ section:nth-child(odd) {
 .skill-category {
     background: rgba(59, 130, 246, 0.1);
     padding: 2rem;
-    border-radius: 20px;
+    border-radius: 6px;
     border: 1px solid rgba(59, 130, 246, 0.2);
     backdrop-filter: blur(10px);
 }
@@ -680,7 +680,7 @@ section:nth-child(odd) {
     align-items: center;
     padding: 1.5rem;
     background: rgba(15, 23, 42, 0.5);
-    border-radius: 15px;
+    border-radius: 6px;
     border: 1px solid rgba(59, 130, 246, 0.2);
     transition: all 0.3s ease;
     cursor: pointer;
@@ -714,7 +714,7 @@ section:nth-child(odd) {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 14px;
+    border-radius: 4px;
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.06);
     position: relative;
@@ -739,7 +739,7 @@ section:nth-child(odd) {
 .brand-badge {
     width: 60px;
     height: 60px;
-    border-radius: 14px;
+    border-radius: 4px;
     background: rgba(15, 23, 42, 0.7);
     border: 1px solid rgba(59, 130, 246, 0.25);
     display: flex;
@@ -998,7 +998,7 @@ section:nth-child(odd) {
     transform: translateX(30px);
     transition: opacity 0.5s ease, transform 0.5s ease;
     background: rgba(15, 23, 42, 0.6);
-    border-radius: 16px;
+    border-radius: 6px;
     border: 1px solid rgba(245, 158, 11, 0.1);
     overflow: visible;
     position: relative;
@@ -1047,7 +1047,7 @@ section:nth-child(odd) {
     width: 100%;
     position: relative;
     background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-    border-radius: 16px 16px 0 0;
+    border-radius: 6px 6px 0 0;
     overflow: hidden;
     height: 300px;
     display: flex;
@@ -1543,7 +1543,7 @@ section:nth-child(odd) {
     padding: 0.6rem 1rem;
     background: rgba(245, 158, 11, 0.15);
     border: 1px solid rgba(245, 158, 11, 0.4);
-    border-radius: 10px;
+    border-radius: 4px;
     color: #f59e0b;
     text-decoration: none;
     font-size: 0.85rem;
@@ -1659,7 +1659,7 @@ section:nth-child(odd) {
     padding: 0.35rem 0.75rem;
     background: rgba(245, 158, 11, 0.1);
     border: 1px solid rgba(245, 158, 11, 0.3);
-    border-radius: 8px;
+    border-radius: 4px;
     font-size: 0.75rem;
     color: #f59e0b;
     font-weight: 600;
@@ -1693,7 +1693,7 @@ section:nth-child(odd) {
     gap: 1rem;
     padding: 2rem;
     background: rgba(245, 158, 11, 0.1);
-    border-radius: 15px;
+    border-radius: 6px;
     border: 1px solid rgba(245, 158, 11, 0.2);
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
@@ -2595,7 +2595,7 @@ html {
     color: var(--accent-light);
     background: rgba(59, 130, 246, 0.1);
     padding: 2rem;
-    border-radius: 15px;
+    border-radius: 6px;
     border: 1px solid rgba(59, 130, 246, 0.2);
     margin-top: 3rem;
     font-weight: 500;
@@ -3036,7 +3036,7 @@ html {
 
 .agency-card {
     background: rgba(30, 41, 59, 0.8);
-    border-radius: 25px;
+    border-radius: 6px;
     padding: 3rem 2rem;
     border: 2px solid rgba(59, 130, 246, 0.2);
     backdrop-filter: blur(10px);
@@ -3102,7 +3102,7 @@ html {
     width: 80px;
     height: 80px;
     background: var(--gradient-rainbow);
-    border-radius: 20px;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3118,7 +3118,7 @@ html {
     position: absolute;
     inset: -3px;
     background: var(--gradient-rainbow);
-    border-radius: 20px;
+    border-radius: 4px;
     z-index: -1;
     filter: blur(15px);
     opacity: 0;
@@ -3908,7 +3908,7 @@ html {
     justify-content: center;
     gap: 3px;
     padding: 7px 4px;
-    border-radius: 10px;
+    border-radius: 6px;
     transition: color 0.2s ease, background 0.2s ease;
     text-decoration: none;
     cursor: pointer;
