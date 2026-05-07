@@ -238,6 +238,13 @@
             0%,60%,100%{transform:translateY(0);opacity:.35}
             30%{transform:translateY(-3px);opacity:1}
         }
+        /* Phone mockup — escala no desktop com clamp */
+        @media (min-width: 768px) {
+            #agentPhone {
+                width: clamp(215px, 17vw, 290px) !important;
+                height: clamp(430px, 34vw, 580px) !important;
+            }
+        }
         /* Smaller font sizes - except home/about/agency (these sections use tailored utility sizing) */
         .section-content:not(#home):not(#about):not(#agency) h1 { font-size: 1.75rem; }
         .section-content:not(#home):not(#about):not(#agency) h2 { font-size: 1.5rem; }
@@ -754,8 +761,8 @@
 
                 <!-- AI Agent Widget — mobile + desktop -->
                 <div class="flex items-center justify-center h-[460px] md:flex-1 md:items-end py-4 md:pb-4 md:pt-0" id="agentWidget">
-                    <!-- Phone: dimensões fixas, nunca muda com conteúdo -->
-                    <div style="width:215px;height:430px;flex-shrink:0;background:#0B141A;border-radius:14px;border:2px solid rgba(255,255,255,0.12);overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.75),inset 0 1px 0 rgba(255,255,255,0.06);display:flex;flex-direction:column;">
+                    <!-- Phone: dimensões responsivas no desktop via CSS -->
+                    <div id="agentPhone" style="width:215px;height:430px;flex-shrink:0;background:#0B141A;border-radius:14px;border:2px solid rgba(255,255,255,0.12);overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.75),inset 0 1px 0 rgba(255,255,255,0.06);display:flex;flex-direction:column;">
                         <!-- Status bar -->
                         <div style="background:#1F2C34;padding:5px 14px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;">
                             <span style="font-size:9px;color:#8696a0;font-weight:700;letter-spacing:0.02em;">9:41</span>
