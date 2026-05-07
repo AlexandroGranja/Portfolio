@@ -4302,6 +4302,156 @@ html {
     #home.section-content { padding: 0.5rem !important; }
 }
 
+/* ==========================================
+   SKILLS — CIRCUIT TERMINAL REDESIGN
+   ========================================== */
+
+/* Subtle circuit grid on section bg */
+#skills::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(245,158,11,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(245,158,11,0.025) 1px, transparent 1px);
+    background-size: 36px 36px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Card redesign — dark glass + amber left accent */
+#skills .skill-card-group > div {
+    background: rgba(6, 11, 22, 0.88) !important;
+    border: 1px solid rgba(255,255,255,0.05) !important;
+    border-left: 2px solid rgba(245,158,11,0.3) !important;
+    border-radius: 5px !important;
+    padding: 0.875rem 0.75rem 0.625rem !important;
+    gap: 0.5rem !important;
+    position: relative;
+    overflow: hidden;
+    transition: border-left-color 0.2s ease, box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+/* Radial amber glow on hover */
+#skills .skill-card-group > div::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 30%, rgba(245,158,11,0.07) 0%, transparent 65%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+#skills .skill-card-group > div:hover::before { opacity: 1; }
+
+#skills .skill-card-group > div:hover {
+    border-left-color: #F59E0B !important;
+    box-shadow: -3px 0 14px rgba(245,158,11,0.18), 0 6px 24px rgba(0,0,0,0.45);
+    transform: translateY(-2px);
+}
+
+/* Icon container */
+#skills .w-14 {
+    width: 2.875rem !important;
+    height: 2.875rem !important;
+    border-radius: 6px !important;
+    border: 1px solid rgba(255,255,255,0.07) !important;
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+}
+
+#skills .w-8 {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+}
+
+/* Card name — geometric uppercase */
+#skills .skill-card-group > div h3 {
+    font-family: 'Syne', sans-serif !important;
+    font-size: 0.68rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    color: #e2e8f0 !important;
+    line-height: 1.2 !important;
+    position: relative;
+    z-index: 1;
+}
+
+/* Hide original level text — replaced by pips */
+#skills .skill-card-group > div p[data-i18n] {
+    display: none !important;
+}
+
+/* Diamond pip indicators */
+.skill-pips {
+    display: flex;
+    gap: 3px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
+    margin-top: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.skill-pip {
+    width: 5px;
+    height: 5px;
+    transform: rotate(45deg);
+    border-radius: 1px;
+    flex-shrink: 0;
+    transition: box-shadow 0.2s;
+    display: inline-block;
+}
+
+.skill-pip-on {
+    background: #F59E0B;
+    box-shadow: 0 0 5px rgba(245,158,11,0.5);
+}
+
+.skill-pip-off {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+}
+
+#skills .skill-card-group > div:hover .skill-pip-on {
+    box-shadow: 0 0 9px rgba(245,158,11,0.9);
+}
+
+/* Staggered card entrance animation */
+@keyframes skillCardReveal {
+    from { opacity: 0; transform: translateY(10px) scale(0.96); }
+    to   { opacity: 1; transform: translateY(0)   scale(1); }
+}
+
+#skills .skill-card-group.skill-reveal {
+    animation: skillCardReveal 0.32s ease forwards;
+    opacity: 0;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    #skills .skill-card-group > div {
+        padding: 0.6rem 0.5rem 0.5rem !important;
+    }
+    #skills .skill-card-group > div h3 {
+        font-size: 0.58rem !important;
+    }
+    #skills .w-14 {
+        width: 2.4rem !important;
+        height: 2.4rem !important;
+    }
+    #skills .w-8 {
+        width: 1.25rem !important;
+        height: 1.25rem !important;
+    }
+    .skill-pip { width: 4px; height: 4px; }
+}
+
 /* ---- Reduced motion ---- */
 @media (prefers-reduced-motion: reduce) {
     .hero-ring-1, .hero-ring-2,

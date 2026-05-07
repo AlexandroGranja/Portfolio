@@ -579,6 +579,7 @@ function updatePageLanguage(lang) {
     document.querySelectorAll('[data-i18n="agency.card4Highlight"]').forEach(el => el.textContent = t.agency.card4Highlight);
     document.querySelectorAll('[data-i18n="agency.readMore"]').forEach(el => el.textContent = t.agency.readMore);
     if (window.agentWidgetRestart) window.agentWidgetRestart(lang);
+    if (window.rebuildSkillPips) window.rebuildSkillPips();
     
     // Atualizar Projects
     document.querySelectorAll('[data-i18n="projects.title"]').forEach(el => {

@@ -1776,6 +1776,61 @@
     </main>
     <script src="script.js"></script>
     <script>
+    /* Skills — diamond pip level indicators + staggered tab entrance */
+    (function() {
+        var levelMap = {
+            'expert': 5, 'especialista': 5, 'specialist': 5,
+            'avançado': 4, 'advanced': 4,
+            'intermediário': 3, 'intermediate': 3
+        };
+
+        function buildPips(card) {
+            var existing = card.querySelector('.skill-pips');
+            if (existing) existing.remove();
+            var levelEl = card.querySelector('p[data-i18n]');
+            var lvlText = levelEl ? levelEl.textContent.trim().toLowerCase() : '';
+            var lvl = levelMap[lvlText] !== undefined ? levelMap[lvlText] : 3;
+            var pips = document.createElement('div');
+            pips.className = 'skill-pips';
+            for (var i = 0; i < 5; i++) {
+                var pip = document.createElement('span');
+                pip.className = 'skill-pip ' + (i < lvl ? 'skill-pip-on' : 'skill-pip-off');
+                pips.appendChild(pip);
+            }
+            card.appendChild(pips);
+        }
+
+        function buildAllPips() {
+            document.querySelectorAll('#skills .skill-card-group > div').forEach(buildPips);
+        }
+
+        function animateTab() {
+            var visible = Array.from(document.querySelectorAll('#skills .skill-card-group:not(.hidden)'));
+            visible.forEach(function(card, i) {
+                card.classList.remove('skill-reveal');
+                void card.offsetWidth;
+                card.style.animationDelay = (i * 32) + 'ms';
+                card.classList.add('skill-reveal');
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            buildAllPips();
+            /* Hook tab buttons for staggered animation */
+            document.querySelectorAll('.skills-tab-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    setTimeout(animateTab, 0);
+                });
+            });
+            /* Initial tab animation */
+            setTimeout(animateTab, 80);
+        });
+
+        /* Expose for language change */
+        window.rebuildSkillPips = buildAllPips;
+    })();
+    </script>
+    <script>
     (function() {
         var msgsPT = [
             { t: 'client', text: 'Oi! Queria saber mais sobre o Alexandro Granja.' },
