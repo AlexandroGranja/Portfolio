@@ -24,8 +24,15 @@ window.showSection = function(sectionId) {
         setTimeout(() => {
             targetSection.classList.add('active');
             const cleanId = sectionId.replace('#', '');
-            if (cleanId === 'projects' && typeof window.refreshProjectsPanel === 'function') {
-                setTimeout(() => window.refreshProjectsPanel(), 120);
+            if (cleanId === 'projects') {
+                setTimeout(() => {
+                    if (typeof window.refreshProjectsPanel === 'function') {
+                        window.refreshProjectsPanel();
+                    }
+                    if (typeof window.scheduleProjectsSwipeHint === 'function') {
+                        window.scheduleProjectsSwipeHint();
+                    }
+                }, 280);
             }
         }, 100);
     }
@@ -83,7 +90,14 @@ window.refreshProjectsPanel = function() {
         idx = 0;
     }
     currentProjectIndex = -1;
+    window._suppressSwipeHintDismiss = true;
     goToProject(idx);
+    setTimeout(() => {
+        window._suppressSwipeHintDismiss = false;
+        if (typeof window.scheduleProjectsSwipeHint === 'function') {
+            window.scheduleProjectsSwipeHint();
+        }
+    }, 400);
 };
 
 // Navigation Links Click Handler
@@ -252,7 +266,8 @@ const translations = {
             title: "Meus Projetos",
             subtitle: "Alguns dos meus trabalhos em desenvolvimento web e automações",
             railLabel: "Lista de projetos",
-            swipeHint: "Arraste para o lado",
+            swipeHint: "Arraste para o lado para ver o próximo projeto",
+            swipeBannerClose: "Fechar dica",
             readMore: "Ver mais",
             readLess: "Ver menos",
             viewDetails: "Ver detalhes",
@@ -437,7 +452,8 @@ const translations = {
             title: "My Projects",
             subtitle: "Some of my work in web development and automation projects",
             railLabel: "Project list",
-            swipeHint: "Swipe sideways",
+            swipeHint: "Swipe sideways to see the next project",
+            swipeBannerClose: "Dismiss hint",
             readMore: "Read more",
             readLess: "Read less",
             viewDetails: "View details",
@@ -2699,9 +2715,11 @@ document.addEventListener('DOMContentLoaded', () => {
 // HINT: arrastar para trocar projeto (mobile)
 // ============================================
 (function initProjectsSwipeHint() {
-    const STORAGE_KEY = 'portfolio_projects_swipe_hint_dismissed';
+    const STORAGE_KEY = 'portfolio_projects_swipe_hint_v5';
     let hintEl = null;
     let autoHideTimer = null;
+    let showDelayTimer = null;
+    let dismissListenersActive = false;
 
     function isMobileProjects() {
         return typeof window.matchMedia === 'function' &&
@@ -2713,16 +2731,30 @@ document.addEventListener('DOMContentLoaded', () => {
         return section && section.classList.contains('active');
     }
 
+    function isDismissed() {
+        try {
+            return localStorage.getItem(STORAGE_KEY) === '1';
+        } catch (_) {
+            return false;
+        }
+    }
+
     function getHintLabel() {
         const lang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'pt';
         const t = (typeof translations !== 'undefined' && translations[lang]) ? translations[lang] : null;
-        return (t && t.projects && t.projects.swipeHint) ? t.projects.swipeHint : 'Arraste para o lado';
+        return (t && t.projects && t.projects.swipeHint) ? t.projects.swipeHint : 'Arraste para o lado para ver o próximo projeto';
     }
 
-    function dismissHint() {
+    function dismissAll(persist) {
+        if (persist !== false) {
+            try { localStorage.setItem(STORAGE_KEY, '1'); } catch (_) { /* ignore */ }
+        }
+        dismissOverlay(persist);
+    }
+
+    function dismissOverlay() {
         if (!hintEl || hintEl.classList.contains('is-hidden')) return;
         hintEl.classList.add('is-hidden');
-        try { localStorage.setItem(STORAGE_KEY, '1'); } catch (_) { /* ignore */ }
         if (autoHideTimer) {
             clearTimeout(autoHideTimer);
             autoHideTimer = null;
@@ -2734,34 +2766,68 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function ensureHint() {
-        if (hintEl || !isMobileProjects() || !isProjectsSectionVisible()) return;
-        try {
-            if (localStorage.getItem(STORAGE_KEY) === '1') return;
-        } catch (_) { /* ignore */ }
+        if (!isMobileProjects() || !isProjectsSectionVisible() || isDismissed()) {
+            removeExistingHint();
+            return;
+        }
 
-        const wrapper = document.querySelector('#projects .projects-carousel-wrapper.projects-main');
-        if (!wrapper) return;
+        const mount = document.querySelector('#projects .project-card.active > .project-content');
+        if (!mount) return;
+
+        if (hintEl && hintEl.parentElement === mount && hintEl.classList.contains('is-visible')) {
+            return;
+        }
+
+        removeExistingHint();
 
         hintEl = document.createElement('div');
         hintEl.className = 'projects-swipe-hint';
-        hintEl.setAttribute('aria-hidden', 'true');
+        hintEl.setAttribute('role', 'status');
         const inner = document.createElement('div');
         inner.className = 'projects-swipe-hint__inner';
         const icon = document.createElement('span');
         icon.className = 'material-icons-round projects-swipe-hint__icon';
         icon.setAttribute('aria-hidden', 'true');
-        icon.textContent = 'swipe';
+        icon.textContent = 'back_hand';
         const label = document.createElement('span');
         label.className = 'projects-swipe-hint__label';
         label.textContent = getHintLabel();
+        const chevronL = document.createElement('span');
+        chevronL.className = 'material-icons-round projects-swipe-hint__chevron';
+        chevronL.setAttribute('aria-hidden', 'true');
+        chevronL.textContent = 'chevron_left';
+
+        const chevronR = document.createElement('span');
+        chevronR.className = 'material-icons-round projects-swipe-hint__chevron';
+        chevronR.setAttribute('aria-hidden', 'true');
+        chevronR.textContent = 'chevron_right';
+
+        inner.appendChild(chevronL);
         inner.appendChild(icon);
-        inner.appendChild(label);
+        inner.appendChild(chevronR);
         hintEl.appendChild(inner);
+        hintEl.appendChild(label);
 
-        wrapper.appendChild(hintEl);
-        requestAnimationFrame(() => hintEl.classList.add('is-visible'));
+        mount.insertBefore(hintEl, mount.firstChild);
+        requestAnimationFrame(() => {
+            if (hintEl) hintEl.classList.add('is-visible');
+        });
 
-        autoHideTimer = setTimeout(dismissHint, 6500);
+        autoHideTimer = setTimeout(() => dismissOverlay(), 5500);
+    }
+
+    function removeExistingHint() {
+        if (autoHideTimer) {
+            clearTimeout(autoHideTimer);
+            autoHideTimer = null;
+        }
+        document.querySelectorAll('#projects .projects-swipe-hint').forEach(el => el.remove());
+        hintEl = null;
+    }
+
+    function onUserDismissInteraction() {
+        if (!dismissListenersActive) return;
+        dismissAll(true);
     }
 
     function bindDismiss() {
@@ -2769,20 +2835,20 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!section || section.dataset.swipeHintBound === '1') return;
         section.dataset.swipeHintBound = '1';
 
-        const onInteract = () => dismissHint();
-
-        section.addEventListener('touchstart', onInteract, { passive: true, capture: true });
-        section.addEventListener('scroll', onInteract, { passive: true, capture: true });
-        section.querySelector('.projects-rail')?.addEventListener('scroll', onInteract, { passive: true });
         section.querySelectorAll('.projects-rail-item').forEach(btn => {
-            btn.addEventListener('click', onInteract);
+            btn.addEventListener('click', onUserDismissInteraction);
         });
 
         const origGoTo = window.goToProject;
         if (typeof origGoTo === 'function' && !origGoTo._swipeHintWrapped) {
             const wrapped = function(index) {
-                dismissHint();
-                return origGoTo.apply(this, arguments);
+                const result = origGoTo.apply(this, arguments);
+                if (!window._suppressSwipeHintDismiss) {
+                    onUserDismissInteraction();
+                } else if (typeof window.scheduleProjectsSwipeHint === 'function') {
+                    window.scheduleProjectsSwipeHint();
+                }
+                return result;
             };
             wrapped._swipeHintWrapped = true;
             window.goToProject = wrapped;
@@ -2791,7 +2857,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const origChange = window.changeProject;
         if (typeof origChange === 'function' && !origChange._swipeHintWrapped) {
             const wrappedChange = function(dir) {
-                dismissHint();
+                if (!window._suppressSwipeHintDismiss) {
+                    onUserDismissInteraction();
+                }
                 return origChange.apply(this, arguments);
             };
             wrappedChange._swipeHintWrapped = true;
@@ -2800,27 +2868,62 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function refresh() {
+        if (showDelayTimer) {
+            clearTimeout(showDelayTimer);
+            showDelayTimer = null;
+        }
+        dismissListenersActive = false;
         if (!isMobileProjects() || !isProjectsSectionVisible()) {
-            if (hintEl) dismissHint();
+            removeExistingHint();
+            return;
+        }
+        if (isDismissed()) {
+            removeExistingHint();
             return;
         }
         ensureHint();
+        setTimeout(() => {
+            dismissListenersActive = true;
+        }, 1500);
     }
+
+    function scheduleShow() {
+        if (showDelayTimer) clearTimeout(showDelayTimer);
+        showDelayTimer = setTimeout(() => {
+            showDelayTimer = null;
+            refresh();
+        }, 1000);
+    }
+
+    window.refreshProjectsSwipeHint = refresh;
+    window.scheduleProjectsSwipeHint = scheduleShow;
+    window.resetProjectsSwipeHint = function() {
+        try { localStorage.removeItem(STORAGE_KEY); } catch (_) { /* ignore */ }
+        refresh();
+    };
 
     document.addEventListener('DOMContentLoaded', () => {
         bindDismiss();
         const section = document.getElementById('projects');
         if (!section) return;
 
-        const observer = new MutationObserver(() => refresh());
+        const observer = new MutationObserver(() => {
+            if (section.classList.contains('active')) {
+                scheduleShow();
+            } else {
+                removeExistingHint();
+            }
+        });
         observer.observe(section, { attributes: true, attributeFilter: ['class'] });
 
         window.addEventListener('resize', () => {
-            if (!isMobileProjects()) dismissHint();
-            else refresh();
+            if (!isMobileProjects()) removeExistingHint();
+            else if (isProjectsSectionVisible()) scheduleShow();
         });
 
-        setTimeout(refresh, 900);
+        if (section.classList.contains('active')) {
+            scheduleShow();
+        }
     });
 })();
 

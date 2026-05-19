@@ -1558,25 +1558,21 @@ body.project-modal-open {
     margin-right: 0;
 }
 
-/* Hint de arraste (overlay — não altera tamanho dos cards) */
+/* Dica de swipe — na área da descrição (mobile) */
 @media (max-width: 767px) {
-    #projects .projects-carousel-wrapper.projects-main {
-        position: relative;
-    }
-
     .projects-swipe-hint {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        height: min(42%, 220px);
-        z-index: 12;
         display: flex;
         align-items: center;
-        justify-content: center;
+        gap: 0.4rem;
+        width: 100%;
+        margin: 0 0 0.15rem;
+        padding: 0 0 0.2rem;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.12);
         pointer-events: none;
         opacity: 0;
-        transition: opacity 0.45s ease;
+        transition: opacity 0.55s ease;
+        flex-shrink: 0;
+        order: -1;
     }
 
     .projects-swipe-hint.is-visible {
@@ -1589,50 +1585,67 @@ body.project-modal-open {
 
     .projects-swipe-hint__inner {
         display: inline-flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
-        gap: 0.35rem;
-        padding: 0.55rem 0.85rem;
+        gap: 0.02rem;
+        padding: 0.2rem 0.38rem;
         border-radius: 999px;
-        background: rgba(15, 23, 42, 0.82);
-        border: 1px solid rgba(245, 158, 11, 0.45);
-        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
+        background: rgba(30, 41, 59, 0.55);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        flex-shrink: 0;
+    }
+
+    .projects-swipe-hint__chevron {
+        font-size: 0.85rem !important;
+        color: rgba(245, 158, 11, 0.5);
+        animation: projectsSwipeHintChevron 2.8s ease-in-out infinite;
+    }
+
+    .projects-swipe-hint__chevron:first-child {
+        animation-direction: reverse;
     }
 
     .projects-swipe-hint__icon {
-        font-size: 2rem !important;
-        color: #f59e0b;
-        filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
-        animation: projectsSwipeHintSlide 1.85s ease-in-out infinite;
+        font-size: 1rem !important;
+        color: rgba(245, 158, 11, 0.75);
+        animation: projectsSwipeHintSlide 2.8s ease-in-out infinite;
     }
 
     .projects-swipe-hint__label {
-        font-size: 0.68rem;
-        font-weight: 700;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        color: rgba(248, 250, 252, 0.92);
-        white-space: nowrap;
+        flex: 1 1 auto;
+        font-size: 0.65rem;
+        font-weight: 500;
+        line-height: 1.3;
+        color: rgba(148, 163, 184, 0.92);
+        letter-spacing: 0.01em;
     }
 
     @keyframes projectsSwipeHintSlide {
         0%, 100% {
-            transform: translateX(-14px);
-            opacity: 0.75;
+            transform: translateX(-2px);
+            opacity: 0.65;
         }
         50% {
-            transform: translateX(14px);
-            opacity: 1;
+            transform: translateX(2px);
+            opacity: 0.95;
+        }
+    }
+
+    @keyframes projectsSwipeHintChevron {
+        0%, 100% {
+            opacity: 0.35;
+        }
+        50% {
+            opacity: 0.7;
         }
     }
 }
 
 @media (max-width: 767px) and (prefers-reduced-motion: reduce) {
-    .projects-swipe-hint__icon {
+    .projects-swipe-hint__icon,
+    .projects-swipe-hint__chevron {
         animation: none;
-        opacity: 1;
+        opacity: 0.8;
     }
 }
 
