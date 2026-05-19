@@ -2766,6 +2766,16 @@ body.project-modal-open {
             -webkit-overflow-scrolling: touch;
         }
 
+        #about .about-exp-timeline {
+            overflow-y: auto !important;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        #about .about-edu-body {
+            overflow-y: auto !important;
+            -webkit-overflow-scrolling: touch;
+        }
+
         #about .flex.flex-col.md\:flex-row {
             flex: 0 0 auto !important;
             overflow: visible !important;
@@ -4704,6 +4714,66 @@ html {
     scrollbar-width: thin;
 }
 
+/* Desktop+: 3 colunas mesma altura, sem scroll interno, stack proporcional */
+@media (min-width: 768px) {
+    #about .about-columns {
+        align-items: stretch !important;
+        flex: 1 1 0;
+        min-height: 0;
+        height: 100%;
+    }
+
+    #about .about-columns > .about-glass-card,
+    #about .about-columns > .about-col-side {
+        flex: 1 1 0 !important;
+        min-width: 0;
+        min-height: 0;
+        height: 100%;
+        max-height: 100%;
+    }
+
+    #about .about-exp-timeline {
+        overflow: visible !important;
+        overflow-y: visible !important;
+        flex: 1 1 0;
+        min-height: 0;
+        justify-content: space-evenly;
+        gap: 0.65rem;
+    }
+
+    #about .about-edu-body {
+        overflow: visible !important;
+        overflow-y: visible !important;
+        flex: 1 1 0;
+        min-height: 0;
+        justify-content: space-between;
+        gap: 0.55rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    #about .about-columns {
+        gap: 0.75rem;
+    }
+
+    #about .about-col-side .about-stack-grid {
+        gap: 0.5rem;
+    }
+
+    #about .about-col-side .about-stack-grid > div {
+        min-height: 3.25rem;
+        padding: 0.55rem 0.35rem;
+    }
+
+    #about .about-col-side .about-stack-grid .material-icons-round {
+        font-size: 20px !important;
+    }
+
+    #about .about-col-side .about-stack-grid span.text-\[8px\] {
+        font-size: 9px !important;
+    }
+}
+
 .about-cv-card {
     padding: 0.65rem 0.75rem !important;
 }
@@ -4795,12 +4865,14 @@ html {
 }
 
 @media (min-width: 768px) {
+    #about .about-columns.about-columns,
     #about .flex.flex-col.md\:flex-row {
         align-items: stretch !important;
     }
 
+    #about .about-columns > .about-col-side,
     #about .flex.flex-col.md\:flex-row > .about-col-side {
-        flex: 1.08 1 0 !important;
+        flex: 1 1 0 !important;
         min-width: 0;
         height: 100%;
         align-self: stretch;
@@ -4861,14 +4933,14 @@ html {
     .about-col-side .about-stack-grid {
         flex: 1 1 0;
         min-height: 0;
-        gap: 0.3rem;
-        grid-template-rows: repeat(2, minmax(0, 1fr));
-        align-content: stretch;
+        gap: 0.35rem;
+        grid-template-rows: repeat(2, minmax(2.75rem, 1fr));
+        align-content: center;
     }
 
     .about-col-side .about-stack-grid > div {
-        min-height: 0;
-        padding: 0.2rem 0.15rem;
+        min-height: 2.5rem;
+        padding: 0.35rem 0.2rem;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -4876,12 +4948,12 @@ html {
     }
 
     .about-col-side .about-stack-grid .material-icons-round {
-        font-size: 15px !important;
+        font-size: 16px !important;
     }
 
     .about-col-side .about-stack-grid span.text-\[8px\] {
-        font-size: 7px !important;
-        line-height: 1.1;
+        font-size: 8px !important;
+        line-height: 1.15;
     }
 }
 
