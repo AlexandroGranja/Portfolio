@@ -644,7 +644,7 @@ section:nth-child(odd) {
 }
 
 #projects .project-summary {
-    text-align: center;
+    text-align: left;
 }
 
 @media (max-width: 767px) {
@@ -652,6 +652,7 @@ section:nth-child(odd) {
         overflow-y: auto !important;
         overflow-x: hidden !important;
         -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
     }
 
     #projects .projects-inner {
@@ -738,7 +739,7 @@ section:nth-child(odd) {
         gap: 0.35rem;
         padding: 0 0 0.35rem;
         justify-content: flex-start;
-        justify-self: center;
+        justify-self: start;
         align-self: start;
     }
 
@@ -1071,43 +1072,99 @@ section:nth-child(odd) {
         max-width: 100%;
     }
 
-    #projects .project-card.active .project-open-modal-btn {
-        width: 100%;
-        max-width: none;
-        justify-content: center;
-        justify-self: unset;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        padding: var(--btn-padding-y) var(--btn-padding-x);
-        border-radius: var(--btn-border-radius-soft);
-        border: 1px solid rgba(245, 158, 11, 0.55);
-        background: rgba(15, 23, 42, 0.88);
-        color: #F59E0B;
-        font-family: var(--btn-font-family);
-        font-size: var(--btn-font-size);
-        font-weight: var(--btn-font-weight);
-        letter-spacing: 0.02em;
-        line-height: 1.2;
-        cursor: pointer;
-        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset;
-        transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
-        min-height: 48px;
-    }
-
-    #projects .project-card.active .project-open-modal-btn:hover {
-        background: rgba(245, 158, 11, 0.14);
-        border-color: rgba(245, 158, 11, 0.95);
-        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08) inset, 0 4px 14px rgba(245, 158, 11, 0.12);
-    }
-
-    #projects .project-card.active .project-open-modal-btn:focus-visible {
-        outline: 2px solid #F59E0B;
-        outline-offset: 2px;
+    /* Mobile: sem modal — detalhes no fluxo com Ver mais (+ scroll da seção Projetos) */
+    #projects .project-open-modal-btn {
+        display: none !important;
     }
 
     #projects .project-card.active > .project-content {
+        display: flex !important;
+        flex-direction: column;
+        flex: 0 1 auto !important;
+        align-self: stretch;
+        width: 100%;
+        margin: 0;
+        padding: 0.65rem 0.85rem 1rem;
+        background: rgba(15, 23, 42, 0.88);
+        border: 1px solid rgba(245, 158, 11, 0.12);
+        border-top: none;
+        border-radius: 0 0 6px 6px;
+        gap: 0.45rem;
+        pointer-events: auto;
+        -webkit-overflow-scrolling: touch;
+        flex-shrink: 0;
+    }
+
+    #projects .project-card.active > .project-content .project-summary {
+        font-size: 0.8rem;
+        line-height: 1.38;
+        margin-bottom: 0;
+        text-align: left !important;
+        align-self: stretch;
+    }
+
+    #projects .project-card.active > .project-content:not(.is-details-expanded) .project-tech,
+    #projects .project-card.active > .project-content:not(.is-details-expanded) .project-links {
         display: none !important;
+    }
+
+    #projects .project-card.active > .project-content .project-description-wrapper {
+        flex: 0 1 auto;
+        margin-bottom: 0;
+        align-self: stretch;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+    }
+
+    #projects .project-card.active > .project-content .project-description:not(.expanded) {
+        -webkit-line-clamp: 5;
+        line-clamp: 5;
+        display: -webkit-box !important;
+    }
+
+    #projects .project-card.active > .project-content .project-description.expanded {
+        display: block !important;
+        -webkit-line-clamp: unset;
+        line-clamp: unset;
+        overflow: visible;
+    }
+
+    /* Texto corrido compacto — evita sensação de “dois parágrafos” com espaço estranho */
+    #projects .project-card.active > .project-content .project-description {
+        text-align: left !important;
+        width: 100%;
+        line-height: 1.42 !important;
+        font-size: 0.8125rem !important;
+        margin: 0 !important;
+        white-space: normal;
+    }
+
+    #projects .project-card.active > .project-content .read-more-btn {
+        margin-top: 0;
+        padding: 0.45rem 0;
+        font-size: 0.8125rem;
+        min-height: 44px;
+        align-items: center;
+        justify-content: flex-start;
+        align-self: flex-start;
+    }
+
+    /* Pilha de tecnologias / links — alinhada ao texto */
+    #projects .project-card.active > .project-content .project-tech {
+        justify-content: flex-start !important;
+        align-self: stretch;
+        margin-top: 0.35rem;
+        margin-bottom: 0;
+        padding-top: 0;
+    }
+
+    #projects .project-card.active > .project-content .project-links {
+        margin-top: 0;
+        padding-top: 0.25rem;
+        align-self: stretch;
     }
 }
 
@@ -1117,7 +1174,7 @@ section:nth-child(odd) {
     }
 }
 
-/* Modal detalhes: ancorado ao .project-card-media, mesmo tamanho do card — folha sobe/desce */
+/* Modal detalhes: desktop — dentro do mock (.project-card-media); mobile usa texto + Ver mais (sem overlay) */
 body.project-modal-open {
     overflow: hidden;
 }
@@ -1284,11 +1341,12 @@ body.project-modal-open {
 }
 
 /* Projetos: rail + painel — display: grid (desktop) e flex coluna (mobile) vêm nos @media abaixo; não fixar display aqui */
+/* Sem max-width + auto margin: evita faixa centralizada em monitores ultrawide (void à direita) */
 #projects .projects-layout {
     width: 100%;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
     gap: clamp(1.75rem, 3vw, 2.5rem);
     box-sizing: border-box;
 }
@@ -1466,6 +1524,14 @@ body.project-modal-open {
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
+}
+
+/* Em #projects .projects-main: não limitar largura nem centralizar (monitores largos / ultrawide) */
+#projects .projects-carousel-wrapper.projects-main {
+    max-width: none;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 #projects .projects-layout .projects-carousel {

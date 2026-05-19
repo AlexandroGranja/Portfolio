@@ -10,20 +10,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260518projects-rail-center">
-    <!-- Projetos: width 100% em .projects-layout evita flex+margin:auto encolher o grid ao rail (~2px na 2ª coluna) -->
+    <link rel="stylesheet" href="styles.css?v=20260518project-scroll-smooth">
+    <!-- Projetos desktop: grid colado ao inner; segunda coluna 1fr ocupa espaço ao lado da sidebar (sem faixa mx-auto) -->
     <style id="projects-panel-layout-fix">
         @media (min-width: 768px) {
+            /* Larguras grandes: ocupar área ao lado da sidebar — evita faixa centralizada (~ void à direita) */
             #projects .projects-layout {
                 display: grid !important;
                 grid-template-columns: minmax(240px, 320px) minmax(0, 1fr) !important;
                 width: 100% !important;
-                max-width: 1200px !important;
+                max-width: none !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
                 align-items: stretch !important;
                 gap: clamp(1.75rem, 3vw, 2.5rem) !important;
             }
             #projects .projects-rail {
-                justify-self: center !important;
+                justify-self: start !important;
                 align-self: start !important;
                 width: 100% !important;
                 max-width: 210px !important;
@@ -374,7 +377,7 @@
     </div>
 
     <!-- Sidebar Navigation -->
-    <aside class="w-16 sm:w-20 md:w-24 bg-navy-card dark:bg-navy-card border-r border-slate-700/60 dark:border-slate-700/60 flex flex-col items-center py-5 sm:py-7 z-50" style="height: 100vh; height: -webkit-fill-available; height: 100dvh; min-height: 100vh; min-height: -webkit-fill-available; min-height: 100dvh; overflow-y: auto; overflow-x: hidden;">
+    <aside class="flex-shrink-0 w-16 sm:w-20 md:w-24 bg-navy-card dark:bg-navy-card border-r border-slate-700/60 dark:border-slate-700/60 flex flex-col items-center py-5 sm:py-7 z-50" style="height: 100vh; height: -webkit-fill-available; height: 100dvh; min-height: 100vh; min-height: -webkit-fill-available; min-height: 100dvh; overflow-y: auto; overflow-x: hidden;">
         <!-- Logo -->
         <div class="mb-6 sm:mb-8 md:mb-10 flex-shrink-0">
             <span class="text-xl sm:text-2xl font-extrabold text-white tracking-tight">A<span class="text-primary">G</span></span>
@@ -1760,7 +1763,7 @@
                 <h1 class="text-2xl sm:text-3xl font-bold text-white leading-tight mb-0.5"><span class="title-text-white" data-i18n="projects.title">Meus </span><span class="text-primary title-text-orange" data-i18n="projects.title">Projetos</span></h1>
                 <p class="projects-section-subtitle text-slate-400 text-xs sm:text-sm line-clamp-1 sm:line-clamp-none" data-i18n="projects.subtitle">Alguns dos meus trabalhos em desenvolvimento web e automações</p>
             </header>
-            <div class="projects-layout w-full max-w-[1200px] mx-auto flex-1 min-h-0 flex flex-col">
+            <div class="projects-layout w-full flex-1 min-h-0 flex flex-col">
                 <nav class="projects-rail" role="tablist" aria-label="Lista de projetos">
                     <button type="button" id="project-tab-0" class="projects-rail-item is-active" role="tab" aria-selected="true" aria-controls="project-panel-0" data-project-index="0">
                         <span class="projects-rail-thumb-wrap">
@@ -1830,7 +1833,7 @@
                             <p class="project-summary" data-i18n="projects.project1Summary">Plataforma em produção para campanhas promocionais: link de pagamento, automação de NF e cache em camadas para performance.</p>
                             <div class="project-description-wrapper">
                                 <p class="project-description" data-i18n="projects.project1Description">Sistema completo de campanhas promocionais online com Next.js 14, React e TypeScript. Implementei autenticação com JWT/bcrypt, cache em 5 camadas que reduziu o tempo de carregamento em 40%, dashboard administrativo com estatísticas em tempo real e design responsivo. Deploy na Railway com otimizações de performance e segurança.</p>
-                                <button class="read-more-btn" onclick="toggleDescription(this)">
+                                <button type="button" class="read-more-btn" onclick="toggleDescription(this)" aria-expanded="false">
                                     <span class="read-more-text" data-i18n="projects.readMore">Ver mais</span>
                                     <span class="read-less-text" style="display: none;" data-i18n="projects.readLess">Ver menos</span>
                                     <i class="fas fa-chevron-down"></i>
@@ -1892,7 +1895,7 @@
                                 Inclui cardápio dinâmico, carrinho de compras, checkout completo, gerenciamento de pedidos, upload de imagens, 
                                 configurações personalizáveis (cores, logo, endereço, redes sociais) e sistema de autenticação. 
                                 Backend opcional em Flask/Python. Deploy realizado na Railway.</p>
-                                <button class="read-more-btn" onclick="toggleDescription(this)">
+                                <button type="button" class="read-more-btn" onclick="toggleDescription(this)" aria-expanded="false">
                                     <span class="read-more-text" data-i18n="projects.readMore">Ver mais</span>
                                     <span class="read-less-text" style="display: none;" data-i18n="projects.readLess">Ver menos</span>
                                     <i class="fas fa-chevron-down"></i>
@@ -1940,7 +1943,7 @@
                                 <p class="project-description" data-i18n="projects.project3Description">Site completo desenvolvido pela AIverse Technologies para empresa especializada em adesivos decorativos. 
                                 Landing page moderna com galeria de trabalhos, seção de serviços e integração com WhatsApp para orçamentos. 
                                 Design responsivo e otimizado para conversão de leads.</p>
-                                <button class="read-more-btn" onclick="toggleDescription(this)">
+                                <button type="button" class="read-more-btn" onclick="toggleDescription(this)" aria-expanded="false">
                                     <span class="read-more-text" data-i18n="projects.readMore">Ver mais</span>
                                     <span class="read-less-text" style="display: none;" data-i18n="projects.readLess">Ver menos</span>
                                     <i class="fas fa-chevron-down"></i>
@@ -2014,7 +2017,7 @@
                                 visualização interativa de rotas em mapas (Leaflet), dashboard com métricas detalhadas (total de visitas, dias de trabalho, distância média), 
                                 gerenciamento de arquivos Excel/CSV, filtros por vendedor e data, e exportação de roteiros em CSV. 
                                 Interface moderna e responsiva com design intuitivo.</p>
-                                <button class="read-more-btn" onclick="toggleDescription(this)">
+                                <button type="button" class="read-more-btn" onclick="toggleDescription(this)" aria-expanded="false">
                                     <span class="read-more-text" data-i18n="projects.readMore">Ver mais</span>
                                     <span class="read-less-text" style="display: none;" data-i18n="projects.readLess">Ver menos</span>
                                     <i class="fas fa-chevron-down"></i>
@@ -2075,7 +2078,7 @@
                                 <p class="project-description" data-i18n="projects.project5Description">Sistema web para processamento e seleção de arquivos XML baseado em planilhas Excel. Desenvolvido com Flask e Python, permite fazer upload de uma planilha Excel (.xlsx) com números de NF na coluna B e um arquivo ZIP contendo XMLs de notas fiscais. 
                                 O sistema verifica automaticamente se os números da planilha estão contidos nos XMLs, seleciona os arquivos correspondentes e gera um novo arquivo ZIP compactado com apenas os XMLs selecionados. 
                                 Interface moderna e intuitiva com drag-and-drop, feedback visual durante o processamento e download automático do resultado.</p>
-                                <button class="read-more-btn" onclick="toggleDescription(this)">
+                                <button type="button" class="read-more-btn" onclick="toggleDescription(this)" aria-expanded="false">
                                     <span class="read-more-text" data-i18n="projects.readMore">Ver mais</span>
                                     <span class="read-less-text" style="display: none;" data-i18n="projects.readLess">Ver menos</span>
                                     <i class="fas fa-chevron-down"></i>
@@ -2229,7 +2232,7 @@
             }
         }
     </style>
-    <script src="script.js?v=20260518proj-desc"></script>
+    <script src="script.js?v=20260518project-scroll-smooth"></script>
     <!-- Skills level bars + tab animation handled in script.js (skills-tab-btn handler) -->
 
     <script>

@@ -1803,7 +1803,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ============================================
-// MODAL DETALHES DO PROJETO
+// MODAL DETALHES DO PROJETO — só ≥768px; no mobile usa Ver mais + scroll em #projects
 // ============================================
 
 function closeProjectDetailModal(immediate) {
@@ -1862,6 +1862,10 @@ function closeProjectDetailModal(immediate) {
 function openProjectDetailModal(card) {
     const modal = document.getElementById('project-detail-modal');
     if (!modal || !card) {
+        return;
+    }
+    /* Mobile: detalhes no fluxo da página (Ver mais) — modal só no desktop */
+    if (typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 767px)').matches) {
         return;
     }
     const media = card.querySelector('.project-card-media');
@@ -1982,6 +1986,22 @@ window.goToProject = function(index) {
     currentProjectIndex = index;
     
     allProjects.forEach((p) => {
+        const content = p.querySelector('.project-content');
+        if (content) content.classList.remove('is-details-expanded');
+
+        const desc = p.querySelector('.project-description');
+        if (desc) desc.classList.remove('expanded');
+
+        const rmBtn = p.querySelector('.read-more-btn');
+        if (rmBtn) {
+            rmBtn.classList.remove('expanded');
+            rmBtn.setAttribute('aria-expanded', 'false');
+            const rt = rmBtn.querySelector('.read-more-text');
+            const rl = rmBtn.querySelector('.read-less-text');
+            if (rt) rt.style.display = 'inline';
+            if (rl) rl.style.display = 'none';
+        }
+
         p.classList.remove('active');
         p.style.transition = 'none';
         p.style.setProperty('display', 'none', 'important');
@@ -2208,6 +2228,9 @@ document.addEventListener('DOMContentLoaded', function() {
             projectsRoot.addEventListener('click', function(e) {
                 const openBtn = e.target.closest('.project-open-modal-btn');
                 if (!openBtn) return;
+                if (typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 767px)').matches) {
+                    return;
+                }
                 e.preventDefault();
                 e.stopPropagation();
                 const card = openBtn.closest('.project-card');
@@ -2829,17 +2852,74 @@ window.toggleDescription = function(button) {
     const description = wrapper.querySelector('.project-description');
     const readMoreText = button.querySelector('.read-more-text');
     const readLessText = button.querySelector('.read-less-text');
+    const rootContent = wrapper.closest('.project-content');
 
     if (description.classList.contains('expanded')) {
         description.classList.remove('expanded');
         readMoreText.style.display = 'inline';
         readLessText.style.display = 'none';
         button.classList.remove('expanded');
+        button.setAttribute('aria-expanded', 'false');
+        if (rootContent) {
+            rootContent.classList.remove('is-details-expanded');
+        }
     } else {
         description.classList.add('expanded');
         readMoreText.style.display = 'none';
         readLessText.style.display = 'inline';
         button.classList.add('expanded');
+        button.setAttribute('aria-expanded', 'true');
+        if (rootContent) {
+            rootContent.classList.add('is-details-expanded');
+        }
+
+        /* Mobile projetos: scroll suave até o bloco expandido (stack + CTAs) */
+        const scrollProjectsExpanded = () => {
+            const projectsEl = document.getElementById('projects');
+            if (!projectsEl || !button.closest('#projects') || !rootContent) {
+                return;
+            }
+
+            requestAnimationFrame(() => {
+                const rr = rootContent.getBoundingClientRect();
+                const vr = projectsEl.getBoundingClientRect();
+                let delta = 0;
+                if (rr.bottom > vr.bottom - 24) {
+                    delta = rr.bottom - vr.bottom + 20;
+                } else if (rr.top < vr.top + 12) {
+                    delta = rr.top - vr.top - 12;
+                }
+                if (!delta) {
+                    return;
+                }
+
+                const nextTop = Math.min(
+                    projectsEl.scrollHeight - projectsEl.clientHeight,
+                    Math.max(0, projectsEl.scrollTop + delta)
+                );
+
+                const reduceMotion =
+                    typeof window.matchMedia !== 'undefined' &&
+                    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+                if (reduceMotion) {
+                    projectsEl.scrollTop = nextTop;
+                    return;
+                }
+
+                try {
+                    projectsEl.scrollTo({ top: nextTop, behavior: 'smooth' });
+                } catch (_) {
+                    projectsEl.scrollTop = nextTop;
+                }
+            });
+        };
+
+        if (typeof window.matchMedia !== 'undefined' && window.matchMedia('(max-width: 767px)').matches) {
+            window.requestAnimationFrame(() => {
+                window.requestAnimationFrame(scrollProjectsExpanded);
+            });
+        }
     }
 };
 
