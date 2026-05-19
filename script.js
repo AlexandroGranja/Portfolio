@@ -125,7 +125,7 @@ const translations = {
             techSupport: "Analista de Suporte de TI",
             techSupportDesc: "Atuação em suporte técnico e operações de TI, com administração de acessos (Active Directory e Microsoft 365), monitoramento via Zabbix e integração com sistemas de logística (Target/Target Mob). Também desenvolvi automações para rotinas recorrentes, reduzindo esforço manual e aumentando a padronização dos processos.",
             founder: "Fundador & Fullstack Dev",
-            founderDesc: "Criação de soluções web e automações inteligentes para acelerar operações de negócio: sites e sistemas responsivos, integrações entre plataformas e agentes para atendimento automatizado.",
+            founderDesc: "Criação de soluções web e automações inteligentes para acelerar operações de negócio: sites e sistemas responsivos, integrações entre plataformas e agentes para atendimento automatizado. Do desenho da arquitetura ao deploy (Vercel/Railway), com foco em eficiência e escalabilidade.",
             techEducation: "Técnico em Informática",
             techEducationLevel: "Ensino Médio Técnico",
             devclub: "DevClub Fullstack Pro",
@@ -138,13 +138,13 @@ const translations = {
             freeCourse1Level: "Fundação Bradesco · Certificado",
             freeCourse2: "Git & Versionamento",
             freeCourse2Level: "DIO · Certificado",
-            freeCourse3: "Algoritmos & Estrutura de Dados",
+            freeCourse3: "Algoritmos e Estruturas de Dados",
             freeCourse3Level: "Curso em Vídeo · Certificado",
             onlineCerts: "Certificados Online",
             achievements: "Principais Conquistas",
-            achievement1: "redução atendimento",
-            achievement2: "apps fullstack",
-            achievement3: "integrações",
+            achievement1: "−80% no atendimento",
+            achievement2: "apps full stack",
+            achievement3: "integrações de APIs",
             location: "Localização",
             locationPlace: "Brasil, Rio de Janeiro",
             availability: "Disponível",
@@ -177,14 +177,14 @@ const translations = {
             projectsLabel: "Projetos Entregues",
             titleMain: "Soluções ",
             titleHighlight: "Digitais",
-            card1Desc: "Plataforma de campanhas promocionais com auth JWT/bcrypt, cache em 5 camadas (↓40% no carregamento), integração com link de pagamento e emissão automática de notas fiscais via Nota Nacional. Dashboard admin com estatísticas em tempo real e deploy na Railway.",
+            card1Desc: "Plataforma de campanhas promocionais com autenticação JWT/bcrypt, cache em 5 camadas (↓40% no carregamento), integração com link de pagamento e emissão automática de notas fiscais via Nota Nacional. Dashboard admin com estatísticas em tempo real e deploy na Railway.",
             card1Highlight: "Cache 5 camadas · Pagamento · Nota Fiscal",
-            card2Desc: "Sistema SaaS de cardápio digital com painel administrativo completo: gestão de produtos por categoria, controle de pedidos em tempo real e banco de dados reativo via Supabase. Interface responsiva para clientes e operadores.",
+            card2Desc: "Sistema SaaS de cardápio digital com painel administrativo completo: gestão de produtos por categoria, controle de pedidos em tempo real e banco de dados em tempo real via Supabase. Interface responsiva para clientes e operadores.",
             card2Highlight: "Gestão completa de pedidos em tempo real",
             card3Desc: "Landing page de alta conversão para empresa de adesivos decorativos: galeria interativa de trabalhos, seção de serviços, integração direta com WhatsApp para orçamentos e SEO on-page otimizado para captação de leads orgânicos.",
             card3Highlight: "SEO otimizado para leads orgânicos",
             card4Type: "Ferramenta Web",
-            card4Desc: "Ferramenta web que automatiza 100% da seleção de XMLs de notas fiscais: cruza os números de NF de uma planilha Excel com os arquivos XML de um ZIP e exporta novo ZIP contendo apenas os correspondentes, com drag-and-drop e download automático.",
+            card4Desc: "Ferramenta web que automatiza 100% da seleção de XMLs de notas fiscais: cruza os números de NF de uma planilha Excel com os arquivos XML de um ZIP e exporta um novo ZIP contendo apenas os correspondentes, com drag-and-drop e download automático.",
             card4Highlight: "Elimina 100% do processo manual de seleção",
             readMore: "Ler mais →",
             chatContactBtn: "Ir para Contato",
@@ -219,7 +219,7 @@ const translations = {
             versioning: "Versionamento",
             automation: "Automação",
             backendSkill: "Backend",
-            database: "Database",
+            database: "Banco de dados",
             nosql: "NoSQL",
             containerization: "Containerização",
             integration: "Integração",
@@ -242,7 +242,10 @@ const translations = {
             remoteAccess: "Acesso Remoto",
             communication: "Comunicação",
             meetings: "Reuniões",
-            state: "Estado"
+            state: "Estado",
+            detailsBtn: "Detalhes",
+            viewDetailsAria: "Ver detalhes",
+            detailsSoon: "Detalhes em breve."
         },
         // Projects Section
         projects: {
@@ -292,7 +295,7 @@ const translations = {
         hero: {
             greeting: "Hello, I'm",
             subtitle: "Fullstack Developer & AI Automation Specialist 🚀",
-            description: "Fullstack Developer working with React, Python/Flask and PostgreSQL. I built Fortão Prêmios, a production platform with payment-link checkout, automated invoicing and tax document workflows, and layered caching for performance. In my IT role at Prosper I automate operations with n8n and AI. I'm drawn to problems where the whole stack has to work together.",
+            description: "Fullstack Developer working with React, Python/Flask and PostgreSQL. I built Fortão Prêmios, a production platform with payment-link checkout, automated invoicing and tax document workflows, and layered caching for performance. In my IT role at Prosper I automate operations with n8n and AI. I'm drawn to problems where the whole application needs to work well end to end.",
             downloadCV: "Download CV",
             loading: "Loading experience..."
         },
@@ -314,7 +317,7 @@ const translations = {
             automation: "Automation Management",
             automationLevel: "AI & n8n Specialization",
             pixelCommunity: "Pixel Community",
-            pixelCommunityLevel: "n8n & AI Agents",
+            pixelCommunityLevel: "AI agents & automated workflows",
             freeCourse1: "Programming Logic",
             freeCourse1Level: "Fundação Bradesco · Certificate",
             freeCourse2: "Git & Version Control",
@@ -324,8 +327,8 @@ const translations = {
             onlineCerts: "Online Certificates",
             achievements: "Main Achievements",
             achievement1: "−80% support time",
-            achievement2: "fullstack apps",
-            achievement3: "integrations",
+            achievement2: "full stack apps",
+            achievement3: "API integrations",
             location: "Location",
             locationPlace: "Brazil, Rio de Janeiro",
             availability: "Available",
@@ -346,7 +349,7 @@ const translations = {
         // Contact Section
         contact: {
             title: "Get in Touch",
-            subtitle: "I'm always open to new connections, learning and collaborations"
+            subtitle: "I'm always open to new connections, learning, and collaborations"
         },
         // Agency Section
         agency: {
@@ -360,7 +363,7 @@ const translations = {
             titleHighlight: "Solutions",
             card1Desc: "Promotional campaign platform with JWT/bcrypt auth, 5-layer cache (↓40% load time), payment link integration and automatic invoice issuance via Nota Nacional. Admin dashboard with real-time statistics, deployed on Railway.",
             card1Highlight: "5-layer Cache · Payment · Tax Invoice",
-            card2Desc: "Digital menu SaaS with full admin panel: product management by category, real-time order tracking, and reactive database via Supabase. Responsive interface for customers and operators.",
+            card2Desc: "Digital menu SaaS with full admin panel: product management by category, real-time order tracking, and real-time database via Supabase. Responsive interface for customers and operators.",
             card2Highlight: "Full real-time order management",
             card3Desc: "High-conversion landing page for a decorative sticker company: interactive work gallery, services section, direct WhatsApp integration for quotes, and on-page SEO optimized for organic lead generation.",
             card3Highlight: "SEO optimized for organic leads",
@@ -423,12 +426,15 @@ const translations = {
             remoteAccess: "Remote Access",
             communication: "Communication",
             meetings: "Meetings",
-            state: "State"
+            state: "State",
+            detailsBtn: "Details",
+            viewDetailsAria: "View details",
+            detailsSoon: "Details coming soon."
         },
         // Projects Section
         projects: {
             title: "My Projects",
-            subtitle: "Some of my work in web development and automations",
+            subtitle: "Some of my work in web development and automation projects",
             railLabel: "Project list",
             readMore: "Read more",
             readLess: "Read less",
@@ -591,6 +597,7 @@ function updatePageLanguage(lang) {
     document.querySelectorAll('[data-i18n="agency.readMore"]').forEach(el => el.textContent = t.agency.readMore);
     if (window.agentWidgetRestart) window.agentWidgetRestart(lang);
     if (window.rebuildSkillPips) window.rebuildSkillPips();
+    if (typeof window.refreshSkillDetailsUi === 'function') window.refreshSkillDetailsUi();
     
     // Atualizar Projects
     document.querySelectorAll('[data-i18n="projects.title"]').forEach(el => {
@@ -1416,7 +1423,7 @@ console.log('✨ Animações avançadas carregadas com sucesso!');
 // SKILL DETAILS — descrição honesta + nível detalhado
 // Editável: ajuste textos/níveis aqui sem mexer no HTML.
 // =====================================================
-window.SKILL_DETAILS = {
+const SKILL_DETAILS_PT = {
     // ============ FRONTEND ============
     'html5':           { name: 'HTML5',            level: 'Expert · 5+ anos',          tags: ['Semântica', 'SEO', 'A11y'],
         description: 'Marcação semântica em todos os projetos. SEO técnico no Moraes Adesivos, formulários acessíveis no Burger House, OG tags e meta no Fortão Prêmios.' },
@@ -1453,7 +1460,7 @@ window.SKILL_DETAILS = {
 
     // ============ BACKEND & AUTOMAÇÃO ============
     'python':          { name: 'Python',           level: 'Avançado · 3 anos',         tags: ['Automação', 'APIs', 'Scripts'],
-        description: 'Scripts de automação, FastAPI/Flask, integrações n8n. Automações WhatsApp + n8n + Python que reduziram em 80% o tempo de atendimento na AIverse.' },
+        description: 'Scripts de automação, FastAPI/Flask, integrações n8n. Automações WhatsApp + n8n + Python que reduziram o tempo de atendimento em 80% na AIverse.' },
     'n8n':             { name: 'n8n',              level: 'Avançado · diário',         tags: ['Workflows', 'WhatsApp API', 'LLMs'],
         description: 'Workflows complexos: WhatsApp API + LLMs + Postgres. Self-hosted e cloud. Dezenas de fluxos em produção.' },
     'nodejs':          { name: 'Node.js',          level: 'Avançado · 3 anos',         tags: ['API REST', 'CLI'],
@@ -1532,14 +1539,151 @@ window.SKILL_DETAILS = {
         description: 'Quando o cliente prefere. Configurações básicas, gravações.' }
 };
 
+/** English skill copy — same keys as SKILL_DETAILS_PT */
+const SKILL_DETAILS_EN = {
+    'html5':           { name: 'HTML5',            level: 'Expert · 5+ years',          tags: ['Semantics', 'SEO', 'A11y'],
+        description: 'Semantic markup across projects. Technical SEO on Moraes Adesivos, accessible forms on Burger House, OG tags and meta on Fortão Prêmios.' },
+    'css3':            { name: 'CSS3',             level: 'Expert · 5+ years',          tags: ['Grid', 'Flexbox', 'Animations'],
+        description: 'Responsive layouts, animations, complex grids. ~2,500 lines of CSS in this portfolio with variables and controlled cascade.' },
+    'javascript':      { name: 'JavaScript',       level: 'Specialist · 4+ years',    tags: ['ES6+', 'DOM', 'Async'],
+        description: 'ES6+, async/await, DOM, events. Custom carousel, PT/EN i18n with swipe gestures, API integrations in React and vanilla projects.' },
+    'react':           { name: 'React',            level: 'Advanced · 3 years',         tags: ['Hooks', 'Context', 'TanStack Query'],
+        description: 'Hooks, Context, composition. Frontend for Fortão Prêmios (Next.js 14 + React 18), Burger House and digital menus. TanStack Query for data fetching.' },
+    'typescript':      { name: 'TypeScript',       level: 'Advanced · 2 years',         tags: ['Types', 'Generics', 'Zod'],
+        description: 'Typing in Next.js projects, interfaces and generics. Progressive JS → TS migration on Fortão.' },
+    'nextjs':          { name: 'Next.js',          level: 'Advanced · 2 years',         tags: ['App Router', 'SSR/ISR', 'API Routes'],
+        description: 'App Router, SSR/ISR, API Routes. Fortão Prêmios in production on Next.js 14 deployed to Railway.' },
+    'tailwind':        { name: 'Tailwind CSS',     level: 'Expert · 3 years',           tags: ['JIT', 'Dark Mode', 'Mobile-first'],
+        description: 'Utility-first on every project. JIT, dark mode, custom plugins. Mobile-first always.' },
+    'vuejs':           { name: 'Vue.js',           level: 'Intermediate · side projects', tags: ['Composition API'],
+        description: 'Side projects and learning. Composition API. Not my daily driver — I prefer React.' },
+    'sass':            { name: 'SASS / SCSS',      level: 'Advanced · 3 years',         tags: ['Mixins', 'Nesting', 'Variables'],
+        description: 'Mixins, nesting, variables. Used on legacy projects before migrating to Tailwind.' },
+    'bootstrap':       { name: 'Bootstrap',        level: 'Advanced · occasional use',    tags: ['Prototyping', 'Legacy'],
+        description: 'Rapid prototyping and projects that inherit a legacy stack.' },
+    'git':             { name: 'Git',              level: 'Advanced · daily',         tags: ['Branches', 'PRs', 'Rebase'],
+        description: 'Branches, PRs, interactive rebase. Collaborative work on AIverse and Prosper projects.' },
+    'radix':           { name: 'Radix UI',         level: 'Intermediate · React projects', tags: ['Headless', 'A11y'],
+        description: 'Accessible headless components. Used with Tailwind to build custom UIs without reinventing the wheel.' },
+    'zustand':         { name: 'Zustand',          level: 'Intermediate · 1 year',     tags: ['State', 'Lightweight'],
+        description: 'Lightweight global state. Preferred over Redux for small/medium apps. Used on Fortão.' },
+    'vite':            { name: 'Vite',             level: 'Advanced · 2 years',         tags: ['HMR', 'Build'],
+        description: 'Dev server and build for React projects outside Next. HMR, plugins, bundle optimizations.' },
+    'react-hook-form': { name: 'React Hook Form',  level: 'Advanced · 2 years',         tags: ['Forms', 'Zod validation'],
+        description: 'Performant forms with Zod validation. Used on complex forms for Fortão and Burger House.' },
+    'figma':           { name: 'Figma',            level: 'Intermediate · handoff',   tags: ['Design Handoff'],
+        description: 'Design reading and handoff. Focus on faithful implementation, not creating from scratch.' },
+    'python':          { name: 'Python',           level: 'Advanced · 3 years',         tags: ['Automation', 'APIs', 'Scripts'],
+        description: 'Automation scripts, FastAPI/Flask, n8n integrations. WhatsApp + n8n + Python automations that cut support time by 80% at AIverse.' },
+    'n8n':             { name: 'n8n',              level: 'Advanced · daily',         tags: ['Workflows', 'WhatsApp API', 'LLMs'],
+        description: 'Complex workflows: WhatsApp API + LLMs + Postgres. Self-hosted and cloud. Dozens of flows in production.' },
+    'nodejs':          { name: 'Node.js',          level: 'Advanced · 3 years',         tags: ['REST API', 'CLI'],
+        description: 'REST APIs, scripts, CLI tools. Foundation of the React/Next ecosystem I use on the front end.' },
+    'supabase':        { name: 'Supabase',         level: 'Advanced · 2 years',         tags: ['Auth', 'RLS', 'Realtime'],
+        description: 'Auth, RLS, edge functions, realtime. Backend for Burger House and initial structure for several projects.' },
+    'postgresql':      { name: 'PostgreSQL',       level: 'Advanced · 3 years',         tags: ['Queries', 'Indexes', 'Migrations'],
+        description: 'Complex queries, indexes, migrations. 13+ tables on Fortão Prêmios in production.' },
+    'mongodb':         { name: 'MongoDB',          level: 'Intermediate · occasional', tags: ['NoSQL', 'Aggregations'],
+        description: 'Documents, aggregations. Used when rigid relationships are not required.' },
+    'docker':          { name: 'Docker',           level: 'Intermediate · dev/deploy', tags: ['Containers', 'Compose'],
+        description: 'Containers for dev and deploy. docker-compose in local environments. I do not operate K8s yet.' },
+    'rest-apis':       { name: 'REST APIs',        level: 'Advanced · 3 years',         tags: ['Design', 'Auth', 'Pagination'],
+        description: 'Endpoint design, status codes, pagination, auth. 60+ routes on Fortão Prêmios in production.' },
+    'graphql':         { name: 'GraphQL',          level: 'Basic · learning',           tags: ['Schemas', 'Resolvers'],
+        description: 'I know schema and resolver basics. Limited production experience.' },
+    'flask':           { name: 'Flask',            level: 'Advanced · 2 years',         tags: ['APIs', 'Microservices'],
+        description: 'Fast Python APIs. Initial Burger House backend and prototypes.' },
+    'fastapi':         { name: 'FastAPI',          level: 'Advanced · 2 years',         tags: ['Async', 'OpenAPI'],
+        description: 'Typing, auto docs, async. Preferred over Flask for new projects.' },
+    'expressjs':       { name: 'Express.js',       level: 'Intermediate · projects', tags: ['Node', 'Middleware'],
+        description: 'Traditional Node APIs. Common stack in projects that inherit an existing codebase.' },
+    'openai-api':      { name: 'OpenAI API',       level: 'Advanced · daily integration', tags: ['GPT-4o', 'Function Calling', 'Structured Outputs'],
+        description: 'GPT-4o / 4o-mini in support automations and text generation. Calls via Python SDK and n8n. Function calling and structured outputs in pipelines.' },
+    'claude-api':      { name: 'Anthropic Claude API', level: 'Intermediate · projects', tags: ['Sonnet', 'Analysis', 'Classification'],
+        description: 'Claude (Sonnet) in analysis and classification pipelines. Cost/quality comparison vs GPT in real cases.' },
+    'gemini-api':      { name: 'Google Gemini API', level: 'Basic · occasional',     tags: ['Multimodal', 'Image+Text'],
+        description: 'Occasional multimodal use (image+text). Less frequent than OpenAI/Claude day to day.' },
+    'claude-code':     { name: 'Claude Code',      level: 'Workflow · daily',         tags: ['CLI Agent', 'MCPs', 'Batch tasks'],
+        description: 'Anthropic CLI agent. Daily use for refactors, code review and batch tasks. Integrated with MCPs (Obsidian, Filesystem).' },
+    'cursor':          { name: 'Cursor IDE',       level: 'Workflow · daily',         tags: ['Pair programming', 'MCPs', 'Agent'],
+        description: 'AI pair programming. Default daily editor with MCPs (Playwright, GitHub, Obsidian). Built this portfolio with the agent.' },
+    'rag':             { name: 'RAG / Embeddings', level: 'Intermediate · AIverse projects', tags: ['pgvector', 'Supabase Vector', 'Chunking'],
+        description: 'Embeddings + pgvector / Supabase Vector. Knowledge bases for chatbots. Basic chunking and re-ranking.' },
+    'zabbix':          { name: 'Zabbix',           level: 'Intermediate · Prosper',   tags: ['Monitoring', 'Triggers', 'Dashboards'],
+        description: 'Server and service monitoring at Prosper. Triggers, dashboards, agents on Linux/Windows.' },
+    'microsoft365':    { name: 'Microsoft 365',    level: 'Advanced · daily admin',   tags: ['Admin Center', 'Exchange', 'SharePoint'],
+        description: 'Admin Center, user management, licenses, Exchange Online, basic SharePoint.' },
+    'active-directory':{ name: 'Active Directory', level: 'Intermediate · L1/L2 Support', tags: ['Users', 'GPOs', 'OUs'],
+        description: 'Users, groups, GPOs, OUs. L1/L2 support at Prosper for account creation and troubleshooting.' },
+    'windows-server':  { name: 'Windows Server',   level: 'Intermediate · basic admin', tags: ['RDP', 'Services'],
+        description: 'Basic administration, RDP, services. Internal infrastructure support.' },
+    'linux':           { name: 'Linux',            level: 'Intermediate · servers', tags: ['Bash', 'systemd', 'Ubuntu'],
+        description: 'Bash, systemd, navigation, troubleshooting. Ubuntu servers for Python apps and Docker.' },
+    'powershell':      { name: 'PowerShell',       level: 'Intermediate · AD/M365 scripts', tags: ['Scripts', 'AD', 'M365'],
+        description: 'Admin scripts for AD, M365 and batch tasks. Functional, not expert level.' },
+    'jira':            { name: 'Jira',             level: 'Advanced · daily',     tags: ['Tickets', 'Sprints', 'Kanban'],
+        description: 'Atlassian Jira / Service Management. Tickets, sprints, Kanban board. Daily operations.' },
+    'servicenow':      { name: 'ServiceNow',       level: 'Operational · L1',          tags: ['Tickets', 'ITSM'],
+        description: 'L1 support on ServiceNow tickets. I operate the tool, I do not administer it.' },
+    'erp-target':      { name: 'ERP Target',       level: 'Intermediate · functional support', tags: ['Logistics', 'Inventory'],
+        description: 'Functional support for the ERP used in logistics/inventory. Ticket triage and assisted operations.' },
+    'target-mob':      { name: 'Target Mob',       level: 'Intermediate · field',     tags: ['Mobile', 'Logistics'],
+        description: 'Mobile component of ERP Target used in the field. Support and configuration.' },
+    'estoque':         { name: 'Inventory Management', level: 'Intermediate · operations', tags: ['WMS', 'Inventory'],
+        description: 'WMS operations (Target/ERP integration). Counting, inventories, adjustments.' },
+    'integracao-erp':  { name: 'ERP Integration',   level: 'Intermediate · troubleshooting', tags: ['ERP', 'Integrations'],
+        description: 'ERP ↔ other systems connector. Support and integration troubleshooting.' },
+    'anydesk':         { name: 'AnyDesk',          level: 'Daily · remote support', tags: ['Remote Access', 'Unattended'],
+        description: 'Remote support for internal users and clients. Unattended access setup.' },
+    'teamviewer':      { name: 'TeamViewer',       level: 'Operational · occasional', tags: ['Remote Access'],
+        description: 'Alternative to AnyDesk where it is already the standard.' },
+    'rdp':             { name: 'RDP / Remote Desktop', level: 'Advanced · daily',    tags: ['Windows', 'Gateway'],
+        description: 'Connections to Windows servers and workstations. RDP and Gateway configuration.' },
+    'zendesk':         { name: 'Zendesk',          level: 'Operational · tickets',     tags: ['Support', 'Macros'],
+        description: 'Ticket support, macros, basic automations. Operational, not admin.' },
+    'teams':           { name: 'Microsoft Teams',  level: 'Advanced · daily',         tags: ['Meetings', 'Channels', 'Integrations'],
+        description: 'Corporate routine standard. Meetings, channels, workflow integrations.' },
+    'meet':            { name: 'Google Meet',      level: 'Advanced · daily',         tags: ['Meetings', 'Clients'],
+        description: 'Meetings with AIverse clients and prospects.' },
+    'zoom':            { name: 'Zoom',             level: 'Intermediate · occasional', tags: ['Meetings', 'Recordings'],
+        description: 'When the client prefers it. Basic settings and recordings.' }
+};
+
+function getSkillDetails(skillId) {
+    const lang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'pt';
+    const store = lang === 'en' ? SKILL_DETAILS_EN : SKILL_DETAILS_PT;
+    return store[skillId];
+}
+
+window.SKILL_DETAILS = SKILL_DETAILS_PT;
+
 // =====================================================
 // SKILL POPOVER (desktop) + DROPDOWN INLINE (mobile)
 // =====================================================
 (function initSkillInteraction() {
     let currentCard = null;
 
+    function skillUiStrings() {
+        const lang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'pt';
+        const t = (typeof translations !== 'undefined' && translations[lang]) ? translations[lang].skills : {};
+        return {
+            detailsBtn: t.detailsBtn || 'Detalhes',
+            viewDetailsAria: t.viewDetailsAria || 'Ver detalhes',
+            detailsSoon: t.detailsSoon || 'Detalhes em breve.'
+        };
+    }
+
     function escapeHtml(str) {
         return String(str).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+    }
+
+    function applySkillDetailsButtonLabels() {
+        const ui = skillUiStrings();
+        document.querySelectorAll('.skill-details-btn').forEach(btn => {
+            btn.setAttribute('aria-label', ui.viewDetailsAria);
+            const label = btn.querySelector('span:first-child');
+            if (label) label.textContent = ui.detailsBtn;
+        });
     }
 
     // --- MOBILE: inject buttons + dropdown containers on load ---
@@ -1549,11 +1693,12 @@ window.SKILL_DETAILS = {
             const card = group.querySelector('.skill-card');
             if (!card) return;
 
+            const ui = skillUiStrings();
             const btn = document.createElement('button');
             btn.className = 'skill-details-btn';
             btn.type = 'button';
-            btn.setAttribute('aria-label', 'Ver detalhes');
-            btn.innerHTML = '<span>Detalhes</span><span class="material-icons-round">expand_more</span>';
+            btn.setAttribute('aria-label', ui.viewDetailsAria);
+            btn.innerHTML = '<span>' + ui.detailsBtn + '</span><span class="material-icons-round">expand_more</span>';
             card.appendChild(btn);
 
             const dropdown = document.createElement('div');
@@ -1563,7 +1708,8 @@ window.SKILL_DETAILS = {
     }
 
     function buildDropdownContent(data) {
-        const desc = data ? data.description : 'Detalhes em breve.';
+        const ui = skillUiStrings();
+        const desc = data ? data.description : ui.detailsSoon;
         const tags = (data && data.tags) ? data.tags : [];
         const tagsHtml = tags.map(t => `<span class="skill-dropdown-tag">${escapeHtml(t)}</span>`).join('');
         return `
@@ -1585,10 +1731,10 @@ window.SKILL_DETAILS = {
         if (currentCard) close();
 
         const id = card.dataset.skillId;
-        const data = (window.SKILL_DETAILS || {})[id];
+        const data = typeof getSkillDetails === 'function' ? getSkillDetails(id) : (window.SKILL_DETAILS || {})[id];
 
         const dd = card.querySelector('.skill-dropdown');
-        if (dd && !dd.innerHTML.trim()) {
+        if (dd) {
             dd.innerHTML = buildDropdownContent(data);
         }
 
@@ -1598,6 +1744,7 @@ window.SKILL_DETAILS = {
 
     document.addEventListener('click', (e) => {
         if (e.target.closest('.skills-tab-btn')) return;
+        if (e.target.closest('.skill-dropdown')) return;
 
         const detailsBtn = e.target.closest('.skill-details-btn');
         if (detailsBtn) {
@@ -1606,11 +1753,15 @@ window.SKILL_DETAILS = {
             return;
         }
 
-        const card = e.target.closest('.skill-card-group');
-        if (!card) {
-            if (!e.target.closest('.skill-dropdown')) close();
+        /** Desktop + mobile: clique em qualquer ponto do .skill-card abre fecha o mesmo painel colado (toggle via open()). */
+        const hitSkillInner = e.target.closest('#skills .skill-card');
+        if (hitSkillInner) {
+            const g = hitSkillInner.closest('.skill-card-group');
+            if (g) open(g);
             return;
         }
+
+        if (!e.target.closest('.skill-card-group')) close();
     });
 
     document.addEventListener('keydown', (e) => {
@@ -1622,10 +1773,25 @@ window.SKILL_DETAILS = {
     }, true);
 
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', injectMobileElements);
+        document.addEventListener('DOMContentLoaded', () => {
+            injectMobileElements();
+            applySkillDetailsButtonLabels();
+        });
     } else {
         injectMobileElements();
+        applySkillDetailsButtonLabels();
     }
+
+    window.refreshSkillDetailsUi = function() {
+        document.querySelectorAll('.skill-dropdown').forEach(dd => { dd.innerHTML = ''; });
+        applySkillDetailsButtonLabels();
+        if (currentCard) {
+            const id = currentCard.dataset.skillId;
+            const data = typeof getSkillDetails === 'function' ? getSkillDetails(id) : null;
+            const dd = currentCard.querySelector('.skill-dropdown');
+            if (dd) dd.innerHTML = buildDropdownContent(data);
+        }
+    };
 
     window.openSkillPopover = open;
     window.closeSkillPopover = close;
@@ -2884,8 +3050,8 @@ window.toggleDescription = function(button) {
                 const rr = rootContent.getBoundingClientRect();
                 const vr = projectsEl.getBoundingClientRect();
                 let delta = 0;
-                if (rr.bottom > vr.bottom - 24) {
-                    delta = rr.bottom - vr.bottom + 20;
+                if (rr.bottom > vr.bottom - 56) {
+                    delta = rr.bottom - vr.bottom + 36;
                 } else if (rr.top < vr.top + 12) {
                     delta = rr.top - vr.top - 12;
                 }
@@ -3006,8 +3172,8 @@ window.toggleDescription = function(button) {
     if (!el) return;
 
     const roles = {
-        pt: ['Desenvolvedor Full Stack', 'Especialista em Automações com IA'],
-        en: ['Full Stack Developer', 'AI Automation Specialist']
+        pt: ['Desenvolvedor Fullstack', 'Especialista em Automações com IA'],
+        en: ['Fullstack Developer', 'AI Automation Specialist']
     };
 
     let roleIdx = 0, charIdx = 0, deleting = false;
