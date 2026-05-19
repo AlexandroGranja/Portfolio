@@ -1168,9 +1168,27 @@ section:nth-child(odd) {
     }
 
     #projects .project-card.active > .project-content .project-links {
-        margin-top: 0;
-        padding-top: 0.25rem;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 0.35rem;
+        padding-top: 0.5rem;
         align-self: stretch;
+        box-sizing: border-box;
+        flex-wrap: nowrap;
+    }
+
+    #projects .project-card.active > .project-content .project-link {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        justify-content: center;
+        flex: 0 0 auto;
+        box-sizing: border-box;
+        white-space: nowrap;
     }
 }
 
@@ -2073,12 +2091,14 @@ body.project-modal-open {
 .project-links {
     display: flex;
     gap: 0.75rem;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
     margin-top: 1rem;
     padding-top: 1rem;
     border-top: 1px solid rgba(245, 158, 11, 0.2);
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .project-link {
@@ -3284,14 +3304,23 @@ html {
         margin-top: 0.6rem;
         padding-top: 0.6rem;
         gap: 0.5rem;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
+        max-width: 100%;
     }
     
     .project-link {
-        padding: var(--btn-padding-y) var(--btn-padding-x);
-        font-size: var(--btn-font-size);
-        flex-shrink: 0;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.8125rem;
+        flex: 1 1 auto;
+        min-width: 0;
+        max-width: 100%;
+        justify-content: center;
         white-space: nowrap;
+    }
+
+    #projects .project-card.active > .project-content {
+        min-width: 0;
+        overflow-x: hidden;
     }
     
     .project-nav-btn {
