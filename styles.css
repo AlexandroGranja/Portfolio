@@ -1558,6 +1558,84 @@ body.project-modal-open {
     margin-right: 0;
 }
 
+/* Hint de arraste (overlay — não altera tamanho dos cards) */
+@media (max-width: 767px) {
+    #projects .projects-carousel-wrapper.projects-main {
+        position: relative;
+    }
+
+    .projects-swipe-hint {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: min(42%, 220px);
+        z-index: 12;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.45s ease;
+    }
+
+    .projects-swipe-hint.is-visible {
+        opacity: 1;
+    }
+
+    .projects-swipe-hint.is-hidden {
+        opacity: 0;
+    }
+
+    .projects-swipe-hint__inner {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.55rem 0.85rem;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.82);
+        border: 1px solid rgba(245, 158, 11, 0.45);
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
+
+    .projects-swipe-hint__icon {
+        font-size: 2rem !important;
+        color: #f59e0b;
+        filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
+        animation: projectsSwipeHintSlide 1.85s ease-in-out infinite;
+    }
+
+    .projects-swipe-hint__label {
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: rgba(248, 250, 252, 0.92);
+        white-space: nowrap;
+    }
+
+    @keyframes projectsSwipeHintSlide {
+        0%, 100% {
+            transform: translateX(-14px);
+            opacity: 0.75;
+        }
+        50% {
+            transform: translateX(14px);
+            opacity: 1;
+        }
+    }
+}
+
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+    .projects-swipe-hint__icon {
+        animation: none;
+        opacity: 1;
+    }
+}
+
 #projects .projects-layout .projects-carousel {
     max-width: none;
     margin-left: 0;

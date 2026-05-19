@@ -252,6 +252,7 @@ const translations = {
             title: "Meus Projetos",
             subtitle: "Alguns dos meus trabalhos em desenvolvimento web e automações",
             railLabel: "Lista de projetos",
+            swipeHint: "Arraste para o lado",
             readMore: "Ver mais",
             readLess: "Ver menos",
             viewDetails: "Ver detalhes",
@@ -436,6 +437,7 @@ const translations = {
             title: "My Projects",
             subtitle: "Some of my work in web development and automation projects",
             railLabel: "Project list",
+            swipeHint: "Swipe sideways",
             readMore: "Read more",
             readLess: "Read less",
             viewDetails: "View details",
@@ -668,6 +670,9 @@ function updatePageLanguage(lang) {
     if (projectsRail && t.projects.railLabel) {
         projectsRail.setAttribute('aria-label', t.projects.railLabel);
     }
+    document.querySelectorAll('.projects-swipe-hint__label').forEach(el => {
+        if (t.projects.swipeHint) el.textContent = t.projects.swipeHint;
+    });
     const projectModalClose = document.querySelector('.project-detail-modal__close');
     if (projectModalClose && t.projects.modalClose) {
         projectModalClose.setAttribute('aria-label', t.projects.modalClose);
@@ -2689,6 +2694,135 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(projectsSection);
     }
 });
+
+// ============================================
+// HINT: arrastar para trocar projeto (mobile)
+// ============================================
+(function initProjectsSwipeHint() {
+    const STORAGE_KEY = 'portfolio_projects_swipe_hint_dismissed';
+    let hintEl = null;
+    let autoHideTimer = null;
+
+    function isMobileProjects() {
+        return typeof window.matchMedia === 'function' &&
+            window.matchMedia('(max-width: 767px)').matches;
+    }
+
+    function isProjectsSectionVisible() {
+        const section = document.getElementById('projects');
+        return section && section.classList.contains('active');
+    }
+
+    function getHintLabel() {
+        const lang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'pt';
+        const t = (typeof translations !== 'undefined' && translations[lang]) ? translations[lang] : null;
+        return (t && t.projects && t.projects.swipeHint) ? t.projects.swipeHint : 'Arraste para o lado';
+    }
+
+    function dismissHint() {
+        if (!hintEl || hintEl.classList.contains('is-hidden')) return;
+        hintEl.classList.add('is-hidden');
+        try { localStorage.setItem(STORAGE_KEY, '1'); } catch (_) { /* ignore */ }
+        if (autoHideTimer) {
+            clearTimeout(autoHideTimer);
+            autoHideTimer = null;
+        }
+        setTimeout(() => {
+            if (hintEl && hintEl.parentNode) hintEl.parentNode.removeChild(hintEl);
+            hintEl = null;
+        }, 450);
+    }
+
+    function ensureHint() {
+        if (hintEl || !isMobileProjects() || !isProjectsSectionVisible()) return;
+        try {
+            if (localStorage.getItem(STORAGE_KEY) === '1') return;
+        } catch (_) { /* ignore */ }
+
+        const wrapper = document.querySelector('#projects .projects-carousel-wrapper.projects-main');
+        if (!wrapper) return;
+
+        hintEl = document.createElement('div');
+        hintEl.className = 'projects-swipe-hint';
+        hintEl.setAttribute('aria-hidden', 'true');
+        const inner = document.createElement('div');
+        inner.className = 'projects-swipe-hint__inner';
+        const icon = document.createElement('span');
+        icon.className = 'material-icons-round projects-swipe-hint__icon';
+        icon.setAttribute('aria-hidden', 'true');
+        icon.textContent = 'swipe';
+        const label = document.createElement('span');
+        label.className = 'projects-swipe-hint__label';
+        label.textContent = getHintLabel();
+        inner.appendChild(icon);
+        inner.appendChild(label);
+        hintEl.appendChild(inner);
+
+        wrapper.appendChild(hintEl);
+        requestAnimationFrame(() => hintEl.classList.add('is-visible'));
+
+        autoHideTimer = setTimeout(dismissHint, 6500);
+    }
+
+    function bindDismiss() {
+        const section = document.getElementById('projects');
+        if (!section || section.dataset.swipeHintBound === '1') return;
+        section.dataset.swipeHintBound = '1';
+
+        const onInteract = () => dismissHint();
+
+        section.addEventListener('touchstart', onInteract, { passive: true, capture: true });
+        section.addEventListener('scroll', onInteract, { passive: true, capture: true });
+        section.querySelector('.projects-rail')?.addEventListener('scroll', onInteract, { passive: true });
+        section.querySelectorAll('.projects-rail-item').forEach(btn => {
+            btn.addEventListener('click', onInteract);
+        });
+
+        const origGoTo = window.goToProject;
+        if (typeof origGoTo === 'function' && !origGoTo._swipeHintWrapped) {
+            const wrapped = function(index) {
+                dismissHint();
+                return origGoTo.apply(this, arguments);
+            };
+            wrapped._swipeHintWrapped = true;
+            window.goToProject = wrapped;
+        }
+
+        const origChange = window.changeProject;
+        if (typeof origChange === 'function' && !origChange._swipeHintWrapped) {
+            const wrappedChange = function(dir) {
+                dismissHint();
+                return origChange.apply(this, arguments);
+            };
+            wrappedChange._swipeHintWrapped = true;
+            window.changeProject = wrappedChange;
+        }
+    }
+
+    function refresh() {
+        if (!isMobileProjects() || !isProjectsSectionVisible()) {
+            if (hintEl) dismissHint();
+            return;
+        }
+        ensureHint();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        bindDismiss();
+        const section = document.getElementById('projects');
+        if (!section) return;
+
+        const observer = new MutationObserver(() => refresh());
+        observer.observe(section, { attributes: true, attributeFilter: ['class'] });
+
+        window.addEventListener('resize', () => {
+            if (!isMobileProjects()) dismissHint();
+            else refresh();
+        });
+
+        setTimeout(refresh, 900);
+    });
+})();
 
 // ============================================
 // ARRASTO DO CARD COMPLETO PARA TROCAR PROJETOS
