@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260519swipe-desc">
+    <link rel="stylesheet" href="styles.css?v=20260519cv-btns">
     <!-- Projetos desktop: grid colado ao inner; segunda coluna 1fr ocupa espaço ao lado da sidebar (sem faixa mx-auto) -->
     <style id="projects-panel-layout-fix">
         @media (min-width: 768px) {
@@ -445,40 +445,51 @@
                             Alexandro<br>
                             <span class="text-primary">Granja</span>
                         </h1>
-                        <div class="flex items-center justify-center md:justify-start gap-0 h-7">
-                            <span id="typewriter-text" class="text-base sm:text-lg text-slate-300 font-medium"></span><span class="hero-cursor text-primary font-thin">|</span>
-                        </div>
+                        <p class="text-base sm:text-lg text-slate-300 font-medium" data-i18n="hero.subtitle">
+                            Desenvolvedor Web · Suporte Técnico N1/N2
+                        </p>
                     </div>
 
                     <!-- Description -->
-                    <p class="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-sm mx-auto md:mx-0" data-i18n="hero.description">
-                        Desenvolvedor Fullstack focado em React, Python/Flask e PostgreSQL. Construí o Fortão Prêmios, plataforma em produção com link de pagamento integrado, automação do fluxo de notas fiscais e cache em múltiplas camadas para desempenho. Na Prosper automatizo rotinas com n8n e IA. Gosto de problemas onde a aplicação inteira precisa funcionar bem.
-                    </p>
+                    <div class="hero-role-blocks max-w-md mx-auto md:mx-0">
+                        <p class="hero-role-block text-slate-400 text-xs sm:text-sm leading-relaxed">
+                            <span class="hero-role-label" data-i18n="hero.devLabel">Desenvolvimento:</span>
+                            <span data-i18n="hero.devText">Aplicações fullstack em produção — React/Next.js no frontend, Python/Flask no backend, PostgreSQL e integrações via API. No Fortão Prêmios trabalhei performance (cache Redis), rotas de pagamento e fluxo operacional completo.</span>
+                        </p>
+                        <p class="hero-role-block text-slate-400 text-xs sm:text-sm leading-relaxed">
+                            <span class="hero-role-label" data-i18n="hero.opsLabel">Operação:</span>
+                            <span data-i18n="hero.opsText">Background em suporte TI: gestão de acessos (AD/M365), monitoramento com Zabbix e resolução de incidentes N1/N2. Automatizo rotinas operacionais — reduzi até 80% do tempo em fluxos de atendimento interno.</span>
+                        </p>
+                    </div>
 
                     <!-- Tech marquee -->
                     <div class="hero-marquee-outer">
                         <div class="hero-marquee-track">
                             <div class="hero-marquee-inner">
                                 <span class="hero-tech-tag">React</span>
+                                <span class="hero-tech-tag">Next.js</span>
                                 <span class="hero-tech-tag">Python</span>
-                                <span class="hero-tech-tag">n8n</span>
-                                <span class="hero-tech-tag">Node.js</span>
                                 <span class="hero-tech-tag">Flask</span>
                                 <span class="hero-tech-tag">PostgreSQL</span>
-                                <span class="hero-tech-tag">WhatsApp API</span>
+                                <span class="hero-tech-tag">Redis</span>
+                                <span class="hero-tech-tag">n8n</span>
+                                <span class="hero-tech-tag">Active Directory</span>
+                                <span class="hero-tech-tag">Microsoft 365</span>
+                                <span class="hero-tech-tag">Zabbix</span>
                                 <span class="hero-tech-tag">Tailwind CSS</span>
-                                <span class="hero-tech-tag">TypeScript</span>
-                                <span class="hero-tech-tag">Docker</span>
+                                <span class="hero-tech-tag">WhatsApp API</span>
                                 <span class="hero-tech-tag">React</span>
+                                <span class="hero-tech-tag">Next.js</span>
                                 <span class="hero-tech-tag">Python</span>
-                                <span class="hero-tech-tag">n8n</span>
-                                <span class="hero-tech-tag">Node.js</span>
                                 <span class="hero-tech-tag">Flask</span>
                                 <span class="hero-tech-tag">PostgreSQL</span>
-                                <span class="hero-tech-tag">WhatsApp API</span>
+                                <span class="hero-tech-tag">Redis</span>
+                                <span class="hero-tech-tag">n8n</span>
+                                <span class="hero-tech-tag">Active Directory</span>
+                                <span class="hero-tech-tag">Microsoft 365</span>
+                                <span class="hero-tech-tag">Zabbix</span>
                                 <span class="hero-tech-tag">Tailwind CSS</span>
-                                <span class="hero-tech-tag">TypeScript</span>
-                                <span class="hero-tech-tag">Docker</span>
+                                <span class="hero-tech-tag">WhatsApp API</span>
                             </div>
                         </div>
                     </div>
@@ -492,15 +503,6 @@
                         <div class="hero-ring-2"></div>
                         <div class="hero-photo">
                             <img src="./assets/Minha-Foto.jpg" alt="Alexandro Granja" class="w-full h-full object-cover">
-                        </div>
-                        <!-- Floating badges -->
-                        <div class="hero-float-1">
-                            <span class="material-icons-round text-primary" style="font-size:13px;">code</span>
-                            <span class="text-[11px] font-bold text-white">Fullstack</span>
-                        </div>
-                        <div class="hero-float-2">
-                            <span class="material-icons-round text-primary" style="font-size:13px;">smart_toy</span>
-                            <span class="text-[11px] font-bold text-white">IA</span>
                         </div>
                     </div>
                 </div>
@@ -524,7 +526,7 @@
                 <p class="text-primary font-semibold tracking-[0.22em] uppercase text-xs mb-1.5" data-i18n="nav.about">Sobre</p>
                 <h1 class="text-2xl sm:text-3xl font-bold text-white leading-tight mb-0.5">Alexandro <span class="text-primary">Granja</span></h1>
                 <p class="text-slate-400 text-xs sm:text-sm">
-                    <span data-i18n="about.subtitle">Desenvolvedor Fullstack & Especialista em Automações com IA</span>
+                    <span data-i18n="about.subtitle">Desenvolvedor Fullstack Júnior · Suporte Técnico · Formação técnica</span>
                 </p>
             </header>
 
@@ -540,16 +542,51 @@
                         <h2 class="text-sm font-bold text-white" data-i18n="about.experience">Experiência Profissional</h2>
                     </div>
 
-                    <div class="flex flex-col gap-3 flex-1 min-h-0 overflow-hidden pl-3">
-                        <!-- Job 1: Prosper -->
+                    <div class="flex flex-col gap-3 flex-1 min-h-0 overflow-y-auto pl-3 about-exp-timeline">
+
+                        <!-- Job 1: AIverse -->
                         <div class="relative pl-5 border-l-2 border-primary/40">
                             <div class="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-primary ring-2 ring-primary/20 ring-offset-2 ring-offset-[#0f172a]"></div>
                             <div class="flex flex-wrap items-center gap-1.5 mb-0.5">
-                                <h3 class="font-bold text-primary text-xs sm:text-sm" data-i18n="about.techSupport">Analista de Suporte de TI</h3>
+                                <h3 class="font-bold text-primary text-xs sm:text-sm" data-i18n="about.founder">Desenvolvedor Fullstack (Freelance)</h3>
                                 <span class="text-[9px] bg-green-500/10 text-green-400 border border-green-500/20 px-1.5 py-0.5 rounded-full font-bold leading-none" data-i18n="about.current">Atual</span>
                             </div>
-                            <p class="text-[10px] text-slate-400 font-medium mb-1.5">Prosper <span class="mx-1 opacity-40">·</span> Nov/2024 – Presente</p>
-                            <p class="text-[11px] text-slate-300 mb-2 leading-relaxed line-clamp-3" data-i18n="about.techSupportDesc">Atuação em suporte técnico e operações de TI, com administração de acessos (Active Directory e Microsoft 365), monitoramento via Zabbix e integração com sistemas de logística (Target/Target Mob). Também desenvolvi automações para rotinas recorrentes, reduzindo esforço manual e aumentando a padronização dos processos.</p>
+                            <p class="text-[10px] text-slate-400 font-medium mb-1.5">
+                                <a href="https://www.aiversetechnologies.com.br/" target="_blank" class="text-primary/80 hover:text-primary transition-colors">AIverse Technologies</a>
+                                <span class="mx-1 opacity-40">·</span> <span data-i18n="about.aiverseDates">Jun/2025 – Atual</span>
+                            </p>
+                            <div class="about-exp-desc-wrap mb-2">
+                                <p class="about-exp-desc text-[11px] text-slate-300 leading-relaxed" data-i18n="about.founderDesc">Criação de soluções web e automações inteligentes para acelerar operações de negócio: sites e sistemas responsivos, integrações entre plataformas e agentes para atendimento automatizado. Do desenho da arquitetura ao deploy (Vercel/Railway), com foco em eficiência e escalabilidade.</p>
+                                <button type="button" class="about-exp-toggle read-more-btn" onclick="toggleAboutExperienceDesc(this)" aria-expanded="false" hidden>
+                                    <span class="read-more-text" data-i18n="about.readMore">Ver mais</span>
+                                    <span class="read-less-text" style="display: none;" data-i18n="about.readLess">Ver menos</span>
+                                </button>
+                            </div>
+                            <div class="flex flex-wrap gap-1">
+                                <span class="about-tag">React</span>
+                                <span class="about-tag">Python/Flask</span>
+                                <span class="about-tag">PostgreSQL</span>
+                                <span class="about-tag">n8n</span>
+                                <span class="about-tag">WhatsApp AI</span>
+                                <span class="about-tag">APIs/Webhooks</span>
+                            </div>
+                        </div>
+
+                        <div class="h-px bg-white/5 flex-shrink-0 mx-1"></div>
+                        <!-- Job 2: Prosper -->
+                        <div class="relative pl-5 border-l-2 border-slate-600/50">
+                            <div class="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-slate-500 ring-2 ring-slate-500/20 ring-offset-2 ring-offset-[#0f172a]"></div>
+                            <div class="flex flex-wrap items-center gap-1.5 mb-0.5">
+                                <h3 class="font-bold text-primary text-xs sm:text-sm" data-i18n="about.techSupport">Analista de Suporte de TI</h3>
+                            </div>
+                            <p class="text-[10px] text-slate-400 font-medium mb-1.5">Prosper <span class="mx-1 opacity-40">·</span> <span data-i18n="about.prosperDates">Nov/2024 – Mai/2026</span></p>
+                            <div class="about-exp-desc-wrap mb-2">
+                                <p class="about-exp-desc text-[11px] text-slate-300 leading-relaxed" data-i18n="about.techSupportDesc">Atuação em suporte técnico e operações de TI, com administração de acessos (Active Directory e Microsoft 365), monitoramento via Zabbix e integração com sistemas de logística (Target/Target Mob). Também desenvolvi automações para rotinas recorrentes, reduzindo esforço manual e aumentando a padronização dos processos.</p>
+                                <button type="button" class="about-exp-toggle read-more-btn" onclick="toggleAboutExperienceDesc(this)" aria-expanded="false" hidden>
+                                    <span class="read-more-text" data-i18n="about.readMore">Ver mais</span>
+                                    <span class="read-less-text" style="display: none;" data-i18n="about.readLess">Ver menos</span>
+                                </button>
+                            </div>
                             <div class="flex flex-wrap gap-1">
                                 <span class="about-tag">Active Directory</span>
                                 <span class="about-tag">Microsoft 365</span>
@@ -560,30 +597,7 @@
                             </div>
                         </div>
 
-                        <div class="h-px bg-white/5 flex-shrink-0 mx-1"></div>
-
-                        <!-- Job 2: AIverse -->
-                        <div class="relative pl-5 border-l-2 border-slate-600/50">
-                            <div class="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-slate-500 ring-2 ring-slate-500/20 ring-offset-2 ring-offset-[#0f172a]"></div>
-                            <div class="flex flex-wrap items-center gap-1.5 mb-0.5">
-                                <h3 class="font-bold text-primary text-xs sm:text-sm" data-i18n="about.founder">Fundador & Fullstack Dev</h3>
-                            </div>
-                            <p class="text-[10px] text-slate-400 font-medium mb-1.5">
-                                <a href="https://www.aiversetechnologies.com.br/" target="_blank" class="text-primary/80 hover:text-primary transition-colors">AIverse Technologies</a>
-                                <span class="mx-1 opacity-40">·</span> Jun/2025
-                            </p>
-                            <p class="text-[11px] text-slate-300 mb-2 leading-relaxed line-clamp-3" data-i18n="about.founderDesc">Criação de soluções web e automações inteligentes para acelerar operações de negócio: sites e sistemas responsivos, integrações entre plataformas e agentes para atendimento automatizado. Do desenho da arquitetura ao deploy (Vercel/Railway), com foco em eficiência e escalabilidade.</p>
-                            <div class="flex flex-wrap gap-1">
-                                <span class="about-tag">React</span>
-                                <span class="about-tag">Python/Flask</span>
-                                <span class="about-tag">PostgreSQL</span>
-                                <span class="about-tag">n8n</span>
-                                <span class="about-tag">WhatsApp AI</span>
-                                <span class="about-tag">APIs/Webhooks</span>
-                            </div>
-                        </div>
                     </div>
-
                     <!-- Achievements footer -->
                     <div class="mt-auto pt-2.5 border-t border-white/5 flex-shrink-0 grid grid-cols-3 gap-1.5">
                         <div class="text-center p-1.5 rounded flex items-center justify-center" style="background:rgba(245,158,11,0.05);">
@@ -698,52 +712,71 @@
                     </div>
                 </div>
 
-                <!-- Col 3: Oportunidades + Tech Stack -->
-                <div class="flex flex-col gap-2 sm:gap-3 min-h-0" style="flex:1 1 0;">
+                <!-- Col 3: Currículo · Buscando · Stack -->
+                <div class="about-col-side w-full min-w-0 flex flex-col gap-2 min-h-0 overflow-hidden" style="flex:1 1 0;">
 
-                    <!-- Opp card -->
-                    <div class="about-opp-card p-3 sm:p-4 rounded-md text-white flex flex-col" style="flex:3 1 0;min-height:0;">
+                    <!-- Card: Currículo -->
+                    <div class="about-glass-card about-cv-card w-full p-3 sm:p-4 rounded-md flex flex-col flex-shrink-0">
+                        <div class="flex items-center gap-2 mb-2.5 flex-shrink-0">
+                            <div class="p-1.5 rounded bg-primary/10 text-primary">
+                                <span class="material-icons-round text-[16px]">description</span>
+                            </div>
+                            <h3 class="text-sm font-bold text-white" data-i18n="about.cvTitle">Currículo</h3>
+                        </div>
+                        <div class="about-cv-actions">
+                            <a href="./assets/curriculos/Alexandro_Granja_Dev.pdf" download="Alexandro_Granja_CV_Dev.pdf" type="application/pdf" class="about-cv-btn">
+                                <span class="material-icons-round" aria-hidden="true">download</span>
+                                <span data-i18n="hero.downloadCVDev">Dev</span>
+                            </a>
+                            <a href="./assets/curriculos/Alexandro_Granja_Suporte.pdf" download="Alexandro_Granja_CV_Suporte.pdf" type="application/pdf" class="about-cv-btn">
+                                <span class="material-icons-round" aria-hidden="true">download</span>
+                                <span data-i18n="hero.downloadCVSupport">Suporte</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card: Buscando Oportunidades -->
+                    <div class="about-opp-card about-col-opp w-full flex-shrink-0 p-3 sm:p-4 rounded-md text-white flex flex-col">
                         <div class="flex items-center gap-2 mb-3 flex-shrink-0">
                             <div class="p-1.5 rounded bg-white/10">
                                 <span class="material-icons-round text-[16px]">search</span>
                             </div>
                             <h3 class="text-sm font-bold" data-i18n="about.seeking">Buscando Oportunidades</h3>
                         </div>
-                        <ul class="flex flex-col gap-2.5 flex-1 min-h-0 overflow-hidden">
+                        <ul class="about-opp-list flex flex-col gap-2.5">
                             <li class="flex items-start gap-2">
                                 <span class="material-icons-round text-[14px] text-white/60 flex-shrink-0 mt-0.5">code</span>
                                 <div>
-                                    <p class="text-[11px] font-semibold leading-tight" data-i18n="about.seeking1">Fullstack (React + Python/Flask)</p>
-                                    <p class="text-[10px] text-white/55 mt-0.5" data-i18n="about.seekingDetail1">Frontend moderno + APIs robustas</p>
+                                    <p class="text-[11px] font-semibold leading-tight" data-i18n="about.seeking1">Dev Júnior / Estágio</p>
+                                    <p class="text-[10px] text-white/55 mt-0.5" data-i18n="about.seekingDetail1">React, Python, PostgreSQL · projetos em produção</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="material-icons-round text-[14px] text-white/60 flex-shrink-0 mt-0.5">support_agent</span>
+                                <div>
+                                    <p class="text-[11px] font-semibold leading-tight" data-i18n="about.seeking2">Suporte Técnico</p>
+                                    <p class="text-[10px] text-white/55 mt-0.5" data-i18n="about.seekingDetail2">AD, M365, Zabbix · N1/N2</p>
                                 </div>
                             </li>
                             <li class="flex items-start gap-2">
                                 <span class="material-icons-round text-[14px] text-white/60 flex-shrink-0 mt-0.5">hub</span>
                                 <div>
-                                    <p class="text-[11px] font-semibold leading-tight" data-i18n="about.seeking2">Automações</p>
-                                    <p class="text-[10px] text-white/55 mt-0.5" data-i18n="about.seekingDetail2">Fluxos inteligentes e integrações</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="material-icons-round text-[14px] text-white/60 flex-shrink-0 mt-0.5">smart_toy</span>
-                                <div>
-                                    <p class="text-[11px] font-semibold leading-tight" data-i18n="about.seeking3">Web & IA</p>
-                                    <p class="text-[10px] text-white/55 mt-0.5" data-i18n="about.seekingDetail3">Agentes e soluções com LLMs</p>
+                                    <p class="text-[11px] font-semibold leading-tight" data-i18n="about.seeking3">Automações (diferencial)</p>
+                                    <p class="text-[10px] text-white/55 mt-0.5" data-i18n="about.seekingDetail3">n8n, APIs, WhatsApp · -80% tempo atendimento</p>
                                 </div>
                             </li>
                         </ul>
-                        <div class="mt-auto pt-2.5 border-t border-white/10 flex-shrink-0">
-                            <button type="button" onclick="showSection('#contact')" class="about-opp-cta w-full flex items-center justify-center gap-1.5 transition-colors">
-                                <span data-i18n="about.contactButton">Entre em contato</span>
-                                <span class="material-icons-round" style="font-size:13px;">arrow_forward</span>
-                            </button>
-                        </div>
                     </div>
 
-                    <!-- Tech Stack card -->
-                    <div class="about-glass-card p-3 rounded-md flex flex-col" style="flex:2 1 0;min-height:0;">
-                        <p class="text-[9px] text-primary font-semibold tracking-widest uppercase mb-2 flex-shrink-0" data-i18n="about.techStackLabel">Stack Principal</p>
-                        <div class="grid grid-cols-3 gap-1.5 flex-1 min-h-0 overflow-hidden content-start">
+                    <!-- Card: Stack Principal -->
+                    <div class="about-glass-card about-col-stack w-full min-h-0 p-3 sm:p-4 rounded-md flex flex-col">
+                        <div class="flex items-center gap-2 mb-2 flex-shrink-0">
+                            <div class="p-1.5 rounded bg-primary/10 text-primary">
+                                <span class="material-icons-round text-[16px]">layers</span>
+                            </div>
+                            <h3 class="text-sm font-bold text-white" data-i18n="about.techStackLabel">Stack Principal</h3>
+                        </div>
+                        <div class="about-stack-grid w-full">
                             <div class="flex flex-col items-center justify-center gap-1 p-1.5 rounded hover:bg-primary/8 transition-colors group" style="background:rgba(255,255,255,0.03);">
                                 <span class="material-icons-round text-primary text-[18px] group-hover:scale-110 transition-transform">web</span>
                                 <span class="text-[8px] text-slate-500 font-medium">React</span>
@@ -2232,7 +2265,7 @@
             }
         }
     </style>
-    <script src="script.js?v=20260519swipe-copy"></script>
+    <script src="script.js?v=20260519exp-toggle"></script>
     <!-- Skills level bars + tab animation handled in script.js (skills-tab-btn handler) -->
 
     <script>

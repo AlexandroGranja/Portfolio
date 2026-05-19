@@ -124,21 +124,30 @@ const translations = {
         // Hero Section
         hero: {
             greeting: "Olá, eu sou",
-            subtitle: "Desenvolvedor Fullstack & Especialista em Automações com IA 🚀",
-            description: "Desenvolvedor Fullstack focado em React, Python/Flask e PostgreSQL. Construí o Fortão Prêmios, plataforma em produção com link de pagamento integrado, automação do fluxo de notas fiscais e cache em múltiplas camadas para desempenho. Na Prosper automatizo rotinas com n8n e IA. Gosto de problemas onde a aplicação inteira precisa funcionar bem.",
+            subtitle: "Desenvolvedor Web · Suporte Técnico N1/N2",
+            devLabel: "Desenvolvimento:",
+            devText: "Aplicações fullstack em produção — React/Next.js no frontend, Python/Flask no backend, PostgreSQL e integrações via API. No Fortão Prêmios trabalhei performance (cache Redis), rotas de pagamento e fluxo operacional completo.",
+            opsLabel: "Operação:",
+            opsText: "Background em suporte TI: gestão de acessos (AD/M365), monitoramento com Zabbix e resolução de incidentes N1/N2. Automatizo rotinas operacionais — reduzi até 80% do tempo em fluxos de atendimento interno.",
+            badgeDev: "Web em produção",
+            badgeSupport: "Suporte N1/N2",
             downloadCV: "Baixar CV",
+            downloadCVDev: "Dev",
+            downloadCVSupport: "Suporte",
             loading: "Carregando experiência..."
         },
         // About Section
         about: {
             title: "Alexandro Granja",
-            subtitle: "Desenvolvedor Fullstack & Especialista em Automações com IA",
+            subtitle: "Desenvolvedor Fullstack Júnior · Suporte Técnico · Formação técnica",
             experience: "Experiência Profissional",
             education: "Formação",
             current: "Atual",
+            aiverseDates: "Jun/2025 – Atual",
+            prosperDates: "Nov/2024 – Mai/2026",
             techSupport: "Analista de Suporte de TI",
             techSupportDesc: "Atuação em suporte técnico e operações de TI, com administração de acessos (Active Directory e Microsoft 365), monitoramento via Zabbix e integração com sistemas de logística (Target/Target Mob). Também desenvolvi automações para rotinas recorrentes, reduzindo esforço manual e aumentando a padronização dos processos.",
-            founder: "Fundador & Fullstack Dev",
+            founder: "Desenvolvedor Fullstack (Freelance)",
             founderDesc: "Criação de soluções web e automações inteligentes para acelerar operações de negócio: sites e sistemas responsivos, integrações entre plataformas e agentes para atendimento automatizado. Do desenho da arquitetura ao deploy (Vercel/Railway), com foco em eficiência e escalabilidade.",
             techEducation: "Técnico em Informática",
             techEducationLevel: "Ensino Médio Técnico",
@@ -162,19 +171,22 @@ const translations = {
             location: "Localização",
             locationPlace: "Brasil, Rio de Janeiro",
             availability: "Disponível",
+            cvTitle: "Currículo",
             seeking: "Buscando Oportunidades",
-            seekingDesc: "Estou aberto a novas oportunidades nas áreas de:",
-            seeking1: "Fullstack (React + Python/Flask)",
-            seeking2: "Automações",
-            seeking3: "Web & IA",
-            seekingDetail1: "Frontend moderno + APIs robustas",
-            seekingDetail2: "Fluxos inteligentes e integrações",
-            seekingDetail3: "Agentes e soluções com LLMs",
+            seekingDesc: "Aberto a vagas nas áreas de:",
+            seeking1: "Dev Júnior / Estágio",
+            seeking2: "Suporte Técnico",
+            seeking3: "Automações (diferencial)",
+            seekingDetail1: "React, Python, PostgreSQL · projetos em produção",
+            seekingDetail2: "AD, M365, Zabbix · N1/N2",
+            seekingDetail3: "n8n, APIs, WhatsApp · -80% tempo atendimento",
             contactButton: "Entre em contato",
             stat1: "2+ Anos Exp.",
             stat2: "5+ Projetos",
             stat3: "10+ Tecnologias",
-            techStackLabel: "Stack Principal"
+            techStackLabel: "Stack Principal",
+            readMore: "Ver mais",
+            readLess: "Ver menos"
         },
         // Contact Section
         contact: {
@@ -310,21 +322,30 @@ const translations = {
         // Hero Section
         hero: {
             greeting: "Hello, I'm",
-            subtitle: "Fullstack Developer & AI Automation Specialist 🚀",
-            description: "Fullstack Developer working with React, Python/Flask and PostgreSQL. I built Fortão Prêmios, a production platform with payment-link checkout, automated invoicing and tax document workflows, and layered caching for performance. In my IT role at Prosper I automate operations with n8n and AI. I'm drawn to problems where the whole application needs to work well end to end.",
+            subtitle: "Web Developer · IT Support N1/N2",
+            devLabel: "Development:",
+            devText: "Production fullstack applications — React/Next.js on the frontend, Python/Flask on the backend, PostgreSQL and API integrations. On Fortão Prêmios I worked on performance (Redis cache), payment routes and the full operational flow.",
+            opsLabel: "Operations:",
+            opsText: "IT support background: access management (AD/M365), Zabbix monitoring and N1/N2 incident resolution. I automate operational routines — cut up to 80% of processing time on internal support flows.",
+            badgeDev: "Live web apps",
+            badgeSupport: "N1/N2 Support",
             downloadCV: "Download CV",
+            downloadCVDev: "Dev",
+            downloadCVSupport: "Support",
             loading: "Loading experience..."
         },
         // About Section
         about: {
             title: "Alexandro Granja",
-            subtitle: "Fullstack Developer & AI Automation Specialist",
+            subtitle: "Junior Fullstack Developer · IT Support · Technical education",
             experience: "Professional Experience",
             education: "Education",
             current: "Current",
+            aiverseDates: "Jun/2025 – Present",
+            prosperDates: "Nov/2024 – May/2026",
             techSupport: "IT Support Analyst",
             techSupportDesc: "Technical support and IT operations with access management (Active Directory and Microsoft 365), Zabbix monitoring, and logistics systems integration (Target/Target Mob). I also built automations for recurring routines, reducing manual effort and increasing process standardization.",
-            founder: "Founder & Fullstack Dev",
+            founder: "Fullstack Developer (Freelance)",
             founderDesc: "Built web solutions and smart automations to accelerate business operations: responsive websites and systems, cross-platform integrations, and automated support agents. End-to-end ownership from architecture to deployment (Vercel/Railway), focused on efficiency and scalability.",
             techEducation: "IT Technician",
             techEducationLevel: "Technical High School",
@@ -348,19 +369,22 @@ const translations = {
             location: "Location",
             locationPlace: "Brazil, Rio de Janeiro",
             availability: "Available",
+            cvTitle: "Resume",
             seeking: "Seeking Opportunities",
-            seekingDesc: "I am open to new opportunities in the areas of:",
-            seeking1: "Fullstack (React + Python/Flask)",
-            seeking2: "Automations (n8n, APIs)",
-            seeking3: "Web & AI",
-            seekingDetail1: "Modern frontend + robust APIs",
-            seekingDetail2: "Smart workflows & integrations",
-            seekingDetail3: "AI agents & LLM solutions",
+            seekingDesc: "Open to roles in:",
+            seeking1: "Junior Dev / Internship",
+            seeking2: "IT Support",
+            seeking3: "Automations (edge)",
+            seekingDetail1: "React, Python, PostgreSQL · production projects",
+            seekingDetail2: "AD, M365, Zabbix · L1/L2",
+            seekingDetail3: "n8n, APIs, WhatsApp · -80% support time",
             contactButton: "Get in Touch",
             stat1: "2+ Years Exp.",
             stat2: "5+ Projects",
             stat3: "10+ Technologies",
-            techStackLabel: "Main Stack"
+            techStackLabel: "Main Stack",
+            readMore: "Read more",
+            readLess: "Read less"
         },
         // Contact Section
         contact: {
@@ -526,8 +550,18 @@ function updatePageLanguage(lang) {
     // Atualizar Hero
     document.querySelectorAll('[data-i18n="hero.greeting"]').forEach(el => el.textContent = t.hero.greeting);
     document.querySelectorAll('[data-i18n="hero.subtitle"]').forEach(el => el.textContent = t.hero.subtitle);
-    document.querySelectorAll('[data-i18n="hero.description"]').forEach(el => el.textContent = t.hero.description);
+    document.querySelectorAll('[data-i18n="hero.devLabel"]').forEach(el => el.textContent = t.hero.devLabel);
+    document.querySelectorAll('[data-i18n="hero.devText"]').forEach(el => el.textContent = t.hero.devText);
+    document.querySelectorAll('[data-i18n="hero.opsLabel"]').forEach(el => el.textContent = t.hero.opsLabel);
+    document.querySelectorAll('[data-i18n="hero.opsText"]').forEach(el => el.textContent = t.hero.opsText);
     document.querySelectorAll('[data-i18n="hero.downloadCV"]').forEach(el => el.textContent = t.hero.downloadCV);
+    document.querySelectorAll('[data-i18n="hero.badgeDev"]').forEach(el => el.textContent = t.hero.badgeDev);
+    document.querySelectorAll('[data-i18n="hero.badgeSupport"]').forEach(el => el.textContent = t.hero.badgeSupport);
+    document.querySelectorAll('[data-i18n="hero.downloadCVDev"]').forEach(el => el.textContent = t.hero.downloadCVDev);
+    document.querySelectorAll('[data-i18n="hero.downloadCVSupport"]').forEach(el => el.textContent = t.hero.downloadCVSupport);
+    document.querySelectorAll('[data-i18n="about.subtitle"]').forEach(el => el.textContent = t.about.subtitle);
+    document.querySelectorAll('[data-i18n="about.aiverseDates"]').forEach(el => el.textContent = t.about.aiverseDates);
+    document.querySelectorAll('[data-i18n="about.prosperDates"]').forEach(el => el.textContent = t.about.prosperDates);
     document.querySelectorAll('[data-i18n="hero.loading"]').forEach(el => el.textContent = t.hero.loading);
 
     // Atualizar About
@@ -559,6 +593,7 @@ function updatePageLanguage(lang) {
     document.querySelectorAll('[data-i18n="about.achievement3"]').forEach(el => el.textContent = t.about.achievement3);
     document.querySelectorAll('[data-i18n="about.location"]').forEach(el => el.textContent = t.about.location);
     document.querySelectorAll('[data-i18n="about.locationPlace"]').forEach(el => el.textContent = t.about.locationPlace);
+    document.querySelectorAll('[data-i18n="about.cvTitle"]').forEach(el => el.textContent = t.about.cvTitle);
     document.querySelectorAll('[data-i18n="about.seeking"]').forEach(el => el.textContent = t.about.seeking);
     document.querySelectorAll('[data-i18n="about.seekingDesc"]').forEach(el => el.textContent = t.about.seekingDesc);
     document.querySelectorAll('[data-i18n="about.seeking1"]').forEach(el => el.textContent = t.about.seeking1);
@@ -734,6 +769,12 @@ function updatePageLanguage(lang) {
             else { value = undefined; break; }
         }
         if (typeof value === 'string') el.textContent = value;
+    });
+
+    requestAnimationFrame(() => {
+        if (typeof refreshAboutExperienceToggles === 'function') {
+            refreshAboutExperienceToggles();
+        }
     });
 }
 
@@ -1059,7 +1100,7 @@ document.head.appendChild(style);
 console.log(`
 %c🚀 Portfólio de Alexandro Granja
 %c👨‍💻 Desenvolvedor Fullstack & Especialista em Automações com IA
-%c💼 Analista de TI - Prosper | Fundador - AIverse Technologies
+%c💼 Dev Fullstack Júnior | AIverse · Ex-Prosper (Suporte TI)
 %c📧 Alex.granjaaa@hotmail.com
 %c🔗 GitHub: github.com/AlexandroGranja
 %c🌐 AIverse Technologies: https://www.aiversetechnologies.com.br/
@@ -3247,6 +3288,56 @@ function initProjectCardDrag() {
 }
 
 // ============================================
+// VER MAIS / VER MENOS — EXPERIÊNCIA (SOBRE)
+// ============================================
+
+window.toggleAboutExperienceDesc = function(button) {
+    const wrap = button.closest('.about-exp-desc-wrap');
+    if (!wrap) return;
+    const desc = wrap.querySelector('.about-exp-desc');
+    const readMore = button.querySelector('.read-more-text');
+    const readLess = button.querySelector('.read-less-text');
+    if (!desc) return;
+
+    const expanded = !desc.classList.contains('is-expanded');
+    desc.classList.toggle('is-expanded', expanded);
+    button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    if (readMore) readMore.style.display = expanded ? 'none' : 'inline';
+    if (readLess) readLess.style.display = expanded ? 'inline' : 'none';
+    button.hidden = false;
+};
+
+function refreshAboutExperienceToggles() {
+    document.querySelectorAll('#about .about-exp-desc-wrap').forEach((wrap) => {
+        const desc = wrap.querySelector('.about-exp-desc');
+        const button = wrap.querySelector('.about-exp-toggle');
+        if (!desc || !button) return;
+
+        const expanded = desc.classList.contains('is-expanded');
+        if (!expanded) {
+            button.hidden = desc.scrollHeight <= desc.clientHeight + 1;
+        } else {
+            button.hidden = false;
+        }
+
+        const readMore = button.querySelector('.read-more-text');
+        const readLess = button.querySelector('.read-less-text');
+        if (readMore) readMore.style.display = expanded ? 'none' : 'inline';
+        if (readLess) readLess.style.display = expanded ? 'inline' : 'none';
+        button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    refreshAboutExperienceToggles();
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(refreshAboutExperienceToggles, 150);
+    });
+});
+
+// ============================================
 // BOTÃO VER MAIS / VER MENOS NA DESCRIÇÃO
 // ============================================
 
@@ -3401,46 +3492,6 @@ window.toggleDescription = function(button) {
     });
 })();
 
-// ============================================
-// HERO v2 — Typewriter
-// ============================================
-(function initTypewriter() {
-    const el = document.getElementById('typewriter-text');
-    if (!el) return;
-
-    const roles = {
-        pt: ['Desenvolvedor Fullstack', 'Especialista em Automações com IA'],
-        en: ['Fullstack Developer', 'AI Automation Specialist']
-    };
-
-    let roleIdx = 0, charIdx = 0, deleting = false;
-
-    function getLang() {
-        return document.documentElement.lang === 'en' ? 'en' : 'pt';
-    }
-
-    function tick() {
-        const list = roles[getLang()];
-        const current = list[roleIdx % list.length];
-        if (deleting) {
-            el.textContent = current.slice(0, charIdx--);
-        } else {
-            el.textContent = current.slice(0, charIdx++);
-        }
-
-        let delay = deleting ? 45 : 95;
-        if (!deleting && charIdx > current.length) {
-            delay = 2200; deleting = true;
-        } else if (deleting && charIdx < 0) {
-            deleting = false; charIdx = 0;
-            roleIdx = (roleIdx + 1) % list.length;
-            delay = 350;
-        }
-        setTimeout(tick, delay);
-    }
-
-    setTimeout(tick, 2400);
-})();
 
 // ============================================
 // HERO v2 — Counter Animation
