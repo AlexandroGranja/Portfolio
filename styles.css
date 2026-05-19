@@ -653,6 +653,8 @@ section:nth-child(odd) {
         overflow-x: hidden !important;
         -webkit-overflow-scrolling: touch;
         scroll-behavior: smooth;
+        /* Última linha/link não cola na borda ao rolar com “Ver mais” aberto */
+        scroll-padding-bottom: clamp(2.75rem, 12vh, 5.5rem);
     }
 
     #projects .projects-inner {
@@ -676,8 +678,9 @@ section:nth-child(odd) {
         margin: 0 !important;
     }
 
-    #projects .projects-rail {
-        padding-bottom: 0.35rem !important;
+    /* Bloco texto expandido: folga inferior extra (viewport + rodapé navegadores móveis) */
+    #projects.section-content.active:has(.project-content.is-details-expanded) .projects-inner {
+        padding-bottom: clamp(4rem, 22vh, 9rem);
     }
 
     /* Cabeçalho mobile — paridade Sobre / Skills */
@@ -1127,9 +1130,12 @@ section:nth-child(odd) {
 
     #projects .project-card.active > .project-content .project-description.expanded {
         display: block !important;
-        -webkit-line-clamp: unset;
-        line-clamp: unset;
-        overflow: visible;
+        max-height: none !important;
+        -webkit-line-clamp: unset !important;
+        line-clamp: unset !important;
+        overflow: visible !important;
+        -webkit-box-orient: unset !important;
+        text-overflow: unset !important;
     }
 
     /* Texto corrido compacto — evita sensação de “dois parágrafos” com espaço estranho */
@@ -4943,10 +4949,18 @@ html {
 #skills .skills-cards-wrap::-webkit-scrollbar-thumb { background: rgba(245,158,11,0.2); border-radius: 99px; }
 #skills .skills-cards-wrap::-webkit-scrollbar-thumb:hover { background: rgba(245,158,11,0.4); }
 
-/* ====== Tabs ====== */
+/* Painel (.skill-dropdown) é position:absolute e não aumenta scroll; extra padding evita cortar no desktop */
+#skills .skills-cards-wrap:has(.skill-card-group.is-open) {
+    padding-bottom: max(20px, min(360px, 58vh));
+}
+
+/* ====== Tabs ====== (.skills-inner tem overflow:hidden; sem translateY nem sombras “para fora”, senão corta borda/top) */
 #skills .skills-tabs-row {
     scrollbar-width: none;
     -ms-overflow-style: none;
+    /* Folga vertical leve dentro da stripe (pai clipa hover/focus externos) */
+    padding-top: 0.2rem;
+    padding-bottom: 0.35rem;
 }
 #skills .skills-tabs-row::-webkit-scrollbar { display: none; }
 
@@ -4956,7 +4970,7 @@ html {
     justify-content: center;
     gap: 0.45rem;
     padding: var(--btn-padding-y) var(--btn-padding-x);
-    border-radius: var(--btn-border-radius);
+    border-radius: var(--btn-border-radius-soft);
     background: rgba(15,23,42,0.6);
     border: 1px solid rgba(255,255,255,0.08);
     color: #94a3b8;
@@ -4965,7 +4979,7 @@ html {
     font-weight: var(--btn-font-weight);
     white-space: nowrap;
     cursor: pointer;
-    transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, filter 0.2s ease;
     flex-shrink: 0;
     position: relative;
     overflow: hidden;
@@ -4981,8 +4995,9 @@ html {
 }
 .skills-tab-btn:hover {
     color: #f1f5f9;
-    border-color: rgba(245,158,11,0.3);
-    transform: translateY(-1px);
+    border-color: rgba(245,158,11,0.36);
+    /* Sem translate/box-shadow externo — .skills-inner { overflow:hidden } corta topo/sombra */
+    filter: brightness(1.04);
 }
 .skills-tab-btn:hover::before { opacity: 0.4; }
 .skills-tab-btn.is-active {
@@ -4990,10 +5005,18 @@ html {
     background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);
     border-color: rgba(245,158,11,0.55);
     box-shadow:
-        0 8px 22px -6px rgba(245,158,11,0.45),
         0 0 0 1px rgba(255,255,255,0.08) inset,
-        0 1px 0 rgba(255,255,255,0.15) inset;
-    transform: translateY(0);
+        0 1px 0 rgba(255,255,255,0.15) inset,
+        /* Sombra “para dentro” mais que para cima, reduz clipping */
+        0 10px 20px -8px rgba(245,158,11,0.35);
+}
+.skills-tab-btn.is-active:hover {
+    filter: brightness(1.03);
+}
+.skills-tab-btn:focus-visible {
+    outline: 2px solid rgba(245, 158, 11, 0.55);
+    outline-offset: -1px;
+    border-radius: var(--btn-border-radius-soft);
 }
 .skills-tab-btn.is-active::before { opacity: 0; }
 .skills-tab-btn > * { position: relative; z-index: 1; }
@@ -5352,16 +5375,19 @@ html {
     position: absolute;
     left: 0;
     right: 0;
-    top: calc(100% + 6px);
+    /* Colado ao card; -1px cobre fugas/sub-pixel entre fundos */
+    top: 100%;
+    margin-top: -1px;
     z-index: 40;
     max-height: 0;
     overflow: hidden;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    border-radius: 10px;
+    border-radius: 0 0 10px 10px;
     background: linear-gradient(165deg, rgba(15,23,42,0.98) 0%, rgba(11,18,32,1) 100%);
     border: 1px solid rgba(245,158,11,0.22);
+    border-top: none;
     box-shadow:
         0 18px 40px -8px rgba(0,0,0,0.65),
         0 0 0 1px rgba(255,255,255,0.04) inset;
@@ -5374,15 +5400,46 @@ html {
     z-index: 100;
 }
 .skill-card-group.is-open .skill-dropdown {
-    max-height: min(240px, 52vh);
+    max-height: min(420px, 72vh);
     overflow-y: auto;
+    overscroll-behavior: contain;
+    scroll-padding-block-end: 1rem;
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
     -webkit-overflow-scrolling: touch;
+    /* Sombra para baixo; sem inset na junta (evita “filete” horizontal) */
+    box-shadow:
+        0 12px 28px -6px rgba(0, 0, 0, 0.55);
+}
+
+@media (min-width: 768px) {
+    #skills .skill-card {
+        /* Botão Detalhes + junção com painel: overflow hidden cortava o rodapé do card no grid */
+        overflow: visible !important;
+        cursor: pointer;
+    }
+
+    /* Detalhes visível também no desktop (mesmo UX que mobile — painel fundido sob o card) */
+    #skills .skill-details-btn {
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        gap: 0.2rem;
+        margin-top: 0.12rem;
+        font-size: 0.62rem;
+    }
+
+    #skills .skill-details-btn .material-icons-round {
+        font-size: 14px;
+    }
+
+    .skill-card-group.is-open .skill-dropdown {
+        max-height: min(520px, 78vh);
+    }
 }
 .skill-dropdown-inner {
-    padding: 0.7rem 0.75rem 0.65rem;
+    padding: 0.65rem 0.75rem 1rem;
 }
 .skill-dropdown-level {
     font-size: 0.6rem;
@@ -5397,7 +5454,8 @@ html {
     color: #cbd5e1;
     font-size: 0.72rem;
     line-height: 1.5;
-    margin: 0 0 0.5rem 0;
+    margin: 0;
+    padding-bottom: 2px;
 }
 .skill-dropdown-tags {
     display: flex;
@@ -5458,6 +5516,21 @@ html {
 
 .skill-card-group.is-open .skill-card {
     border-color: rgba(245,158,11,0.32);
+    /* Um único “cartão”: cantos só em cima; junta ao .skill-dropdown */
+    border-radius: 10px 10px 0 0 !important;
+    border-bottom: none !important;
+    transform: none !important;
+    /* Sobra de box-shadow pra baixo parece “linha” entre painéis fundidos */
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.05) inset,
+        0 8px 20px -12px rgba(0, 0, 0, 0.35) !important;
+}
+
+.skill-card-group.is-open .skill-card:hover {
+    transform: none !important;
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.06) inset,
+        0 8px 20px -12px rgba(0, 0, 0, 0.42) !important;
 }
 
 .skill-popover {
