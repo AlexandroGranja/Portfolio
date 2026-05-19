@@ -8,12 +8,53 @@
     <title>Alexandro Granja | Desenvolvedor Fullstack & Especialista em Automações com IA</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20260518projects-rail-center">
+    <!-- Projetos: width 100% em .projects-layout evita flex+margin:auto encolher o grid ao rail (~2px na 2ª coluna) -->
+    <style id="projects-panel-layout-fix">
+        @media (min-width: 768px) {
+            #projects .projects-layout {
+                display: grid !important;
+                grid-template-columns: minmax(240px, 320px) minmax(0, 1fr) !important;
+                width: 100% !important;
+                max-width: 1200px !important;
+                align-items: stretch !important;
+                gap: clamp(1.75rem, 3vw, 2.5rem) !important;
+            }
+            #projects .projects-rail {
+                justify-self: center !important;
+                align-self: start !important;
+                width: 100% !important;
+                max-width: 210px !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+            #projects .projects-main {
+                min-width: 0 !important;
+                width: 100% !important;
+                max-width: none !important;
+            }
+            #projects .projects-layout .projects-carousel {
+                flex: 1 1 0% !important;
+                min-height: 300px !important;
+                width: 100% !important;
+            }
+            #projects .project-card.active {
+                flex: 1 1 0% !important;
+                min-height: 280px !important;
+                width: 100% !important;
+            }
+            #projects .project-card.active .project-image-container {
+                height: auto !important;
+                min-height: 0 !important;
+                max-height: none !important;
+            }
+            #projects .project-card.active .project-image-carousel {
+                min-height: 0 !important;
+            }
+        }
+    </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script>
         tailwind.config = {
@@ -28,8 +69,8 @@
                         "card-dark": "#1E293B",
                     },
                     fontFamily: {
-                        display: ["Plus Jakarta Sans", "sans-serif"],
-                        sans: ["Plus Jakarta Sans", "sans-serif"],
+                        display: ["Plus Jakarta Sans", "ui-sans-serif", "system-ui", "sans-serif"],
+                        sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
                     },
                     borderRadius: {
                         DEFAULT: "6px",
@@ -40,8 +81,15 @@
     </script>
     <style>
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
             -webkit-tap-highlight-color: transparent;
+        }
+        h1, h2, h3, h4, h5, h6,
+        .section-title,
+        .hero-display-name,
+        .hero-title,
+        .logo-letter {
+            font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
         }
         .hide-scrollbar::-webkit-scrollbar {
             display: none;
@@ -79,7 +127,8 @@
                 min-height: 100dvh;
             }
             
-            .section-content {
+            /* Padding lateral só nas seções sem inner próprio (Skills/Projetos usam px-4 no inner) */
+            .section-content:not(#skills):not(#projects) {
                 padding-left: 1rem;
                 padding-right: 1rem;
             }
@@ -195,6 +244,14 @@
                 overflow-y: auto !important;
                 overflow-x: hidden !important;
             }
+            #about .about-inner {
+                position: relative !important;
+                top: auto !important; left: auto !important;
+                right: auto !important; bottom: auto !important;
+                height: auto !important;
+                min-height: 100% !important;
+                overflow: visible !important;
+            }
         }
         
         /* Agency: mesma altura que About */
@@ -225,6 +282,14 @@
                 grid-auto-rows: 1fr;
             }
         }
+        /* Projetos: scroll mobile (paridade skills/projects no fim do body) */
+        @media (max-width: 767px) {
+            #projects.section-content.active {
+                overflow-y: auto !important;
+                overflow-x: hidden !important;
+                -webkit-overflow-scrolling: touch;
+            }
+        }
         /* Agency agent widget animations */
         @keyframes agentDotPulse {
             0%,100%{opacity:1;transform:scale(1)}
@@ -245,17 +310,17 @@
                 height: clamp(430px, 34vw, 580px) !important;
             }
         }
-        /* Smaller font sizes - except home/about/agency (these sections use tailored utility sizing) */
-        .section-content:not(#home):not(#about):not(#agency) h1 { font-size: 1.75rem; }
-        .section-content:not(#home):not(#about):not(#agency) h2 { font-size: 1.5rem; }
-        .section-content:not(#home):not(#about):not(#agency) h3 { font-size: 1.25rem; }
-        .section-content:not(#home):not(#about):not(#agency) p { font-size: 0.875rem; }
-        .section-content:not(#home):not(#about):not(#agency) .text-4xl { font-size: 1.875rem; }
-        .section-content:not(#home):not(#about):not(#agency) .text-5xl { font-size: 2.25rem; }
-        .section-content:not(#home):not(#about):not(#agency) .text-3xl { font-size: 1.5rem; }
-        .section-content:not(#home):not(#about):not(#agency) .text-2xl { font-size: 1.25rem; }
-        .section-content:not(#home):not(#about):not(#agency) .text-xl { font-size: 1.125rem; }
-        .section-content:not(#home):not(#about):not(#agency) .text-lg { font-size: 1rem; }
+        /* Smaller font sizes - except home/about/agency/skills/projects (tailored utility sizing) */
+        .section-content:not(#home):not(#about):not(#agency):not(#skills):not(#projects) h1 { font-size: 1.75rem; }
+        .section-content:not(#home):not(#about):not(#agency):not(#skills):not(#projects) h2 { font-size: 1.5rem; }
+        .section-content:not(#home):not(#about):not(#agency):not(#skills):not(#projects) h3 { font-size: 1.25rem; }
+        .section-content:not(#home):not(#about):not(#agency):not(#skills):not(#projects) p { font-size: 0.875rem; }
+        .section-content:not(#home):not(#about):not(#agency):not(#skills):not(#projects) .text-4xl { font-size: 1.875rem; }
+        .section-content:not(#home):not(#about):not(#agency):not(#skills):not(#projects) .text-5xl { font-size: 2.25rem; }
+        .section-content:not(#home):not(#about):not(#agency):not(#skills):not(#projects) .text-3xl { font-size: 1.5rem; }
+        .section-content:not(#home):not(#about):not(#agency):not(#skills):not(#projects) .text-2xl { font-size: 1.25rem; }
+        .section-content:not(#home):not(#about):not(#agency):not(#skills):not(#projects) .text-xl { font-size: 1.125rem; }
+        .section-content:not(#home):not(#about):not(#agency):not(#skills):not(#projects) .text-lg { font-size: 1rem; }
         
         /* Classes específicas para cores dos títulos */
         .title-text-white {
@@ -384,41 +449,11 @@
 
                     <!-- Description -->
                     <p class="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-sm mx-auto md:mx-0" data-i18n="hero.description">
-                        Desenvolvedor Fullstack com 5+ projetos em produção. Construo aplicações de ponta a ponta — React, Python/Flask, PostgreSQL — e automatizo processos com n8n e IA. Foco em código limpo, performance e soluções que escalam.
+                        Desenvolvedor Fullstack focado em React, Python/Flask e PostgreSQL. Construí o Fortão Prêmios, plataforma em produção com link de pagamento integrado, automação do fluxo de notas fiscais e cache em múltiplas camadas para desempenho. Na Prosper automatizo rotinas com n8n e IA. Gosto de problemas onde a aplicação inteira precisa funcionar bem.
                     </p>
 
-                    <!-- Stats -->
-                    <div class="flex items-center gap-4 sm:gap-8 justify-center md:justify-start">
-                        <div class="text-center md:text-left">
-                            <div class="text-2xl sm:text-3xl font-black text-primary font-mono" data-counter="10">0+</div>
-                            <div class="text-[10px] text-slate-500 font-semibold uppercase tracking-widest" data-i18n="hero.statProjects">Projetos</div>
-                        </div>
-                        <div class="w-px h-9 bg-slate-700"></div>
-                        <div class="text-center md:text-left">
-                            <div class="text-2xl sm:text-3xl font-black text-primary font-mono" data-counter="5">0+</div>
-                            <div class="text-[10px] text-slate-500 font-semibold uppercase tracking-widest" data-i18n="hero.statAutomations">Automações</div>
-                        </div>
-                        <div class="w-px h-9 bg-slate-700"></div>
-                        <div class="text-center md:text-left">
-                            <div class="text-2xl sm:text-3xl font-black text-primary font-mono" data-counter="2">0+</div>
-                            <div class="text-[10px] text-slate-500 font-semibold uppercase tracking-widest" data-i18n="hero.statExperience">Anos Exp.</div>
-                        </div>
-                    </div>
-
-                    <!-- CTAs -->
-                    <div class="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-                        <button onclick="showSection('#projects')" class="hero-btn-primary px-7 py-3 rounded-full font-bold text-sm flex items-center justify-center gap-2">
-                            <span data-i18n="hero.viewProjects">Ver Projetos</span>
-                            <span class="material-icons-round text-base">arrow_forward</span>
-                        </button>
-                        <button onclick="showSection('#contact')" class="hero-btn-secondary px-7 py-3 rounded-full font-bold text-sm flex items-center justify-center gap-2">
-                            <span data-i18n="hero.contactMe">Entre em Contato</span>
-                            <span class="material-icons-round text-base">mail_outline</span>
-                        </button>
-                    </div>
-
                     <!-- Tech marquee -->
-                    <div class="hero-marquee-outer hidden sm:block">
+                    <div class="hero-marquee-outer">
                         <div class="hero-marquee-track">
                             <div class="hero-marquee-inner">
                                 <span class="hero-tech-tag">React</span>
@@ -481,12 +516,10 @@
 
         <div class="about-inner" style="position:absolute;top:0;left:0;right:0;bottom:0;z-index:10;display:flex;flex-direction:column;overflow:hidden;box-sizing:border-box;">
 
-            <!-- Header -->
-            <header class="flex-shrink-0 mb-1.5 sm:mb-2">
-                <div class="flex items-center gap-2 mb-0.5">
-                    <p class="text-primary font-semibold tracking-[0.22em] uppercase text-xs" data-i18n="nav.about">Sobre</p>
-                </div>
-                <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-white leading-tight mb-0.5">Alexandro <span class="text-primary">Granja</span></h1>
+            <!-- Header (padrão Agency/Skills) -->
+            <header class="flex-shrink-0 pt-2 mb-1.5 sm:mb-2">
+                <p class="text-primary font-semibold tracking-[0.22em] uppercase text-xs mb-1.5" data-i18n="nav.about">Sobre</p>
+                <h1 class="text-2xl sm:text-3xl font-bold text-white leading-tight mb-0.5">Alexandro <span class="text-primary">Granja</span></h1>
                 <p class="text-slate-400 text-xs sm:text-sm">
                     <span data-i18n="about.subtitle">Desenvolvedor Fullstack & Especialista em Automações com IA</span>
                 </p>
@@ -571,7 +604,7 @@
                         <h2 class="text-sm font-bold text-white" data-i18n="about.education">Formação</h2>
                     </div>
 
-                    <div class="flex flex-col gap-3 flex-1 min-h-0 overflow-hidden">
+                    <div class="about-edu-body flex flex-col gap-3 flex-1 min-h-0">
                         <div class="flex items-start gap-3">
                             <div class="p-1.5 rounded-sm flex-shrink-0 mt-0.5" style="background:rgba(245,158,11,0.08);">
                                 <span class="material-icons-round text-primary text-[14px]">computer</span>
@@ -650,7 +683,7 @@
                     </div>
 
                     <!-- Location + status footer -->
-                    <div class="mt-auto pt-2.5 border-t border-white/5 flex-shrink-0 flex items-center justify-between">
+                    <div class="mt-auto pt-2.5 pb-2 border-t border-white/5 flex-shrink-0 flex items-center justify-between">
                         <div class="flex items-center gap-1.5">
                             <span class="material-icons-round text-primary text-[14px]">place</span>
                             <span class="text-[10px] text-slate-400 font-medium" data-i18n="about.locationPlace">Brasil, Rio de Janeiro</span>
@@ -696,8 +729,8 @@
                                 </div>
                             </li>
                         </ul>
-                        <div class="mt-auto pt-2.5 border-t border-white/20 flex-shrink-0">
-                            <button onclick="showSection('#contact')" class="w-full py-2 rounded text-xs font-bold flex items-center justify-center gap-1.5 transition-colors" style="background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.35);color:#F59E0B;" onmouseover="this.style.background='rgba(245,158,11,0.25)'" onmouseout="this.style.background='rgba(245,158,11,0.15)'">
+                        <div class="mt-auto pt-2.5 border-t border-white/10 flex-shrink-0">
+                            <button type="button" onclick="showSection('#contact')" class="about-opp-cta w-full flex items-center justify-center gap-1.5 transition-colors">
                                 <span data-i18n="about.contactButton">Entre em contato</span>
                                 <span class="material-icons-round" style="font-size:13px;">arrow_forward</span>
                             </button>
@@ -818,7 +851,7 @@
                             </a>
                         </div>
                         <p class="text-xs text-slate-300 leading-relaxed line-clamp-3 sm:line-clamp-none" data-i18n="agency.card1Desc">Plataforma de campanhas promocionais com auth JWT/bcrypt, cache em 5 camadas (↓40% no carregamento), integração com link de pagamento e emissão automática de notas fiscais via Nota Nacional. Dashboard admin com estatísticas em tempo real e deploy na Railway.</p>
-                        <button class="sm:hidden text-[10px] text-primary/80 font-semibold hover:text-primary transition-colors text-left w-fit" data-i18n="agency.readMore" onclick="this.previousElementSibling.classList.remove('line-clamp-3');this.remove()">Ler mais →</button>
+                        <button class="sm:hidden text-sm text-primary/80 font-semibold hover:text-primary transition-colors text-left w-fit font-sans" data-i18n="agency.readMore" onclick="this.previousElementSibling.classList.remove('line-clamp-3');this.remove()">Ler mais →</button>
                         <div class="flex items-center gap-1.5 px-2 py-1.5 rounded-sm flex-shrink-0" style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.15);">
                             <span class="material-icons-round text-primary text-[12px]">bolt</span>
                             <span class="text-xs text-primary font-semibold" data-i18n="agency.card1Highlight">Cache 5 camadas · Pagamento · Nota Fiscal</span>
@@ -843,7 +876,7 @@
                             </a>
                         </div>
                         <p class="text-xs text-slate-300 leading-relaxed line-clamp-3 sm:line-clamp-none" data-i18n="agency.card2Desc">Sistema SaaS de cardápio digital com painel administrativo completo: gestão de produtos por categoria, controle de pedidos em tempo real e banco de dados reativo via Supabase. Interface responsiva para clientes e operadores.</p>
-                        <button class="sm:hidden text-[10px] text-primary/80 font-semibold hover:text-primary transition-colors text-left w-fit" data-i18n="agency.readMore" onclick="this.previousElementSibling.classList.remove('line-clamp-3');this.remove()">Ler mais →</button>
+                        <button class="sm:hidden text-sm text-primary/80 font-semibold hover:text-primary transition-colors text-left w-fit font-sans" data-i18n="agency.readMore" onclick="this.previousElementSibling.classList.remove('line-clamp-3');this.remove()">Ler mais →</button>
                         <div class="flex items-center gap-1.5 px-2 py-1.5 rounded-sm flex-shrink-0" style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.15);">
                             <span class="material-icons-round text-primary text-[12px]">storefront</span>
                             <span class="text-xs text-primary font-semibold" data-i18n="agency.card2Highlight">Gestão completa de pedidos em tempo real</span>
@@ -867,7 +900,7 @@
                             </a>
                         </div>
                         <p class="text-xs text-slate-300 leading-relaxed line-clamp-3 sm:line-clamp-none" data-i18n="agency.card3Desc">Landing page de alta conversão para empresa de adesivos decorativos: galeria interativa de trabalhos, seção de serviços, integração direta com WhatsApp para orçamentos e SEO on-page otimizado para captação de leads orgânicos.</p>
-                        <button class="sm:hidden text-[10px] text-primary/80 font-semibold hover:text-primary transition-colors text-left w-fit" data-i18n="agency.readMore" onclick="this.previousElementSibling.classList.remove('line-clamp-3');this.remove()">Ler mais →</button>
+                        <button class="sm:hidden text-sm text-primary/80 font-semibold hover:text-primary transition-colors text-left w-fit font-sans" data-i18n="agency.readMore" onclick="this.previousElementSibling.classList.remove('line-clamp-3');this.remove()">Ler mais →</button>
                         <div class="flex items-center gap-1.5 px-2 py-1.5 rounded-sm flex-shrink-0" style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.15);">
                             <span class="material-icons-round text-primary text-[12px]">trending_up</span>
                             <span class="text-xs text-primary font-semibold" data-i18n="agency.card3Highlight">SEO otimizado para leads orgânicos</span>
@@ -891,7 +924,7 @@
                             </a>
                         </div>
                         <p class="text-xs text-slate-300 leading-relaxed line-clamp-3 sm:line-clamp-none" data-i18n="agency.card4Desc">Ferramenta web que automatiza 100% da seleção de XMLs de notas fiscais: cruza os números de NF de uma planilha Excel com os arquivos XML de um ZIP e exporta novo ZIP contendo apenas os correspondentes, com drag-and-drop e download automático.</p>
-                        <button class="sm:hidden text-[10px] text-primary/80 font-semibold hover:text-primary transition-colors text-left w-fit" data-i18n="agency.readMore" onclick="this.previousElementSibling.classList.remove('line-clamp-3');this.remove()">Ler mais →</button>
+                        <button class="sm:hidden text-sm text-primary/80 font-semibold hover:text-primary transition-colors text-left w-fit font-sans" data-i18n="agency.readMore" onclick="this.previousElementSibling.classList.remove('line-clamp-3');this.remove()">Ler mais →</button>
                         <div class="flex items-center gap-1.5 px-2 py-1.5 rounded-sm flex-shrink-0" style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.15);">
                             <span class="material-icons-round text-primary text-[12px]">auto_fix_high</span>
                             <span class="text-xs text-primary font-semibold" data-i18n="agency.card4Highlight">Elimina 100% do processo manual de seleção</span>
@@ -908,536 +941,870 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="section-content skills h-full flex flex-col relative bg-background-dark">
+    <section id="skills" class="section-content skills h-full relative bg-background-dark overflow-hidden">
         <div class="about-grid-overlay absolute inset-0" style="z-index:0;pointer-events:none;"></div>
-        <div class="absolute top-[-10%] right-[-10%] w-[400px] h-[400px] bg-primary/10 blur-[120px] rounded-full pointer-events-none" style="z-index:0;"></div>
-        <div class="absolute bottom-[-5%] left-[5%] w-[300px] h-[300px] bg-blue-500/10 blur-[100px] rounded-full pointer-events-none" style="z-index:0;"></div>
-        <header class="pt-1 sm:pt-6 md:pt-8 px-3 sm:px-6 md:px-12 shrink-0" style="overflow-x: visible; padding-top: 0.25rem !important; position:relative; z-index:10;">
-            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-2 sm:mb-6 gap-2 sm:gap-0" style="margin-bottom: 0.5rem !important;">
-                <div>
-                    <p class="text-primary font-semibold tracking-[0.22em] uppercase text-xs mb-0.5" data-i18n="skills.techStack">Tech Stack</p>
-                    <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-white"><span data-i18n="skills.mySkillsLabel">Minhas </span><span class="text-primary" data-i18n="skills.mySkillsHighlight">Habilidades</span></h1>
-                </div>
-                <div class="hidden md:block">
-                    <span class="px-4 py-2 rounded-full glass-card text-xs font-medium border border-slate-700/50" data-i18n="skills.technologies">
-                        25+ Tecnologias
-                    </span>
-                </div>
+        <div class="absolute top-0 left-1/3 w-96 h-96 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(245,158,11,0.09) 0%,transparent 70%);z-index:0;"></div>
+        <div class="absolute bottom-0 right-0 w-64 h-64 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(59,130,246,0.06) 0%,transparent 70%);z-index:0;"></div>
+
+        <div class="skills-inner flex flex-col px-4 sm:px-6 md:px-10 lg:px-12 pt-2 sm:pt-3 pb-2 sm:pb-3 gap-3 sm:gap-4" style="position:absolute;top:0;left:0;right:0;bottom:0;z-index:10;overflow:hidden;box-sizing:border-box;">
+
+            <!-- Header (padrão Agency) -->
+            <div class="flex-shrink-0 pt-1">
+                <p class="text-primary font-semibold tracking-[0.22em] uppercase text-xs mb-1.5" data-i18n="skills.techStack">Tech Stack</p>
+                <h1 class="text-2xl sm:text-3xl font-bold text-white leading-tight"><span data-i18n="skills.mySkillsLabel">Minhas </span><span class="text-primary" data-i18n="skills.mySkillsHighlight">Habilidades</span></h1>
+                <p class="skills-active-section-name text-sm text-slate-400 mt-1" data-i18n="skills.sectionFrontend">Frontend</p>
             </div>
-            <div class="flex gap-1.5 sm:gap-2 pb-2 flex-nowrap" style="overflow-x: visible; padding-bottom: 0.5rem !important; margin-top: 0 !important; position:relative; z-index:10;">
-                <button class="skills-tab-btn px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-primary text-white font-semibold text-xs sm:text-sm whitespace-nowrap shadow-lg shadow-primary/25" data-tab-target="frontend">
-                    <span data-i18n="skills.frontend">Frontend</span>
+
+            <!-- Tabs (pill style consistente) -->
+            <div class="skills-tabs-row flex gap-2 flex-shrink-0 overflow-x-auto -mx-1 px-1 pb-1" role="tablist">
+                <button class="skills-tab-btn is-active" data-tab-target="frontend" role="tab" aria-selected="true">
+                    <span class="material-icons-round skills-tab-icon">web</span>
+                    <span class="skills-tab-label skills-tab-label-full" data-i18n="skills.frontend">Frontend</span>
+                    <span class="skills-tab-label skills-tab-label-short">Front</span>
                 </button>
-                <button class="skills-tab-btn px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-medium text-xs sm:text-sm whitespace-nowrap border border-slate-200 dark:border-slate-700" data-tab-target="backend">
-                    <span data-i18n="skills.backend">Backend & Automação</span>
+                <button class="skills-tab-btn" data-tab-target="backend" role="tab" aria-selected="false">
+                    <span class="material-icons-round skills-tab-icon">dns</span>
+                    <span class="skills-tab-label skills-tab-label-full" data-i18n="skills.backend">Backend &amp; Automação</span>
+                    <span class="skills-tab-label skills-tab-label-short">Backend</span>
                 </button>
-                <button class="skills-tab-btn px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-medium text-xs sm:text-sm whitespace-nowrap border border-slate-200 dark:border-slate-700" data-tab-target="support">
-                    <span data-i18n="skills.tools">Ferramentas</span>
+                <button class="skills-tab-btn" data-tab-target="ai" role="tab" aria-selected="false">
+                    <span class="material-icons-round skills-tab-icon">smart_toy</span>
+                    <span class="skills-tab-label skills-tab-label-full" data-i18n="skills.sectionAi">IA &amp; LLMs</span>
+                    <span class="skills-tab-label skills-tab-label-short">IA</span>
+                </button>
+                <button class="skills-tab-btn" data-tab-target="support" role="tab" aria-selected="false">
+                    <span class="material-icons-round skills-tab-icon">build</span>
+                    <span class="skills-tab-label skills-tab-label-full" data-i18n="skills.tools">Ferramentas</span>
+                    <span class="skills-tab-label skills-tab-label-short" data-i18n="skills.tabToolsShort">Tools</span>
                 </button>
             </div>
-        </header>
-        <div class="flex-1 px-4 sm:px-6 md:px-12 overflow-hidden" style="padding-top: 0.25rem !important; padding-bottom: 0.5rem !important; position:relative; z-index:10;">
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3 h-full" style="grid-auto-rows: 1fr;">
-                <!-- Frontend Skills -->
-                <div class="skill-card-group" data-tab="frontend">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-[#E34F26]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <img alt="HTML5 Logo" class="w-8 h-8" src="assets/html-logo.png" />
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">HTML5</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.expert">Expert</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-card-group" data-tab="frontend">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-[#1572B6]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <img alt="CSS Logo" class="w-8 h-8" src="assets/css-logo.png" />
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">CSS</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.expert">Expert</p>
+
+            <!-- Cards grid (scrollable mobile, fits desktop) -->
+            <div class="skills-cards-wrap flex-1 min-h-0">
+                <div class="skills-grid grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-2 sm:gap-2.5 md:gap-3">
+
+                    <!-- ============ FRONTEND ============ -->
+                    <div class="skill-card-group" data-tab="frontend" data-level="95" data-skill-id="html5">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(228,79,38,0.18);">
+                                <img alt="HTML5" class="skill-icon-img" src="assets/html-logo.png" />
+                            </div>
+                            <h3 class="skill-name">HTML5</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.expert">Expert</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="skill-card-group" data-tab="frontend">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-[#F7DF1E]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <img alt="JavaScript Logo" class="w-8 h-8 rounded" src="assets/js-logo.png" />
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">JavaScript</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.specialist">Especialista</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-card-group" data-tab="frontend">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-slate-800 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <img alt="React Logo" class="w-8 h-8" src="assets/react-logo.png" />
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">React</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.advanced">Avançado</p>
+                    <div class="skill-card-group" data-tab="frontend" data-level="95" data-skill-id="css3">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(21,114,182,0.18);">
+                                <img alt="CSS3" class="skill-icon-img" src="assets/css-logo.png" />
+                            </div>
+                            <h3 class="skill-name">CSS3</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.expert">Expert</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="skill-card-group" data-tab="frontend">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-[#3178C6]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <svg width="32" height="32" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="60" height="60" rx="10" fill="#3178C6"/>
-                                <text x="50%" y="56%" text-anchor="middle" font-size="26" font-family="Poppins, Inter, sans-serif" font-weight="700" fill="#fff">TS</text>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">TypeScript</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.advanced">Avançado</p>
+                    <div class="skill-card-group" data-tab="frontend" data-level="92" data-skill-id="javascript">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(247,223,30,0.2);">
+                                <img alt="JavaScript" class="skill-icon-img" src="assets/js-logo.png" />
+                            </div>
+                            <h3 class="skill-name">JavaScript</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.specialist">Especialista</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="skill-card-group" data-tab="frontend">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-white dark:bg-slate-800 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <svg width="32" height="32" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="60" height="60" rx="10" fill="#111827"/>
-                                <path d="M18 40 L30 18 L42 40" stroke="#fff" stroke-width="3" fill="none"/>
-                                <circle cx="38" cy="40" r="2.5" fill="#fff"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">Next.js</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.intermediate">Intermediário</p>
+                    <div class="skill-card-group" data-tab="frontend" data-level="88" data-skill-id="react">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(15,23,42,0.7);">
+                                <img alt="React" class="skill-icon-img" src="assets/react-logo.png" />
+                            </div>
+                            <h3 class="skill-name">React</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.advanced">Avançado</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="skill-card-group" data-tab="frontend">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-[#0EA5E9]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <svg width="32" height="32" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="60" height="60" rx="10" fill="#0EA5E9"/>
-                                <path d="M15 33c3.5-7 9-10 15-6 6-4 11 0 15 6-3 7-9 10-15 6-6 4-11 1-15-6z" fill="#fff"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">Tailwind</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.expert">Expert</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-card-group" data-tab="frontend">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-[#4FC08D]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <svg width="32" height="32" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="60" height="60" rx="10" fill="#4FC08D"/>
-                                <path d="M30 15 L45 25 L45 35 L30 45 L15 35 L15 25 Z" fill="#fff"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">Vue.js</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.intermediate">Intermediário</p>
+                    <div class="skill-card-group" data-tab="frontend" data-level="85" data-skill-id="typescript">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(49,120,198,0.2);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#3178C6"/>
+                                    <text x="50%" y="58%" text-anchor="middle" font-size="24" font-family="Inter, ui-sans-serif, sans-serif" font-weight="800" fill="#fff">TS</text>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">TypeScript</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.advanced">Avançado</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="skill-card-group" data-tab="frontend">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-[#CC6699]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <svg width="32" height="32" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="60" height="60" rx="10" fill="#CC6699"/>
-                                <text x="50%" y="56%" text-anchor="middle" font-size="18" font-family="Poppins, Inter, sans-serif" font-weight="700" fill="#fff">SASS</text>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">SASS/SCSS</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.advanced">Avançado</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-card-group" data-tab="frontend">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-[#7952B3]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <svg width="32" height="32" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="60" height="60" rx="10" fill="#7952B3"/>
-                                <text x="50%" y="56%" text-anchor="middle" font-size="14" font-family="Poppins, Inter, sans-serif" font-weight="700" fill="#fff">BS</text>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">Bootstrap</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.advanced">Avançado</p>
+                    <div class="skill-card-group" data-tab="frontend" data-level="75" data-skill-id="nextjs">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(15,23,42,0.7);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#0F172A"/>
+                                    <path d="M18 42 L30 18 L42 42" stroke="#fff" stroke-width="3.2" fill="none" stroke-linejoin="round"/>
+                                    <circle cx="40" cy="42" r="2.6" fill="#fff"/>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">Next.js</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.intermediate">Intermediário</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="skill-card-group" data-tab="frontend">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-[#F05032]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <svg width="32" height="32" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="60" height="60" rx="10" fill="#F05032"/>
-                                <path d="M30 20 L40 25 L40 35 L30 40 L20 35 L20 25 Z" fill="#fff"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">Git</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.versioning">Versionamento</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Backend & Automação Skills -->
-                <div class="skill-card-group hidden" data-tab="backend">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-[#3776AB]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <img alt="Python Logo" class="w-8 h-8" src="assets/python-logo.png" />
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">Python</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.automation">Automação</p>
+                    <div class="skill-card-group" data-tab="frontend" data-level="95" data-skill-id="tailwind">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(14,165,233,0.2);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#0EA5E9"/>
+                                    <path d="M15 33c3.5-7 9-10 15-6 6-4 11 0 15 6-3 7-9 10-15 6-6 4-11 1-15-6z" fill="#fff"/>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">Tailwind</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.expert">Expert</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="backend">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-white flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <span class="text-slate-900 font-black text-xl">n8n</span>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">n8n</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.aiFlows">Fluxos IA</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="backend">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-[#3C873A]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <svg width="32" height="32" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="60" height="60" rx="10" fill="#3C873A"/>
-                                <text x="50%" y="56%" text-anchor="middle" font-size="20" font-family="Poppins, Inter, sans-serif" font-weight="800" fill="#fff">Node</text>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">Node.js</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.backendSkill">Backend</p>
+                    <div class="skill-card-group" data-tab="frontend" data-level="70" data-skill-id="vuejs">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(79,192,141,0.2);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#4FC08D"/>
+                                    <path d="M30 15 L45 25 L45 35 L30 45 L15 35 L15 25 Z" fill="#fff"/>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">Vue.js</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.intermediate">Intermediário</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="backend">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-[#3FCF8E]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <svg width="32" height="32" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="60" height="60" rx="10" fill="#3FCF8E"/>
-                                <path d="M23 42V18l14 6-8 4 8 4-14 6z" fill="#0C0C0C"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">Supabase</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.database">Database</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="backend">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-[#336791]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <svg width="32" height="32" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="60" height="60" rx="10" fill="#336791"/>
-                                <text x="50%" y="56%" text-anchor="middle" font-size="12" font-family="Poppins, Inter, sans-serif" font-weight="700" fill="#fff">PostgreSQL</text>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">PostgreSQL</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.database">Database</p>
+                    <div class="skill-card-group" data-tab="frontend" data-level="85" data-skill-id="sass">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(204,102,153,0.2);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#CC6699"/>
+                                    <text x="50%" y="58%" text-anchor="middle" font-size="18" font-family="Inter, ui-sans-serif, sans-serif" font-weight="800" fill="#fff">SASS</text>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">SASS / SCSS</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.advanced">Avançado</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="backend">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-[#47A248]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <svg width="32" height="32" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="60" height="60" rx="10" fill="#47A248"/>
-                                <text x="50%" y="56%" text-anchor="middle" font-size="14" font-family="Poppins, Inter, sans-serif" font-weight="700" fill="#fff">MongoDB</text>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">MongoDB</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.nosql">NoSQL</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="backend">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-[#2496ED]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <svg width="32" height="32" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="60" height="60" rx="10" fill="#2496ED"/>
-                                <path d="M30 15 L45 25 L45 35 L30 45 L15 35 L15 25 Z" fill="#fff"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">Docker</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.containerization">Containerização</p>
+                    <div class="skill-card-group" data-tab="frontend" data-level="85" data-skill-id="bootstrap">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(121,82,179,0.2);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#7952B3"/>
+                                    <text x="50%" y="58%" text-anchor="middle" font-size="22" font-family="Inter, ui-sans-serif, sans-serif" font-weight="800" fill="#fff">B</text>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">Bootstrap</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.advanced">Avançado</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="backend">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-[#000000]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <svg width="32" height="32" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="60" height="60" rx="10" fill="#000000"/>
-                                <text x="50%" y="56%" text-anchor="middle" font-size="12" font-family="Poppins, Inter, sans-serif" font-weight="700" fill="#fff">REST API</text>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">REST APIs</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.integration">Integração</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="backend">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-[#E10098]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <svg width="32" height="32" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="60" height="60" rx="10" fill="#E10098"/>
-                                <text x="50%" y="56%" text-anchor="middle" font-size="14" font-family="Poppins, Inter, sans-serif" font-weight="700" fill="#fff">GraphQL</text>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">GraphQL</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.api">API</p>
+                    <div class="skill-card-group" data-tab="frontend" data-level="88" data-skill-id="git">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(240,80,50,0.2);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#F05032"/>
+                                    <circle cx="22" cy="22" r="4" fill="#fff"/>
+                                    <circle cx="38" cy="22" r="4" fill="#fff"/>
+                                    <circle cx="30" cy="42" r="4" fill="#fff"/>
+                                    <path d="M22 22 L30 42 L38 22" stroke="#fff" stroke-width="2.4" fill="none"/>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">Git</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.versioning">Versionamento</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="backend">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-[#000000]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <svg width="32" height="32" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="60" height="60" rx="10" fill="#000000"/>
-                                <text x="50%" y="56%" text-anchor="middle" font-size="16" font-family="Poppins, Inter, sans-serif" font-weight="700" fill="#fff">Flask</text>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">Flask</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.framework">Framework</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="backend">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-[#009688]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <svg width="32" height="32" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="60" height="60" rx="10" fill="#009688"/>
-                                <text x="50%" y="56%" text-anchor="middle" font-size="14" font-family="Poppins, Inter, sans-serif" font-weight="700" fill="#fff">FastAPI</text>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">FastAPI</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.framework">Framework</p>
+
+                    <!-- ============ BACKEND ============ -->
+                    <div class="skill-card-group hidden" data-tab="backend" data-level="95" data-skill-id="python">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(55,118,171,0.2);">
+                                <img alt="Python" class="skill-icon-img" src="assets/python-logo.png" />
+                            </div>
+                            <h3 class="skill-name">Python</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.automation">Automação</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="backend">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-[#F05032]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <svg width="32" height="32" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="60" height="60" rx="10" fill="#F05032"/>
-                                <path d="M30 20 L40 25 L40 35 L30 40 L20 35 L20 25 Z" fill="#fff"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">Git</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.versioning">Versionamento</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="backend">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-[#000000]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <svg width="32" height="32" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="60" height="60" rx="10" fill="#000000"/>
-                                <text x="50%" y="56%" text-anchor="middle" font-size="14" font-family="Poppins, Inter, sans-serif" font-weight="700" fill="#fff">Express</text>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">Express.js</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.framework">Framework</p>
+                    <div class="skill-card-group hidden" data-tab="backend" data-level="92" data-skill-id="n8n">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(255,109,90,0.18);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#FF6D5A"/>
+                                    <text x="50%" y="60%" text-anchor="middle" font-size="20" font-family="Inter, ui-sans-serif, sans-serif" font-weight="900" fill="#fff">n8n</text>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">n8n</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.aiFlows">Fluxos IA</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- Support Tools -->
-                <div class="skill-card-group hidden" data-tab="support">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-slate-800 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <img alt="Zabbix" class="w-8 h-8" src="assets/Zabbix.png" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/zabbix/ffffff'" />
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">Zabbix</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.monitoring">Monitoramento</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="support">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-slate-800 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <img alt="Microsoft 365" class="w-8 h-8" src="assets/office-logo.png" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/microsoftoffice/ffffff'" />
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">Microsoft 365</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.office">Office</p>
+                    <div class="skill-card-group hidden" data-tab="backend" data-level="85" data-skill-id="nodejs">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(60,135,58,0.2);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#3C873A"/>
+                                    <text x="50%" y="60%" text-anchor="middle" font-size="18" font-family="Inter, ui-sans-serif, sans-serif" font-weight="800" fill="#fff">Node</text>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">Node.js</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.backendSkill">Backend</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="support">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-[#0078D4]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <span class="material-icons-round text-primary text-2xl">admin_panel_settings</span>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">Active Directory</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.management">Gerenciamento</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="support">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-[#0078D4]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <span class="material-icons-round text-primary text-2xl">dns</span>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">Windows Server</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.server">Servidor</p>
+                    <div class="skill-card-group hidden" data-tab="backend" data-level="88" data-skill-id="supabase">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(63,207,142,0.2);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#3FCF8E"/>
+                                    <path d="M23 42V18l14 6-8 4 8 4-14 6z" fill="#0C0C0C"/>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">Supabase</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.database">Database</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="support">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-[#FCC624]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <svg width="32" height="32" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="60" height="60" rx="10" fill="#FCC624"/>
-                                <text x="50%" y="56%" text-anchor="middle" font-size="16" font-family="Poppins, Inter, sans-serif" font-weight="700" fill="#000">Linux</text>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">Linux</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.system">Sistema</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="support">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-[#012456]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <span class="material-icons-round text-primary text-2xl">terminal</span>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">PowerShell</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.scripting">Scripting</p>
+                    <div class="skill-card-group hidden" data-tab="backend" data-level="88" data-skill-id="postgresql">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(51,103,145,0.2);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#336791"/>
+                                    <text x="50%" y="58%" text-anchor="middle" font-size="13" font-family="Inter, ui-sans-serif, sans-serif" font-weight="800" fill="#fff">Postgres</text>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">PostgreSQL</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.database">Database</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="support">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-[#0052CC]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <svg width="32" height="32" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="60" height="60" rx="10" fill="#0052CC"/>
-                                <text x="50%" y="56%" text-anchor="middle" font-size="16" font-family="Poppins, Inter, sans-serif" font-weight="700" fill="#fff">Jira</text>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">Jira</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.projectManagement">Gestão</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="support">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-[#81B5A1]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <svg width="32" height="32" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="60" height="60" rx="10" fill="#81B5A1"/>
-                                <text x="50%" y="56%" text-anchor="middle" font-size="12" font-family="Poppins, Inter, sans-serif" font-weight="700" fill="#fff">ServiceNow</text>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">ServiceNow</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.itsm">ITSM</p>
+                    <div class="skill-card-group hidden" data-tab="backend" data-level="75" data-skill-id="mongodb">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(71,162,72,0.2);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#47A248"/>
+                                    <text x="50%" y="58%" text-anchor="middle" font-size="14" font-family="Inter, ui-sans-serif, sans-serif" font-weight="800" fill="#fff">Mongo</text>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">MongoDB</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.nosql">NoSQL</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="support">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-slate-800 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <img alt="Target ERP" class="w-8 h-8" src="assets/Target.png" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/box/ffffff'" />
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">ERP Target</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.logistics">Logística</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="support">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-slate-800 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <img alt="Target Mob" class="w-8 h-8" src="assets/Target.png" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/box/ffffff'" />
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">Target Mob</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.logistics">Logística</p>
+                    <div class="skill-card-group hidden" data-tab="backend" data-level="80" data-skill-id="docker">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(36,150,237,0.2);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#2496ED"/>
+                                    <path d="M14 30h6v6h-6zM22 30h6v6h-6zM30 30h6v6h-6zM38 30h6v6h-6zM22 22h6v6h-6zM30 22h6v6h-6zM38 22h6v6h-6zM30 14h6v6h-6z" fill="#fff"/>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">Docker</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.containerization">Containerização</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="support">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-slate-800 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <span class="material-icons-round text-primary text-2xl">inventory_2</span>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">Sistemas de Logística</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">ERP & WMS</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="support">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-slate-800 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <span class="material-icons-round text-primary text-2xl">local_shipping</span>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">Gestão de Estoque</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.wms">WMS</p>
+                    <div class="skill-card-group hidden" data-tab="backend" data-level="92" data-skill-id="rest-apis">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(245,158,11,0.15);">
+                                <span class="material-icons-round skill-icon-mui">api</span>
+                            </div>
+                            <h3 class="skill-name">REST APIs</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.integration">Integração</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="skill-card-group hidden" data-tab="support">
-                    <div class="group p-5 rounded-md glass-card border border-slate-200/10 hover:border-primary/50 transition-all duration-300 flex flex-col items-center text-center gap-4">
-                        <div class="w-14 h-14 rounded bg-slate-800 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <span class="material-icons-round text-primary text-2xl">integration_instructions</span>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 dark:text-white">Integração ERP</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="skills.systems">Sistemas</p>
+                    <div class="skill-card-group hidden" data-tab="backend" data-level="70" data-skill-id="graphql">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(225,0,152,0.2);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#E10098"/>
+                                    <text x="50%" y="58%" text-anchor="middle" font-size="13" font-family="Inter, ui-sans-serif, sans-serif" font-weight="800" fill="#fff">GraphQL</text>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">GraphQL</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.api">API</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
                         </div>
                     </div>
+                    <div class="skill-card-group hidden" data-tab="backend" data-level="88" data-skill-id="flask">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(15,23,42,0.7);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#0F172A"/>
+                                    <text x="50%" y="60%" text-anchor="middle" font-size="16" font-family="Inter, ui-sans-serif, sans-serif" font-weight="800" fill="#fff">Flask</text>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">Flask</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.framework">Framework</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card-group hidden" data-tab="backend" data-level="85" data-skill-id="fastapi">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(0,150,136,0.2);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#009688"/>
+                                    <text x="50%" y="58%" text-anchor="middle" font-size="13" font-family="Inter, ui-sans-serif, sans-serif" font-weight="800" fill="#fff">FastAPI</text>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">FastAPI</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.framework">Framework</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card-group hidden" data-tab="backend" data-level="80" data-skill-id="expressjs">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(15,23,42,0.7);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#0F172A"/>
+                                    <text x="50%" y="60%" text-anchor="middle" font-size="14" font-family="Inter, ui-sans-serif, sans-serif" font-weight="800" fill="#fff">Express</text>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">Express.js</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.framework">Framework</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ============ FERRAMENTAS / SUPORTE ============ -->
+                    <div class="skill-card-group hidden" data-tab="support" data-level="80" data-skill-id="zabbix">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(212,0,0,0.2);">
+                                <img alt="Zabbix" class="skill-icon-img" src="assets/Zabbix.png" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/zabbix/ffffff'" />
+                            </div>
+                            <h3 class="skill-name">Zabbix</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.monitoring">Monitoramento</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card-group hidden" data-tab="support" data-level="85" data-skill-id="microsoft365">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(216,59,1,0.2);">
+                                <img alt="Microsoft 365" class="skill-icon-img" src="assets/office-logo.png" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/microsoftoffice/ffffff'" />
+                            </div>
+                            <h3 class="skill-name">Microsoft 365</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.office">Office</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card-group hidden" data-tab="support" data-level="80" data-skill-id="active-directory">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(0,120,212,0.2);">
+                                <span class="material-icons-round skill-icon-mui">admin_panel_settings</span>
+                            </div>
+                            <h3 class="skill-name">Active Directory</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.management">Gerenciamento</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card-group hidden" data-tab="support" data-level="82" data-skill-id="windows-server">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(0,120,212,0.2);">
+                                <span class="material-icons-round skill-icon-mui">dns</span>
+                            </div>
+                            <h3 class="skill-name">Windows Server</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.server">Servidor</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card-group hidden" data-tab="support" data-level="82" data-skill-id="linux">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(252,198,36,0.22);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#FCC624"/>
+                                    <text x="50%" y="60%" text-anchor="middle" font-size="18" font-family="Inter, ui-sans-serif, sans-serif" font-weight="800" fill="#000">Linux</text>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">Linux</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.system">Sistema</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card-group hidden" data-tab="support" data-level="80" data-skill-id="powershell">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(1,36,86,0.35);">
+                                <span class="material-icons-round skill-icon-mui">terminal</span>
+                            </div>
+                            <h3 class="skill-name">PowerShell</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.scripting">Scripting</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card-group hidden" data-tab="support" data-level="88" data-skill-id="jira">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(0,82,204,0.22);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#0052CC"/>
+                                    <text x="50%" y="58%" text-anchor="middle" font-size="20" font-family="Inter, ui-sans-serif, sans-serif" font-weight="800" fill="#fff">Jira</text>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">Jira</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.projectManagement">Gestão</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card-group hidden" data-tab="support" data-level="80" data-skill-id="servicenow">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(129,181,161,0.22);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#81B5A1"/>
+                                    <text x="50%" y="60%" text-anchor="middle" font-size="11" font-family="Inter, ui-sans-serif, sans-serif" font-weight="800" fill="#fff">ServiceNow</text>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">ServiceNow</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.itsm">ITSM</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card-group hidden" data-tab="support" data-level="78" data-skill-id="erp-target">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(255,109,90,0.2);">
+                                <img alt="ERP Target" class="skill-icon-img" src="assets/Target.png" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/box/ffffff'" />
+                            </div>
+                            <h3 class="skill-name">ERP Target</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.logistics">Logística</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card-group hidden" data-tab="support" data-level="75" data-skill-id="target-mob">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(255,109,90,0.2);">
+                                <img alt="Target Mob" class="skill-icon-img" src="assets/Target.png" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/box/ffffff'" />
+                            </div>
+                            <h3 class="skill-name">Target Mob</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.logistics">Logística</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card-group hidden" data-tab="support" data-level="78" data-skill-id="estoque">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(245,158,11,0.15);">
+                                <span class="material-icons-round skill-icon-mui">local_shipping</span>
+                            </div>
+                            <h3 class="skill-name">Gestão de Estoque</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.wms">WMS</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card-group hidden" data-tab="support" data-level="80" data-skill-id="integracao-erp">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(245,158,11,0.15);">
+                                <span class="material-icons-round skill-icon-mui">integration_instructions</span>
+                            </div>
+                            <h3 class="skill-name">Integração ERP</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.systems">Sistemas</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ============ NOVAS FERRAMENTAS DE SUPORTE ============ -->
+                    <div class="skill-card-group hidden" data-tab="support" data-level="78" data-skill-id="anydesk">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(239,68,68,0.18);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#EF4444"/>
+                                    <text x="50%" y="60%" text-anchor="middle" font-size="14" font-family="Inter, ui-sans-serif, sans-serif" font-weight="800" fill="#fff">AnyDesk</text>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">AnyDesk</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.dailyUse">Uso diário</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card-group hidden" data-tab="support" data-level="70" data-skill-id="teamviewer">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(0,153,255,0.2);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#0099FF"/>
+                                    <text x="50%" y="60%" text-anchor="middle" font-size="10" font-family="Inter, ui-sans-serif, sans-serif" font-weight="800" fill="#fff">TeamViewer</text>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">TeamViewer</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.operational">Operacional</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card-group hidden" data-tab="support" data-level="80" data-skill-id="rdp">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(0,120,212,0.22);">
+                                <span class="material-icons-round skill-icon-mui">desktop_windows</span>
+                            </div>
+                            <h3 class="skill-name">RDP</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.remoteAccess">Acesso Remoto</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card-group hidden" data-tab="support" data-level="65" data-skill-id="zendesk">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(3,55,55,0.32);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#03363D"/>
+                                    <text x="50%" y="60%" text-anchor="middle" font-size="12" font-family="Inter, ui-sans-serif, sans-serif" font-weight="800" fill="#fff">Zendesk</text>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">Zendesk</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label">Tickets</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card-group hidden" data-tab="support" data-level="85" data-skill-id="teams">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(98,100,167,0.24);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#6264A7"/>
+                                    <text x="50%" y="60%" text-anchor="middle" font-size="13" font-family="Inter, ui-sans-serif, sans-serif" font-weight="800" fill="#fff">Teams</text>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">Teams</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.communication">Comunicação</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card-group hidden" data-tab="support" data-level="82" data-skill-id="meet">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(0,131,72,0.22);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#00832D"/>
+                                    <text x="50%" y="60%" text-anchor="middle" font-size="14" font-family="Inter, ui-sans-serif, sans-serif" font-weight="800" fill="#fff">Meet</text>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">Google Meet</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.meetings">Reuniões</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card-group hidden" data-tab="support" data-level="78" data-skill-id="zoom">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(45,140,255,0.22);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#2D8CFF"/>
+                                    <text x="50%" y="60%" text-anchor="middle" font-size="15" font-family="Inter, ui-sans-serif, sans-serif" font-weight="800" fill="#fff">Zoom</text>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">Zoom</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.meetings">Reuniões</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ============ FRONTEND NOVOS ============ -->
+                    <div class="skill-card-group hidden" data-tab="frontend" data-level="72" data-skill-id="radix">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(15,23,42,0.7);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#0F172A"/>
+                                    <text x="50%" y="60%" text-anchor="middle" font-size="14" font-family="Inter, ui-sans-serif, sans-serif" font-weight="800" fill="#fff">Radix</text>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">Radix UI</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label">Headless</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card-group hidden" data-tab="frontend" data-level="75" data-skill-id="zustand">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(247,177,69,0.2);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#0B1220"/>
+                                    <circle cx="30" cy="30" r="16" fill="none" stroke="#F7B145" stroke-width="3"/>
+                                    <circle cx="38" cy="22" r="3.4" fill="#F7B145"/>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">Zustand</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.state">Estado</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card-group hidden" data-tab="frontend" data-level="85" data-skill-id="vite">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(189,86,247,0.22);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#0B1220"/>
+                                    <path d="M30 14 L46 24 L30 48 L14 24 Z" fill="#BD56F7"/>
+                                    <path d="M30 14 L46 24 L30 30 Z" fill="#FFD028"/>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">Vite</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label">Build Tool</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card-group hidden" data-tab="frontend" data-level="82" data-skill-id="react-hook-form">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(236,72,153,0.22);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#EC4899"/>
+                                    <text x="50%" y="60%" text-anchor="middle" font-size="16" font-family="Inter, ui-sans-serif, sans-serif" font-weight="800" fill="#fff">RHF</text>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">React Hook Form</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label">Forms</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card-group hidden" data-tab="frontend" data-level="65" data-skill-id="figma">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(162,89,255,0.22);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#0B1220"/>
+                                    <circle cx="24" cy="20" r="6" fill="#F24E1E"/>
+                                    <circle cx="36" cy="20" r="6" fill="#FF7262"/>
+                                    <circle cx="24" cy="30" r="6" fill="#A259FF"/>
+                                    <circle cx="36" cy="30" r="6" fill="#1ABCFE"/>
+                                    <circle cx="24" cy="40" r="6" fill="#0ACF83"/>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">Figma</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label">Design Handoff</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ============ IA & LLMs ============ -->
+                    <div class="skill-card-group hidden" data-tab="ai" data-level="82" data-skill-id="openai-api">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(16,163,127,0.22);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#10A37F"/>
+                                    <text x="50%" y="60%" text-anchor="middle" font-size="16" font-family="Inter, ui-sans-serif, sans-serif" font-weight="800" fill="#fff">GPT</text>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">OpenAI API</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.integration">Integração</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card-group hidden" data-tab="ai" data-level="75" data-skill-id="claude-api">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(204,114,69,0.22);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#CC7245"/>
+                                    <text x="50%" y="60%" text-anchor="middle" font-size="13" font-family="Inter, ui-sans-serif, sans-serif" font-weight="800" fill="#fff">Claude</text>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">Claude API</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label" data-i18n="skills.integration">Integração</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card-group hidden" data-tab="ai" data-level="60" data-skill-id="gemini-api">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(66,133,244,0.22);">
+                                <svg class="skill-icon-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="10" fill="#4285F4"/>
+                                    <text x="50%" y="60%" text-anchor="middle" font-size="13" font-family="Inter, ui-sans-serif, sans-serif" font-weight="800" fill="#fff">Gemini</text>
+                                </svg>
+                            </div>
+                            <h3 class="skill-name">Gemini API</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label">Multimodal</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card-group hidden" data-tab="ai" data-level="85" data-skill-id="claude-code">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(204,114,69,0.18);">
+                                <span class="material-icons-round skill-icon-mui">terminal</span>
+                            </div>
+                            <h3 class="skill-name">Claude Code</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label">Workflow</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card-group hidden" data-tab="ai" data-level="90" data-skill-id="cursor">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(245,158,11,0.18);">
+                                <span class="material-icons-round skill-icon-mui">auto_fix_high</span>
+                            </div>
+                            <h3 class="skill-name">Cursor IDE</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label">Workflow</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card-group hidden" data-tab="ai" data-level="65" data-skill-id="rag">
+                        <div class="skill-card">
+                            <div class="skill-icon-wrap" style="background:rgba(124,58,237,0.22);">
+                                <span class="material-icons-round skill-icon-mui">hub</span>
+                            </div>
+                            <h3 class="skill-name">RAG / Embeddings</h3>
+                            <div class="skill-level-bar">
+                                <span class="skill-level-label">pgvector</span>
+                                <div class="skill-level-track"><span class="skill-level-fill"></span></div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="section-content projects h-full px-6 md:px-12 py-4 relative bg-background-dark">
+    <section id="projects" class="section-content projects h-full relative bg-background-dark overflow-hidden">
         <div class="about-grid-overlay absolute inset-0" style="z-index:0;pointer-events:none;"></div>
         <div class="absolute top-0 right-0 w-80 h-80 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(245,158,11,0.08) 0%,transparent 70%);z-index:0;"></div>
         <div class="absolute bottom-0 left-0 w-64 h-64 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(59,130,246,0.05) 0%,transparent 70%);z-index:0;"></div>
-        <div class="container" style="position:relative;z-index:10;">
-            <div class="section-header">
-                <p class="text-primary font-semibold tracking-[0.22em] uppercase text-xs mb-1" data-i18n="nav.projects">Projetos</p>
-                <h2 class="section-title"><span class="title-text-white" style="color: #f8fafc !important;" data-i18n="projects.title">Meus </span><span class="title-text-orange" style="color: #F59E0B !important; -webkit-text-fill-color: #F59E0B !important;" data-i18n="projects.title">Projetos</span></h2>
-                <p class="section-subtitle" data-i18n="projects.subtitle">Alguns dos meus trabalhos em desenvolvimento web e automações</p>
-            </div>
-            <div class="projects-carousel-wrapper">
+        <div class="projects-inner flex flex-col px-4 sm:px-6 md:px-10 lg:px-12 pt-2 sm:pt-3 pb-2 sm:pb-3 gap-3 sm:gap-4" style="position:absolute;top:0;left:0;right:0;bottom:0;z-index:10;overflow:hidden;box-sizing:border-box;">
+            <!-- Header (padrão Sobre/Skills) -->
+            <header class="flex-shrink-0 pt-2 mb-1.5 sm:mb-2">
+                <p class="text-primary font-semibold tracking-[0.22em] uppercase text-xs mb-1.5" data-i18n="nav.projects">Projetos</p>
+                <h1 class="text-2xl sm:text-3xl font-bold text-white leading-tight mb-0.5"><span class="title-text-white" data-i18n="projects.title">Meus </span><span class="text-primary title-text-orange" data-i18n="projects.title">Projetos</span></h1>
+                <p class="projects-section-subtitle text-slate-400 text-xs sm:text-sm line-clamp-1 sm:line-clamp-none" data-i18n="projects.subtitle">Alguns dos meus trabalhos em desenvolvimento web e automações</p>
+            </header>
+            <div class="projects-layout w-full max-w-[1200px] mx-auto flex-1 min-h-0 flex flex-col">
+                <nav class="projects-rail" role="tablist" aria-label="Lista de projetos">
+                    <button type="button" id="project-tab-0" class="projects-rail-item is-active" role="tab" aria-selected="true" aria-controls="project-panel-0" data-project-index="0">
+                        <span class="projects-rail-thumb-wrap">
+                            <img class="projects-rail-thumb" src="./assets/FortaoPremios.png" alt="" width="120" height="80" decoding="async" fetchpriority="high" loading="eager" />
+                        </span>
+                        <span class="projects-rail-label" data-rail-for-project="0">Fortão Prêmios</span>
+                    </button>
+                    <button type="button" id="project-tab-1" class="projects-rail-item" role="tab" aria-selected="false" aria-controls="project-panel-1" data-project-index="1">
+                        <span class="projects-rail-thumb-wrap">
+                            <img class="projects-rail-thumb" src="./assets/CardapioPrincipal.png" alt="" width="120" height="80" decoding="async" loading="lazy" />
+                        </span>
+                        <span class="projects-rail-label" data-rail-for-project="1">Cardápio Online</span>
+                    </button>
+                    <button type="button" id="project-tab-2" class="projects-rail-item" role="tab" aria-selected="false" aria-controls="project-panel-2" data-project-index="2">
+                        <span class="projects-rail-thumb-wrap">
+                            <img class="projects-rail-thumb" src="./assets/logo02.png" alt="" width="120" height="80" decoding="async" loading="lazy" />
+                        </span>
+                        <span class="projects-rail-label" data-rail-for-project="2">Moraes Adesivos</span>
+                    </button>
+                    <button type="button" id="project-tab-3" class="projects-rail-item" role="tab" aria-selected="false" aria-controls="project-panel-3" data-project-index="3">
+                        <span class="projects-rail-thumb-wrap">
+                            <img class="projects-rail-thumb" src="./assets/Roteiro01.png" alt="" width="120" height="80" decoding="async" loading="lazy" />
+                        </span>
+                        <span class="projects-rail-label" data-rail-for-project="3">Prosper Roteiros</span>
+                    </button>
+                    <button type="button" id="project-tab-4" class="projects-rail-item" role="tab" aria-selected="false" aria-controls="project-panel-4" data-project-index="4">
+                        <span class="projects-rail-thumb-wrap">
+                            <img class="projects-rail-thumb" src="./assets/XML01.png" alt="" width="120" height="80" decoding="async" loading="lazy" />
+                        </span>
+                        <span class="projects-rail-label" data-rail-for-project="4">Processador de XML</span>
+                    </button>
+                </nav>
+            <div class="projects-carousel-wrapper projects-main">
                 <div class="projects-carousel">
                     <!-- Projeto 1: Fortão Prêmios -->
-                    <div class="project-card active" data-project="0">
+                    <div id="project-panel-0" class="project-card active" role="tabpanel" aria-labelledby="project-tab-0" data-project="0">
+                        <div class="project-card-media">
                         <div class="project-image-container">
                             <div class="project-image-carousel" data-images="2">
                                 <div class="carousel-slide active">
-                                    <img src="./assets/FortaoPremios.png" alt="Fortão Prêmios - Página Inicial" />
+                                    <img src="./assets/FortaoPremios.png" alt="Fortão Prêmios - Página Inicial" fetchpriority="high" decoding="async" loading="eager" />
                                 </div>
                                 <div class="carousel-slide">
-                                    <img src="./assets/FortaoPremioadmin.png" alt="Fortão Prêmios - Painel Administrativo" />
+                                    <img src="./assets/FortaoPremioadmin.png" alt="Fortão Prêmios - Painel Administrativo" decoding="async" loading="lazy" />
                                 </div>
                             </div>
                             <button class="carousel-btn carousel-prev" onclick="changeImage(this, -1)">
@@ -1451,8 +1818,16 @@
                                 <span class="indicator" onclick="goToImage(this, 1)"></span>
                             </div>
                         </div>
+                        <div class="project-card-footer">
+                            <h3 class="project-card-footer__title"><span data-i18n="projects.project1Title">Fortão</span> <span class="text-primary" data-i18n="projects.project1Title">Prêmios</span></h3>
+                            <button type="button" class="project-open-modal-btn">
+                                <span data-i18n="projects.viewDetails">Ver detalhes</span>
+                                <span class="material-icons-round project-open-modal-btn__icon">sticky_note_2</span>
+                            </button>
+                        </div>
+                        </div>
                         <div class="project-content">
-                            <h3><span data-i18n="projects.project1Title">Fortão</span> <span class="text-primary" data-i18n="projects.project1Title">Prêmios</span></h3>
+                            <p class="project-summary" data-i18n="projects.project1Summary">Plataforma em produção para campanhas promocionais: link de pagamento, automação de NF e cache em camadas para performance.</p>
                             <div class="project-description-wrapper">
                                 <p class="project-description" data-i18n="projects.project1Description">Sistema completo de campanhas promocionais online com Next.js 14, React e TypeScript. Implementei autenticação com JWT/bcrypt, cache em 5 camadas que reduziu o tempo de carregamento em 40%, dashboard administrativo com estatísticas em tempo real e design responsivo. Deploy na Railway com otimizações de performance e segurança.</p>
                                 <button class="read-more-btn" onclick="toggleDescription(this)">
@@ -1480,14 +1855,15 @@
                     </div>
 
                     <!-- Projeto 2: Cardápio Online -->
-                    <div class="project-card" data-project="1">
+                    <div id="project-panel-1" class="project-card" role="tabpanel" aria-labelledby="project-tab-1" data-project="1">
+                        <div class="project-card-media">
                         <div class="project-image-container">
                             <div class="project-image-carousel" data-images="2">
                                 <div class="carousel-slide active">
-                                    <img src="./assets/CardapioPrincipal.png" alt="Burger House - Página Principal do Cardápio" />
+                                    <img src="./assets/CardapioPrincipal.png" alt="Burger House - Página Principal do Cardápio" decoding="async" loading="lazy" />
                                 </div>
                                 <div class="carousel-slide">
-                                    <img src="./assets/CardapioAdmin.png" alt="Burger House - Painel Administrativo" />
+                                    <img src="./assets/CardapioAdmin.png" alt="Burger House - Painel Administrativo" decoding="async" loading="lazy" />
                                 </div>
                             </div>
                             <button class="carousel-btn carousel-prev" onclick="changeImage(this, -1)">
@@ -1501,8 +1877,16 @@
                                 <span class="indicator" onclick="goToImage(this, 1)"></span>
                             </div>
                         </div>
+                        <div class="project-card-footer">
+                            <h3 class="project-card-footer__title"><span data-i18n="projects.project2Title">Cardápio</span> <span class="text-primary" data-i18n="projects.project2Title">Online</span></h3>
+                            <button type="button" class="project-open-modal-btn">
+                                <span data-i18n="projects.viewDetails">Ver detalhes</span>
+                                <span class="material-icons-round project-open-modal-btn__icon">sticky_note_2</span>
+                            </button>
+                        </div>
+                        </div>
                         <div class="project-content">
-                            <h3><span data-i18n="projects.project2Title">Cardápio</span> <span class="text-primary" data-i18n="projects.project2Title">Online</span></h3>
+                            <p class="project-summary" data-i18n="projects.project2Summary">SaaS de cardápio digital e pedidos com React, Supabase e painel administrativo completo.</p>
                             <div class="project-description-wrapper">
                                 <p class="project-description" data-i18n="projects.project2Description">Sistema completo de cardápio online com painel administrativo avançado. Desenvolvido com React 18 e integração total com Supabase. 
                                 Inclui cardápio dinâmico, carrinho de compras, checkout completo, gerenciamento de pedidos, upload de imagens, 
@@ -1533,16 +1917,25 @@
                     </div>
 
                     <!-- Projeto 3: Moraes Adesivos -->
-                    <div class="project-card" data-project="2">
+                    <div id="project-panel-2" class="project-card" role="tabpanel" aria-labelledby="project-tab-2" data-project="2">
+                        <div class="project-card-media">
                         <div class="project-image-container">
                             <div class="project-image-carousel" data-images="1">
                                 <div class="carousel-slide active">
-                                    <img src="./assets/logo02.png" alt="Moraes Adesivos - Site Completo" />
+                                    <img src="./assets/logo02.png" alt="Moraes Adesivos - Site Completo" decoding="async" loading="lazy" />
                                 </div>
                             </div>
                         </div>
+                        <div class="project-card-footer">
+                            <h3 class="project-card-footer__title"><span data-i18n="projects.project3Title">Moraes</span> <span class="text-primary" data-i18n="projects.project3Title">Adesivos</span></h3>
+                            <button type="button" class="project-open-modal-btn">
+                                <span data-i18n="projects.viewDetails">Ver detalhes</span>
+                                <span class="material-icons-round project-open-modal-btn__icon">sticky_note_2</span>
+                            </button>
+                        </div>
+                        </div>
                         <div class="project-content">
-                            <h3><span data-i18n="projects.project3Title">Moraes</span> <span class="text-primary" data-i18n="projects.project3Title">Adesivos</span></h3>
+                            <p class="project-summary" data-i18n="projects.project3Summary">Site institucional focado em conversão para adesivos decorativos: galeria, SEO e WhatsApp.</p>
                             <div class="project-description-wrapper">
                                 <p class="project-description" data-i18n="projects.project3Description">Site completo desenvolvido pela AIverse Technologies para empresa especializada em adesivos decorativos. 
                                 Landing page moderna com galeria de trabalhos, seção de serviços e integração com WhatsApp para orçamentos. 
@@ -1575,20 +1968,21 @@
                     </div>
 
                     <!-- Projeto 4: Prosper Roteiros -->
-                    <div class="project-card" data-project="3">
+                    <div id="project-panel-3" class="project-card" role="tabpanel" aria-labelledby="project-tab-3" data-project="3">
+                        <div class="project-card-media">
                         <div class="project-image-container">
                             <div class="project-image-carousel" data-images="4">
                                 <div class="carousel-slide active" data-index="0">
-                                    <img src="./assets/Roteiro01.png" alt="Prosper Roteiros - Página Inicial" />
+                                    <img src="./assets/Roteiro01.png" alt="Prosper Roteiros - Página Inicial" decoding="async" loading="lazy" />
                                 </div>
                                 <div class="carousel-slide" data-index="1">
-                                    <img src="./assets/Roteiro02.png" alt="Prosper Roteiros - Gerenciar Roteiros" />
+                                    <img src="./assets/Roteiro02.png" alt="Prosper Roteiros - Gerenciar Roteiros" decoding="async" loading="lazy" />
                                 </div>
                                 <div class="carousel-slide" data-index="2">
-                                    <img src="./assets/Roteiro03.png" alt="Prosper Roteiros - Dashboard e Métricas" />
+                                    <img src="./assets/Roteiro03.png" alt="Prosper Roteiros - Dashboard e Métricas" decoding="async" loading="lazy" />
                                 </div>
                                 <div class="carousel-slide" data-index="3">
-                                    <img src="./assets/Roteiro04.png" alt="Prosper Roteiros - Visualização de Rota no Mapa" />
+                                    <img src="./assets/Roteiro04.png" alt="Prosper Roteiros - Visualização de Rota no Mapa" decoding="async" loading="lazy" />
                                 </div>
                             </div>
                             <button class="carousel-btn carousel-prev" onclick="changeImage(this, -1)">
@@ -1604,8 +1998,16 @@
                                 <span class="indicator" onclick="goToImage(this, 3)"></span>
                             </div>
                         </div>
+                        <div class="project-card-footer">
+                            <h3 class="project-card-footer__title"><span data-i18n="projects.project4Title">Prosper</span> <span class="text-primary" data-i18n="projects.project4Title">Roteiros</span></h3>
+                            <button type="button" class="project-open-modal-btn">
+                                <span data-i18n="projects.viewDetails">Ver detalhes</span>
+                                <span class="material-icons-round project-open-modal-btn__icon">sticky_note_2</span>
+                            </button>
+                        </div>
+                        </div>
                         <div class="project-content">
-                            <h3><span data-i18n="projects.project4Title">Prosper</span> <span class="text-primary" data-i18n="projects.project4Title">Roteiros</span></h3>
+                            <p class="project-summary" data-i18n="projects.project4Summary">Ferramenta interna para montar rotas de visitas com mapas, métricas e exportação CSV.</p>
                             <div class="project-description-wrapper">
                                 <p class="project-description" data-i18n="projects.project4Description">Sistema inteligente de geração de roteiros otimizados para vendedores. Desenvolvido com React e Flask/Python, utiliza algoritmo do vizinho mais próximo para otimização geográfica. 
                                 Inclui agrupamento de clientes por proximidade usando coordenadas GPS e CEPs, geração automática de rotas com 6-8 visitas por rota, 
@@ -1637,14 +2039,15 @@
                     </div>
 
                     <!-- Projeto 5: Processador de XML -->
-                    <div class="project-card" data-project="4">
+                    <div id="project-panel-4" class="project-card" role="tabpanel" aria-labelledby="project-tab-4" data-project="4">
+                        <div class="project-card-media">
                         <div class="project-image-container">
                             <div class="project-image-carousel" data-images="2">
                                 <div class="carousel-slide active" data-index="0">
-                                    <img src="./assets/XML01.png" alt="Processador de XML - Interface Principal" />
+                                    <img src="./assets/XML01.png" alt="Processador de XML - Interface Principal" decoding="async" loading="lazy" />
                                 </div>
                                 <div class="carousel-slide" data-index="1">
-                                    <img src="./assets/XML02.png" alt="Processador de XML - Como Funciona" />
+                                    <img src="./assets/XML02.png" alt="Processador de XML - Como Funciona" decoding="async" loading="lazy" />
                                 </div>
                             </div>
                             <button class="carousel-btn carousel-prev" onclick="changeImage(this, -1)">
@@ -1658,8 +2061,16 @@
                                 <span class="indicator" onclick="goToImage(this, 1)"></span>
                             </div>
                         </div>
+                        <div class="project-card-footer">
+                            <h3 class="project-card-footer__title"><span data-i18n="projects.project5Title">Processador de</span> <span class="text-primary" data-i18n="projects.project5Title">XML</span></h3>
+                            <button type="button" class="project-open-modal-btn">
+                                <span data-i18n="projects.viewDetails">Ver detalhes</span>
+                                <span class="material-icons-round project-open-modal-btn__icon">sticky_note_2</span>
+                            </button>
+                        </div>
+                        </div>
                         <div class="project-content">
-                            <h3><span data-i18n="projects.project5Title">Processador de</span> <span class="text-primary" data-i18n="projects.project5Title">XML</span></h3>
+                            <p class="project-summary" data-i18n="projects.project5Summary">Web app que cruza planilha Excel com XMLs de NF em ZIP e gera pacote filtrado automaticamente.</p>
                             <div class="project-description-wrapper">
                                 <p class="project-description" data-i18n="projects.project5Description">Sistema web para processamento e seleção de arquivos XML baseado em planilhas Excel. Desenvolvido com Flask e Python, permite fazer upload de uma planilha Excel (.xlsx) com números de NF na coluna B e um arquivo ZIP contendo XMLs de notas fiscais. 
                                 O sistema verifica automaticamente se os números da planilha estão contidos nos XMLs, seleciona os arquivos correspondentes e gera um novo arquivo ZIP compactado com apenas os XMLs selecionados. 
@@ -1688,22 +2099,19 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Controles do carrossel principal -->
-                <button class="project-nav-btn project-nav-left" onclick="changeProject(-1)">
-                    <span class="material-icons-round">chevron_left</span>
+            </div>
+            </div>
+        </div>
+
+        <div id="project-detail-modal" class="project-detail-modal" aria-hidden="true">
+            <div class="project-detail-modal__backdrop" data-project-modal-close tabindex="-1"></div>
+            <div class="project-detail-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="project-detail-modal-title">
+                <button type="button" class="project-detail-modal__close" data-project-modal-close>
+                    <span class="material-icons-round" aria-hidden="true">close</span>
                 </button>
-                <button class="project-nav-btn project-nav-right" onclick="changeProject(1)">
-                    <span class="material-icons-round">chevron_right</span>
-                </button>
-                <div class="projects-carousel-controls">
-                    <div class="project-indicators">
-                        <span class="project-indicator active" data-project-index="0"></span>
-                        <span class="project-indicator" data-project-index="1"></span>
-                        <span class="project-indicator" data-project-index="2"></span>
-                        <span class="project-indicator" data-project-index="3"></span>
-                        <span class="project-indicator" data-project-index="4"></span>
-                    </div>
+                <div class="project-detail-modal__scroll">
+                    <div id="project-detail-modal-title" class="project-detail-modal__heading" role="heading" aria-level="2"></div>
+                    <div class="project-detail-modal__body"></div>
                 </div>
             </div>
         </div>
@@ -1719,7 +2127,7 @@
             <header class="mb-3 sm:mb-4 flex-shrink-0">
                 <p class="text-primary font-semibold tracking-[0.22em] uppercase text-xs mb-0.5" data-i18n="nav.contact">Contato</p>
                 <h1 class="text-xl sm:text-2xl md:text-3xl font-bold mb-0.5 text-white">
-                    <span data-i18n="contact.title">Entre em </span><span class="text-primary">Contato</span>
+                    <span class="title-text-white" data-i18n="contact.title">Entre em </span><span class="text-primary title-text-orange" data-i18n="contact.title">Contato</span>
                 </h1>
                 <p class="text-slate-400 text-xs sm:text-sm" data-i18n="contact.subtitle">Estou sempre aberto a novas conexões, aprendizado e colaborações</p>
             </header>
@@ -1774,99 +2182,78 @@
     </section>
 
     </main>
-    <script src="script.js"></script>
-    <script>
-    /* Skills — level progress bars + staggered tab entrance */
-    (function() {
-        var levelMap = {
-            'expert': 95, 'especialista': 95, 'specialist': 95,
-            'avançado': 78, 'advanced': 78,
-            'intermediário': 55, 'intermediate': 55
-        };
-        var labelMap = {
-            'expert': 'Expert', 'especialista': 'Expert', 'specialist': 'Expert',
-            'avançado': 'Avançado', 'advanced': 'Advanced',
-            'intermediário': 'Intermediário', 'intermediate': 'Intermediate'
-        };
-
-        function buildBar(card) {
-            var existing = card.querySelector('.skill-level-bar');
-            if (existing) existing.remove();
-            var levelEl = card.querySelector('p[data-i18n]');
-            var lvlText = levelEl ? levelEl.textContent.trim().toLowerCase() : '';
-            var pct = levelMap[lvlText] !== undefined ? levelMap[lvlText] : 65;
-            var lbl = labelMap[lvlText] || (levelEl ? levelEl.textContent.trim() : '');
-
-            var bar = document.createElement('div');
-            bar.className = 'skill-level-bar';
-            bar.innerHTML =
-                '<span class="skill-level-label">' + lbl + '</span>' +
-                '<div class="skill-level-track"><div class="skill-level-fill" data-pct="' + pct + '"></div></div>';
-            card.appendChild(bar);
+    <style id="mobile-skills-projects-parity">
+        /* Mobile: Skills e Projetos — mesmo topo e mesma caixa (carrega por último) */
+        @media (max-width: 767px) {
+            #skills.section-content,
+            #projects.section-content,
+            #about.section-content,
+            #agency.section-content {
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            #skills .skills-inner,
+            #projects .projects-inner,
+            #about .about-inner,
+            #agency .agency-inner {
+                position: relative !important;
+                top: auto !important;
+                right: auto !important;
+                bottom: auto !important;
+                left: auto !important;
+                height: auto !important;
+                min-height: 100% !important;
+                overflow: visible !important;
+                padding: 0.75rem 1rem 1rem !important;
+                gap: 0.7rem !important;
+            }
+            #projects .projects-layout {
+                gap: 0.75rem !important;
+                margin: 0 !important;
+            }
+            #projects .projects-rail {
+                padding-bottom: 0.35rem !important;
+            }
+            #projects .projects-inner > header,
+            #about .about-inner > header {
+                padding-top: 0.25rem;
+                margin-bottom: 0.375rem;
+            }
         }
-
-        function buildAllBars() {
-            document.querySelectorAll('#skills .skill-card-group > div').forEach(buildBar);
+        @media (max-width: 480px) {
+            #skills.section-content,
+            #projects.section-content,
+            #about.section-content,
+            #agency.section-content {
+                padding: 0 !important;
+            }
         }
+    </style>
+    <script src="script.js?v=20260518proj-desc"></script>
+    <!-- Skills level bars + tab animation handled in script.js (skills-tab-btn handler) -->
 
-        function animateBars(cards) {
-            cards.forEach(function(card) {
-                var fill = card.querySelector('.skill-level-fill');
-                if (!fill) return;
-                fill.style.width = '0%';
-                var pct = fill.dataset.pct;
-                requestAnimationFrame(function() {
-                    requestAnimationFrame(function() {
-                        fill.style.width = pct + '%';
-                    });
-                });
-            });
-        }
-
-        function animateTab() {
-            var visible = Array.from(document.querySelectorAll('#skills .skill-card-group:not(.hidden)'));
-            visible.forEach(function(card, i) {
-                card.classList.remove('skill-reveal');
-                void card.offsetWidth;
-                card.style.animationDelay = (i * 32) + 'ms';
-                card.classList.add('skill-reveal');
-            });
-            setTimeout(function() { animateBars(visible); }, 80);
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            buildAllBars();
-            document.querySelectorAll('.skills-tab-btn').forEach(function(btn) {
-                btn.addEventListener('click', function() { setTimeout(animateTab, 0); });
-            });
-            setTimeout(animateTab, 120);
-        });
-
-        window.rebuildSkillPips = function() { buildAllBars(); };
-    })();
-    </script>
     <script>
     (function() {
         var msgsPT = [
             { t: 'client', text: 'Oi! Queria saber mais sobre o Alexandro Granja.' },
-            { t: 'agent',  text: 'Claro! O **Alexandro Granja** e Fullstack Dev e especialista em automacoes com IA. Ele fundou a **AIverse** e cuida de tudo, do backend ao deploy.' },
-            { t: 'client', text: 'Que tipo de projeto ele ja entregou?' },
-            { t: 'agent',  text: 'Criou o **Fortao Premios**, plataforma B2B com **link de pagamento** integrado e geracao automatica de **notas fiscais** via Nota Nacional. **Next.js 14** com **Redis** e **+114% de RPS**.' },
-            { t: 'agent',  text: 'Tambem entregou o **Moraes Adesivos** com foco em **SEO** e um **Processador de XML** para automacao de documentos fiscais.' },
-            { t: 'client', text: 'Vi que voces trabalham com IA. Ele tem experiencia com automacoes?' },
-            { t: 'agent',  text: 'Sim! Criou agentes com **n8n** e **WhatsApp API** que reduziram **80%** do tempo de atendimento. Tambem desenvolve agentes de **agendamento automatizado**.' },
-            { t: 'client', text: 'Qual e o stack dele? Preciso ver se encaixa na nossa vaga.' },
+            { t: 'agent',  text: 'Claro! O **Alexandro Granja** é Fullstack Dev e especialista em automações com IA. Ele fundou a **AIverse** e cuida de tudo, do backend ao deploy.' },
+            { t: 'client', text: 'Que tipo de projeto ele já entregou?' },
+            { t: 'agent',  text: 'Criou o **Fortão Prêmios**, plataforma B2B com **link de pagamento** integrado e geração automática de **notas fiscais** via Nota Nacional. **Next.js 14** com **Redis** e **+114% de RPS**.' },
+            { t: 'agent',  text: 'Também entregou o **Moraes Adesivos** com foco em **SEO** e um **Processador de XML** para automação de documentos fiscais.' },
+            { t: 'client', text: 'Vi que vocês trabalham com IA. Ele tem experiência com automações?' },
+            { t: 'agent',  text: 'Sim! Criou agentes com **n8n** e **WhatsApp API** que reduziram **80%** do tempo de atendimento. Também desenvolve agentes de **agendamento automatizado**.' },
+            { t: 'client', text: 'Qual é o stack dele? Preciso ver se encaixa na nossa vaga.' },
             { t: 'agent',  text: 'O Alexandro administra um stack completo, do frontend ao backend, com IA integrada em todo o processo.' },
             { t: 'agent',  text: '**Python**, **JavaScript**, **TypeScript**, **React**, **Next.js**, **Flask**, **PostgreSQL**, **Supabase**, **n8n**, **Make**, **Redis**, **Claude Code**.' },
-            { t: 'client', text: 'Otimo perfil! Como falo diretamente com ele?' },
-            { t: 'agent',  text: 'Pode entrar em contato direto pelo portfolio:', action: 'contact' },
-            { t: 'agent',  text: 'Acesse tambem o site da AIverse:', action: 'aiverse' },
+            { t: 'client', text: 'Ótimo perfil! Como falo diretamente com ele?' },
+            { t: 'agent',  text: 'Pode entrar em contato direto pelo portfólio:', action: 'contact' },
+            { t: 'agent',  text: 'Acesse também o site da AIverse:', action: 'aiverse' },
         ];
         var msgsEN = [
             { t: 'client', text: 'Hi! I wanted to learn more about Alexandro Granja.' },
             { t: 'agent',  text: 'Sure! **Alexandro Granja** is a Fullstack Dev and AI automation specialist. He founded **AIverse** and handles everything from backend to deploy.' },
             { t: 'client', text: 'What kind of projects has he delivered?' },
-            { t: 'agent',  text: 'He built **Fortao Premios**, a B2B platform with integrated **payment links** and automatic **tax invoice** generation via Nota Nacional. **Next.js 14** with **Redis** and **+114% RPS**.' },
+            { t: 'agent',  text: 'He built **Fortão Prêmios**, a B2B platform with integrated **payment links** and automatic **tax invoice** generation via Nota Nacional. **Next.js 14** with **Redis** and **+114% RPS**.' },
             { t: 'agent',  text: 'Also delivered **Moraes Adesivos** focused on **SEO** and an **XML Processor** for automating fiscal document handling.' },
             { t: 'client', text: 'I saw you work with AI. Does he have automation experience?' },
             { t: 'agent',  text: 'Yes! He built agents with **n8n** and **WhatsApp API** that reduced **80%** of support time. Also develops **automated scheduling** agents.' },

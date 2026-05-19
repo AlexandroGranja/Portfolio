@@ -23,6 +23,10 @@ window.showSection = function(sectionId) {
         // Small delay to allow fade out first
         setTimeout(() => {
             targetSection.classList.add('active');
+            const cleanId = sectionId.replace('#', '');
+            if (cleanId === 'projects' && typeof window.refreshProjectsPanel === 'function') {
+                setTimeout(() => window.refreshProjectsPanel(), 120);
+            }
         }, 100);
     }
     
@@ -66,6 +70,22 @@ window.showSection = function(sectionId) {
     });
 };
 
+/** Recalcula layout do painel ao abrir Projetos (seção antes invisível podia zerar a coluna do card). */
+window.refreshProjectsPanel = function() {
+    const section = document.querySelector('#projects');
+    if (!section || !section.classList.contains('active')) {
+        return;
+    }
+    isChangingProject = false;
+    const total = getTotalProjects();
+    let idx = currentProjectIndex;
+    if (idx < 0 || idx >= total) {
+        idx = 0;
+    }
+    currentProjectIndex = -1;
+    goToProject(idx);
+};
+
 // Navigation Links Click Handler
 navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
@@ -91,14 +111,9 @@ const translations = {
         hero: {
             greeting: "Olá, eu sou",
             subtitle: "Desenvolvedor Fullstack & Especialista em Automações com IA 🚀",
-            description: "Desenvolvedor Fullstack focado em React, Python/Flask e PostgreSQL. Construí o Fortão Prêmios — sistema em produção com cache em 5 camadas que reduziu 40% do tempo de carregamento — e automatizo fluxos com n8n e IA na rotina de TI da Prosper. Gosto de problemas onde a aplicação inteira precisa funcionar bem.",
-            viewProjects: "Ver Projetos",
-            contactMe: "Entre em Contato",
+            description: "Desenvolvedor Fullstack focado em React, Python/Flask e PostgreSQL. Construí o Fortão Prêmios, plataforma em produção com link de pagamento integrado, automação do fluxo de notas fiscais e cache em múltiplas camadas para desempenho. Na Prosper automatizo rotinas com n8n e IA. Gosto de problemas onde a aplicação inteira precisa funcionar bem.",
             downloadCV: "Baixar CV",
-            loading: "Carregando experiência...",
-            statProjects: "Projetos",
-            statAutomations: "Automações",
-            statExperience: "Anos Exp."
+            loading: "Carregando experiência..."
         },
         // About Section
         about: {
@@ -147,28 +162,6 @@ const translations = {
             stat3: "10+ Tecnologias",
             techStackLabel: "Stack Principal"
         },
-        // Skills Section
-        skills: {
-            techStack: "Tech Stack",
-            mySkills: "Minhas Habilidades",
-            mySkillsLabel: "Minhas ",
-            mySkillsHighlight: "Habilidades",
-            technologies: "25+ Tecnologias",
-            frontend: "Frontend",
-            backend: "Backend & Automação",
-            tools: "Ferramentas",
-            courses: "Certificados"
-        },
-        // Projects Section
-        projects: {
-            title: "Meus Projetos",
-            subtitle: "Alguns dos meus trabalhos em desenvolvimento web e automações",
-            readMore: "Ver mais",
-            readLess: "Ver menos",
-            visitSite: "Visitar Site",
-            viewMenu: "Ver Cardápio",
-            viewCode: "Ver Código"
-        },
         // Contact Section
         contact: {
             title: "Entre em Contato",
@@ -212,6 +205,11 @@ const translations = {
             backend: "Backend & Automação",
             tools: "Ferramentas",
             courses: "Certificados",
+            sectionFrontend: "Frontend",
+            sectionBackend: "Backend & Automação",
+            sectionAi: "IA & LLMs",
+            sectionSupport: "Ferramentas & Suporte",
+            tabToolsShort: "Ferra.",
             // Níveis de proficiência
             expert: "Expert",
             advanced: "Avançado",
@@ -238,31 +236,45 @@ const translations = {
             scripting: "Scripting",
             projectManagement: "Gestão",
             itsm: "ITSM",
-            logistics: "Logística"
+            logistics: "Logística",
+            dailyUse: "Uso diário",
+            operational: "Operacional",
+            remoteAccess: "Acesso Remoto",
+            communication: "Comunicação",
+            meetings: "Reuniões",
+            state: "Estado"
         },
         // Projects Section
         projects: {
             title: "Meus Projetos",
             subtitle: "Alguns dos meus trabalhos em desenvolvimento web e automações",
+            railLabel: "Lista de projetos",
             readMore: "Ver mais",
             readLess: "Ver menos",
+            viewDetails: "Ver detalhes",
+            modalClose: "Fechar",
             visitSite: "Visitar Site",
             viewMenu: "Ver Cardápio",
             viewCode: "Ver Código",
             // Projeto 1: Fortão Prêmios
             project1Title: "Fortão Prêmios",
+            project1Summary: "Plataforma em produção para campanhas promocionais: link de pagamento, automação de NF e cache em camadas para performance.",
             project1Description: "Sistema completo de campanhas promocionais online com Next.js 14, React e TypeScript. Implementei autenticação com JWT/bcrypt, cache em 5 camadas que reduziu o tempo de carregamento em 40%, dashboard administrativo com estatísticas em tempo real e design responsivo. Deploy na Railway com otimizações de performance e segurança.",
             // Projeto 2: Cardápio Online
             project2Title: "Cardápio Online",
+            project2Summary: "SaaS de cardápio digital e pedidos com React, Supabase e painel administrativo completo.",
             project2Description: "Sistema completo de cardápio online com painel administrativo avançado. Desenvolvido com React 18 e integração total com Supabase. Inclui cardápio dinâmico, carrinho de compras, checkout completo, gerenciamento de pedidos, upload de imagens, configurações personalizáveis (cores, logo, endereço, redes sociais) e sistema de autenticação. Backend opcional em Flask/Python. Deploy realizado na Railway.",
             // Projeto 3: Moraes Adesivos
             project3Title: "Moraes Adesivos",
+            project3Summary: "Site institucional focado em conversão para adesivos decorativos: galeria, SEO e WhatsApp.",
             project3Description: "Site completo desenvolvido pela AIverse Technologies para empresa especializada em adesivos decorativos. Landing page moderna com galeria de trabalhos, seção de serviços e integração com WhatsApp para orçamentos. Design responsivo e otimizado para conversão de leads.",
             // Projeto 4: Prosper Roteiros
             project4Title: "Prosper Roteiros",
+            project4Summary: "Ferramenta interna para montar rotas de visitas com mapas, métricas e exportação CSV.",
             project4Description: "Sistema inteligente de geração de roteiros otimizados para vendedores. Desenvolvido com React e Flask/Python, utiliza algoritmo do vizinho mais próximo para otimização geográfica. Inclui agrupamento de clientes por proximidade usando coordenadas GPS e CEPs, geração automática de rotas com 6-8 visitas por rota, visualização interativa de rotas em mapas (Leaflet), dashboard com métricas detalhadas (total de visitas, dias de trabalho, distância média), gerenciamento de arquivos Excel/CSV, filtros por vendedor e data, e exportação de roteiros em CSV. Interface moderna e responsiva com design intuitivo.",
             // Projeto 5: Processador de XML
             project5Title: "Processador de XML",
+            project5Summary: "Web app que cruza planilha Excel com XMLs de NF em ZIP e gera pacote filtrado automaticamente.",
             project5Description: "Sistema web para processamento e seleção de arquivos XML baseado em planilhas Excel. Desenvolvido com Flask e Python, permite fazer upload de uma planilha Excel (.xlsx) com números de NF na coluna B e um arquivo ZIP contendo XMLs de notas fiscais. O sistema verifica automaticamente se os números da planilha estão contidos nos XMLs, seleciona os arquivos correspondentes e gera um novo arquivo ZIP compactado com apenas os XMLs selecionados. Interface moderna e intuitiva com drag-and-drop, feedback visual durante o processamento e download automático do resultado."
         }
     },
@@ -280,14 +292,9 @@ const translations = {
         hero: {
             greeting: "Hello, I'm",
             subtitle: "Fullstack Developer & AI Automation Specialist 🚀",
-            description: "Fullstack Developer working with React, Python/Flask and PostgreSQL. I built Fortão Prêmios — a production system with a 5-layer cache that cut load time by 40% — and I automate workflows with n8n and AI in my IT role at Prosper. I'm drawn to problems where the whole stack has to work together.",
-            viewProjects: "View Projects",
-            contactMe: "Get in Touch",
+            description: "Fullstack Developer working with React, Python/Flask and PostgreSQL. I built Fortão Prêmios, a production platform with payment-link checkout, automated invoicing and tax document workflows, and layered caching for performance. In my IT role at Prosper I automate operations with n8n and AI. I'm drawn to problems where the whole stack has to work together.",
             downloadCV: "Download CV",
-            loading: "Loading experience...",
-            statProjects: "Projects",
-            statAutomations: "Automations",
-            statExperience: "Yrs Exp."
+            loading: "Loading experience..."
         },
         // About Section
         about: {
@@ -316,7 +323,7 @@ const translations = {
             freeCourse3Level: "Curso em Vídeo · Certificate",
             onlineCerts: "Online Certificates",
             achievements: "Main Achievements",
-            achievement1: "less service time",
+            achievement1: "−80% support time",
             achievement2: "fullstack apps",
             achievement3: "integrations",
             location: "Location",
@@ -335,23 +342,6 @@ const translations = {
             stat2: "5+ Projects",
             stat3: "10+ Technologies",
             techStackLabel: "Main Stack"
-        },
-        // Skills Section
-        skills: {
-            frontend: "Frontend",
-            backend: "Backend & Automation",
-            tools: "Tools",
-            courses: "Courses"
-        },
-        // Projects Section
-        projects: {
-            title: "My Projects",
-            subtitle: "Some of my work in web development and automations",
-            readMore: "Read more",
-            readLess: "Read less",
-            visitSite: "Visit Site",
-            viewMenu: "View Menu",
-            viewCode: "View Code"
         },
         // Contact Section
         contact: {
@@ -396,6 +386,11 @@ const translations = {
             backend: "Backend & Automation",
             tools: "Tools",
             courses: "Certificates",
+            sectionFrontend: "Frontend",
+            sectionBackend: "Backend & Automation",
+            sectionAi: "AI & LLMs",
+            sectionSupport: "Tools & Support",
+            tabToolsShort: "Tools",
             // Níveis de proficiência
             expert: "Expert",
             advanced: "Advanced",
@@ -422,31 +417,45 @@ const translations = {
             scripting: "Scripting",
             projectManagement: "Project Management",
             itsm: "ITSM",
-            logistics: "Logistics"
+            logistics: "Logistics",
+            dailyUse: "Daily Use",
+            operational: "Operational",
+            remoteAccess: "Remote Access",
+            communication: "Communication",
+            meetings: "Meetings",
+            state: "State"
         },
         // Projects Section
         projects: {
             title: "My Projects",
             subtitle: "Some of my work in web development and automations",
+            railLabel: "Project list",
             readMore: "Read more",
             readLess: "Read less",
+            viewDetails: "View details",
+            modalClose: "Close",
             visitSite: "Visit Site",
             viewMenu: "View Menu",
             viewCode: "View Code",
             // Projeto 1: Fortão Prêmios
             project1Title: "Fortão Prêmios",
+            project1Summary: "Production platform for promotional campaigns: payment links, invoicing automation and layered caching for performance.",
             project1Description: "Complete online promotional campaign system built with Next.js 14, React and TypeScript. Implemented JWT/bcrypt authentication, a 5-layer cache that cut loading time by 40%, an admin dashboard with real-time statistics, and responsive design. Deployed on Railway with performance and security optimizations.",
             // Projeto 2: Cardápio Online
             project2Title: "Online Menu",
-            project2Description: "Complete online menu system with advanced admin panel. Developed with React 18 and full Supabase integration. Includes dynamic menu, shopping cart, complete checkout, order management, image upload, customizable settings (colors, logo, address, social media) and authentication system. Optional Flask/Python backend. Deploy performed on Railway.",
+            project2Summary: "Digital menu and ordering SaaS with React, Supabase and a full admin panel.",
+            project2Description: "Complete online menu system with advanced admin panel. Developed with React 18 and full Supabase integration. Includes dynamic menu, shopping cart, complete checkout, order management, image upload, customizable settings (colors, logo, address, social media) and authentication system. Optional Flask/Python backend. Deployed on Railway.",
             // Projeto 3: Moraes Adesivos
             project3Title: "Moraes Adesivos",
+            project3Summary: "Conversion-focused site for decorative stickers: gallery, SEO and WhatsApp quotes.",
             project3Description: "Complete website developed by AIverse Technologies for a company specialized in decorative stickers. Modern landing page with work gallery, services section and WhatsApp integration for quotes. Responsive design optimized for lead conversion.",
             // Projeto 4: Prosper Roteiros
             project4Title: "Prosper Roteiros",
+            project4Summary: "Internal tool to build sales visit routes with maps, metrics and CSV export.",
             project4Description: "Intelligent system for generating optimized routes for salespeople. Developed with React and Flask/Python, uses nearest neighbor algorithm for geographic optimization. Includes customer grouping by proximity using GPS coordinates and ZIP codes, automatic route generation with 6-8 visits per route, interactive route visualization on maps (Leaflet), dashboard with detailed metrics (total visits, work days, average distance), Excel/CSV file management, filters by seller and date, and CSV route export. Modern and responsive interface with intuitive design.",
             // Projeto 5: Processador de XML
             project5Title: "XML Processor",
+            project5Summary: "Web app that matches an Excel sheet against invoice XMLs in a ZIP and outputs a filtered package.",
             project5Description: "Web system for processing and selecting XML files based on Excel spreadsheets. Developed with Flask and Python, allows uploading an Excel spreadsheet (.xlsx) with NF numbers in column B and a ZIP file containing invoice XMLs. The system automatically checks if the spreadsheet numbers are contained in the XMLs, selects the corresponding files and generates a new compressed ZIP file with only the selected XMLs. Modern and intuitive interface with drag-and-drop, visual feedback during processing and automatic result download."
         }
     }
@@ -494,13 +503,8 @@ function updatePageLanguage(lang) {
     document.querySelectorAll('[data-i18n="hero.greeting"]').forEach(el => el.textContent = t.hero.greeting);
     document.querySelectorAll('[data-i18n="hero.subtitle"]').forEach(el => el.textContent = t.hero.subtitle);
     document.querySelectorAll('[data-i18n="hero.description"]').forEach(el => el.textContent = t.hero.description);
-    document.querySelectorAll('[data-i18n="hero.viewProjects"]').forEach(el => el.textContent = t.hero.viewProjects);
-    document.querySelectorAll('[data-i18n="hero.contactMe"]').forEach(el => el.textContent = t.hero.contactMe);
     document.querySelectorAll('[data-i18n="hero.downloadCV"]').forEach(el => el.textContent = t.hero.downloadCV);
     document.querySelectorAll('[data-i18n="hero.loading"]').forEach(el => el.textContent = t.hero.loading);
-    document.querySelectorAll('[data-i18n="hero.statProjects"]').forEach(el => el.textContent = t.hero.statProjects);
-    document.querySelectorAll('[data-i18n="hero.statAutomations"]').forEach(el => el.textContent = t.hero.statAutomations);
-    document.querySelectorAll('[data-i18n="hero.statExperience"]').forEach(el => el.textContent = t.hero.statExperience);
 
     // Atualizar About
     document.querySelectorAll('[data-i18n="about.experience"]').forEach(el => el.textContent = t.about.experience);
@@ -556,6 +560,13 @@ function updatePageLanguage(lang) {
     document.querySelectorAll('[data-i18n="skills.backend"]').forEach(el => el.textContent = t.skills.backend);
     document.querySelectorAll('[data-i18n="skills.tools"]').forEach(el => el.textContent = t.skills.tools);
     document.querySelectorAll('[data-i18n="skills.courses"]').forEach(el => el.textContent = t.skills.courses);
+    document.querySelectorAll('.skills-active-section-name').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (key && t.skills) {
+            const k = key.replace('skills.', '');
+            if (t.skills[k]) el.textContent = t.skills[k];
+        }
+    });
 
     // Atualizar Agency
     document.querySelectorAll('[data-i18n="agency.roleLabel"]').forEach(el => el.textContent = t.agency.roleLabel);
@@ -595,6 +606,7 @@ function updatePageLanguage(lang) {
     document.querySelectorAll('[data-i18n="projects.visitSite"]').forEach(el => el.textContent = t.projects.visitSite);
     document.querySelectorAll('[data-i18n="projects.viewMenu"]').forEach(el => el.textContent = t.projects.viewMenu);
     document.querySelectorAll('[data-i18n="projects.viewCode"]').forEach(el => el.textContent = t.projects.viewCode);
+    document.querySelectorAll('[data-i18n="projects.viewDetails"]').forEach(el => el.textContent = t.projects.viewDetails);
     // Atualizar títulos e descrições dos projetos
     document.querySelectorAll('[data-i18n="projects.project1Title"]').forEach(el => {
         const parts = t.projects.project1Title.split(' ');
@@ -640,6 +652,26 @@ function updatePageLanguage(lang) {
         }
     });
     document.querySelectorAll('[data-i18n="projects.project5Description"]').forEach(el => el.textContent = t.projects.project5Description);
+    document.querySelectorAll('[data-i18n="projects.project1Summary"]').forEach(el => el.textContent = t.projects.project1Summary);
+    document.querySelectorAll('[data-i18n="projects.project2Summary"]').forEach(el => el.textContent = t.projects.project2Summary);
+    document.querySelectorAll('[data-i18n="projects.project3Summary"]').forEach(el => el.textContent = t.projects.project3Summary);
+    document.querySelectorAll('[data-i18n="projects.project4Summary"]').forEach(el => el.textContent = t.projects.project4Summary);
+    document.querySelectorAll('[data-i18n="projects.project5Summary"]').forEach(el => el.textContent = t.projects.project5Summary);
+    const projectsRail = document.querySelector('.projects-rail');
+    if (projectsRail && t.projects.railLabel) {
+        projectsRail.setAttribute('aria-label', t.projects.railLabel);
+    }
+    const projectModalClose = document.querySelector('.project-detail-modal__close');
+    if (projectModalClose && t.projects.modalClose) {
+        projectModalClose.setAttribute('aria-label', t.projects.modalClose);
+        projectModalClose.setAttribute('title', t.projects.modalClose);
+    }
+    document.querySelectorAll('[data-rail-for-project]').forEach(el => {
+        const i = parseInt(el.getAttribute('data-rail-for-project'), 10);
+        if (Number.isNaN(i) || i < 0) return;
+        const key = 'project' + (i + 1) + 'Title';
+        if (t.projects[key]) el.textContent = t.projects[key];
+    });
 
     // Atualizar Contact
     document.querySelectorAll('[data-i18n="contact.title"]').forEach(el => {
@@ -656,6 +688,25 @@ function updatePageLanguage(lang) {
     const langBtn = document.getElementById('language-btn');
     if (langText) langText.textContent = lang === 'pt' ? 'EN' : 'PT';
     if (langBtn) langBtn.setAttribute('title', lang === 'pt' ? 'Switch to English' : 'Mudar para Português');
+
+    // Generic i18n fallback — handles skill labels and any other data-i18n not covered above
+    const specialKeys = new Set([
+        'projects.title', 'contact.title',
+        'projects.project1Title', 'projects.project2Title',
+        'projects.project3Title', 'projects.project4Title',
+        'projects.project5Title'
+    ]);
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (specialKeys.has(key)) return;
+        const parts = key.split('.');
+        let value = t;
+        for (const p of parts) {
+            if (value && typeof value === 'object') value = value[p];
+            else { value = undefined; break; }
+        }
+        if (typeof value === 'string') el.textContent = value;
+    });
 }
 
 // Função para alternar idioma
@@ -700,6 +751,9 @@ document.addEventListener('DOMContentLoaded', () => {
             targetLink.classList.add('text-primary');
             if (icon) icon.classList.add('text-primary');
             if (text) text.classList.add('text-primary');
+        }
+        if (savedSection === '#projects' && typeof window.refreshProjectsPanel === 'function') {
+            setTimeout(() => window.refreshProjectsPanel(), 250);
         }
     } else {
         // Fallback to home if saved section doesn't exist
@@ -1358,33 +1412,289 @@ function animateCounter(element, target, duration = 2000) {
 
 console.log('✨ Animações avançadas carregadas com sucesso!');
 
-// Abas da seção de habilidades
+// =====================================================
+// SKILL DETAILS — descrição honesta + nível detalhado
+// Editável: ajuste textos/níveis aqui sem mexer no HTML.
+// =====================================================
+window.SKILL_DETAILS = {
+    // ============ FRONTEND ============
+    'html5':           { name: 'HTML5',            level: 'Expert · 5+ anos',          tags: ['Semântica', 'SEO', 'A11y'],
+        description: 'Marcação semântica em todos os projetos. SEO técnico no Moraes Adesivos, formulários acessíveis no Burger House, OG tags e meta no Fortão Prêmios.' },
+    'css3':            { name: 'CSS3',             level: 'Expert · 5+ anos',          tags: ['Grid', 'Flexbox', 'Animations'],
+        description: 'Layouts responsivos, animações, grids complexos. ~2.500 linhas de CSS neste portfólio com variáveis e cascata controlada.' },
+    'javascript':      { name: 'JavaScript',       level: 'Especialista · 4+ anos',    tags: ['ES6+', 'DOM', 'Async'],
+        description: 'ES6+, async/await, DOM, eventos. Carrossel custom, i18n PT/EN com swipe gestures, integrações com APIs em projetos React e vanilla.' },
+    'react':           { name: 'React',            level: 'Avançado · 3 anos',         tags: ['Hooks', 'Context', 'TanStack Query'],
+        description: 'Hooks, Context, composição. Frontend do Fortão Prêmios (Next.js 14 + React 18), Burger House e cardápios digitais. TanStack Query para data fetching.' },
+    'typescript':      { name: 'TypeScript',       level: 'Avançado · 2 anos',         tags: ['Types', 'Generics', 'Zod'],
+        description: 'Tipagem em projetos Next.js, interfaces e generics. Migração progressiva de JS → TS no Fortão.' },
+    'nextjs':          { name: 'Next.js',          level: 'Avançado · 2 anos',         tags: ['App Router', 'SSR/ISR', 'API Routes'],
+        description: 'App Router, SSR/ISR, API Routes. Fortão Prêmios em produção com Next.js 14 deployado no Railway.' },
+    'tailwind':        { name: 'Tailwind CSS',     level: 'Expert · 3 anos',           tags: ['JIT', 'Dark Mode', 'Mobile-first'],
+        description: 'Utility-first em todos os projetos. JIT, dark mode, plugins customizados. Mobile-first sempre.' },
+    'vuejs':           { name: 'Vue.js',           level: 'Intermediário · projetos pessoais', tags: ['Composition API'],
+        description: 'Projetos pessoais e estudo. Composition API. Não é meu daily driver — preferência por React.' },
+    'sass':            { name: 'SASS / SCSS',      level: 'Avançado · 3 anos',         tags: ['Mixins', 'Nesting', 'Variáveis'],
+        description: 'Mixins, nesting, variáveis. Usado em projetos legados antes da migração para Tailwind.' },
+    'bootstrap':       { name: 'Bootstrap',        level: 'Avançado · uso pontual',    tags: ['Prototipação', 'Legado'],
+        description: 'Prototipação rápida e projetos que herdam stack legado.' },
+    'git':             { name: 'Git',              level: 'Avançado · diário',         tags: ['Branches', 'PRs', 'Rebase'],
+        description: 'Branches, PRs, rebase interativo. Trabalho colaborativo nos projetos da AIverse e Prosper.' },
+    'radix':           { name: 'Radix UI',         level: 'Intermediário · projetos React', tags: ['Headless', 'A11y'],
+        description: 'Componentes headless acessíveis. Uso com Tailwind para construir UIs custom sem reinventar a roda.' },
+    'zustand':         { name: 'Zustand',          level: 'Intermediário · 1 ano',     tags: ['State', 'Leve'],
+        description: 'Estado global leve. Preferência sobre Redux para apps pequenos/médios. Usado no Fortão.' },
+    'vite':            { name: 'Vite',             level: 'Avançado · 2 anos',         tags: ['HMR', 'Build'],
+        description: 'Dev server e build em projetos React fora do Next. HMR, plugins, otimizações de bundle.' },
+    'react-hook-form': { name: 'React Hook Form',  level: 'Avançado · 2 anos',         tags: ['Forms', 'Validação Zod'],
+        description: 'Formulários performáticos com validação Zod. Usado em forms complexos do Fortão e Burger House.' },
+    'figma':           { name: 'Figma',            level: 'Intermediário · handoff',   tags: ['Design Handoff'],
+        description: 'Leitura de design e handoff. Foco em implementação fiel ao mockup, não em criar do zero.' },
+
+    // ============ BACKEND & AUTOMAÇÃO ============
+    'python':          { name: 'Python',           level: 'Avançado · 3 anos',         tags: ['Automação', 'APIs', 'Scripts'],
+        description: 'Scripts de automação, FastAPI/Flask, integrações n8n. Automações WhatsApp + n8n + Python que reduziram em 80% o tempo de atendimento na AIverse.' },
+    'n8n':             { name: 'n8n',              level: 'Avançado · diário',         tags: ['Workflows', 'WhatsApp API', 'LLMs'],
+        description: 'Workflows complexos: WhatsApp API + LLMs + Postgres. Self-hosted e cloud. Dezenas de fluxos em produção.' },
+    'nodejs':          { name: 'Node.js',          level: 'Avançado · 3 anos',         tags: ['API REST', 'CLI'],
+        description: 'API REST, scripts, ferramentas CLI. Base do ecossistema React/Next que uso no front.' },
+    'supabase':        { name: 'Supabase',         level: 'Avançado · 2 anos',         tags: ['Auth', 'RLS', 'Realtime'],
+        description: 'Auth, RLS, edge functions, realtime. Backend do Burger House e estrutura inicial de vários projetos.' },
+    'postgresql':      { name: 'PostgreSQL',       level: 'Avançado · 3 anos',         tags: ['Queries', 'Índices', 'Migrations'],
+        description: 'Queries complexas, índices, migrations. 13+ tabelas no Fortão Prêmios em produção.' },
+    'mongodb':         { name: 'MongoDB',          level: 'Intermediário · uso ocasional', tags: ['NoSQL', 'Aggregations'],
+        description: 'Documentos, agregações. Uso em projetos que não precisam de relacionamentos rígidos.' },
+    'docker':          { name: 'Docker',           level: 'Intermediário · dev/deploy', tags: ['Containers', 'Compose'],
+        description: 'Containers para dev e deploy. docker-compose em ambientes locais. Não opero K8s ainda.' },
+    'rest-apis':       { name: 'REST APIs',        level: 'Avançado · 3 anos',         tags: ['Design', 'Auth', 'Paginação'],
+        description: 'Design de endpoints, status codes, paginação, auth. 60+ rotas no Fortão Prêmios em produção.' },
+    'graphql':         { name: 'GraphQL',          level: 'Básico · estudo',           tags: ['Schemas', 'Resolvers'],
+        description: 'Conheço o básico de schemas e resolvers. Pouca experiência em produção.' },
+    'flask':           { name: 'Flask',            level: 'Avançado · 2 anos',         tags: ['APIs', 'Microserviços'],
+        description: 'APIs Python rápidas. Backend inicial do Burger House e protótipos.' },
+    'fastapi':         { name: 'FastAPI',          level: 'Avançado · 2 anos',         tags: ['Async', 'OpenAPI'],
+        description: 'Tipagem, docs automáticas, async. Preferência sobre Flask para projetos novos.' },
+    'expressjs':       { name: 'Express.js',       level: 'Intermediário · projetos', tags: ['Node', 'Middleware'],
+        description: 'APIs Node tradicionais. Stack comum em projetos que herdam codebase.' },
+
+    // ============ IA & LLMs ============
+    'openai-api':      { name: 'OpenAI API',       level: 'Avançado · integração diária', tags: ['GPT-4o', 'Function Calling', 'Structured Outputs'],
+        description: 'GPT-4o / 4o-mini em automações de atendimento e geração de texto. Chamadas via SDK Python e n8n. Function calling e structured outputs em pipelines.' },
+    'claude-api':      { name: 'Anthropic Claude API', level: 'Intermediário · projetos', tags: ['Sonnet', 'Análise', 'Classificação'],
+        description: 'Claude (Sonnet) em pipelines de análise e classificação. Comparativo de custo/qualidade vs GPT em casos reais.' },
+    'gemini-api':      { name: 'Google Gemini API', level: 'Básico · uso pontual',     tags: ['Multimodal', 'Imagem+Texto'],
+        description: 'Uso pontual para multimodal (imagem+texto). Menos frequente que OpenAI/Claude no dia-a-dia.' },
+    'claude-code':     { name: 'Claude Code',      level: 'Workflow · diário',         tags: ['Agente CLI', 'MCPs', 'Batch tasks'],
+        description: 'Agente CLI do Anthropic. Uso diário para refactor, code review e batch tasks. Integrado com MCPs (Obsidian, Filesystem).' },
+    'cursor':          { name: 'Cursor IDE',       level: 'Workflow · diário',         tags: ['Pair-programming', 'MCPs', 'Agente'],
+        description: 'Pair-programming com IA. Editor padrão diário, com MCPs configurados (Playwright, GitHub, Obsidian). Edita este próprio portfólio com agente.' },
+    'rag':             { name: 'RAG / Embeddings', level: 'Intermediário · projetos AIverse', tags: ['pgvector', 'Supabase Vector', 'Chunking'],
+        description: 'Embeddings + pgvector / Supabase Vector. Bases de conhecimento para chatbots. Chunking e re-ranking básico.' },
+
+    // ============ FERRAMENTAS / SUPORTE ============
+    'zabbix':          { name: 'Zabbix',           level: 'Intermediário · Prosper',   tags: ['Monitoramento', 'Triggers', 'Dashboards'],
+        description: 'Monitoramento de servidores e serviços na Prosper. Triggers, dashboards, agentes em Linux/Windows.' },
+    'microsoft365':    { name: 'Microsoft 365',    level: 'Avançado · admin diário',   tags: ['Admin Center', 'Exchange', 'SharePoint'],
+        description: 'Admin Center, gestão de usuários, licenças, Exchange Online, SharePoint básico.' },
+    'active-directory':{ name: 'Active Directory', level: 'Intermediário · Suporte N1/N2', tags: ['Usuários', 'GPOs', 'OUs'],
+        description: 'Usuários, grupos, GPOs, OUs. Suporte N1/N2 na Prosper para criação e troubleshooting de contas.' },
+    'windows-server':  { name: 'Windows Server',   level: 'Intermediário · admin básico', tags: ['RDP', 'Serviços'],
+        description: 'Administração básica, RDP, serviços. Apoio a infraestrutura interna.' },
+    'linux':           { name: 'Linux',            level: 'Intermediário · servidores', tags: ['Bash', 'systemd', 'Ubuntu'],
+        description: 'Bash, systemd, navegação, troubleshooting. Servidores Ubuntu para apps Python e Docker.' },
+    'powershell':      { name: 'PowerShell',       level: 'Intermediário · scripts AD/M365', tags: ['Scripts', 'AD', 'M365'],
+        description: 'Scripts de administração para AD, M365 e tarefas batch. Funcional, não expert.' },
+    'jira':            { name: 'Jira',             level: 'Avançado · uso diário',     tags: ['Tickets', 'Sprints', 'Kanban'],
+        description: 'Atlassian Jira / Service Management. Tickets, sprints, board Kanban. Operação diária.' },
+    'servicenow':      { name: 'ServiceNow',       level: 'Operacional · N1',          tags: ['Tickets', 'ITSM'],
+        description: 'Suporte N1 em chamados via ServiceNow. Opero a ferramenta, não administro.' },
+    'erp-target':      { name: 'ERP Target',       level: 'Intermediário · suporte funcional', tags: ['Logística', 'Estoque'],
+        description: 'Suporte funcional ao ERP usado em logística/estoque. Triagem de chamados e operação assistida.' },
+    'target-mob':      { name: 'Target Mob',       level: 'Intermediário · campo',     tags: ['Mobile', 'Logística'],
+        description: 'Componente mobile do ERP Target usado em campo. Suporte e configuração.' },
+    'estoque':         { name: 'Gestão de Estoque', level: 'Intermediário · operação', tags: ['WMS', 'Inventário'],
+        description: 'Operação de WMS (Target/integração ERP). Conferência, inventários, ajustes.' },
+    'integracao-erp':  { name: 'Integração ERP',   level: 'Intermediário · troubleshooting', tags: ['ERP', 'Integrações'],
+        description: 'Conector ERP ↔ outros sistemas. Suporte e troubleshooting de integrações.' },
+    'anydesk':         { name: 'AnyDesk',          level: 'Uso diário · suporte remoto', tags: ['Acesso Remoto', 'Não assistido'],
+        description: 'Suporte remoto a usuários internos e clientes. Configuração de acesso não atendido.' },
+    'teamviewer':      { name: 'TeamViewer',       level: 'Operacional · uso pontual', tags: ['Acesso Remoto'],
+        description: 'Alternativa ao AnyDesk em ambientes onde já é o padrão.' },
+    'rdp':             { name: 'RDP / Remote Desktop', level: 'Avançado · diário',    tags: ['Windows', 'Gateway'],
+        description: 'Conexão a servidores Windows e estações. Configuração de RDP e Gateway.' },
+    'zendesk':         { name: 'Zendesk',          level: 'Operacional · tickets',     tags: ['Atendimento', 'Macros'],
+        description: 'Atendimento via tickets, macros, automações básicas. Operacional, não admin.' },
+    'teams':           { name: 'Microsoft Teams',  level: 'Avançado · diário',         tags: ['Reuniões', 'Canais', 'Integrações'],
+        description: 'Padrão na rotina corporativa. Reuniões, canais, integrações com fluxos.' },
+    'meet':            { name: 'Google Meet',      level: 'Avançado · diário',         tags: ['Reuniões', 'Clientes'],
+        description: 'Reuniões com clientes da AIverse e prospects.' },
+    'zoom':            { name: 'Zoom',             level: 'Intermediário · uso pontual', tags: ['Reuniões', 'Gravações'],
+        description: 'Quando o cliente prefere. Configurações básicas, gravações.' }
+};
+
+// =====================================================
+// SKILL POPOVER (desktop) + DROPDOWN INLINE (mobile)
+// =====================================================
+(function initSkillInteraction() {
+    let currentCard = null;
+
+    function escapeHtml(str) {
+        return String(str).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+    }
+
+    // --- MOBILE: inject buttons + dropdown containers on load ---
+    function injectMobileElements() {
+        document.querySelectorAll('.skill-card-group').forEach(group => {
+            if (group.querySelector('.skill-details-btn')) return;
+            const card = group.querySelector('.skill-card');
+            if (!card) return;
+
+            const btn = document.createElement('button');
+            btn.className = 'skill-details-btn';
+            btn.type = 'button';
+            btn.setAttribute('aria-label', 'Ver detalhes');
+            btn.innerHTML = '<span>Detalhes</span><span class="material-icons-round">expand_more</span>';
+            card.appendChild(btn);
+
+            const dropdown = document.createElement('div');
+            dropdown.className = 'skill-dropdown';
+            group.appendChild(dropdown);
+        });
+    }
+
+    function buildDropdownContent(data) {
+        const desc = data ? data.description : 'Detalhes em breve.';
+        const tags = (data && data.tags) ? data.tags : [];
+        const tagsHtml = tags.map(t => `<span class="skill-dropdown-tag">${escapeHtml(t)}</span>`).join('');
+        return `
+            <div class="skill-dropdown-inner">
+                ${tagsHtml ? `<div class="skill-dropdown-tags">${tagsHtml}</div>` : ''}
+                <p class="skill-dropdown-desc">${escapeHtml(desc)}</p>
+            </div>
+        `;
+    }
+
+    function close() {
+        if (!currentCard) return;
+        currentCard.classList.remove('is-open');
+        currentCard = null;
+    }
+
+    function open(card) {
+        if (currentCard === card) { close(); return; }
+        if (currentCard) close();
+
+        const id = card.dataset.skillId;
+        const data = (window.SKILL_DETAILS || {})[id];
+
+        const dd = card.querySelector('.skill-dropdown');
+        if (dd && !dd.innerHTML.trim()) {
+            dd.innerHTML = buildDropdownContent(data);
+        }
+
+        currentCard = card;
+        card.classList.add('is-open');
+    }
+
+    document.addEventListener('click', (e) => {
+        if (e.target.closest('.skills-tab-btn')) return;
+
+        const detailsBtn = e.target.closest('.skill-details-btn');
+        if (detailsBtn) {
+            const card = detailsBtn.closest('.skill-card-group');
+            if (card) open(card);
+            return;
+        }
+
+        const card = e.target.closest('.skill-card-group');
+        if (!card) {
+            if (!e.target.closest('.skill-dropdown')) close();
+            return;
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') close();
+    });
+
+    document.addEventListener('click', (e) => {
+        if (e.target.closest('.skills-tab-btn')) close();
+    }, true);
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', injectMobileElements);
+    } else {
+        injectMobileElements();
+    }
+
+    window.openSkillPopover = open;
+    window.closeSkillPopover = close;
+})();
+
+// Abas da seção de habilidades + animação das level bars
 document.addEventListener('DOMContentLoaded', () => {
     const tabButtons = Array.from(document.querySelectorAll('.skills-tab-btn'));
     const skillCards = Array.from(document.querySelectorAll('.skill-card-group'));
     if (!tabButtons.length || !skillCards.length) return;
 
-    function activateTab(target) {
-        // Atualizar botões
-        tabButtons.forEach(btn => {
-            const isActive = btn.dataset.tabTarget === target;
-            if (isActive) {
-                btn.classList.remove('bg-white', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'border-slate-200', 'dark:border-slate-700');
-                btn.classList.add('bg-primary', 'text-white', 'font-semibold', 'shadow-lg', 'shadow-primary/25');
-            } else {
-                btn.classList.remove('bg-primary', 'text-white', 'font-semibold', 'shadow-lg', 'shadow-primary/25');
-                btn.classList.add('bg-white', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300', 'font-medium', 'border', 'border-slate-200', 'dark:border-slate-700');
-            }
-        });
-        
-        // Atualizar cards
-        skillCards.forEach(card => {
-            const show = card.dataset.tab === target;
-            card.classList.toggle('hidden', !show);
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function animateLevelBars(target) {
+        const visibleCards = skillCards.filter(c => c.dataset.tab === target);
+        visibleCards.forEach((card, i) => {
+            const fill = card.querySelector('.skill-level-fill');
+            if (!fill) return;
+            const level = Math.max(0, Math.min(100, parseInt(card.dataset.level || '0', 10)));
+            fill.style.width = '0%';
+            const delay = prefersReducedMotion ? 0 : 60 + (i * 30);
+            setTimeout(() => { fill.style.width = level + '%'; }, delay);
         });
     }
 
-    // Ativar primeira aba por padrão
+    function staggerReveal(target) {
+        if (prefersReducedMotion) return;
+        const visibleCards = skillCards.filter(c => c.dataset.tab === target);
+        visibleCards.forEach((card, i) => {
+            card.classList.remove('skill-reveal');
+            void card.offsetWidth;
+            card.style.animationDelay = (i * 25) + 'ms';
+            card.classList.add('skill-reveal');
+        });
+    }
+
+    const sectionNameMap = {
+        frontend: 'sectionFrontend',
+        backend: 'sectionBackend',
+        ai: 'sectionAi',
+        support: 'sectionSupport'
+    };
+
+    function updateSectionName(target) {
+        const el = document.querySelector('.skills-active-section-name');
+        if (!el) return;
+        const key = sectionNameMap[target] || 'sectionFrontend';
+        el.setAttribute('data-i18n', 'skills.' + key);
+        const lang = document.documentElement.lang === 'en' ? 'en' : 'pt';
+        const t = (typeof translations !== 'undefined') ? translations[lang] : null;
+        if (t && t.skills && t.skills[key]) {
+            el.textContent = t.skills[key];
+        }
+    }
+
+    function activateTab(target) {
+        tabButtons.forEach(btn => {
+            const isActive = btn.dataset.tabTarget === target;
+            btn.classList.toggle('is-active', isActive);
+            btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+        skillCards.forEach(card => {
+            card.classList.toggle('hidden', card.dataset.tab !== target);
+        });
+        updateSectionName(target);
+        staggerReveal(target);
+        animateLevelBars(target);
+    }
+
     if (tabButtons.length > 0) {
         activateTab(tabButtons[0].dataset.tabTarget);
     }
@@ -1392,6 +1702,18 @@ document.addEventListener('DOMContentLoaded', () => {
     tabButtons.forEach(btn => {
         btn.addEventListener('click', () => activateTab(btn.dataset.tabTarget));
     });
+
+    // Re-trigger animations when skills section becomes active (SPA navigation)
+    const skillsSection = document.getElementById('skills');
+    if (skillsSection) {
+        const observer = new MutationObserver(() => {
+            if (skillsSection.classList.contains('active')) {
+                const activeBtn = tabButtons.find(b => b.classList.contains('is-active')) || tabButtons[0];
+                if (activeBtn) animateLevelBars(activeBtn.dataset.tabTarget);
+            }
+        });
+        observer.observe(skillsSection, { attributes: true, attributeFilter: ['class'] });
+    }
 });
 
 // Segurança: garantir rel="noopener noreferrer" em links que abrem em nova aba
@@ -1481,20 +1803,144 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ============================================
-// CARROSSEL DE PROJETOS
+// MODAL DETALHES DO PROJETO
+// ============================================
+
+function closeProjectDetailModal(immediate) {
+    const modal = document.getElementById('project-detail-modal');
+    if (!modal || !modal.classList.contains('is-open')) {
+        return;
+    }
+    const dialog = modal.querySelector('.project-detail-modal__dialog');
+    const reduced =
+        typeof window.matchMedia === 'function' &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const cleanup = () => {
+        modal.classList.remove('is-open', 'is-visible');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('project-modal-open');
+        const projects = document.getElementById('projects');
+        if (projects && modal.parentElement !== projects) {
+            projects.appendChild(modal);
+        }
+    };
+
+    if (immediate || reduced) {
+        cleanup();
+        return;
+    }
+
+    modal.classList.remove('is-visible');
+
+    if (!dialog) {
+        cleanup();
+        return;
+    }
+
+    let finished = false;
+    const onEnd = (ev) => {
+        if (ev.target !== dialog || ev.propertyName !== 'transform') {
+            return;
+        }
+        dialog.removeEventListener('transitionend', onEnd);
+        if (!finished) {
+            finished = true;
+            cleanup();
+        }
+    };
+    dialog.addEventListener('transitionend', onEnd);
+    window.setTimeout(() => {
+        if (!finished) {
+            finished = true;
+            dialog.removeEventListener('transitionend', onEnd);
+            cleanup();
+        }
+    }, 1400);
+}
+
+function openProjectDetailModal(card) {
+    const modal = document.getElementById('project-detail-modal');
+    if (!modal || !card) {
+        return;
+    }
+    const media = card.querySelector('.project-card-media');
+    if (media) {
+        media.appendChild(modal);
+    }
+    const titleEl = document.getElementById('project-detail-modal-title');
+    const bodyEl = modal.querySelector('.project-detail-modal__body');
+    const footerTitle = card.querySelector('.project-card-footer__title');
+    if (titleEl && footerTitle) {
+        titleEl.innerHTML = '';
+        titleEl.appendChild(footerTitle.cloneNode(true));
+    } else if (titleEl) {
+        titleEl.innerHTML = '';
+    }
+    if (bodyEl) {
+        bodyEl.innerHTML = '';
+        const src = card.querySelector('.project-content');
+        if (src) {
+            const clone = src.cloneNode(true);
+            clone.querySelectorAll('.read-more-btn').forEach((b) => b.remove());
+            clone.querySelectorAll('.project-description').forEach((p) => {
+                p.classList.add('expanded');
+                p.style.display = 'block';
+                p.style.overflow = 'visible';
+                p.style.maxHeight = 'none';
+            });
+            bodyEl.appendChild(clone);
+        }
+    }
+    modal.classList.remove('is-visible');
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('project-modal-open');
+    void modal.offsetHeight;
+    const reduceMotion =
+        typeof window.matchMedia === 'function' &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) {
+        modal.classList.add('is-visible');
+    } else {
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                modal.classList.add('is-visible');
+            });
+        });
+    }
+}
+
+document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Escape') {
+        return;
+    }
+    const modal = document.getElementById('project-detail-modal');
+    if (modal && modal.classList.contains('is-open')) {
+        e.preventDefault();
+        closeProjectDetailModal();
+    }
+});
+
+// ============================================
+// CARROSSEL DE PROJETOS (rail + painel)
 // ============================================
 
 let currentProjectIndex = 0;
-const totalProjects = 5;
 let isChangingProject = false; // Flag para evitar mudanças simultâneas
+
+function getTotalProjects() {
+    const cards = document.querySelectorAll('#projects .project-card');
+    return cards.length > 0 ? cards.length : 5;
+}
 
 // Função para mudar de projeto
 window.changeProject = function(direction) {
-    // Calcula novo índice primeiro
+    const total = getTotalProjects();
     let newIndex = currentProjectIndex + direction;
     if (newIndex < 0) {
-        newIndex = totalProjects - 1;
-    } else if (newIndex >= totalProjects) {
+        newIndex = total - 1;
+    } else if (newIndex >= total) {
         newIndex = 0;
     }
     
@@ -1504,10 +1950,13 @@ window.changeProject = function(direction) {
 
 // Função para ir diretamente a um projeto
 window.goToProject = function(index) {
-    if (index < 0 || index >= totalProjects) {
+    const total = getTotalProjects();
+    if (index < 0 || index >= total) {
         return;
     }
-    
+
+    closeProjectDetailModal(true);
+
     // Evita mudanças simultâneas
     if (isChangingProject) {
         return;
@@ -1520,43 +1969,55 @@ window.goToProject = function(index) {
     
     isChangingProject = true;
     
-    // Atualiza o índice atual ANTES de fazer qualquer coisa
-    currentProjectIndex = index;
-    
-    // Primeiro, remover active de TODOS os projetos
-    const allProjects = document.querySelectorAll('.project-card');
-    const allIndicators = document.querySelectorAll('.project-indicator');
-    
-    // Remove active de todos e força display none imediatamente
-    allProjects.forEach((p) => {
-        p.classList.remove('active');
-        // Força display none imediatamente sem transição
-        p.style.transition = 'none';
-        p.style.display = 'none';
-        p.style.opacity = '0';
-    });
-    
-    allIndicators.forEach((ind) => {
-        ind.classList.remove('active');
-    });
-    
-    // Agora encontrar o projeto específico pelo data-project
-    const targetProject = document.querySelector(`.project-card[data-project="${index}"]`);
-    const targetIndicator = allIndicators[index];
+    const allProjects = document.querySelectorAll('#projects .project-card');
+    const railItems = document.querySelectorAll('.projects-rail-item');
+    const targetProject = document.querySelector(`#projects .project-card[data-project="${index}"]`);
     
     if (!targetProject) {
         console.error(`Projeto ${index} não encontrado!`);
+        isChangingProject = false;
         return;
+    }
+    
+    currentProjectIndex = index;
+    
+    allProjects.forEach((p) => {
+        p.classList.remove('active');
+        p.style.transition = 'none';
+        p.style.setProperty('display', 'none', 'important');
+        p.style.setProperty('opacity', '0', 'important');
+    });
+    
+    railItems.forEach((btn, i) => {
+        const on = i === index;
+        btn.classList.toggle('is-active', on);
+        btn.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+
+    const activeRailBtn = document.querySelector('#projects .projects-rail-item.is-active');
+    if (
+        activeRailBtn &&
+        typeof activeRailBtn.scrollIntoView === 'function' &&
+        typeof window.matchMedia === 'function' &&
+        window.matchMedia('(max-width: 767px)').matches
+    ) {
+        const railScrollSmooth =
+            !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        activeRailBtn.scrollIntoView({
+            block: 'nearest',
+            behavior: railScrollSmooth ? 'smooth' : 'auto',
+            inline: 'nearest',
+        });
     }
     
     // Adiciona active ao projeto selecionado
     targetProject.classList.add('active');
     
-    // Força display flex imediatamente sem transição
+    // Força display com !important (evita card “invisível” por cascata / estilos inline fracos)
     targetProject.style.transition = 'none';
-    targetProject.style.display = 'flex';
-    targetProject.style.opacity = '1';
-    targetProject.style.transform = 'translateX(0)';
+    targetProject.style.setProperty('display', 'flex', 'important');
+    targetProject.style.setProperty('opacity', '1', 'important');
+    targetProject.style.setProperty('transform', 'translateX(0)', 'important');
     
     // Força reflow
     void targetProject.offsetHeight;
@@ -1572,10 +2033,6 @@ window.goToProject = function(index) {
     });
     
     resetImageCarousel(targetProject);
-    
-    if (targetIndicator) {
-        targetIndicator.classList.add('active');
-    }
     
     // Reinicializar swipe para o novo projeto
     setTimeout(() => {
@@ -1674,8 +2131,14 @@ function resetImageCarousel(projectCard) {
     const slides = imageCarousel.querySelectorAll('.carousel-slide');
     const indicators = projectCard.querySelectorAll('.carousel-indicators .indicator');
     
-    // Remove active de todos
-    slides.forEach(s => s.classList.remove('active'));
+    slides.forEach((s) => {
+        s.classList.remove('active');
+        s.style.transition = '';
+        s.style.transform = '';
+        s.style.opacity = '';
+        s.style.display = '';
+        s.style.visibility = '';
+    });
     indicators.forEach(i => i.classList.remove('active'));
     
     // Ativa o primeiro slide
@@ -1689,29 +2152,31 @@ function resetImageCarousel(projectCard) {
 
 // Inicializa o primeiro projeto ao carregar
 document.addEventListener('DOMContentLoaded', function() {
-    // Aguarda um pouco para garantir que o DOM está totalmente carregado
     setTimeout(() => {
-        // Garantir que apenas o primeiro projeto está ativo
-        const allProjects = document.querySelectorAll('.project-card');
-        const allIndicators = document.querySelectorAll('.project-indicator');
+        currentProjectIndex = 0;
+        const allProjects = document.querySelectorAll('#projects .project-card');
+        allProjects.forEach(p => {
+            p.classList.remove('active');
+            p.style.display = '';
+            p.style.opacity = '';
+            p.style.transition = '';
+            p.style.transform = '';
+        });
         
-        // Remove active de todos os projetos
-        allProjects.forEach(p => p.classList.remove('active'));
-        allIndicators.forEach(i => i.classList.remove('active'));
-        
-        // Ativa apenas o primeiro projeto
-        const firstProject = document.querySelector('.project-card[data-project="0"]');
-        const firstIndicator = document.querySelector('.project-indicator');
-        
+        const firstProject = document.querySelector('#projects .project-card[data-project="0"]');
         if (firstProject) {
             firstProject.classList.add('active');
+            firstProject.style.setProperty('display', 'flex', 'important');
+            firstProject.style.setProperty('opacity', '1', 'important');
+            firstProject.style.setProperty('transform', 'translateX(0)', 'important');
             resetImageCarousel(firstProject);
         }
         
-        if (firstIndicator) {
-            firstIndicator.classList.add('active');
-        }
-        
+        document.querySelectorAll('.projects-rail-item').forEach((btn, i) => {
+            const on = i === 0;
+            btn.classList.toggle('is-active', on);
+            btn.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
         
         // Esconde botões de navegação de imagens se houver apenas 1 imagem
         document.querySelectorAll('.project-image-carousel').forEach(carousel => {
@@ -1729,44 +2194,35 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Garante que os botões de navegação estão funcionando
-        const prevBtn = document.querySelector('.project-nav-left');
-        const nextBtn = document.querySelector('.project-nav-right');
-        
-        if (prevBtn) {
-            prevBtn.addEventListener('click', function(e) {
+        document.querySelectorAll('.projects-rail-item').forEach((btn) => {
+            const idx = parseInt(btn.getAttribute('data-project-index'), 10);
+            if (Number.isNaN(idx)) return;
+            btn.addEventListener('click', function(e) {
                 e.preventDefault();
-                e.stopPropagation();
-                changeProject(-1);
-            });
-        }
-        
-        if (nextBtn) {
-            nextBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                changeProject(1);
-            });
-        }
-        
-        // Também adiciona listeners aos indicadores de projetos
-        const projectIndicators = document.querySelectorAll('.project-indicator');
-        projectIndicators.forEach((indicator) => {
-            // Remove listeners anteriores se existirem
-            const newIndicator = indicator.cloneNode(true);
-            indicator.parentNode.replaceChild(newIndicator, indicator);
-            
-            // Pega o índice do data-project-index
-            const index = parseInt(newIndicator.getAttribute('data-project-index'));
-            
-            newIndicator.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                goToProject(index);
+                goToProject(idx);
             });
         });
-        
-        // Os botões do carrossel já têm onclick inline no HTML, não precisamos adicionar listeners
+
+        const projectsRoot = document.getElementById('projects');
+        if (projectsRoot) {
+            projectsRoot.addEventListener('click', function(e) {
+                const openBtn = e.target.closest('.project-open-modal-btn');
+                if (!openBtn) return;
+                e.preventDefault();
+                e.stopPropagation();
+                const card = openBtn.closest('.project-card');
+                if (card) openProjectDetailModal(card);
+            });
+        }
+
+        const projectDetailModal = document.getElementById('project-detail-modal');
+        if (projectDetailModal) {
+            projectDetailModal.addEventListener('click', function(e) {
+                if (e.target.closest('[data-project-modal-close]')) {
+                    closeProjectDetailModal();
+                }
+            });
+        }
         
         // Adiciona listeners aos indicadores de imagens
         const imageIndicators = document.querySelectorAll('.carousel-indicators .indicator');
@@ -1807,6 +2263,11 @@ function initSwipeForCarousels() {
         
         const slides = Array.from(imageCarousel.querySelectorAll('.carousel-slide'));
         if (slides.length <= 1) return;
+
+        const isProjectsMobileFlow = () =>
+            typeof window.matchMedia === 'function' &&
+            window.matchMedia('(max-width: 767px)').matches &&
+            !!container.closest('#projects');
         
         let touchStartX = 0;
         let touchStartY = 0;
@@ -1839,6 +2300,19 @@ function initSwipeForCarousels() {
             if (index >= slides.length) index = 0;
             
             currentIndex = index;
+
+            if (isProjectsMobileFlow()) {
+                slides.forEach((s, i) => {
+                    s.classList.toggle('active', i === index);
+                    s.style.transition = '';
+                    s.style.transform = '';
+                    s.style.opacity = '';
+                    s.style.display = '';
+                    s.style.visibility = '';
+                });
+                updateIndicators(index);
+                return;
+            }
             
             // Remover active de todos e resetar estilos
             slides.forEach(s => {
@@ -1905,6 +2379,21 @@ function initSwipeForCarousels() {
         
         const handleTouchMove = (e) => {
             if (!touchStartX) return;
+
+            if (isProjectsMobileFlow()) {
+                const touch = e.touches ? e.touches[0] : e.changedTouches[0];
+                currentX = touch.clientX;
+                const deltaX = currentX - touchStartX;
+                const deltaY = Math.abs(touch.clientY - touchStartY);
+                if (Math.abs(deltaX) > 5 && Math.abs(deltaX) > deltaY * 1.5) {
+                    if (!isDragging) {
+                        isDragging = true;
+                    }
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+                return;
+            }
             
             const touch = e.touches ? e.touches[0] : e.changedTouches[0];
             currentX = touch.clientX;
@@ -2050,7 +2539,7 @@ function initProjectCardDrag() {
         const handleTouchStart = (e) => {
             // Verificar se o toque começou em um botão ou link (não arrastar nesses casos)
             const target = e.target;
-            if (target.closest('button') || target.closest('a') || target.closest('.carousel-btn') || target.closest('.carousel-indicators')) {
+            if (target.closest('button') || target.closest('a') || target.closest('.carousel-btn') || target.closest('.carousel-indicators') || target.closest('.project-card-footer')) {
                 return;
             }
             
@@ -2084,7 +2573,7 @@ function initProjectCardDrag() {
         const handleMouseDown = (e) => {
             // Verificar se o clique começou em um botão ou link
             const target = e.target;
-            if (target.closest('button') || target.closest('a') || target.closest('.carousel-btn') || target.closest('.carousel-indicators')) {
+            if (target.closest('button') || target.closest('a') || target.closest('.carousel-btn') || target.closest('.carousel-indicators') || target.closest('.project-card-footer')) {
                 return;
             }
             
@@ -2437,8 +2926,8 @@ window.toggleDescription = function(button) {
     if (!el) return;
 
     const roles = {
-        pt: ['Desenvolvedor Web', 'Especialista em Automações', 'Fundador da AIverse', 'Full Stack Dev'],
-        en: ['Web Developer', 'Automation Specialist', 'AIverse Founder', 'Full Stack Dev']
+        pt: ['Desenvolvedor Full Stack', 'Especialista em Automações com IA'],
+        en: ['Full Stack Developer', 'AI Automation Specialist']
     };
 
     let roleIdx = 0, charIdx = 0, deleting = false;
