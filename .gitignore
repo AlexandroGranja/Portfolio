@@ -6,8 +6,8 @@
 .cursor/
 .vscode/
 
-# ─── Obsidian (config do vault, não as notas) ───
-docs/cerebro/.obsidian/
+# ─── Documentação local (cerebro, specs, plans) ───
+docs/
 
 # ─── Rascunhos / compare / backup local ───
 _h1-compare.html
