@@ -1,0 +1,46 @@
+# ─── Ferramentas e IDE (só local) ───
+.superpowers/
+.obsidian/
+.playwright-mcp/
+.claude/
+.cursor/
+.vscode/
+
+# ─── Obsidian (config do vault, não as notas) ───
+docs/cerebro/.obsidian/
+
+# ─── Rascunhos / compare / backup local ───
+_h1-compare.html
+code.html
+*.tmp
+*.bak
+*~
+
+# ─── Logs e estado de automação ───
+*.log
+.playwright-mcp/
+
+# ─── Sistema operacional ───
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# ─── Variáveis de ambiente (nunca subir secrets) ───
+.env
+.env.*
+!.env.example
+
+# ─── PDF duplicado na raiz (oficial: assets/curriculos/) ───
+curriculo_alexandro_granja.pdf
+
+# ─── Scripts só de máquina local (opcional) ───
+backup-portfolio.ps1
+
+# ─── Node / build (se usar no futuro) ───
+node_modules/
+dist/
+build/
+
+# ─── Imagens de busca temporárias (descomente + git rm -r --cached search_images/) ───
+# search_images/
