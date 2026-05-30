@@ -578,7 +578,7 @@
                             <p class="text-primary font-bold text-[11px] sm:text-xs leading-tight" data-i18n="about.stat1">2+ Anos Exp.</p>
                         </div>
                         <div class="text-center p-1.5 rounded flex items-center justify-center" style="background:rgba(245,158,11,0.05);">
-                            <p class="text-primary font-bold text-[11px] sm:text-xs leading-tight" data-i18n="about.stat2">5+ Projetos</p>
+                            <p class="text-primary font-bold text-[11px] sm:text-xs leading-tight" data-i18n="about.stat2">6+ Projetos</p>
                         </div>
                         <div class="text-center p-1.5 rounded flex items-center justify-center" style="background:rgba(245,158,11,0.05);">
                             <p class="text-primary font-bold text-[11px] sm:text-xs leading-tight" data-i18n="about.stat3">10+ Tecnologias</p>
@@ -1812,21 +1812,27 @@
                     </button>
                     <button type="button" id="project-tab-4" class="projects-rail-item" role="tab" aria-selected="false" aria-controls="project-panel-4" data-project-index="4">
                         <span class="projects-rail-thumb-wrap">
+                            <img class="projects-rail-thumb" src="./assets/Chamados01.png" alt="" width="120" height="80" decoding="async" loading="lazy" />
+                        </span>
+                        <span class="projects-rail-label" data-rail-for-project="4">Sistema de Chamados</span>
+                    </button>
+                    <button type="button" id="project-tab-5" class="projects-rail-item" role="tab" aria-selected="false" aria-controls="project-panel-5" data-project-index="5">
+                        <span class="projects-rail-thumb-wrap">
                             <img class="projects-rail-thumb" src="./assets/XML01.png" alt="" width="120" height="80" decoding="async" loading="lazy" />
                         </span>
-                        <span class="projects-rail-label" data-rail-for-project="4">Processador de XML</span>
-                    </button>
-                    <button type="button" id="project-tab-5" class="projects-rail-item project-archived" role="tab" aria-selected="false" aria-controls="project-panel-5" data-project-index="5" hidden tabindex="-1">
-                        <span class="projects-rail-thumb-wrap">
-                            <img class="projects-rail-thumb" src="./assets/AssistenteFinanceiro.png" alt="" width="120" height="80" decoding="async" loading="lazy" />
-                        </span>
-                        <span class="projects-rail-label" data-rail-for-project="5">Assistente Financeiro</span>
+                        <span class="projects-rail-label" data-rail-for-project="5">Processador de XML</span>
                     </button>
                     <button type="button" id="project-tab-6" class="projects-rail-item project-archived" role="tab" aria-selected="false" aria-controls="project-panel-6" data-project-index="6" hidden tabindex="-1">
                         <span class="projects-rail-thumb-wrap">
+                            <img class="projects-rail-thumb" src="./assets/AssistenteFinanceiro.png" alt="" width="120" height="80" decoding="async" loading="lazy" />
+                        </span>
+                        <span class="projects-rail-label" data-rail-for-project="6">Assistente Financeiro</span>
+                    </button>
+                    <button type="button" id="project-tab-7" class="projects-rail-item project-archived" role="tab" aria-selected="false" aria-controls="project-panel-7" data-project-index="7" hidden tabindex="-1">
+                        <span class="projects-rail-thumb-wrap">
                             <img class="projects-rail-thumb" src="./assets/CarteiraDividendos.png" alt="" width="120" height="80" decoding="async" loading="lazy" />
                         </span>
-                        <span class="projects-rail-label" data-rail-for-project="6">Carteira Dividendos</span>
+                        <span class="projects-rail-label" data-rail-for-project="7">Carteira Dividendos</span>
                     </button>
                 </nav>
             <div class="projects-carousel-wrapper projects-main">
@@ -2074,8 +2080,65 @@
                         </div>
                     </div>
 
-                    <!-- Projeto 5: Processador de XML -->
+                    <!-- Projeto 5: Sistema de Chamados -->
                     <div id="project-panel-4" class="project-card" role="tabpanel" aria-labelledby="project-tab-4" data-project="4">
+                        <div class="project-card-media">
+                        <div class="project-image-container">
+                            <div class="project-image-carousel" data-images="3">
+                                <div class="carousel-slide active" data-index="0">
+                                    <img src="./assets/Chamados01.png" alt="Sistema de Chamados - Dashboard de tickets e SLA" decoding="async" loading="lazy" />
+                                </div>
+                                <div class="carousel-slide" data-index="1">
+                                    <img src="./assets/Chamados02.png" alt="Sistema de Chamados - Fluxo de telefonia e onboarding" decoding="async" loading="lazy" />
+                                </div>
+                                <div class="carousel-slide" data-index="2">
+                                    <img src="./assets/Chamados03.png" alt="Sistema de Chamados - Integração Streamlit com ticket" decoding="async" loading="lazy" />
+                                </div>
+                            </div>
+                            <button class="carousel-btn carousel-prev" onclick="changeImage(this, -1)">
+                                <span class="material-icons-round">chevron_left</span>
+                            </button>
+                            <button class="carousel-btn carousel-next" onclick="changeImage(this, 1)">
+                                <span class="material-icons-round">chevron_right</span>
+                            </button>
+                            <div class="carousel-indicators">
+                                <span class="indicator active" onclick="goToImage(this, 0)"></span>
+                                <span class="indicator" onclick="goToImage(this, 1)"></span>
+                                <span class="indicator" onclick="goToImage(this, 2)"></span>
+                            </div>
+                        </div>
+                        <div class="project-card-footer">
+                            <h3 class="project-card-footer__title"><span data-i18n="projects.project5Title">Sistema de</span> <span class="text-primary" data-i18n="projects.project5Title">Chamados</span></h3>
+                            <button type="button" class="project-open-modal-btn">
+                                <span data-i18n="projects.viewDetails">Ver detalhes</span>
+                                <span class="material-icons-round project-open-modal-btn__icon">sticky_note_2</span>
+                            </button>
+                        </div>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-summary" data-i18n="projects.project5Summary">Plataforma interna de tickets de TI com dashboard, SLA, portal do colaborador e integração com telefonia.</p>
+                            <div class="project-description-wrapper">
+                                <p class="project-description" data-i18n="projects.project5Description">Sistema de gestão de chamados desenvolvido do zero para operação interna (~250 usuários), substituindo controle manual em planilhas. Backend em FastAPI com SQLAlchemy e Alembic; frontend React + Material UI com dashboard, fila N1/N2 e portal público para abertura de tickets. Integrações com Snipe-IT (inventário) e módulo de Gerenciamento de Telefones (ramais no contexto do atendimento), PostgreSQL unificado, deploy com Nginx + systemd.</p>
+                                <button type="button" class="read-more-btn" onclick="toggleDescription(this)" aria-expanded="false">
+                                    <span class="read-more-text" data-i18n="projects.readMore">Ver mais</span>
+                                    <span class="read-less-text" style="display: none;" data-i18n="projects.readLess">Ver menos</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">FastAPI</span>
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Material UI</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">SQLAlchemy</span>
+                                <span class="tech-tag">Snipe-IT</span>
+                                <span class="tech-tag">Nginx</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projeto 6: Processador de XML -->
+                    <div id="project-panel-5" class="project-card" role="tabpanel" aria-labelledby="project-tab-5" data-project="5">
                         <div class="project-card-media">
                         <div class="project-image-container">
                             <div class="project-image-carousel" data-images="2">
@@ -2098,7 +2161,7 @@
                             </div>
                         </div>
                         <div class="project-card-footer">
-                            <h3 class="project-card-footer__title"><span data-i18n="projects.project5Title">Processador de</span> <span class="text-primary" data-i18n="projects.project5Title">XML</span></h3>
+                            <h3 class="project-card-footer__title"><span data-i18n="projects.project6Title">Processador de</span> <span class="text-primary" data-i18n="projects.project6Title">XML</span></h3>
                             <button type="button" class="project-open-modal-btn">
                                 <span data-i18n="projects.viewDetails">Ver detalhes</span>
                                 <span class="material-icons-round project-open-modal-btn__icon">sticky_note_2</span>
@@ -2106,9 +2169,9 @@
                         </div>
                         </div>
                         <div class="project-content">
-                            <p class="project-summary" data-i18n="projects.project5Summary">Web app que cruza planilha Excel com XMLs de NF em ZIP e gera pacote filtrado automaticamente.</p>
+                            <p class="project-summary" data-i18n="projects.project6Summary">Web app que cruza planilha Excel com XMLs de NF em ZIP e gera pacote filtrado automaticamente.</p>
                             <div class="project-description-wrapper">
-                                <p class="project-description" data-i18n="projects.project5Description">Sistema web para processamento e seleção de arquivos XML baseado em planilhas Excel. Desenvolvido com Flask e Python, permite fazer upload de uma planilha Excel (.xlsx) com números de NF na coluna B e um arquivo ZIP contendo XMLs de notas fiscais. 
+                                <p class="project-description" data-i18n="projects.project6Description">Sistema web para processamento e seleção de arquivos XML baseado em planilhas Excel. Desenvolvido com Flask e Python, permite fazer upload de uma planilha Excel (.xlsx) com números de NF na coluna B e um arquivo ZIP contendo XMLs de notas fiscais. 
                                 O sistema verifica automaticamente se os números da planilha estão contidos nos XMLs, seleciona os arquivos correspondentes e gera um novo arquivo ZIP compactado com apenas os XMLs selecionados. 
                                 Interface moderna e intuitiva com drag-and-drop, feedback visual durante o processamento e download automático do resultado.</p>
                                 <button type="button" class="read-more-btn" onclick="toggleDescription(this)" aria-expanded="false">
@@ -2136,7 +2199,7 @@
                     </div>
 
                     <!-- ARCHIVED: Assistente Financeiro -->
-                    <div id="project-panel-5" class="project-card project-archived" role="tabpanel" aria-labelledby="project-tab-5" data-project="5" hidden>
+                    <div id="project-panel-6" class="project-card project-archived" role="tabpanel" aria-labelledby="project-tab-6" data-project="6" hidden>
                         <div class="project-card-media">
                         <div class="project-image-container">
                             <div class="project-image-carousel" data-images="1">
@@ -2146,7 +2209,7 @@
                             </div>
                         </div>
                         <div class="project-card-footer">
-                            <h3 class="project-card-footer__title"><span data-i18n="projects.project6Title">Assistente</span> <span class="text-primary" data-i18n="projects.project6Title">Financeiro</span></h3>
+                            <h3 class="project-card-footer__title"><span data-i18n="projects.project7Title">Assistente</span> <span class="text-primary" data-i18n="projects.project7Title">Financeiro</span></h3>
                             <button type="button" class="project-open-modal-btn">
                                 <span data-i18n="projects.viewDetails">Ver detalhes</span>
                                 <span class="material-icons-round project-open-modal-btn__icon">sticky_note_2</span>
@@ -2154,9 +2217,9 @@
                         </div>
                         </div>
                         <div class="project-content">
-                            <p class="project-summary" data-i18n="projects.project6Summary">Automação financeira pessoal com LLMs — categorização de despesas, relatórios e insights gerados por IA.</p>
+                            <p class="project-summary" data-i18n="projects.project7Summary">Automação financeira pessoal com LLMs — categorização de despesas, relatórios e insights gerados por IA.</p>
                             <div class="project-description-wrapper">
-                                <p class="project-description" data-i18n="projects.project6Description">Projeto pessoal em Python integrado a LLMs (OpenAI/Claude/Gemini) para automatizar a gestão financeira do dia a dia. O assistente processa lançamentos, categoriza despesas automaticamente, gera relatórios estruturados e responde perguntas em linguagem natural sobre o histórico — reduzindo o esforço manual de planilha e dando visibilidade clara sobre hábitos de gasto.</p>
+                                <p class="project-description" data-i18n="projects.project7Description">Projeto pessoal em Python integrado a LLMs (OpenAI/Claude/Gemini) para automatizar a gestão financeira do dia a dia. O assistente processa lançamentos, categoriza despesas automaticamente, gera relatórios estruturados e responde perguntas em linguagem natural sobre o histórico — reduzindo o esforço manual de planilha e dando visibilidade clara sobre hábitos de gasto.</p>
                                 <button type="button" class="read-more-btn" onclick="toggleDescription(this)" aria-expanded="false">
                                     <span class="read-more-text" data-i18n="projects.readMore">Ver mais</span>
                                     <span class="read-less-text" style="display: none;" data-i18n="projects.readLess">Ver menos</span>
@@ -2181,7 +2244,7 @@
                     </div>
 
                     <!-- ARCHIVED: Carteira de Dividendos -->
-                    <div id="project-panel-6" class="project-card project-archived" role="tabpanel" aria-labelledby="project-tab-6" data-project="6" hidden>
+                    <div id="project-panel-7" class="project-card project-archived" role="tabpanel" aria-labelledby="project-tab-7" data-project="7" hidden>
                         <div class="project-card-media">
                         <div class="project-image-container">
                             <div class="project-image-carousel" data-images="1">
@@ -2191,7 +2254,7 @@
                             </div>
                         </div>
                         <div class="project-card-footer">
-                            <h3 class="project-card-footer__title"><span data-i18n="projects.project7Title">Carteira</span> <span class="text-primary" data-i18n="projects.project7Title">Dividendos</span></h3>
+                            <h3 class="project-card-footer__title"><span data-i18n="projects.project8Title">Carteira</span> <span class="text-primary" data-i18n="projects.project8Title">Dividendos</span></h3>
                             <button type="button" class="project-open-modal-btn">
                                 <span data-i18n="projects.viewDetails">Ver detalhes</span>
                                 <span class="material-icons-round project-open-modal-btn__icon">sticky_note_2</span>
@@ -2199,9 +2262,9 @@
                         </div>
                         </div>
                         <div class="project-content">
-                            <p class="project-summary" data-i18n="projects.project7Summary">Análise de carteira focada em dividendos potencializada por LLMs — recomendações e insights automatizados.</p>
+                            <p class="project-summary" data-i18n="projects.project8Summary">Análise de carteira focada em dividendos potencializada por LLMs — recomendações e insights automatizados.</p>
                             <div class="project-description-wrapper">
-                                <p class="project-description" data-i18n="projects.project7Description">Aplicação em Python para acompanhamento e análise de carteira de investimentos focada em dividendos. Combina dados de proventos e posições com LLMs (OpenAI/Claude/Gemini) para gerar recomendações personalizadas, identificar padrões na carteira e reduzir o esforço manual de revisão — pensada como ferramenta de apoio à decisão (não conselho financeiro).</p>
+                                <p class="project-description" data-i18n="projects.project8Description">Aplicação em Python para acompanhamento e análise de carteira de investimentos focada em dividendos. Combina dados de proventos e posições com LLMs (OpenAI/Claude/Gemini) para gerar recomendações personalizadas, identificar padrões na carteira e reduzir o esforço manual de revisão — pensada como ferramenta de apoio à decisão (não conselho financeiro).</p>
                                 <button type="button" class="read-more-btn" onclick="toggleDescription(this)" aria-expanded="false">
                                     <span class="read-more-text" data-i18n="projects.readMore">Ver mais</span>
                                     <span class="read-less-text" style="display: none;" data-i18n="projects.readLess">Ver menos</span>
@@ -2383,7 +2446,7 @@
             }
         }
     </style>
-    <script src="script.js?v=20260530-archive-projects"></script>
+    <script src="script.js?v=20260530-chamados"></script>
     <!-- Skills level bars + tab animation handled in script.js (skills-tab-btn handler) -->
 
     <script>

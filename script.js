@@ -190,7 +190,7 @@ const translations = {
             seekingDetail3: "n8n, APIs, WhatsApp · -80% tempo atendimento",
             contactButton: "Entre em contato",
             stat1: "2+ Anos Exp.",
-            stat2: "5+ Projetos",
+            stat2: "6+ Projetos",
             stat3: "10+ Tecnologias",
             techStackLabel: "Stack Principal",
             readMore: "Ver mais",
@@ -311,18 +311,22 @@ const translations = {
             project4Title: "Prosper Roteiros",
             project4Summary: "Ferramenta interna para montar rotas de visitas com mapas, métricas e exportação CSV.",
             project4Description: "Sistema inteligente de geração de roteiros otimizados para vendedores. Desenvolvido com React e Flask/Python, utiliza algoritmo do vizinho mais próximo para otimização geográfica. Inclui agrupamento de clientes por proximidade usando coordenadas GPS e CEPs, geração automática de rotas com 6-8 visitas por rota, visualização interativa de rotas em mapas (Leaflet), dashboard com métricas detalhadas (total de visitas, dias de trabalho, distância média), gerenciamento de arquivos Excel/CSV, filtros por vendedor e data, e exportação de roteiros em CSV. Interface moderna e responsiva com design intuitivo.",
-            // Projeto 5: Processador de XML
-            project5Title: "Processador de XML",
-            project5Summary: "Web app que cruza planilha Excel com XMLs de NF em ZIP e gera pacote filtrado automaticamente.",
-            project5Description: "Sistema web para processamento e seleção de arquivos XML baseado em planilhas Excel. Desenvolvido com Flask e Python, permite fazer upload de uma planilha Excel (.xlsx) com números de NF na coluna B e um arquivo ZIP contendo XMLs de notas fiscais. O sistema verifica automaticamente se os números da planilha estão contidos nos XMLs, seleciona os arquivos correspondentes e gera um novo arquivo ZIP compactado com apenas os XMLs selecionados. Interface moderna e intuitiva com drag-and-drop, feedback visual durante o processamento e download automático do resultado.",
-            // Projeto 6: Assistente Financeiro com IA
-            project6Title: "Assistente Financeiro",
-            project6Summary: "Automação financeira pessoal com LLMs — categorização de despesas, relatórios e insights gerados por IA.",
-            project6Description: "Projeto pessoal em Python integrado a LLMs (OpenAI/Claude/Gemini) para automatizar a gestão financeira do dia a dia. O assistente processa lançamentos, categoriza despesas automaticamente, gera relatórios estruturados e responde perguntas em linguagem natural sobre o histórico — reduzindo o esforço manual de planilha e dando visibilidade clara sobre hábitos de gasto.",
-            // Projeto 7: Carteira de Dividendos com IA
-            project7Title: "Carteira Dividendos",
-            project7Summary: "Análise de carteira focada em dividendos potencializada por LLMs — recomendações e insights automatizados.",
-            project7Description: "Aplicação em Python para acompanhamento e análise de carteira de investimentos focada em dividendos. Combina dados de proventos e posições com LLMs (OpenAI/Claude/Gemini) para gerar recomendações personalizadas, identificar padrões na carteira e reduzir o esforço manual de revisão — pensada como ferramenta de apoio à decisão (não conselho financeiro)."
+            // Projeto 5: Sistema de Chamados TI
+            project5Title: "Sistema de Chamados",
+            project5Summary: "Plataforma interna de tickets de TI com dashboard, SLA, portal do colaborador e integração com telefonia.",
+            project5Description: "Sistema de gestão de chamados desenvolvido do zero para operação interna (~250 usuários), substituindo controle manual em planilhas. Backend em FastAPI com SQLAlchemy e Alembic; frontend React + Material UI com dashboard, fila N1/N2 e portal público para abertura de tickets. Integrações com Snipe-IT (inventário) e módulo de Gerenciamento de Telefones (ramais no contexto do atendimento), PostgreSQL unificado, deploy com Nginx + systemd.",
+            // Projeto 6: Processador de XML
+            project6Title: "Processador de XML",
+            project6Summary: "Web app que cruza planilha Excel com XMLs de NF em ZIP e gera pacote filtrado automaticamente.",
+            project6Description: "Sistema web para processamento e seleção de arquivos XML baseado em planilhas Excel. Desenvolvido com Flask e Python, permite fazer upload de uma planilha Excel (.xlsx) com números de NF na coluna B e um arquivo ZIP contendo XMLs de notas fiscais. O sistema verifica automaticamente se os números da planilha estão contidos nos XMLs, seleciona os arquivos correspondentes e gera um novo arquivo ZIP compactado com apenas os XMLs selecionados. Interface moderna e intuitiva com drag-and-drop, feedback visual durante o processamento e download automático do resultado.",
+            // Projeto 7: Assistente Financeiro com IA
+            project7Title: "Assistente Financeiro",
+            project7Summary: "Automação financeira pessoal com LLMs — categorização de despesas, relatórios e insights gerados por IA.",
+            project7Description: "Projeto pessoal em Python integrado a LLMs (OpenAI/Claude/Gemini) para automatizar a gestão financeira do dia a dia. O assistente processa lançamentos, categoriza despesas automaticamente, gera relatórios estruturados e responde perguntas em linguagem natural sobre o histórico — reduzindo o esforço manual de planilha e dando visibilidade clara sobre hábitos de gasto.",
+            // Projeto 8: Carteira de Dividendos com IA
+            project8Title: "Carteira Dividendos",
+            project8Summary: "Análise de carteira focada em dividendos potencializada por LLMs — recomendações e insights automatizados.",
+            project8Description: "Aplicação em Python para acompanhamento e análise de carteira de investimentos focada em dividendos. Combina dados de proventos e posições com LLMs (OpenAI/Claude/Gemini) para gerar recomendações personalizadas, identificar padrões na carteira e reduzir o esforço manual de revisão — pensada como ferramenta de apoio à decisão (não conselho financeiro)."
         }
     },
     en: {
@@ -400,7 +404,7 @@ const translations = {
             seekingDetail3: "n8n, APIs, WhatsApp · -80% support time",
             contactButton: "Get in Touch",
             stat1: "2+ Years Exp.",
-            stat2: "5+ Projects",
+            stat2: "6+ Projects",
             stat3: "10+ Technologies",
             techStackLabel: "Main Stack",
             readMore: "Read more",
@@ -521,18 +525,22 @@ const translations = {
             project4Title: "Prosper Roteiros",
             project4Summary: "Internal tool to build sales visit routes with maps, metrics and CSV export.",
             project4Description: "Intelligent system for generating optimized routes for salespeople. Developed with React and Flask/Python, uses nearest neighbor algorithm for geographic optimization. Includes customer grouping by proximity using GPS coordinates and ZIP codes, automatic route generation with 6-8 visits per route, interactive route visualization on maps (Leaflet), dashboard with detailed metrics (total visits, work days, average distance), Excel/CSV file management, filters by seller and date, and CSV route export. Modern and responsive interface with intuitive design.",
-            // Projeto 5: Processador de XML
-            project5Title: "XML Processor",
-            project5Summary: "Web app that matches an Excel sheet against invoice XMLs in a ZIP and outputs a filtered package.",
-            project5Description: "Web system for processing and selecting XML files based on Excel spreadsheets. Developed with Flask and Python, allows uploading an Excel spreadsheet (.xlsx) with NF numbers in column B and a ZIP file containing invoice XMLs. The system automatically checks if the spreadsheet numbers are contained in the XMLs, selects the corresponding files and generates a new compressed ZIP file with only the selected XMLs. Modern and intuitive interface with drag-and-drop, visual feedback during processing and automatic result download.",
-            // Project 6: AI Financial Assistant
-            project6Title: "Financial Assistant",
-            project6Summary: "Personal financial automation powered by LLMs — expense categorization, reports and AI-generated insights.",
-            project6Description: "Personal Python project integrated with LLMs (OpenAI/Claude/Gemini) to automate day-to-day financial management. The assistant processes transactions, automatically categorizes expenses, generates structured reports and answers natural-language questions about history — cutting manual spreadsheet work and giving clear visibility into spending habits.",
-            // Project 7: AI Dividend Portfolio
-            project7Title: "Dividend Portfolio",
-            project7Summary: "Dividend-focused portfolio analysis powered by LLMs — automated recommendations and insights.",
-            project7Description: "Python application for tracking and analyzing dividend-focused investment portfolios. Combines income and position data with LLMs (OpenAI/Claude/Gemini) to generate personalized recommendations, surface patterns and reduce the manual effort of portfolio review — designed as a decision-support tool (not financial advice)."
+            // Project 5: IT Ticketing System
+            project5Title: "IT Ticketing System",
+            project5Summary: "Internal IT ticket platform with dashboard, SLA tracking, employee portal and telephony integration.",
+            project5Description: "Ticket management system built from scratch for internal operations (~250 users), replacing manual spreadsheet tracking. FastAPI backend with SQLAlchemy and Alembic; React + Material UI frontend with dashboard, N1/N2 queue and public portal for ticket submission. Integrations with Snipe-IT (inventory) and Corporate Phone Management module (extensions in support context), unified PostgreSQL, deploy with Nginx + systemd.",
+            // Project 6: XML Processor
+            project6Title: "XML Processor",
+            project6Summary: "Web app that matches an Excel sheet against invoice XMLs in a ZIP and outputs a filtered package.",
+            project6Description: "Web system for processing and selecting XML files based on Excel spreadsheets. Developed with Flask and Python, allows uploading an Excel spreadsheet (.xlsx) with NF numbers in column B and a ZIP file containing invoice XMLs. The system automatically checks if the spreadsheet numbers are contained in the XMLs, selects the corresponding files and generates a new compressed ZIP file with only the selected XMLs. Modern and intuitive interface with drag-and-drop, visual feedback during processing and automatic result download.",
+            // Project 7: AI Financial Assistant
+            project7Title: "Financial Assistant",
+            project7Summary: "Personal financial automation powered by LLMs — expense categorization, reports and AI-generated insights.",
+            project7Description: "Personal Python project integrated with LLMs (OpenAI/Claude/Gemini) to automate day-to-day financial management. The assistant processes transactions, automatically categorizes expenses, generates structured reports and answers natural-language questions about history — cutting manual spreadsheet work and giving clear visibility into spending habits.",
+            // Project 8: AI Dividend Portfolio
+            project8Title: "Dividend Portfolio",
+            project8Summary: "Dividend-focused portfolio analysis powered by LLMs — automated recommendations and insights.",
+            project8Description: "Python application for tracking and analyzing dividend-focused investment portfolios. Combines income and position data with LLMs (OpenAI/Claude/Gemini) to generate personalized recommendations, surface patterns and reduce the manual effort of portfolio review — designed as a decision-support tool (not financial advice)."
         }
     }
 };
@@ -737,19 +745,19 @@ function updatePageLanguage(lang) {
     });
     document.querySelectorAll('[data-i18n="projects.project4Description"]').forEach(el => el.textContent = t.projects.project4Description);
     document.querySelectorAll('[data-i18n="projects.project5Title"]').forEach(el => {
+        const parts = t.projects.project5Title.split(' ');
         if (el.classList && el.classList.contains('text-primary')) {
-            el.textContent = lang === 'pt' ? 'XML' : 'Processor';
+            el.textContent = parts[parts.length - 1] || parts[0];
         } else {
-            el.textContent = lang === 'pt' ? 'Processador de' : 'XML';
+            el.textContent = parts.length > 1 ? parts.slice(0, -1).join(' ') : parts[0];
         }
     });
     document.querySelectorAll('[data-i18n="projects.project5Description"]').forEach(el => el.textContent = t.projects.project5Description);
     document.querySelectorAll('[data-i18n="projects.project6Title"]').forEach(el => {
-        const parts = t.projects.project6Title.split(' ');
         if (el.classList && el.classList.contains('text-primary')) {
-            el.textContent = parts[1] || parts[0];
+            el.textContent = lang === 'pt' ? 'XML' : 'Processor';
         } else {
-            el.textContent = parts[0];
+            el.textContent = lang === 'pt' ? 'Processador de' : 'XML';
         }
     });
     document.querySelectorAll('[data-i18n="projects.project6Description"]').forEach(el => el.textContent = t.projects.project6Description);
@@ -762,6 +770,15 @@ function updatePageLanguage(lang) {
         }
     });
     document.querySelectorAll('[data-i18n="projects.project7Description"]').forEach(el => el.textContent = t.projects.project7Description);
+    document.querySelectorAll('[data-i18n="projects.project8Title"]').forEach(el => {
+        const parts = t.projects.project8Title.split(' ');
+        if (el.classList && el.classList.contains('text-primary')) {
+            el.textContent = parts[1] || parts[0];
+        } else {
+            el.textContent = parts[0];
+        }
+    });
+    document.querySelectorAll('[data-i18n="projects.project8Description"]').forEach(el => el.textContent = t.projects.project8Description);
     document.querySelectorAll('[data-i18n="projects.project1Summary"]').forEach(el => el.textContent = t.projects.project1Summary);
     document.querySelectorAll('[data-i18n="projects.project2Summary"]').forEach(el => el.textContent = t.projects.project2Summary);
     document.querySelectorAll('[data-i18n="projects.project3Summary"]').forEach(el => el.textContent = t.projects.project3Summary);
@@ -769,6 +786,7 @@ function updatePageLanguage(lang) {
     document.querySelectorAll('[data-i18n="projects.project5Summary"]').forEach(el => el.textContent = t.projects.project5Summary);
     document.querySelectorAll('[data-i18n="projects.project6Summary"]').forEach(el => el.textContent = t.projects.project6Summary);
     document.querySelectorAll('[data-i18n="projects.project7Summary"]').forEach(el => el.textContent = t.projects.project7Summary);
+    document.querySelectorAll('[data-i18n="projects.project8Summary"]').forEach(el => el.textContent = t.projects.project8Summary);
     const projectsRail = document.querySelector('.projects-rail');
     if (projectsRail && t.projects.railLabel) {
         projectsRail.setAttribute('aria-label', t.projects.railLabel);
@@ -810,7 +828,7 @@ function updatePageLanguage(lang) {
         'projects.project1Title', 'projects.project2Title',
         'projects.project3Title', 'projects.project4Title',
         'projects.project5Title', 'projects.project6Title',
-        'projects.project7Title'
+        'projects.project7Title', 'projects.project8Title'
     ]);
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
