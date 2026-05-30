@@ -3042,6 +3042,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('DOMContentLoaded', () => {
         bindDismiss();
+        initProjectsRailScrollHint();
         const section = document.getElementById('projects');
         if (!section) return;
 
@@ -3064,6 +3065,38 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 })();
+
+// ============================================
+// SETA NO RAIL DE PROJETOS (mobile — indica scroll horizontal)
+// ============================================
+
+function initProjectsRailScrollHint() {
+    const rail = document.querySelector('#projects .projects-rail');
+    const hint = document.querySelector('#projects .projects-rail-scroll-hint');
+    if (!rail || !hint) return;
+
+    function updateRailScrollHint() {
+        if (window.innerWidth > 767) {
+            hint.classList.add('is-hidden');
+            return;
+        }
+        const canScroll = rail.scrollWidth > rail.clientWidth + 4;
+        const atStart = rail.scrollLeft < 16;
+        hint.classList.toggle('is-hidden', !canScroll || !atStart);
+    }
+
+    rail.addEventListener('scroll', updateRailScrollHint, { passive: true });
+    window.addEventListener('resize', updateRailScrollHint);
+    rail.querySelectorAll('img').forEach((img) => {
+        if (!img.complete) img.addEventListener('load', updateRailScrollHint, { once: true });
+    });
+    const section = document.getElementById('projects');
+    if (section) {
+        const obs = new MutationObserver(updateRailScrollHint);
+        obs.observe(section, { attributes: true, attributeFilter: ['class'] });
+    }
+    updateRailScrollHint();
+}
 
 // ============================================
 // ARRASTO DO CARD COMPLETO PARA TROCAR PROJETOS

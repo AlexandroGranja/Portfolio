@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260530-about-scroll2">
+    <link rel="stylesheet" href="styles.css?v=20260530-rail-hint">
     <!-- Projetos desktop: grid colado ao inner; segunda coluna 1fr ocupa espaço ao lado da sidebar (sem faixa mx-auto) -->
     <style id="projects-panel-layout-fix">
         @media (min-width: 768px) {
@@ -1785,6 +1785,7 @@
                 <p class="projects-section-subtitle text-slate-400 text-xs sm:text-sm line-clamp-1 sm:line-clamp-none" data-i18n="projects.subtitle">Alguns dos meus trabalhos em desenvolvimento fullstack e automações</p>
             </header>
             <div class="projects-layout w-full flex-1 min-h-0 flex flex-col">
+                <div class="projects-rail-wrap">
                 <nav class="projects-rail" role="tablist" aria-label="Lista de projetos">
                     <button type="button" id="project-tab-0" class="projects-rail-item is-active" role="tab" aria-selected="true" aria-controls="project-panel-0" data-project-index="0">
                         <span class="projects-rail-thumb-wrap">
@@ -1835,6 +1836,10 @@
                         <span class="projects-rail-label" data-rail-for-project="7">Carteira Dividendos</span>
                     </button>
                 </nav>
+                <div class="projects-rail-scroll-hint" aria-hidden="true">
+                    <span class="material-icons-round">chevron_right</span>
+                </div>
+                </div>
             <div class="projects-carousel-wrapper projects-main">
                 <div class="projects-carousel">
                     <!-- Projeto 1: Fortão Prêmios -->
@@ -2446,7 +2451,7 @@
             }
         }
     </style>
-    <script src="script.js?v=20260530-chamados"></script>
+    <script src="script.js?v=20260530-rail-hint"></script>
     <!-- Skills level bars + tab animation handled in script.js (skills-tab-btn handler) -->
 
     <script>
