@@ -364,8 +364,8 @@ h1, h2, h3, h4, h5, h6,
     60% { transform: translateX(-50%) translateY(-5px); }
 }
 
-/* Section Styles */
-section {
+/* Section Styles — legado scroll-page; não aplicar às abas .section-content (sidebar SPA) */
+section:not(.section-content) {
     padding: 5rem 0;
     position: relative;
     opacity: 0;
@@ -373,12 +373,26 @@ section {
     animation: fadeInUp 0.8s ease-out forwards;
 }
 
-section:nth-child(even) {
+section:not(.section-content):nth-child(even) {
     animation-delay: 0.2s;
 }
 
-section:nth-child(odd) {
+section:not(.section-content):nth-child(odd) {
     animation-delay: 0.1s;
+}
+
+/* Abas SPA: sem padding/anim legado (evita Sobre deslocado em algumas resoluções) */
+.section-content {
+    padding: 0 !important;
+    animation: none !important;
+}
+
+.section-content.scroll-reveal,
+.section-content.scroll-reveal-left,
+.section-content.scroll-reveal-right {
+    opacity: inherit;
+    transform: none;
+    transition: none;
 }
 
 @keyframes fadeInUp {
@@ -2664,15 +2678,9 @@ body.project-modal-open {
         gap: 2rem;
     }
     
-    /* About sem scroll — conteúdo interno scrollável onde necessário */
+    /* About: layout mobile/desktop — ver bloco ABOUT no fim do arquivo */
     #about.section-content {
         overflow: hidden !important;
-    }
-    @media (max-width: 767px) {
-        #about.section-content.active {
-            overflow-y: auto !important;
-            overflow-x: hidden !important;
-        }
     }
     
     /* Sem scroll agency e contact */
@@ -2759,21 +2767,13 @@ body.project-modal-open {
             font-size: 0.68rem !important;
         }
 
-        /* About mobile: permite rolagem real e evita compressão dos cards */
-        #about .about-inner {
-            overflow-y: auto !important;
-            overflow-x: hidden !important;
-            -webkit-overflow-scrolling: touch;
-        }
-
+        /* About mobile: cards em coluna — scroll fica no .about-inner (ver fim do CSS) */
         #about .about-exp-timeline {
-            overflow-y: auto !important;
-            -webkit-overflow-scrolling: touch;
+            overflow: visible !important;
         }
 
         #about .about-edu-body {
-            overflow-y: auto !important;
-            -webkit-overflow-scrolling: touch;
+            overflow: visible !important;
         }
 
         #about .flex.flex-col.md\:flex-row {
@@ -4957,15 +4957,11 @@ html {
     }
 }
 
-/* Formação: área central rolável em altura fixa (desktop 3 colunas) */
 #about .about-edu-body {
     flex: 1 1 0;
     min-height: 0;
     overflow-x: hidden;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(245,158,11,0.35) transparent;
+    overflow-y: hidden;
 }
 #about .about-edu-body::-webkit-scrollbar {
     width: 5px;
@@ -6151,3 +6147,155 @@ html {
     }
 }
 
+/* ==========================================
+   ABOUT — scroll em telas pequenas / fit sem scroll em telas grandes
+   ========================================== */
+#about.section-content {
+    height: 100vh !important;
+    height: 100dvh !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+}
+
+#about .about-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 12px clamp(16px, 3vw, 48px);
+}
+
+#about .about-columns {
+    flex: 1 1 0;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* Telas pequenas: scroll no .about-inner (main/body com overflow:hidden) */
+@media (max-width: 767px) {
+    #about.section-content,
+    #about.section-content.active {
+        overflow: hidden !important;
+    }
+
+    #about .about-inner {
+        position: absolute !important;
+        top: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        height: 100% !important;
+        max-height: 100dvh !important;
+        min-height: 0 !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-y: contain;
+        touch-action: pan-y;
+        padding: 0.75rem 1rem 1.25rem !important;
+    }
+
+    #about .about-columns,
+    #about .about-columns.flex {
+        flex: 0 0 auto !important;
+        flex-grow: 0 !important;
+        min-height: auto !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    #about .about-columns > .about-glass-card,
+    #about .about-columns > .about-col-side,
+    #about .about-col-side > * {
+        flex: 0 0 auto !important;
+        min-height: auto !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+    }
+
+    #about .about-exp-timeline,
+    #about .about-edu-body {
+        overflow: visible !important;
+        flex: 0 0 auto !important;
+        min-height: auto !important;
+    }
+}
+
+/* Telas grandes: sem scroll — conteúdo encaixa na viewport */
+@media (min-width: 768px) {
+    #about.section-content,
+    #about.section-content.active {
+        overflow: hidden !important;
+    }
+
+    #about .about-inner {
+        overflow: hidden !important;
+    }
+
+    #about .about-columns {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        flex: 1 1 0;
+        min-height: 0;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    #about .about-columns > .about-col-exp,
+    #about .about-columns > .about-col-edu,
+    #about .about-columns > .about-col-side {
+        flex: 1 1 0 !important;
+        min-width: 0;
+        min-height: 0;
+        height: 100%;
+        max-height: 100%;
+        overflow: hidden;
+    }
+
+    #about .about-exp-timeline,
+    #about .about-edu-body {
+        overflow: hidden !important;
+        flex: 1 1 0;
+        min-height: 0;
+    }
+
+    /* Laptop / viewport baixa: compactar sem ativar scroll */
+    @media (max-height: 860px) {
+        #about .about-inner {
+            padding-top: 8px !important;
+            padding-bottom: 8px !important;
+        }
+
+        #about header {
+            margin-bottom: 0.25rem !important;
+        }
+
+        #about header h1 {
+            font-size: 1.35rem !important;
+            line-height: 1.2 !important;
+        }
+
+        #about .about-glass-card,
+        #about .about-opp-card {
+            padding: 0.55rem 0.65rem !important;
+        }
+
+        #about .about-columns {
+            gap: 0.4rem !important;
+        }
+    }
+}
+
+/* Projetos arquivados — ocultos do carrossel, mantidos no HTML */
+.projects-rail-item.project-archived,
+#projects .project-card.project-archived {
+    display: none !important;
+}

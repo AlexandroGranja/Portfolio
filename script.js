@@ -24,6 +24,10 @@ window.showSection = function(sectionId) {
         setTimeout(() => {
             targetSection.classList.add('active');
             const cleanId = sectionId.replace('#', '');
+            if (cleanId === 'about') {
+                const aboutInner = targetSection.querySelector('.about-inner');
+                if (aboutInner) aboutInner.scrollTop = 0;
+            }
             if (cleanId === 'projects') {
                 setTimeout(() => {
                     if (typeof window.refreshProjectsPanel === 'function') {
@@ -84,10 +88,10 @@ window.refreshProjectsPanel = function() {
         return;
     }
     isChangingProject = false;
-    const total = getTotalProjects();
+    const visible = getVisibleProjectIndices();
     let idx = currentProjectIndex;
-    if (idx < 0 || idx >= total) {
-        idx = 0;
+    if (!visible.includes(idx)) {
+        idx = visible[0] ?? 0;
     }
     currentProjectIndex = -1;
     window._suppressSwipeHintDismiss = true;
@@ -124,12 +128,12 @@ const translations = {
         // Hero Section
         hero: {
             greeting: "Olá, eu sou",
-            subtitle: "Desenvolvedor Web · Suporte Técnico N1/N2",
+            subtitle: "Desenvolvedor Fullstack · Suporte Técnico N1/N2",
             devLabel: "Desenvolvimento:",
             devText: "Aplicações fullstack em produção — React/Next.js no frontend, Python/Flask no backend, PostgreSQL e integrações via API. No Fortão Prêmios trabalhei performance (cache Redis), rotas de pagamento e fluxo operacional completo.",
             opsLabel: "Operação:",
             opsText: "Background em suporte TI: gestão de acessos (AD/M365), monitoramento com Zabbix e resolução de incidentes N1/N2. Automatizo rotinas operacionais — reduzi até 80% do tempo em fluxos de atendimento interno.",
-            badgeDev: "Web em produção",
+            badgeDev: "Fullstack em produção",
             badgeSupport: "Suporte N1/N2",
             downloadCV: "Baixar CV",
             downloadCVDev: "Dev",
@@ -139,7 +143,7 @@ const translations = {
         // About Section
         about: {
             title: "Alexandro Granja",
-            subtitle: "Desenvolvedor Fullstack Júnior · Suporte Técnico · Formação técnica",
+            subtitle: "Desenvolvedor Fullstack · Especialista em Automações com IA",
             experience: "Experiência Profissional",
             education: "Formação",
             current: "Atual",
@@ -163,6 +167,10 @@ const translations = {
             freeCourse2Level: "DIO · Certificado",
             freeCourse3: "Algoritmos e Estruturas de Dados",
             freeCourse3Level: "Curso em Vídeo · Certificado",
+            freeCourse4: "Introdução a Modelos de Linguagem (LLM)",
+            freeCourse4Level: "Google Cloud Skills Boost · Concluído",
+            freeCourse5: "n8n Level 1 — Automação",
+            freeCourse5Level: "n8n Academy · Certificado",
             onlineCerts: "Certificados Online",
             achievements: "Principais Conquistas",
             achievement1: "−80% no atendimento",
@@ -174,7 +182,7 @@ const translations = {
             cvTitle: "Currículo",
             seeking: "Buscando Oportunidades",
             seekingDesc: "Aberto a vagas nas áreas de:",
-            seeking1: "Dev Júnior / Estágio",
+            seeking1: "Desenvolvimento Fullstack",
             seeking2: "Suporte Técnico",
             seeking3: "Automações (diferencial)",
             seekingDetail1: "React, Python, PostgreSQL · projetos em produção",
@@ -197,7 +205,7 @@ const translations = {
         agency: {
             roleLabel: "Freelancer & Dev",
             tagline: "Pelo AIverse entrego sites, sistemas e automações com IA — projetos reais, em produção.",
-            service1: "Desenvolvimento Web",
+            service1: "Desenvolvimento Fullstack",
             service2: "Automações",
             service3: "Agentes de IA",
             projectsLabel: "Projetos Entregues",
@@ -276,7 +284,7 @@ const translations = {
         // Projects Section
         projects: {
             title: "Meus Projetos",
-            subtitle: "Alguns dos meus trabalhos em desenvolvimento web e automações",
+            subtitle: "Alguns dos meus trabalhos em desenvolvimento fullstack e automações",
             railLabel: "Lista de projetos",
             swipeHint: "Arraste para o lado para ver o próximo projeto",
             swipeBannerClose: "Fechar dica",
@@ -306,7 +314,15 @@ const translations = {
             // Projeto 5: Processador de XML
             project5Title: "Processador de XML",
             project5Summary: "Web app que cruza planilha Excel com XMLs de NF em ZIP e gera pacote filtrado automaticamente.",
-            project5Description: "Sistema web para processamento e seleção de arquivos XML baseado em planilhas Excel. Desenvolvido com Flask e Python, permite fazer upload de uma planilha Excel (.xlsx) com números de NF na coluna B e um arquivo ZIP contendo XMLs de notas fiscais. O sistema verifica automaticamente se os números da planilha estão contidos nos XMLs, seleciona os arquivos correspondentes e gera um novo arquivo ZIP compactado com apenas os XMLs selecionados. Interface moderna e intuitiva com drag-and-drop, feedback visual durante o processamento e download automático do resultado."
+            project5Description: "Sistema web para processamento e seleção de arquivos XML baseado em planilhas Excel. Desenvolvido com Flask e Python, permite fazer upload de uma planilha Excel (.xlsx) com números de NF na coluna B e um arquivo ZIP contendo XMLs de notas fiscais. O sistema verifica automaticamente se os números da planilha estão contidos nos XMLs, seleciona os arquivos correspondentes e gera um novo arquivo ZIP compactado com apenas os XMLs selecionados. Interface moderna e intuitiva com drag-and-drop, feedback visual durante o processamento e download automático do resultado.",
+            // Projeto 6: Assistente Financeiro com IA
+            project6Title: "Assistente Financeiro",
+            project6Summary: "Automação financeira pessoal com LLMs — categorização de despesas, relatórios e insights gerados por IA.",
+            project6Description: "Projeto pessoal em Python integrado a LLMs (OpenAI/Claude/Gemini) para automatizar a gestão financeira do dia a dia. O assistente processa lançamentos, categoriza despesas automaticamente, gera relatórios estruturados e responde perguntas em linguagem natural sobre o histórico — reduzindo o esforço manual de planilha e dando visibilidade clara sobre hábitos de gasto.",
+            // Projeto 7: Carteira de Dividendos com IA
+            project7Title: "Carteira Dividendos",
+            project7Summary: "Análise de carteira focada em dividendos potencializada por LLMs — recomendações e insights automatizados.",
+            project7Description: "Aplicação em Python para acompanhamento e análise de carteira de investimentos focada em dividendos. Combina dados de proventos e posições com LLMs (OpenAI/Claude/Gemini) para gerar recomendações personalizadas, identificar padrões na carteira e reduzir o esforço manual de revisão — pensada como ferramenta de apoio à decisão (não conselho financeiro)."
         }
     },
     en: {
@@ -322,12 +338,12 @@ const translations = {
         // Hero Section
         hero: {
             greeting: "Hello, I'm",
-            subtitle: "Web Developer · IT Support N1/N2",
+            subtitle: "Fullstack Developer · IT Support N1/N2",
             devLabel: "Development:",
             devText: "Production fullstack applications — React/Next.js on the frontend, Python/Flask on the backend, PostgreSQL and API integrations. On Fortão Prêmios I worked on performance (Redis cache), payment routes and the full operational flow.",
             opsLabel: "Operations:",
             opsText: "IT support background: access management (AD/M365), Zabbix monitoring and N1/N2 incident resolution. I automate operational routines — cut up to 80% of processing time on internal support flows.",
-            badgeDev: "Live web apps",
+            badgeDev: "Production fullstack",
             badgeSupport: "N1/N2 Support",
             downloadCV: "Download CV",
             downloadCVDev: "Dev",
@@ -337,7 +353,7 @@ const translations = {
         // About Section
         about: {
             title: "Alexandro Granja",
-            subtitle: "Junior Fullstack Developer · IT Support · Technical education",
+            subtitle: "Fullstack Developer · AI Automation Specialist",
             experience: "Professional Experience",
             education: "Education",
             current: "Current",
@@ -361,6 +377,10 @@ const translations = {
             freeCourse2Level: "DIO · Certificate",
             freeCourse3: "Algorithms & Data Structures",
             freeCourse3Level: "Curso em Vídeo · Certificate",
+            freeCourse4: "Introduction to Large Language Models",
+            freeCourse4Level: "Google Cloud Skills Boost · Completed",
+            freeCourse5: "n8n Level 1 — Workflow Automation",
+            freeCourse5Level: "n8n Academy · Certificate",
             onlineCerts: "Online Certificates",
             achievements: "Main Achievements",
             achievement1: "−80% support time",
@@ -372,7 +392,7 @@ const translations = {
             cvTitle: "Resume",
             seeking: "Seeking Opportunities",
             seekingDesc: "Open to roles in:",
-            seeking1: "Junior Dev / Internship",
+            seeking1: "Fullstack Development",
             seeking2: "IT Support",
             seeking3: "Automations (edge)",
             seekingDetail1: "React, Python, PostgreSQL · production projects",
@@ -395,7 +415,7 @@ const translations = {
         agency: {
             roleLabel: "Freelancer & Dev",
             tagline: "Through AIverse I deliver websites, systems and AI automations — real projects, in production.",
-            service1: "Web Development",
+            service1: "Fullstack Development",
             service2: "Automations",
             service3: "AI Agents",
             projectsLabel: "Delivered Projects",
@@ -474,7 +494,7 @@ const translations = {
         // Projects Section
         projects: {
             title: "My Projects",
-            subtitle: "Some of my work in web development and automation projects",
+            subtitle: "Some of my work in fullstack development and automation projects",
             railLabel: "Project list",
             swipeHint: "Swipe sideways to see the next project",
             swipeBannerClose: "Dismiss hint",
@@ -504,7 +524,15 @@ const translations = {
             // Projeto 5: Processador de XML
             project5Title: "XML Processor",
             project5Summary: "Web app that matches an Excel sheet against invoice XMLs in a ZIP and outputs a filtered package.",
-            project5Description: "Web system for processing and selecting XML files based on Excel spreadsheets. Developed with Flask and Python, allows uploading an Excel spreadsheet (.xlsx) with NF numbers in column B and a ZIP file containing invoice XMLs. The system automatically checks if the spreadsheet numbers are contained in the XMLs, selects the corresponding files and generates a new compressed ZIP file with only the selected XMLs. Modern and intuitive interface with drag-and-drop, visual feedback during processing and automatic result download."
+            project5Description: "Web system for processing and selecting XML files based on Excel spreadsheets. Developed with Flask and Python, allows uploading an Excel spreadsheet (.xlsx) with NF numbers in column B and a ZIP file containing invoice XMLs. The system automatically checks if the spreadsheet numbers are contained in the XMLs, selects the corresponding files and generates a new compressed ZIP file with only the selected XMLs. Modern and intuitive interface with drag-and-drop, visual feedback during processing and automatic result download.",
+            // Project 6: AI Financial Assistant
+            project6Title: "Financial Assistant",
+            project6Summary: "Personal financial automation powered by LLMs — expense categorization, reports and AI-generated insights.",
+            project6Description: "Personal Python project integrated with LLMs (OpenAI/Claude/Gemini) to automate day-to-day financial management. The assistant processes transactions, automatically categorizes expenses, generates structured reports and answers natural-language questions about history — cutting manual spreadsheet work and giving clear visibility into spending habits.",
+            // Project 7: AI Dividend Portfolio
+            project7Title: "Dividend Portfolio",
+            project7Summary: "Dividend-focused portfolio analysis powered by LLMs — automated recommendations and insights.",
+            project7Description: "Python application for tracking and analyzing dividend-focused investment portfolios. Combines income and position data with LLMs (OpenAI/Claude/Gemini) to generate personalized recommendations, surface patterns and reduce the manual effort of portfolio review — designed as a decision-support tool (not financial advice)."
         }
     }
 };
@@ -586,6 +614,10 @@ function updatePageLanguage(lang) {
     document.querySelectorAll('[data-i18n="about.freeCourse2Level"]').forEach(el => el.textContent = t.about.freeCourse2Level);
     document.querySelectorAll('[data-i18n="about.freeCourse3"]').forEach(el => el.textContent = t.about.freeCourse3);
     document.querySelectorAll('[data-i18n="about.freeCourse3Level"]').forEach(el => el.textContent = t.about.freeCourse3Level);
+    document.querySelectorAll('[data-i18n="about.freeCourse4"]').forEach(el => el.textContent = t.about.freeCourse4);
+    document.querySelectorAll('[data-i18n="about.freeCourse4Level"]').forEach(el => el.textContent = t.about.freeCourse4Level);
+    document.querySelectorAll('[data-i18n="about.freeCourse5"]').forEach(el => el.textContent = t.about.freeCourse5);
+    document.querySelectorAll('[data-i18n="about.freeCourse5Level"]').forEach(el => el.textContent = t.about.freeCourse5Level);
     document.querySelectorAll('[data-i18n="about.onlineCerts"]').forEach(el => el.textContent = t.about.onlineCerts);
     document.querySelectorAll('[data-i18n="about.achievements"]').forEach(el => el.textContent = t.about.achievements);
     document.querySelectorAll('[data-i18n="about.achievement1"]').forEach(el => el.textContent = t.about.achievement1);
@@ -712,11 +744,31 @@ function updatePageLanguage(lang) {
         }
     });
     document.querySelectorAll('[data-i18n="projects.project5Description"]').forEach(el => el.textContent = t.projects.project5Description);
+    document.querySelectorAll('[data-i18n="projects.project6Title"]').forEach(el => {
+        const parts = t.projects.project6Title.split(' ');
+        if (el.classList && el.classList.contains('text-primary')) {
+            el.textContent = parts[1] || parts[0];
+        } else {
+            el.textContent = parts[0];
+        }
+    });
+    document.querySelectorAll('[data-i18n="projects.project6Description"]').forEach(el => el.textContent = t.projects.project6Description);
+    document.querySelectorAll('[data-i18n="projects.project7Title"]').forEach(el => {
+        const parts = t.projects.project7Title.split(' ');
+        if (el.classList && el.classList.contains('text-primary')) {
+            el.textContent = parts[1] || parts[0];
+        } else {
+            el.textContent = parts[0];
+        }
+    });
+    document.querySelectorAll('[data-i18n="projects.project7Description"]').forEach(el => el.textContent = t.projects.project7Description);
     document.querySelectorAll('[data-i18n="projects.project1Summary"]').forEach(el => el.textContent = t.projects.project1Summary);
     document.querySelectorAll('[data-i18n="projects.project2Summary"]').forEach(el => el.textContent = t.projects.project2Summary);
     document.querySelectorAll('[data-i18n="projects.project3Summary"]').forEach(el => el.textContent = t.projects.project3Summary);
     document.querySelectorAll('[data-i18n="projects.project4Summary"]').forEach(el => el.textContent = t.projects.project4Summary);
     document.querySelectorAll('[data-i18n="projects.project5Summary"]').forEach(el => el.textContent = t.projects.project5Summary);
+    document.querySelectorAll('[data-i18n="projects.project6Summary"]').forEach(el => el.textContent = t.projects.project6Summary);
+    document.querySelectorAll('[data-i18n="projects.project7Summary"]').forEach(el => el.textContent = t.projects.project7Summary);
     const projectsRail = document.querySelector('.projects-rail');
     if (projectsRail && t.projects.railLabel) {
         projectsRail.setAttribute('aria-label', t.projects.railLabel);
@@ -757,7 +809,8 @@ function updatePageLanguage(lang) {
         'projects.title', 'contact.title',
         'projects.project1Title', 'projects.project2Title',
         'projects.project3Title', 'projects.project4Title',
-        'projects.project5Title'
+        'projects.project5Title', 'projects.project6Title',
+        'projects.project7Title'
     ]);
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
@@ -887,7 +940,7 @@ const fadeInObserver = new IntersectionObserver((entries) => {
 // Observe all sections and cards for animations
 document.addEventListener('DOMContentLoaded', () => {
     // Add scroll reveal classes to elements
-    const sections = document.querySelectorAll('section');
+    const sections = document.querySelectorAll('section:not(.section-content)');
     sections.forEach((section, index) => {
         section.classList.add('scroll-reveal');
         if (index % 2 === 0) {
@@ -1100,7 +1153,7 @@ document.head.appendChild(style);
 console.log(`
 %c🚀 Portfólio de Alexandro Granja
 %c👨‍💻 Desenvolvedor Fullstack & Especialista em Automações com IA
-%c💼 Dev Fullstack Júnior | AIverse · Ex-Prosper (Suporte TI)
+%c💼 Dev Fullstack | AIverse · Ex-Prosper (Suporte TI)
 %c📧 Alex.granjaaa@hotmail.com
 %c🔗 GitHub: github.com/AlexandroGranja
 %c🌐 AIverse Technologies: https://www.aiversetechnologies.com.br/
@@ -2161,29 +2214,48 @@ document.addEventListener('keydown', function(e) {
 let currentProjectIndex = 0;
 let isChangingProject = false; // Flag para evitar mudanças simultâneas
 
+function getVisibleProjectIndices() {
+    return Array.from(document.querySelectorAll('#projects .project-card:not(.project-archived)'))
+        .map((card) => parseInt(card.getAttribute('data-project'), 10))
+        .filter((n) => !Number.isNaN(n));
+}
+
+function isProjectArchived(index) {
+    const card = document.querySelector(`#projects .project-card[data-project="${index}"]`);
+    return !!(card && card.classList.contains('project-archived'));
+}
+
 function getTotalProjects() {
-    const cards = document.querySelectorAll('#projects .project-card');
-    return cards.length > 0 ? cards.length : 5;
+    const visible = getVisibleProjectIndices();
+    return visible.length > 0 ? visible.length : 5;
 }
 
 // Função para mudar de projeto
 window.changeProject = function(direction) {
-    const total = getTotalProjects();
-    let newIndex = currentProjectIndex + direction;
-    if (newIndex < 0) {
-        newIndex = total - 1;
-    } else if (newIndex >= total) {
-        newIndex = 0;
+    const visible = getVisibleProjectIndices();
+    if (!visible.length) return;
+
+    let pos = visible.indexOf(currentProjectIndex);
+    if (pos < 0) pos = 0;
+
+    let newPos = pos + direction;
+    if (newPos < 0) {
+        newPos = visible.length - 1;
+    } else if (newPos >= visible.length) {
+        newPos = 0;
     }
-    
-    // Usa goToProject para garantir que tudo seja atualizado corretamente
-    goToProject(newIndex);
+
+    goToProject(visible[newPos]);
 };
 
 // Função para ir diretamente a um projeto
 window.goToProject = function(index) {
-    const total = getTotalProjects();
-    if (index < 0 || index >= total) {
+    if (isProjectArchived(index)) {
+        return;
+    }
+
+    const visible = getVisibleProjectIndices();
+    if (!visible.includes(index)) {
         return;
     }
 
@@ -2236,8 +2308,14 @@ window.goToProject = function(index) {
         p.style.setProperty('opacity', '0', 'important');
     });
     
-    railItems.forEach((btn, i) => {
-        const on = i === index;
+    railItems.forEach((btn) => {
+        if (btn.classList.contains('project-archived')) {
+            btn.classList.remove('is-active');
+            btn.setAttribute('aria-selected', 'false');
+            return;
+        }
+        const btnIndex = parseInt(btn.getAttribute('data-project-index'), 10);
+        const on = btnIndex === index;
         btn.classList.toggle('is-active', on);
         btn.setAttribute('aria-selected', on ? 'true' : 'false');
     });
@@ -2420,8 +2498,9 @@ document.addEventListener('DOMContentLoaded', function() {
             resetImageCarousel(firstProject);
         }
         
-        document.querySelectorAll('.projects-rail-item').forEach((btn, i) => {
-            const on = i === 0;
+        document.querySelectorAll('.projects-rail-item:not(.project-archived)').forEach((btn) => {
+            const idx = parseInt(btn.getAttribute('data-project-index'), 10);
+            const on = idx === 0;
             btn.classList.toggle('is-active', on);
             btn.setAttribute('aria-selected', on ? 'true' : 'false');
         });
@@ -2442,7 +2521,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        document.querySelectorAll('.projects-rail-item').forEach((btn) => {
+        document.querySelectorAll('.projects-rail-item:not(.project-archived)').forEach((btn) => {
             const idx = parseInt(btn.getAttribute('data-project-index'), 10);
             if (Number.isNaN(idx)) return;
             btn.addEventListener('click', function(e) {
