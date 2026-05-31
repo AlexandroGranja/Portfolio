@@ -1,75 +1,100 @@
 Alexandro Granja
-Desenvolvedor Fullstack Júnior (React · Python · PostgreSQL) | Automações (n8n · APIs)
+Desenvolvedor Fullstack | React · Next.js · Python · LLMs · Automação (n8n)
 alexxx.granja@gmail.com  •  alex.granjaaa@hotmail.com  •  +55 (21) 96958-5179  •  Rio de Janeiro/RJ
 LinkedIn: https://linkedin.com/in/alexandro-granja-1b1393157  •  GitHub: https://github.com/AlexandroGranja  •  Portfólio: https://alexandrogranja.github.io/Portfolio/
 
 
 OBJETIVO PROFISSIONAL
-Busco oportunidades como Desenvolvedor Fullstack Júnior ou Estágio em Desenvolvimento de Software, e também posições de Analista/Assistente de Suporte Técnico. Formação técnica em Informática (ensino médio técnico + bootcamp e certificações), com projetos web em produção e experiência em infraestrutura corporativa (Active Directory, Microsoft 365, monitoramento).
+Busco oportunidades como Desenvolvedor Fullstack com foco em IA aplicada, automação de processos e integrações via API. Também atendo posições híbridas que valorizem experiência em suporte técnico e operação de sistemas em produção.
 
 
 SOBRE
-Desenvolvedor Fullstack Júnior com projetos em produção (React, Next.js, Python/Flask, PostgreSQL/Supabase). Experiência em APIs REST, webhooks, automações com n8n e integrações com WhatsApp. Background em suporte técnico (AD, M365, Zabbix), o que reforça visão de operação, logs e confiabilidade em sistemas reais.
+Desenvolvedor Fullstack que transforma gargalos operacionais em soluções digitais de ponta a ponta — do design ao deploy. Combino React/Next.js no frontend com Python (FastAPI/Flask) no backend, PostgreSQL/Supabase, Redis e integrações com LLMs (OpenAI, Claude, Gemini) via n8n e webhooks. Na AIverse Technologies, entrego plataformas SaaS, sites institucionais e agentes de atendimento para clientes reais. Na Prosper Distribuidora, desenvolvi ferramentas internas em uso diário (~250 usuários), unindo visão de produto com operação de TI (AD, M365, Zabbix, Target Mob).
 
 
 PRINCIPAIS CONQUISTAS
-• Fortão Prêmios (produção): cache Redis + PostgreSQL — latência média -71% (916ms → 268ms), throughput +114% (81 → 174 RPS), 200+ usuários simultâneos em testes de carga.
+• Fortão Prêmios (produção): cache Redis + PostgreSQL — latência -71% (916ms → 268ms), throughput +114% (81 → 174 RPS), 200+ usuários simultâneos em testes de carga.
 
-• Automação de atendimento (n8n + Python + WhatsApp API): redução de até 80% no tempo de processamento (Financeiro, Suporte, Liberação de Acesso, integrações Avaya/Target Mob).
+• Automação de atendimento (n8n + Python + WhatsApp API + LLMs): redução de até 80% no tempo de processamento (Financeiro, Suporte, Liberação de Acesso, Avaya/Target Mob).
 
-• Aplicações Fullstack com painel administrativo e operação em tempo real (React + Python/Flask + PostgreSQL/Supabase).
+• Ferramentas internas na Prosper em produção: sistema de chamados de TI, otimização de rotas geográficas (4.000+ clientes) e processador de XML fiscal — substituíram processos manuais em planilhas.
+
+• Entrega end-to-end na AIverse: plataformas SaaS (Burger House), site institucional (Moraes Adesivos) e automações multicanal com agentes inteligentes.
 
 
 EXPERIÊNCIA PROFISSIONAL
-Desenvolvedor Fullstack (Freelance / Projetos) | AIverse Technologies | 06/2025 – Atual
+Desenvolvedor Fullstack | AIverse Technologies | 06/2025 – Atual
 Remoto · Rio de Janeiro/RJ  •  https://www.aiversetechnologies.com.br/
-• Desenvolvimento de sites e aplicações web responsivas (React, Tailwind), com foco em UX e performance.
-• Aplicações Fullstack: backend Python/Flask, frontend React, PostgreSQL/Supabase, deploy Vercel/Railway.
-• Automações e integrações via n8n, webhooks e APIs (WhatsApp), com regras de negócio e triagem.
-• Endpoints Flask para validação, integrações e consumo de APIs de terceiros.
+• Arquitetura e implementação de aplicações fullstack: React, Next.js 14, Tailwind, Python (FastAPI/Flask), PostgreSQL/Supabase, deploy Vercel/Railway.
+• Fortão Prêmios: plataforma B2B em produção — ~64 rotas API, Redis, JWT/bcrypt, painel admin com 7+ módulos, automação fiscal (Nota Nacional).
+• Integrações com LLMs (GPT-4, Claude, Gemini) via n8n: agentes autônomos para atendimento, triagem de leads e fluxos multicanal (WhatsApp, webhooks).
+• Burger House (SaaS): cardápio digital multi-tenant com painel admin, Supabase RLS e pedidos em tempo real.
+• Sites institucionais e landing pages com foco em performance, SEO e conversão (Moraes Adesivos, AIverse).
 
-Analista de Suporte de TI | Prosper Distribuidora | 11/2024 – 05/2026
+Analista de Suporte de TI | Prosper Distribuidora | 11/2024 – Atual
 Presencial · Rio de Janeiro/RJ
-• Suporte técnico N1/N2: hardware, software e sistemas de logística (Target/Target Mob).
-• Administração de acessos (Active Directory, Microsoft 365) e monitoramento (Zabbix).
-• Automações (n8n, scripts) para rotinas recorrentes, reduzindo trabalho manual e padronizando processos.
+• Suporte técnico N1/N2 para ~250 usuários: hardware, software e sistemas de logística (Target/Target Mob).
+• Administração de acessos (Active Directory, Microsoft 365) e monitoramento proativo (Zabbix).
+• Desenvolvimento de ferramentas internas: chamados de TI (FastAPI + React + MUI), roteiros geográficos (Flask + React + Leaflet) e processador de XML fiscal.
+• Automações (n8n, Python, scripts) para padronizar rotinas e reduzir retrabalho operacional.
 
 
 PROJETOS EM DESTAQUE
-Fortão Prêmios — Plataforma de Ações Promocionais (produção)
-• Next.js 14, React, PostgreSQL (Supabase), Redis, JWT/bcrypt, ~64 rotas API, pagamentos (Mercado Pago, eRede).
+Fortão Prêmios — Plataforma B2B de Ações Promocionais (produção)
+• Next.js 14, React 18, Supabase/PostgreSQL, Redis (Upstash), JWT/bcrypt, Tailwind, Radix UI, Railway.
 • https://xn--fortoprmios-c8a8g.com.br/
 
+Sistema de Chamados de TI — Interno Prosper (produção)
+• FastAPI, SQLAlchemy, Alembic, React, Material UI, PostgreSQL; SLA, fila N1/N2, Snipe-IT e gestão de ramais (~250 usuários).
+
+Prosper Roteiros — Otimização de Rotas Geográficas (produção)
+• Flask + React + Leaflet; 4.000+ clientes; clustering geográfico, Vizinho Mais Próximo, 2-opt, Haversine.
+• https://github.com/AlexandroGranja/Roteiro-Prosper
+
 Burger House — Cardápio Digital & Pedidos (SaaS)
-• React, Supabase (PostgreSQL), painel admin, pedidos em tempo real.
+• React, Supabase (PostgreSQL + Auth + RLS), painel admin, pedidos em tempo real, Railway.
 • http://cardapio.up.railway.app/
 
-Ecossistema de Automação — Agentes WhatsApp & Integrações
-• n8n, Python, webhooks, LLMs (OpenAI/Claude/Gemini) para triagem e atendimento multicanal.
+Processador de XML — Automação NF-e/CT-e (produção)
+• Flask + Python + OpenPyXL; cruza planilha Excel com ZIP de XMLs e gera pacote filtrado em memória.
+• https://github.com/AlexandroGranja/site-converter-xml
+
+Moraes Adesivos — Site Institucional (AIverse)
+• Landing page responsiva, SEO, Open Graph e integração WhatsApp para conversão de leads.
+• https://moraesadesivos.com.br/
+
+Sistema de Agentes Inteligentes — WhatsApp & Integrações
+• n8n, Python, webhooks, LLMs; agentes para Financeiro, Suporte, Liberação de Acesso, Avaya/Target Mob.
 
 
 HABILIDADES TÉCNICAS
-Desenvolvimento: React, Next.js, JavaScript, Python (Flask), HTML, CSS, Tailwind CSS, APIs REST, PostgreSQL, Supabase, Git, deploy (Vercel, Railway).
+Frontend: React 18/19, Next.js 14, JavaScript, TypeScript, Tailwind CSS, shadcn/ui, Radix UI, HTML, CSS.
 
-Automação & Integrações: n8n, webhooks, WhatsApp API, JSON, validação de payload, logs.
+Backend & APIs: Python (Flask, FastAPI), Node.js, SQLAlchemy, Alembic, APIs REST, JWT, bcrypt, webhooks.
 
-Suporte & Infra: Active Directory, Microsoft 365, Zabbix, Windows, documentação de incidentes, Target/Target Mob.
+Dados & Infra: PostgreSQL, Supabase, Redis (Upstash), SQLite, Pandas, deploy Vercel/Railway, Git, CI/CD.
+
+IA & Automação: LLMs (OpenAI, Claude, Gemini), n8n, Make, WhatsApp API, agentes autônomos, triagem multicanal.
+
+Suporte (diferencial): Active Directory, Microsoft 365, Zabbix, Target/Target Mob, documentação de incidentes.
 
 
 FORMAÇÃO
-• Técnico em Informática — Ensino Médio Técnico
-• DevClub Fullstack Pro — Formação intensiva em desenvolvimento web
+• Técnico em Informática — CIEP 119 Austin | 2010 – 2017
+• DevClub Fullstack Pro — Bootcamp fullstack (React, Node.js, PostgreSQL, Python) | 2025 – 2026
 • Gestão de Automação — Especialização em IA e ferramentas NoCode
+• Comunidade Pixel — Agentes de IA e fluxos automatizados
 
 
 CURSOS & CERTIFICADOS
 • Lógica de Programação — Fundação Bradesco (certificado)
 • Git & Versionamento — DIO (certificado)
 • Algoritmos e Estruturas de Dados — Curso em Vídeo (certificado)
-• n8n — Automação de Workflows e Integrações
+• Introdução a Modelos de Linguagem (LLM) — Google Cloud Skills Boost (concluído)
+• n8n Level 1 — Automação de Workflows — n8n Academy (certificado)
 • Make (Integromat) — Automações e Integrações
 
 
 IDIOMAS
 • Português — Nativo
-• Inglês — Básico (leitura técnica)
+• Inglês — Básico (leitura técnica de documentação)

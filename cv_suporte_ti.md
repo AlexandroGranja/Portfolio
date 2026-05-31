@@ -1,74 +1,87 @@
 Alexandro Granja
-Analista de Suporte Técnico | AD · Microsoft 365 · Zabbix | Automações (n8n · Python)
+Analista de Suporte de TI | N1/N2 · Active Directory · Microsoft 365 · Zabbix · Automação
 alexxx.granja@gmail.com  •  alex.granjaaa@hotmail.com  •  +55 (21) 96958-5179  •  Rio de Janeiro/RJ
 LinkedIn: https://linkedin.com/in/alexandro-granja-1b1393157  •  GitHub: https://github.com/AlexandroGranja  •  Portfólio: https://alexandrogranja.github.io/Portfolio/
 
 
 OBJETIVO PROFISSIONAL
-Busco oportunidades como Analista ou Assistente de Suporte Técnico, Service Desk ou TI Operacional, e também vagas de Desenvolvedor Júnior/Estágio em TI. Formação técnica em Informática (ensino médio técnico + certificações), com experiência em ambiente corporativo e automações que reduzem trabalho manual.
+Busco oportunidades como Analista ou Assistente de Suporte Técnico, Service Desk ou TI Operacional. Perfil híbrido: suporte N1/N2 em ambiente corporativo (~250 usuários) com diferencial em automação (n8n, Python) e desenvolvimento de ferramentas internas (FastAPI, React, Flask).
 
 
 SOBRE
-Profissional de TI com experiência em suporte N1/N2, administração de identidades (Active Directory, Microsoft 365), monitoramento (Zabbix) e sistemas de logística (Target/Target Mob). Desenvolvo automações e ferramentas web (Python, n8n) para padronizar rotinas e melhorar tempo de resposta — perfil híbrido entre operação e desenvolvimento.
+Analista de Suporte de TI na intersecção entre operação crítica e engenharia de processos. Atuo na Prosper Distribuidora garantindo continuidade do negócio: suporte N1/N2, governança de acessos (AD/M365), monitoramento (Zabbix) e sistemas logísticos (Target/Target Mob). Desenvolvi do zero ferramentas internas em produção — chamados de TI, processador de XML fiscal e otimização de rotas — eliminando controle manual e reduzindo retrabalho. Construo automações com n8n, Python e WhatsApp API que cortaram até 80% do tempo em solicitações recorrentes.
 
 
 PRINCIPAIS CONQUISTAS
-• Automação de atendimento (n8n + Python + WhatsApp API): redução de até 80% no tempo de processamento de solicitações (Financeiro, Suporte, Liberação de Acesso, Avaya/Target Mob).
+• Automação de atendimento (n8n + Python + WhatsApp API): redução de até 80% no tempo de processamento (Financeiro, Suporte, Liberação de Acesso, Avaya/Target Mob).
 
-• Suporte a sistemas críticos de logística e infraestrutura, com monitoramento proativo (Zabbix) e governança de acessos (AD/M365).
+• Sistema de Chamados de TI: plataforma interna completa (FastAPI + React + MUI) com SLA, fila N1/N2, Snipe-IT e gestão de ramais — ~250 usuários, substituiu planilhas e mensagens avulsas.
 
-• Ferramentas web internas e integrações que eliminam processos manuais repetitivos (ex.: processador de XML para NF-e).
+• Monitoramento e infraestrutura: governança de acessos AD/M365, Zabbix proativo e suporte a sistemas críticos de logística (Target/Target Mob).
+
+• Ferramentas operacionais: processador de XML fiscal (100% da triagem automatizada) e roteiros geográficos para 4.000+ clientes da equipe de vendas.
 
 
 EXPERIÊNCIA PROFISSIONAL
-Analista de Suporte de TI | Prosper Distribuidora | 11/2024 – 05/2026
+Analista de Suporte de TI | Prosper Distribuidora | 11/2024 – Atual
 Presencial · Rio de Janeiro/RJ
-• Atendimento de suporte técnico N1/N2: hardware, software e aplicativos corporativos.
-• Administração de usuários, grupos e políticas em Active Directory e Microsoft 365.
-• Monitoramento de serviços e incidentes com Zabbix; atuação preventiva na infraestrutura.
-• Suporte e integração com sistemas de logística Target/Target Mob.
-• Desenvolvimento de automações (n8n, scripts) para padronizar rotinas e reduzir retrabalho.
+• Atendimento de suporte técnico N1/N2 para ~250 usuários: hardware, software e aplicativos corporativos.
+• Administração de usuários, grupos, permissões e políticas em Active Directory e Microsoft 365 (onboarding/offboarding).
+• Monitoramento de serviços e incidentes com Zabbix; atuação preventiva na infraestrutura de TI.
+• Suporte especializado aos sistemas de logística Target e Target Mob.
+• Desenvolvimento de ferramentas internas: chamados de TI (FastAPI + React), roteiros geográficos (Flask + React + Leaflet) e processador de XML fiscal.
+• Automações (n8n, Python, scripts) para padronizar rotinas, reduzir retrabalho e escalar o atendimento sem aumentar a equipe.
 
-Desenvolvedor Fullstack (Freelance / Projetos) | AIverse Technologies | 06/2025 – Atual
+Desenvolvedor Fullstack | AIverse Technologies | 06/2025 – Atual
 Remoto · Rio de Janeiro/RJ  •  https://www.aiversetechnologies.com.br/
-• Criação de ferramentas web e integrações via APIs/webhooks para necessidades operacionais.
-• Automações com n8n e mensageria (WhatsApp) para triagem e fluxos de atendimento.
+• Desenvolvimento de aplicações web e automações para clientes (paralelo à atuação na Prosper).
+• Integrações via APIs, webhooks, n8n e WhatsApp API para fluxos de atendimento e triagem.
 
 
 PROJETOS RELEVANTES (automação & operação)
-Sistema de Agentes Inteligentes — Automação de Atendimento WhatsApp
-• Triagem multicanal, integração com sistemas internos; n8n, Python, webhooks.
+Sistema de Chamados de TI — Prosper (interno, em produção)
+• FastAPI, SQLAlchemy, Alembic, React, Material UI, PostgreSQL/SQLite; dashboard, SLA, Snipe-IT, ramais telefônicos; deploy Nginx + systemd.
 
-Processador de XML — Ferramenta Web Operacional
-• Cruza planilha Excel com XMLs de NF em ZIP; elimina seleção manual de documentos (Python/Flask).
+Sistema de Agentes Inteligentes — Automação WhatsApp
+• n8n, Python, webhooks, LLMs; triagem multicanal para Financeiro, Suporte, Liberação de Acesso, Avaya/Target Mob; -80% tempo de resposta.
 
-Prosper Roteiros — Otimização de Rotas para Equipes de Campo
-• React + Flask; mapas, algoritmos de rota, processamento de planilhas (4.000+ registros).
+Processador de XML — Ferramenta Fiscal Operacional (produção)
+• Flask + Python + OpenPyXL; cruza planilha Excel com ZIP de XMLs NF-e/CT-e; processamento em memória; elimina seleção manual.
+• https://github.com/AlexandroGranja/site-converter-xml
+
+Prosper Roteiros — Otimização de Rotas para Equipes de Campo (produção)
+• Flask + React + Leaflet; 4.000+ clientes; clustering geográfico, algoritmos de rota, exportação CSV.
+• https://github.com/AlexandroGranja/Roteiro-Prosper
 
 Fortão Prêmios — Plataforma em Produção (contexto técnico)
 • Monitoramento, logs, performance e integrações — https://xn--fortoprmios-c8a8g.com.br/
 
 
 HABILIDADES TÉCNICAS
-Suporte & Infra: Suporte técnico N1/N2, Active Directory, Microsoft 365, Zabbix, Windows, troubleshooting, documentação, SLA, Target/Target Mob.
+Suporte & Infra: Suporte N1/N2, Active Directory, Microsoft 365, Zabbix, Windows, troubleshooting, documentação de incidentes, SLA, Target/Target Mob, Snipe-IT.
 
-Automação: n8n, Python (scripts), webhooks, WhatsApp API, integração entre sistemas.
+Automação: n8n, Python (scripts), webhooks, WhatsApp API, Make, integração entre sistemas, triagem multicanal.
 
-Desenvolvimento (diferencial): HTML, CSS, JavaScript, React, Flask, APIs REST, PostgreSQL, Git.
+Desenvolvimento (diferencial): Python (Flask, FastAPI), React, APIs REST, PostgreSQL, SQLite, Supabase, Git, PowerShell.
+
+Banco de Dados: PostgreSQL, SQLite, Supabase, consultas SQL e relatórios.
 
 
 FORMAÇÃO
-• Técnico em Informática — Ensino Médio Técnico
-• DevClub Fullstack Pro — Formação intensiva
-• Gestão de Automação — Especialização em IA e NoCode
+• Técnico em Informática — CIEP 119 Austin | 2010 – 2017
+• DevClub Fullstack Pro — Bootcamp fullstack | 2025 – 2026
+• Gestão de Automação — Especialização em IA e ferramentas NoCode
+• Comunidade Pixel — Agentes de IA e fluxos automatizados
 
 
 CURSOS & CERTIFICADOS
 • Lógica de Programação — Fundação Bradesco (certificado)
 • Git & Versionamento — DIO (certificado)
-• n8n — Automação de Workflows e Integrações
+• Introdução a Modelos de Linguagem (LLM) — Google Cloud Skills Boost (concluído)
+• n8n Level 1 — Automação de Workflows — n8n Academy (certificado)
+• Make (Integromat) — Automações e Integrações
 
 
 IDIOMAS
 • Português — Nativo
-• Inglês — Básico (leitura técnica)
+• Inglês — Básico (leitura técnica de documentação)
