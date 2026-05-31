@@ -80,7 +80,8 @@ Suporte (diferencial): Active Directory, Microsoft 365, Zabbix, Target/Target Mo
 
 
 FORMAÇÃO
-• Técnico em Informática — CIEP 119 Austin | 2010 – 2017
+• Ensino Médio — CIEP 119 Austin | 2011 – 2017
+• Técnico em Informática e Manutenção de Computadores — Brasil Petro | jan/2014 – dez/2015
 • DevClub Fullstack Pro — Bootcamp fullstack (React, Node.js, PostgreSQL, Python) | 2025 – 2026
 • Gestão de Automação — Especialização em IA e ferramentas NoCode
 • Comunidade Pixel — Agentes de IA e fluxos automatizados

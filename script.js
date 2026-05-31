@@ -153,8 +153,10 @@ const translations = {
             techSupportDesc: "Atuação em suporte técnico e operações de TI, com administração de acessos (Active Directory e Microsoft 365), monitoramento via Zabbix e integração com sistemas de logística (Target/Target Mob). Também desenvolvi automações para rotinas recorrentes, reduzindo esforço manual e aumentando a padronização dos processos.",
             founder: "Desenvolvedor Fullstack (Freelance)",
             founderDesc: "Criação de soluções web e automações inteligentes para acelerar operações de negócio: sites e sistemas responsivos, integrações entre plataformas e agentes para atendimento automatizado. Do desenho da arquitetura ao deploy (Vercel/Railway), com foco em eficiência e escalabilidade.",
-            techEducation: "Técnico em Informática",
-            techEducationLevel: "Ensino Médio Técnico",
+            highSchoolEducation: "Ensino Médio",
+            highSchoolEducationLevel: "CIEP 119 Austin · 2011 – 2017",
+            techEducation: "Técnico em Informática e Manutenção de Computadores",
+            techEducationLevel: "Brasil Petro · jan/2014 – dez/2015",
             devclub: "DevClub Fullstack Pro",
             devclubLevel: "Formação Intensiva",
             automation: "Gestão de Automação",
@@ -367,8 +369,10 @@ const translations = {
             techSupportDesc: "Technical support and IT operations with access management (Active Directory and Microsoft 365), Zabbix monitoring, and logistics systems integration (Target/Target Mob). I also built automations for recurring routines, reducing manual effort and increasing process standardization.",
             founder: "Fullstack Developer (Freelance)",
             founderDesc: "Built web solutions and smart automations to accelerate business operations: responsive websites and systems, cross-platform integrations, and automated support agents. End-to-end ownership from architecture to deployment (Vercel/Railway), focused on efficiency and scalability.",
-            techEducation: "IT Technician",
-            techEducationLevel: "Technical High School",
+            highSchoolEducation: "High School",
+            highSchoolEducationLevel: "CIEP 119 Austin · 2011 – 2017",
+            techEducation: "IT & Computer Maintenance Technician",
+            techEducationLevel: "Brasil Petro · Jan/2014 – Dec/2015",
             devclub: "DevClub Fullstack Pro",
             devclubLevel: "Intensive Training",
             automation: "Automation Management",
@@ -608,6 +612,8 @@ function updatePageLanguage(lang) {
     document.querySelectorAll('[data-i18n="about.techSupportDesc"]').forEach(el => el.textContent = t.about.techSupportDesc);
     document.querySelectorAll('[data-i18n="about.founder"]').forEach(el => el.textContent = t.about.founder);
     document.querySelectorAll('[data-i18n="about.founderDesc"]').forEach(el => el.textContent = t.about.founderDesc);
+    document.querySelectorAll('[data-i18n="about.highSchoolEducation"]').forEach(el => el.textContent = t.about.highSchoolEducation);
+    document.querySelectorAll('[data-i18n="about.highSchoolEducationLevel"]').forEach(el => el.textContent = t.about.highSchoolEducationLevel);
     document.querySelectorAll('[data-i18n="about.techEducation"]').forEach(el => el.textContent = t.about.techEducation);
     document.querySelectorAll('[data-i18n="about.techEducationLevel"]').forEach(el => el.textContent = t.about.techEducationLevel);
     document.querySelectorAll('[data-i18n="about.devclub"]').forEach(el => el.textContent = t.about.devclub);
