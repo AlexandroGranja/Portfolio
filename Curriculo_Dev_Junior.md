@@ -1,8 +1,9 @@
 # Alexandro Granja
+
 **Desenvolvedor Fullstack | React · Python · Node.js**
 
-alexxx.granja@gmail.com · +55 (21) 96958-5179 · Rio de Janeiro, RJ  
-https://linkedin.com/in/alexandro-granja-1b1393157 · https://github.com/AlexandroGranja · https://alexandrogranja.github.io/Portfolio/
+[alexxx.granja@gmail.com](mailto:alexxx.granja@gmail.com) · +55 (21) 96958-5179 · Rio de Janeiro, RJ  
+[https://linkedin.com/in/alexandro-granja-1b1393157](https://linkedin.com/in/alexandro-granja-1b1393157) · [https://github.com/AlexandroGranja](https://github.com/AlexandroGranja) · [https://alexandrogranja.github.io/Portfolio/](https://alexandrogranja.github.io/Portfolio/)
 
 ---
 
@@ -17,7 +18,9 @@ Na Prosper Distribuidora, além do suporte técnico, desenvolvi internamente um 
 ## EXPERIÊNCIA PROFISSIONAL
 
 ### Desenvolvedor Fullstack | AIverse Technologies | 06/2025 – Atual
+
 *Rio de Janeiro, RJ · Remoto*
+
 - Construção de aplicações fullstack em produção: React + Python/Flask + PostgreSQL/Supabase + deploy Vercel
 - **Fortão Prêmios:** plataforma de sorteios com Next.js 14, Redis cache (-71% latência, +114% RPS, 200+ usuários simultâneos, 64+ rotas API)
 - **Burger House:** SaaS de cardápio digital com painel administrativo, CRUD completo, Supabase RLS, deploy Vercel
@@ -25,7 +28,9 @@ Na Prosper Distribuidora, além do suporte técnico, desenvolvi internamente um 
 - Deploy e CI/CD: Vercel, GitHub Pages
 
 ### Analista de Suporte de TI | Prosper Distribuidora | 11/2024 – Atual
+
 *Rio de Janeiro, RJ · Presencial*
+
 - **Desenvolveu sistema interno de chamados de TI** (FastAPI + React + MUI + SQLite/PostgreSQL) com integração Snipe-IT e gestão de ramais telefônicos — substituiu processo manual
 - **Desenvolveu Roteiro Prosper:** sistema de otimização de rotas geográficas para 4.000+ clientes (Flask + React + Leaflet, algoritmos Vizinho Mais Próximo + 2-opt + Haversine, clustering por GPS/CEP)
 - **Desenvolveu Site Converter XML:** processamento em massa de NF-e/CT-e — upload ZIP + planilha Excel → gera novo ZIP filtrado (Flask + openpyxl, processamento em memória)
@@ -37,36 +42,46 @@ Na Prosper Distribuidora, além do suporte técnico, desenvolvi internamente um 
 ## PROJETOS EM DESTAQUE
 
 ### Fortão Prêmios — Plataforma B2B de Ações Promocionais
+
 Plataforma completa de gestão de campanhas, sorteios e vendas em produção.
+
 - **Stack:** Next.js 14 · React 18 · Supabase/PostgreSQL · Redis (Upstash) · JWT · bcrypt · Tailwind · Radix UI
 - **Métricas:** -71% latência · +114% RPS (81→174) · P95 498ms · 200+ usuários simultâneos (testes de carga)
 - **Segurança:** JWT httpOnly · bcrypt 12 rounds · rate limiting · CSP/HSTS · Row Level Security
-- https://xn--fortoprmios-c8a8g.com.br/
+- [https://xn--fortoprmios-c8a8g.com.br/](https://xn--fortoprmios-c8a8g.com.br/)
 
 ### Roteiro Prosper — Otimização de Rotas Geográficas
+
 Sistema de geração de roteiros otimizados para equipe de vendas externa (uso real na Prosper).
+
 - **Stack:** Python/Flask · Pandas · NumPy · React 18 · Tailwind · Leaflet (OpenStreetMap)
 - **Escala:** 4.000+ clientes · agrupamento por GPS/CEP/rua/bairro · 6-10 visitas/dia
 - **Algoritmos:** clustering geográfico (raio configurável) · Vizinho Mais Próximo · 2-opt · Haversine
-- https://roteiro-prosper-olfq.vercel.app/
-- https://github.com/AlexandroGranja/Roteiro-Prosper
+- Demo: [https://roteiro-prosper-olfq.vercel.app/](https://roteiro-prosper-olfq.vercel.app/)
+- GitHub: [https://github.com/AlexandroGranja/Roteiro-Prosper](https://github.com/AlexandroGranja/Roteiro-Prosper)
 
 ### Burger House — SaaS de Cardápio Digital
+
 Sistema de pedidos online com painel administrativo completo, multi-tenant.
+
 - **Stack:** React · Supabase (PostgreSQL + Auth + Storage + RLS) · Vercel
-- https://cardapio-online-wine-delta.vercel.app/
+- Demo: [https://cardapio-online-wine-delta.vercel.app/](https://cardapio-online-wine-delta.vercel.app/)
 
 ### Processador de XML — Automação NF-e/CT-e
+
 Ferramenta que cruza planilha Excel com ZIP de XMLs fiscais e gera pacote filtrado.
+
 - **Stack:** Python/Flask · openpyxl
-- https://site-converter-xml-e3gi.vercel.app/
-- https://github.com/AlexandroGranja/site-converter-xml
+- Demo: [https://site-converter-xml-e3gi.vercel.app/](https://site-converter-xml-e3gi.vercel.app/)
+- GitHub: [https://github.com/AlexandroGranja/site-converter-xml](https://github.com/AlexandroGranja/site-converter-xml)
 
 ### Sistema de Chamados de TI — Interno Prosper
+
 Sistema desenvolvido e implantado internamente para gestão de chamados de TI.
+
 - **Stack:** FastAPI · SQLAlchemy · Alembic · React · Material UI · SQLite/PostgreSQL
 - Integra: Snipe-IT (inventário) + GerenciamentoDeTelefones
-- https://github.com/AlexandroGranja/Sistema-de-chamados01
+- GitHub: [https://github.com/AlexandroGranja/Sistema-de-chamados01](https://github.com/AlexandroGranja/Sistema-de-chamados01)
 
 ---
 
@@ -107,10 +122,7 @@ Sistema desenvolvido e implantado internamente para gestão de chamados de TI.
 - Make (Integromat) — Automações e Integrações
 - Introdução a Modelos de Linguagem de Grande Porte (LLM) — Google Cloud Skills Boost
 
-<!-- Próximos (ver docs/cerebro/CERTIFICADOS-RAPIDOS.md):
-- Introdução à IA Generativa — Google Cloud Skills Boost
-- n8n Level 1 — Automação de Workflows — n8n Academy
--->
+
 
 ---
 
@@ -118,3 +130,4 @@ Sistema desenvolvido e implantado internamente para gestão de chamados de TI.
 
 - Português — Nativo
 - Inglês — Básico (leitura técnica)
+

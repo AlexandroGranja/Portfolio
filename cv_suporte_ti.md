@@ -41,20 +41,20 @@ Remoto · Rio de Janeiro/RJ  •  https://www.aiversetechnologies.com.br/
 PROJETOS RELEVANTES (automação & operação)
 Sistema de Chamados de TI — Prosper (interno, em produção)
 • FastAPI, SQLAlchemy, Alembic, React, Material UI, PostgreSQL/SQLite; dashboard, SLA, Snipe-IT, ramais telefônicos; deploy Nginx + systemd.
-• https://github.com/AlexandroGranja/Sistema-de-chamados01
+• GitHub: https://github.com/AlexandroGranja/Sistema-de-chamados01
 
 Sistema de Agentes Inteligentes — Automação WhatsApp
 • n8n, Python, webhooks, LLMs; triagem multicanal para Financeiro, Suporte, Liberação de Acesso, Avaya/Target Mob; -80% tempo de resposta.
 
 Processador de XML — Ferramenta Fiscal Operacional (produção)
 • Flask + Python + OpenPyXL; cruza planilha Excel com ZIP de XMLs NF-e/CT-e; processamento em memória; elimina seleção manual.
-• https://site-converter-xml-e3gi.vercel.app/
-• https://github.com/AlexandroGranja/site-converter-xml
+• Demo: https://site-converter-xml-e3gi.vercel.app/
+• GitHub: https://github.com/AlexandroGranja/site-converter-xml
 
 Prosper Roteiros — Otimização de Rotas para Equipes de Campo (produção)
 • Flask + React + Leaflet; 4.000+ clientes; clustering geográfico, algoritmos de rota, exportação CSV.
-• https://roteiro-prosper-olfq.vercel.app/
-• https://github.com/AlexandroGranja/Roteiro-Prosper
+• Demo: https://roteiro-prosper-olfq.vercel.app/
+• GitHub: https://github.com/AlexandroGranja/Roteiro-Prosper
 
 Fortão Prêmios — Plataforma em Produção (contexto técnico)
 • Monitoramento, logs, performance e integrações.

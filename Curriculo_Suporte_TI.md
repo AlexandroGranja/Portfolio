@@ -52,13 +52,11 @@ Analista de Suporte de TI na intersecção entre operação crítica e engenhari
 | Prosper Roteiros | Flask · React · Leaflet | 4.000+ clientes, rotas otimizadas |
 
 **Links dos projetos:**
-https://github.com/AlexandroGranja/Sistema-de-chamados01
-https://site-converter-xml-e3gi.vercel.app/
-https://github.com/AlexandroGranja/site-converter-xml
-https://roteiro-prosper-olfq.vercel.app/
-https://github.com/AlexandroGranja/Roteiro-Prosper
-https://cardapio-online-wine-delta.vercel.app/
-https://xn--fortoprmios-c8a8g.com.br/
+Chamados — GitHub: https://github.com/AlexandroGranja/Sistema-de-chamados01
+Processador XML — Demo: https://site-converter-xml-e3gi.vercel.app/ | GitHub: https://github.com/AlexandroGranja/site-converter-xml
+Prosper Roteiros — Demo: https://roteiro-prosper-olfq.vercel.app/ | GitHub: https://github.com/AlexandroGranja/Roteiro-Prosper
+Burger House — Demo: https://cardapio-online-wine-delta.vercel.app/
+Fortão Prêmios — https://xn--fortoprmios-c8a8g.com.br/
 
 ---
 

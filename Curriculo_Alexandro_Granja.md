@@ -46,21 +46,21 @@ Fortão Prêmios — Plataforma B2B de Ações Promocionais (produção)
 
 Sistema de Chamados de TI — Interno Prosper (produção)
 • FastAPI, SQLAlchemy, Alembic, React, Material UI, PostgreSQL; SLA, fila N1/N2, Snipe-IT e gestão de ramais (~250 usuários).
-• https://github.com/AlexandroGranja/Sistema-de-chamados01
+• GitHub: https://github.com/AlexandroGranja/Sistema-de-chamados01
 
 Prosper Roteiros — Otimização de Rotas Geográficas (produção)
 • Flask + React + Leaflet; 4.000+ clientes; clustering geográfico, Vizinho Mais Próximo, 2-opt, Haversine.
-• https://roteiro-prosper-olfq.vercel.app/
-• https://github.com/AlexandroGranja/Roteiro-Prosper
+• Demo: https://roteiro-prosper-olfq.vercel.app/
+• GitHub: https://github.com/AlexandroGranja/Roteiro-Prosper
 
 Burger House — Cardápio Digital & Pedidos (SaaS)
 • React, Supabase (PostgreSQL + Auth + RLS), painel admin, pedidos em tempo real, deploy Vercel.
-• https://cardapio-online-wine-delta.vercel.app/
+• Demo: https://cardapio-online-wine-delta.vercel.app/
 
 Processador de XML — Automação NF-e/CT-e (produção)
 • Flask + Python + OpenPyXL; cruza planilha Excel com ZIP de XMLs e gera pacote filtrado em memória.
-• https://site-converter-xml-e3gi.vercel.app/
-• https://github.com/AlexandroGranja/site-converter-xml
+• Demo: https://site-converter-xml-e3gi.vercel.app/
+• GitHub: https://github.com/AlexandroGranja/site-converter-xml
 
 Moraes Adesivos — Site Institucional (AIverse)
 • Landing page responsiva, SEO, Open Graph e integração WhatsApp para conversão de leads.
