@@ -48,6 +48,7 @@ Sistema de geração de roteiros otimizados para equipe de vendas externa (uso r
 - **Stack:** Python/Flask · Pandas · NumPy · React 18 · Tailwind · Leaflet (OpenStreetMap)
 - **Escala:** 4.000+ clientes · agrupamento por GPS/CEP/rua/bairro · 6-10 visitas/dia
 - **Algoritmos:** clustering geográfico (raio configurável) · Vizinho Mais Próximo · 2-opt · Haversine
+- Link: roteiro-prosper-olfq.vercel.app
 
 ### Burger House — SaaS de Cardápio Digital
 Sistema de pedidos online com painel administrativo completo, multi-tenant.
@@ -58,6 +59,7 @@ Sistema de pedidos online com painel administrativo completo, multi-tenant.
 Sistema desenvolvido e implantado internamente para gestão de chamados de TI.
 - **Stack:** FastAPI · SQLAlchemy · Alembic · React · Material UI · SQLite/PostgreSQL
 - Integra: Snipe-IT (inventário) + GerenciamentoDeTelefones
+- Link: github.com/AlexandroGranja/SiatemaDeChamadosDeTI
 
 ---
 
