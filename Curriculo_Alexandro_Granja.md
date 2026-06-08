@@ -55,7 +55,7 @@ Prosper Roteiros — Otimização de Rotas Geográficas (produção)
 
 Burger House — Cardápio Digital & Pedidos (SaaS)
 • React, Supabase (PostgreSQL + Auth + RLS), painel admin, pedidos em tempo real, Railway.
-• https://cardapio-online-1z0ohw5ao-alexxxgranja-7055s-projects.vercel.app/
+• https://cardapio-online-wine-delta.vercel.app/
 
 Processador de XML — Automação NF-e/CT-e (produção)
 • Flask + Python + OpenPyXL; cruza planilha Excel com ZIP de XMLs e gera pacote filtrado em memória.

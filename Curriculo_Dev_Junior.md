@@ -53,7 +53,7 @@ Sistema de geração de roteiros otimizados para equipe de vendas externa (uso r
 ### Burger House — SaaS de Cardápio Digital
 Sistema de pedidos online com painel administrativo completo, multi-tenant.
 - **Stack:** React · Supabase (PostgreSQL + Auth + Storage + RLS) · Railway
-- Link: cardapio-online-1z0ohw5ao-alexxxgranja-7055s-projects.vercel.app
+- Link: cardapio-online-wine-delta.vercel.app
 
 ### Sistema de Chamados de TI — Interno Prosper
 Sistema desenvolvido e implantado internamente para gestão de chamados de TI.
