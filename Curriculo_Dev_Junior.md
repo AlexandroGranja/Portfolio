@@ -2,7 +2,7 @@
 **Desenvolvedor Fullstack | React · Python · Node.js**
 
 alexxx.granja@gmail.com · +55 (21) 96958-5179 · Rio de Janeiro, RJ  
-[LinkedIn](https://linkedin.com/in/alexandro-granja-1b1393157) · [GitHub](https://github.com/AlexandroGranja) · [Portfólio](https://alexandrogranja.github.io/Portfolio/)
+https://linkedin.com/in/alexandro-granja-1b1393157 · https://github.com/AlexandroGranja · https://alexandrogranja.github.io/Portfolio/
 
 ---
 
@@ -41,25 +41,32 @@ Plataforma completa de gestão de campanhas, sorteios e vendas em produção.
 - **Stack:** Next.js 14 · React 18 · Supabase/PostgreSQL · Redis (Upstash) · JWT · bcrypt · Tailwind · Radix UI
 - **Métricas:** -71% latência · +114% RPS (81→174) · P95 498ms · 200+ usuários simultâneos (testes de carga)
 - **Segurança:** JWT httpOnly · bcrypt 12 rounds · rate limiting · CSP/HSTS · Row Level Security
-- **Link:** [fortaopremios.com.br](https://xn--fortoprmios-c8a8g.com.br/)
+- https://xn--fortoprmios-c8a8g.com.br/
 
 ### Roteiro Prosper — Otimização de Rotas Geográficas
 Sistema de geração de roteiros otimizados para equipe de vendas externa (uso real na Prosper).
 - **Stack:** Python/Flask · Pandas · NumPy · React 18 · Tailwind · Leaflet (OpenStreetMap)
 - **Escala:** 4.000+ clientes · agrupamento por GPS/CEP/rua/bairro · 6-10 visitas/dia
 - **Algoritmos:** clustering geográfico (raio configurável) · Vizinho Mais Próximo · 2-opt · Haversine
-- **Links:** [Demo](https://roteiro-prosper-olfq.vercel.app/) · [GitHub](https://github.com/AlexandroGranja/Roteiro-Prosper)
+- https://roteiro-prosper-olfq.vercel.app/
+- https://github.com/AlexandroGranja/Roteiro-Prosper
 
 ### Burger House — SaaS de Cardápio Digital
 Sistema de pedidos online com painel administrativo completo, multi-tenant.
 - **Stack:** React · Supabase (PostgreSQL + Auth + Storage + RLS) · Vercel
-- **Link:** [cardapio-online-wine-delta.vercel.app](https://cardapio-online-wine-delta.vercel.app/)
+- https://cardapio-online-wine-delta.vercel.app/
+
+### Processador de XML — Automação NF-e/CT-e
+Ferramenta que cruza planilha Excel com ZIP de XMLs fiscais e gera pacote filtrado.
+- **Stack:** Python/Flask · openpyxl
+- https://site-converter-xml-e3gi.vercel.app/
+- https://github.com/AlexandroGranja/site-converter-xml
 
 ### Sistema de Chamados de TI — Interno Prosper
 Sistema desenvolvido e implantado internamente para gestão de chamados de TI.
 - **Stack:** FastAPI · SQLAlchemy · Alembic · React · Material UI · SQLite/PostgreSQL
 - Integra: Snipe-IT (inventário) + GerenciamentoDeTelefones
-- **Link:** [GitHub — Sistema de Chamados](https://github.com/AlexandroGranja/Sistema-de-chamados01)
+- https://github.com/AlexandroGranja/Sistema-de-chamados01
 
 ---
 
