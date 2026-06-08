@@ -2,7 +2,7 @@
 **Analista de Suporte de TI | N1/N2 · Active Directory · Microsoft 365 · Zabbix · Automação**
 
 alexxx.granja@gmail.com · alex.granjaaa@hotmail.com · +55 (21) 96958-5179 · Rio de Janeiro, RJ
-LinkedIn: linkedin.com/in/alexandro-granja-1b1393157 · GitHub: github.com/AlexandroGranja · Portfólio: alexandrogranja.github.io/Portfolio/
+[LinkedIn](https://linkedin.com/in/alexandro-granja-1b1393157) · [GitHub](https://github.com/AlexandroGranja) · [Portfólio](https://alexandrogranja.github.io/Portfolio/)
 
 ---
 
@@ -50,6 +50,8 @@ Analista de Suporte de TI na intersecção entre operação crítica e engenhari
 | Agentes WhatsApp | n8n · Python · LLMs | -80% tempo em solicitações recorrentes |
 | Processador de XML | Flask · openpyxl | Elimina seleção manual de NF-e/CT-e |
 | Prosper Roteiros | Flask · React · Leaflet | 4.000+ clientes, rotas otimizadas |
+
+**Links dos projetos:** [Chamados (GitHub)](https://github.com/AlexandroGranja/Sistema-de-chamados01) · [XML — Demo](https://site-converter-xml-e3gi.vercel.app/) · [XML — GitHub](https://github.com/AlexandroGranja/site-converter-xml) · [Roteiros — Demo](https://roteiro-prosper-olfq.vercel.app/) · [Roteiros — GitHub](https://github.com/AlexandroGranja/Roteiro-Prosper)
 
 ---
 

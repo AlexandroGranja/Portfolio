@@ -1,7 +1,7 @@
 Alexandro Granja
 Desenvolvedor Fullstack | React · Next.js · Python · LLMs · Automação (n8n)
 alexxx.granja@gmail.com  •  alex.granjaaa@hotmail.com  •  +55 (21) 96958-5179  •  Rio de Janeiro/RJ
-LinkedIn: https://linkedin.com/in/alexandro-granja-1b1393157  •  GitHub: https://github.com/AlexandroGranja  •  Portfólio: https://alexandrogranja.github.io/Portfolio/
+[LinkedIn](https://linkedin.com/in/alexandro-granja-1b1393157)  •  [GitHub](https://github.com/AlexandroGranja)  •  [Portfólio](https://alexandrogranja.github.io/Portfolio/)
 
 
 OBJETIVO PROFISSIONAL
@@ -24,8 +24,8 @@ PRINCIPAIS CONQUISTAS
 
 EXPERIÊNCIA PROFISSIONAL
 Desenvolvedor Fullstack | AIverse Technologies | 06/2025 – Atual
-Remoto · Rio de Janeiro/RJ  •  https://www.aiversetechnologies.com.br/
-• Arquitetura e implementação de aplicações fullstack: React, Next.js 14, Tailwind, Python (FastAPI/Flask), PostgreSQL/Supabase, deploy Vercel/Railway.
+Remoto · Rio de Janeiro/RJ  •  [AIverse Technologies](https://www.aiversetechnologies.com.br/)
+• Arquitetura e implementação de aplicações fullstack: React, Next.js 14, Tailwind, Python (FastAPI/Flask), PostgreSQL/Supabase, deploy Vercel.
 • Fortão Prêmios: plataforma B2B em produção — ~64 rotas API, Redis, JWT/bcrypt, painel admin com 7+ módulos, automação fiscal (Nota Nacional).
 • Integrações com LLMs (GPT-4, Claude, Gemini) via n8n: agentes autônomos para atendimento, triagem de leads e fluxos multicanal (WhatsApp, webhooks).
 • Burger House (SaaS): cardápio digital multi-tenant com painel admin, Supabase RLS e pedidos em tempo real.
@@ -41,30 +41,28 @@ Presencial · Rio de Janeiro/RJ
 
 PROJETOS EM DESTAQUE
 Fortão Prêmios — Plataforma B2B de Ações Promocionais (produção)
-• Next.js 14, React 18, Supabase/PostgreSQL, Redis (Upstash), JWT/bcrypt, Tailwind, Radix UI, Railway.
-• https://xn--fortoprmios-c8a8g.com.br/
+• Next.js 14, React 18, Supabase/PostgreSQL, Redis (Upstash), JWT/bcrypt, Tailwind, Radix UI.
+• [fortaopremios.com.br](https://xn--fortoprmios-c8a8g.com.br/)
 
 Sistema de Chamados de TI — Interno Prosper (produção)
 • FastAPI, SQLAlchemy, Alembic, React, Material UI, PostgreSQL; SLA, fila N1/N2, Snipe-IT e gestão de ramais (~250 usuários).
-• https://github.com/AlexandroGranja/Sistema-de-chamados01
+• [GitHub — Sistema de Chamados](https://github.com/AlexandroGranja/Sistema-de-chamados01)
 
 Prosper Roteiros — Otimização de Rotas Geográficas (produção)
 • Flask + React + Leaflet; 4.000+ clientes; clustering geográfico, Vizinho Mais Próximo, 2-opt, Haversine.
-• https://roteiro-prosper-olfq.vercel.app/
-• https://github.com/AlexandroGranja/Roteiro-Prosper
+• [Demo](https://roteiro-prosper-olfq.vercel.app/) · [GitHub](https://github.com/AlexandroGranja/Roteiro-Prosper)
 
 Burger House — Cardápio Digital & Pedidos (SaaS)
-• React, Supabase (PostgreSQL + Auth + RLS), painel admin, pedidos em tempo real, Railway.
-• https://cardapio-online-wine-delta.vercel.app/
+• React, Supabase (PostgreSQL + Auth + RLS), painel admin, pedidos em tempo real.
+• [Demo — Cardápio Online](https://cardapio-online-wine-delta.vercel.app/)
 
 Processador de XML — Automação NF-e/CT-e (produção)
 • Flask + Python + OpenPyXL; cruza planilha Excel com ZIP de XMLs e gera pacote filtrado em memória.
-• https://site-converter-xml-e3gi.vercel.app/
-• https://github.com/AlexandroGranja/site-converter-xml
+• [Demo](https://site-converter-xml-e3gi.vercel.app/) · [GitHub](https://github.com/AlexandroGranja/site-converter-xml)
 
 Moraes Adesivos — Site Institucional (AIverse)
 • Landing page responsiva, SEO, Open Graph e integração WhatsApp para conversão de leads.
-• https://moraesadesivos.com.br/
+• [moraesadesivos.com.br](https://moraesadesivos.com.br/)
 
 Sistema de Agentes Inteligentes — WhatsApp & Integrações
 • n8n, Python, webhooks, LLMs; agentes para Financeiro, Suporte, Liberação de Acesso, Avaya/Target Mob.
@@ -75,7 +73,7 @@ Frontend: React 18/19, Next.js 14, JavaScript, TypeScript, Tailwind CSS, shadcn/
 
 Backend & APIs: Python (Flask, FastAPI), Node.js, SQLAlchemy, Alembic, APIs REST, JWT, bcrypt, webhooks.
 
-Dados & Infra: PostgreSQL, Supabase, Redis (Upstash), SQLite, Pandas, deploy Vercel/Railway, Git, CI/CD.
+Dados & Infra: PostgreSQL, Supabase, Redis (Upstash), SQLite, Pandas, deploy Vercel, Git, CI/CD.
 
 IA & Automação: LLMs (OpenAI, Claude, Gemini), n8n, Make, WhatsApp API, agentes autônomos, triagem multicanal.
 
