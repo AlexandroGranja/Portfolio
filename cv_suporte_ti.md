@@ -41,7 +41,7 @@ Remoto · Rio de Janeiro/RJ  •  https://www.aiversetechnologies.com.br/
 PROJETOS RELEVANTES (automação & operação)
 Sistema de Chamados de TI — Prosper (interno, em produção)
 • FastAPI, SQLAlchemy, Alembic, React, Material UI, PostgreSQL/SQLite; dashboard, SLA, Snipe-IT, ramais telefônicos; deploy Nginx + systemd.
-• https://github.com/AlexandroGranja/SiatemaDeChamadosDeTI
+• https://github.com/AlexandroGranja/Sistema-de-chamados01
 
 Sistema de Agentes Inteligentes — Automação WhatsApp
 • n8n, Python, webhooks, LLMs; triagem multicanal para Financeiro, Suporte, Liberação de Acesso, Avaya/Target Mob; -80% tempo de resposta.

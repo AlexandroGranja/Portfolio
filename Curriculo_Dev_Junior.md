@@ -59,7 +59,7 @@ Sistema de pedidos online com painel administrativo completo, multi-tenant.
 Sistema desenvolvido e implantado internamente para gestão de chamados de TI.
 - **Stack:** FastAPI · SQLAlchemy · Alembic · React · Material UI · SQLite/PostgreSQL
 - Integra: Snipe-IT (inventário) + GerenciamentoDeTelefones
-- Link: github.com/AlexandroGranja/SiatemaDeChamadosDeTI
+- Link: github.com/AlexandroGranja/Sistema-de-chamados01
 
 ---
 

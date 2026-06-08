@@ -46,7 +46,7 @@ Fortão Prêmios — Plataforma B2B de Ações Promocionais (produção)
 
 Sistema de Chamados de TI — Interno Prosper (produção)
 • FastAPI, SQLAlchemy, Alembic, React, Material UI, PostgreSQL; SLA, fila N1/N2, Snipe-IT e gestão de ramais (~250 usuários).
-• https://github.com/AlexandroGranja/SiatemaDeChamadosDeTI
+• https://github.com/AlexandroGranja/Sistema-de-chamados01
 
 Prosper Roteiros — Otimização de Rotas Geográficas (produção)
 • Flask + React + Leaflet; 4.000+ clientes; clustering geográfico, Vizinho Mais Próximo, 2-opt, Haversine.
