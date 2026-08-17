@@ -148,7 +148,7 @@ const translations = {
             education: "Formação",
             current: "Atual",
             aiverseDates: "Jun/2025 – Atual",
-            prosperDates: "Nov/2024 – Atual",
+            prosperDates: "Nov/2024 – Abr/2026",
             techSupport: "Analista de Suporte de TI",
             techSupportDesc: "Atuação em suporte técnico e operações de TI, com administração de acessos (Active Directory e Microsoft 365), monitoramento via Zabbix e integração com sistemas de logística (Target/Target Mob). Também desenvolvi automações para rotinas recorrentes, reduzindo esforço manual e aumentando a padronização dos processos.",
             founder: "Desenvolvedor Fullstack (Freelance)",
@@ -364,7 +364,7 @@ const translations = {
             education: "Education",
             current: "Current",
             aiverseDates: "Jun/2025 – Present",
-            prosperDates: "Nov/2024 – Present",
+            prosperDates: "Nov/2024 – Apr/2026",
             techSupport: "IT Support Analyst",
             techSupportDesc: "Technical support and IT operations with access management (Active Directory and Microsoft 365), Zabbix monitoring, and logistics systems integration (Target/Target Mob). I also built automations for recurring routines, reducing manual effort and increasing process standardization.",
             founder: "Fullstack Developer (Freelance)",
@@ -3437,10 +3437,16 @@ window.toggleAboutExperienceDesc = function(button) {
 
     const expanded = !desc.classList.contains('is-expanded');
     desc.classList.toggle('is-expanded', expanded);
+    
+    // Adiciona classe no elemento pai (job) para mostrar/esconder tags
+    const jobItem = wrap.closest('.relative.pl-5');
+    if (jobItem) {
+        jobItem.classList.toggle('exp-expanded', expanded);
+    }
+    
     button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
     if (readMore) readMore.style.display = expanded ? 'none' : 'inline';
     if (readLess) readLess.style.display = expanded ? 'inline' : 'none';
-    button.hidden = false;
 };
 
 function refreshAboutExperienceToggles() {
@@ -3450,12 +3456,6 @@ function refreshAboutExperienceToggles() {
         if (!desc || !button) return;
 
         const expanded = desc.classList.contains('is-expanded');
-        if (!expanded) {
-            button.hidden = desc.scrollHeight <= desc.clientHeight + 1;
-        } else {
-            button.hidden = false;
-        }
-
         const readMore = button.querySelector('.read-more-text');
         const readLess = button.querySelector('.read-less-text');
         if (readMore) readMore.style.display = expanded ? 'none' : 'inline';

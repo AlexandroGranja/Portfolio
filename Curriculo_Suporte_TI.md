@@ -1,91 +1,171 @@
 # Alexandro Granja
+
 **Analista de Suporte de TI | N1/N2 · Active Directory · Microsoft 365 · Zabbix · Automação**
 
-alexxx.granja@gmail.com · alex.granjaaa@hotmail.com · +55 (21) 96958-5179 · Rio de Janeiro, RJ
-https://linkedin.com/in/alexandro-granja-1b1393157 · https://github.com/AlexandroGranja · https://alexandrogranja.github.io/Portfolio/
+**Email:** [alexxx.granja@gmail.com](mailto:alexxx.granja@gmail.com) · [alex.granjaaa@hotmail.com](mailto:alex.granjaaa@hotmail.com)
+**Telefone:** +55 (21) 96958-5179 · **Localização:** Rio de Janeiro, RJ
+**LinkedIn:** https://linkedin.com/in/alexandro-granja-1b1393157
+**GitHub:** https://github.com/AlexandroGranja
+**Portfólio:** https://alexandrogranja.github.io/Portfolio/
 
 ---
 
-## OBJETIVO
+## OBJETIVO PROFISSIONAL
 
-Analista ou Assistente de Suporte Técnico, Service Desk ou TI Operacional. Perfil híbrido: suporte N1/N2 (~250 usuários) com diferencial em automação (n8n, Python) e ferramentas internas (FastAPI, React, Flask).
+Busco oportunidades como **Analista de Suporte de TI, Técnico de Suporte, Service Desk ou Analista de Infraestrutura**, atuando com suporte N1/N2, administração de usuários e acessos, Microsoft 365, Active Directory, monitoramento, redes e sistemas corporativos.
+
+Possuo como diferencial experiência em **automação com Python e n8n e desenvolvimento de ferramentas internas**, permitindo identificar processos manuais e transformá-los em soluções mais eficientes.
 
 ---
 
 ## SOBRE
 
-Analista de Suporte de TI na intersecção entre operação crítica e engenharia de processos. Na Prosper Distribuidora: suporte N1/N2, governança AD/M365, Zabbix e Target/Target Mob. Desenvolvi ferramentas internas em produção — chamados de TI, processador de XML fiscal e roteiros geográficos — eliminando controle manual. Automações n8n + WhatsApp API com até **-80%** no tempo de solicitações recorrentes.
+Profissional de TI com experiência em **suporte técnico, infraestrutura, sistemas corporativos e automação de processos**. Atuação em ambientes com aproximadamente 250 usuários, realizando suporte presencial e remoto, gestão de chamados, administração de acessos, monitoramento e atendimento a sistemas críticos.
+
+Experiência com **Active Directory, Microsoft 365, Zabbix, GLPI, Target/Target Mob, SPdata, redes, VPN, impressoras e telefonia**. Como diferencial, desenvolvo ferramentas e automações utilizando **Python, n8n, FastAPI, Flask e React**, conectando conhecimento de suporte à melhoria dos processos de TI.
+
+---
+
+## PRINCIPAIS CONQUISTAS
+
+* **Experiência N1/N2:** atendimento e suporte a aproximadamente **250 usuários** em ambientes corporativos, envolvendo hardware, software, sistemas e infraestrutura.
+
+* **Automação de processos:** desenvolvimento de automações com **n8n, Python, Webhooks e WhatsApp API**, reduzindo em até **80%** o tempo de processamento de solicitações recorrentes.
+
+* **Ferramentas internas:** desenvolvimento de sistema de chamados de TI, processador de XML fiscal e solução de roteirização geográfica utilizados na operação da Prosper.
+
+* **Otimização operacional:** desenvolvimento de ferramentas que substituíram processos manuais baseados em planilhas e aumentaram a padronização das rotinas.
 
 ---
 
 ## EXPERIÊNCIA PROFISSIONAL
 
-### Analista de Suporte de TI | Prosper Distribuidora | 11/2024 – Atual
-*Rio de Janeiro, RJ · Presencial*
+### Técnico de Suporte de TI | Grupo Assim Saúde
 
-**Suporte e Infraestrutura:**
-- Atendimento N1/N2 para ~250 usuários internos
-- Active Directory: contas, grupos, permissões, onboarding/offboarding
-- Microsoft 365: licenças, permissões, e-mail corporativo
-- Monitoramento via Zabbix (alertas, disponibilidade)
-- Suporte a sistemas logísticos Target e Target Mob
+**07/2026 – Atual · Presencial · Rio de Janeiro/RJ**
 
-**Ferramentas e Automação:**
-- **Sistema de Chamados de TI:** FastAPI + React + MUI; SLA, fila N1/N2, Snipe-IT, ramais telefônicos; ~250 usuários
-- **Processador de XML:** NF-e/CT-e em massa (Flask + openpyxl); triagem 100% automatizada
-- **Roteiro Prosper:** rotas geográficas para 4.000+ clientes (Flask + React + Leaflet)
-- **Agentes WhatsApp:** n8n + Python + LLMs; Financeiro, Suporte, Liberação de Acesso, Avaya/Target Mob
+* Atendimento técnico presencial e remoto em ambiente corporativo e hospitalar.
+* Gestão de chamados através do **GLPI**.
+* Manutenção, configuração e preparação de computadores e equipamentos.
+* Administração de contas, grupos e permissões utilizando **Active Directory**.
+* Suporte ao ambiente **Microsoft 365**, incluindo usuários, permissões e e-mail corporativo.
+* Monitoramento da infraestrutura através do **Zabbix**.
+* Suporte a redes, VPN, impressoras e telefonia.
+* Suporte a sistemas hospitalares, incluindo **SPdata**.
+* Utilização de **VNC e AnyDesk** para suporte remoto.
+* Atendimento e resolução de incidentes técnicos, priorizando impacto e criticidade.
 
-### Desenvolvedor Fullstack | AIverse Technologies | 06/2025 – Atual
-*Rio de Janeiro, RJ · Remoto (paralelo)*
-- Aplicações web e automações para clientes via APIs, webhooks e n8n
+### Analista de Suporte de TI | Prosper Distribuidora
+
+**11/2024 – 04/2026 · Presencial · Rio de Janeiro/RJ**
+
+**Evolução profissional: Assistente de TI → Analista de Suporte de TI**
+
+* Atendimento de suporte N1/N2 para aproximadamente **250 usuários internos**.
+* Administração de usuários, grupos, permissões e acessos através do **Active Directory**.
+* Administração do ambiente **Microsoft 365**.
+* Monitoramento proativo da infraestrutura através do **Zabbix**.
+* Suporte aos sistemas logísticos **Target e Target Mob**.
+* Suporte a computadores, periféricos, impressoras, rede e demais recursos de TI.
+* Desenvolvimento de sistema interno de chamados utilizando **FastAPI, React, MUI e PostgreSQL**.
+* Desenvolvimento de processador de XML para automação de rotinas fiscais.
+* Desenvolvimento do **Prosper Roteiros**, sistema de otimização de rotas para mais de 4.000 clientes.
+* Criação de automações utilizando **n8n, Python, Webhooks e WhatsApp API**.
+
+### Desenvolvedor Fullstack | AIverse Technologies
+
+**06/2025 – Atual · Remoto · Rio de Janeiro/RJ**
+
+* Desenvolvimento de aplicações web, APIs e automações para clientes.
+* Construção de soluções utilizando React, Next.js, Python, FastAPI/Flask e PostgreSQL.
+* Integração de sistemas através de APIs, Webhooks e automações.
+* Desenvolvimento de agentes inteligentes utilizando LLMs e n8n.
+* Atuação no desenvolvimento, integração, deploy e manutenção das aplicações.
 
 ---
 
 ## PROJETOS RELEVANTES
 
-| Projeto | Stack | Impacto |
-|---------|-------|---------|
-| Chamados de TI (Prosper) | FastAPI · React · MUI · PostgreSQL | Centralizou ciclo completo do suporte interno |
-| Agentes WhatsApp | n8n · Python · LLMs | -80% tempo em solicitações recorrentes |
-| Processador de XML | Flask · openpyxl | Elimina seleção manual de NF-e/CT-e |
-| Prosper Roteiros | Flask · React · Leaflet | 4.000+ clientes, rotas otimizadas |
+### Sistema de Chamados de TI — Prosper
 
-**Links dos projetos:**
-Chamados — GitHub: https://github.com/AlexandroGranja/Sistema-de-chamados01
-Processador XML — Demo: https://site-converter-xml-e3gi.vercel.app/ | GitHub: https://github.com/AlexandroGranja/site-converter-xml
-Prosper Roteiros — Demo: https://roteiro-prosper-olfq.vercel.app/ | GitHub: https://github.com/AlexandroGranja/Roteiro-Prosper
-Burger House — Demo: https://cardapio-online-wine-delta.vercel.app/
-Fortão Prêmios — https://xn--fortoprmios-c8a8g.com.br/
+**FastAPI · React · MUI · PostgreSQL · SQLAlchemy · Alembic**
+
+Sistema interno desenvolvido para centralizar o atendimento de TI, organizar filas N1/N2, controlar SLA, ativos e ramais.
+
+**GitHub:** https://github.com/AlexandroGranja/Sistema-de-chamados01
+
+### Agentes Inteligentes — WhatsApp
+
+**n8n · Python · LLMs · Webhooks · WhatsApp API**
+
+Automação de atendimento e triagem para diferentes áreas, incluindo Financeiro, Suporte, Liberação de Acesso e Avaya/Target Mob.
+
+**Resultado:** redução de até **80%** no tempo de processamento de solicitações recorrentes.
+
+### Processador de XML — Prosper
+
+**Python · Flask · OpenPyXL**
+
+Ferramenta desenvolvida para automatizar o processamento e filtragem de NF-e/CT-e, reduzindo tarefas manuais relacionadas a arquivos fiscais.
+
+**Demo:** https://site-converter-xml-e3gi.vercel.app/
+**GitHub:** https://github.com/AlexandroGranja/site-converter-xml
+
+### Prosper Roteiros
+
+**Flask · React · Leaflet · Python**
+
+Sistema de apoio à criação de roteiros geográficos para mais de 4.000 clientes.
+
+**Demo:** https://roteiro-prosper-olfq.vercel.app/
+**GitHub:** https://github.com/AlexandroGranja/Roteiro-Prosper
+
+### Burger House — SaaS
+
+**React · Supabase · PostgreSQL**
+
+Projeto SaaS desenvolvido como experiência prática em desenvolvimento fullstack.
+
+**Demo:** https://cardapio-online-wine-delta.vercel.app/
 
 ---
 
-## HABILIDADES
+## HABILIDADES TÉCNICAS
 
-**Suporte & Infra:** AD · M365 · Zabbix · N1/N2 · Target/Target Mob · Snipe-IT · Windows · SLA · incidentes
+**Suporte & Infraestrutura:** Active Directory · Microsoft 365 · GLPI · Zabbix · N1/N2 · Windows · Hardware · Software · Redes · VPN · Impressoras · Telefonia · Suporte remoto
 
-**Automação:** n8n · Python · webhooks · WhatsApp API · Make · PowerShell
+**Sistemas:** Target · Target Mob · SPdata · Snipe-IT · Gestão de chamados · SLA · Gestão de incidentes
 
-**Desenvolvimento:** Flask · FastAPI · React · APIs REST · PostgreSQL · Git
+**Acesso & Administração:** Usuários · Grupos · Permissões · Onboarding · Offboarding · VNC · AnyDesk
+
+**Automação:** n8n · Python · Webhooks · WhatsApp API · Make · Scripts
+
+**Desenvolvimento:** FastAPI · Flask · React · APIs REST · PostgreSQL · SQLAlchemy · Git
 
 ---
 
 ## FORMAÇÃO
 
-- **Ensino Médio** — CIEP 119 Austin | 2011 – 2017
-- **Técnico em Informática e Manutenção de Computadores** — Brasil Petro | jan/2014 – dez/2015
-- **DevClub Fullstack Pro** — Bootcamp fullstack | 2025 – 2026
-- **Gestão de Automação** — Especialização em IA e NoCode
-- **Comunidade Pixel** — Agentes de IA e fluxos automatizados
+* **Técnico em Informática e Manutenção de Computadores** — Brasil Petro | 2014–2015
+* **DevClub Fullstack Pro** — Bootcamp Fullstack | 2025–2026
+* **Gestão de Automação** — Especialização em IA e ferramentas NoCode
+* **Comunidade Pixel** — Agentes de IA e fluxos automatizados
+* **Ensino Médio** — CIEP 119 Austin | 2011–2017
 
 ---
 
 ## CURSOS & CERTIFICADOS
 
-Lógica de Programação (Fundação Bradesco) · Git (DIO) · Algoritmos (Curso em Vídeo) · LLMs (Google Cloud) · n8n Level 1 (n8n Academy) · Make
+* Lógica de Programação — Fundação Bradesco
+* Git & Versionamento — DIO
+* Algoritmos e Estruturas de Dados — Curso em Vídeo
+* Introdução a Modelos de Linguagem (LLM) — Google Cloud Skills Boost
+* n8n Level 1 — n8n Academy
+* Make — Automações e Integrações
 
 ---
 
 ## IDIOMAS
 
-Português (nativo) · Inglês (leitura técnica)
+**Português:** Nativo
+**Inglês:** Básico · leitura técnica de documentação

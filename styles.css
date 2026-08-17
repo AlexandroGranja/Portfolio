@@ -4755,6 +4755,52 @@ html {
     margin-bottom: 0;
 }
 
+/* DESKTOP: Esconder descrição + tags por padrão, mostrar "Ver mais" */
+@media (min-width: 768px) {
+    /* Esconder apenas o texto da descrição */
+    .about-exp-desc {
+        display: none !important;
+    }
+    
+    /* Esconder tags por padrão */
+    .relative.pl-5 .flex.flex-wrap.gap-1 {
+        display: none !important;
+    }
+    
+    /* Botão "Ver mais" sempre visível em desktop */
+    .read-more-btn {
+        display: inline-block !important;
+    }
+}
+
+/* DESKTOP: Quando expandido (classe exp-expanded), mostrar descrição + tags */
+@media (min-width: 768px) {
+    .relative.pl-5.exp-expanded .about-exp-desc {
+        display: block !important;
+    }
+    
+    /* Mostrar tags quando expandido */
+    .relative.pl-5.exp-expanded .flex.flex-wrap.gap-1 {
+        display: flex !important;
+    }
+}
+
+/* MOBILE: Mostrar tudo sempre, esconder botão */
+@media (max-width: 767px) {
+    .about-exp-desc {
+        display: block !important;
+    }
+    
+    .relative.pl-5 .flex.flex-wrap.gap-1 {
+        display: flex !important;
+    }
+    
+    /* Esconder botão em mobile */
+    .read-more-btn {
+        display: none !important;
+    }
+}
+
 .about-exp-desc.is-expanded {
     display: block;
     -webkit-line-clamp: unset;
