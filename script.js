@@ -2235,7 +2235,7 @@ document.addEventListener('keydown', function(e) {
 // CARROSSEL DE PROJETOS (rail + painel)
 // ============================================
 
-let currentProjectIndex = 0;
+let currentProjectIndex = 4;
 let isChangingProject = false; // Flag para evitar mudanças simultâneas
 
 function getVisibleProjectIndices() {
@@ -2353,10 +2353,10 @@ window.goToProject = function(index) {
     ) {
         const railScrollSmooth =
             !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        activeRailBtn.scrollIntoView({
-            block: 'nearest',
+        const rail = activeRailBtn.closest('.projects-rail');
+        rail.scrollTo({
+            left: rail.scrollLeft + activeRailBtn.getBoundingClientRect().left - rail.getBoundingClientRect().left - 8,
             behavior: railScrollSmooth ? 'smooth' : 'auto',
-            inline: 'nearest',
         });
     }
     
@@ -2503,7 +2503,7 @@ function resetImageCarousel(projectCard) {
 // Inicializa o primeiro projeto ao carregar
 document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
-        currentProjectIndex = 0;
+        currentProjectIndex = 4;
         const allProjects = document.querySelectorAll('#projects .project-card');
         allProjects.forEach(p => {
             p.classList.remove('active');
@@ -2513,7 +2513,7 @@ document.addEventListener('DOMContentLoaded', function() {
             p.style.transform = '';
         });
         
-        const firstProject = document.querySelector('#projects .project-card[data-project="0"]');
+        const firstProject = document.querySelector('#projects .project-card[data-project="4"]');
         if (firstProject) {
             firstProject.classList.add('active');
             firstProject.style.setProperty('display', 'flex', 'important');
@@ -2524,7 +2524,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         document.querySelectorAll('.projects-rail-item:not(.project-archived)').forEach((btn) => {
             const idx = parseInt(btn.getAttribute('data-project-index'), 10);
-            const on = idx === 0;
+            const on = idx === 4;
             btn.classList.toggle('is-active', on);
             btn.setAttribute('aria-selected', on ? 'true' : 'false');
         });
