@@ -37,24 +37,51 @@ body.portfolio-refresh #contact > div:last-child {
 }
 body.portfolio-refresh #about .about-columns,
 body.portfolio-refresh #about .about-columns > *,
-body.portfolio-refresh #about .about-exp-timeline {
+body.portfolio-refresh #about .about-col-side > *,
+body.portfolio-refresh #about .about-exp-timeline,
+body.portfolio-refresh #about .about-edu-body {
     height: auto !important;
+    min-height: 0 !important;
     max-height: none !important;
     overflow: visible !important;
-    flex: 0 1 auto;
+    flex: 0 0 auto !important;
+    min-width: 0;
 }
 body.portfolio-refresh #about .about-columns {
     display: grid !important;
-    grid-template-columns: 1.5fr 1fr;
-    align-items: start;
-    gap: 20px;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    align-items: start !important;
+    gap: 16px !important;
 }
-body.portfolio-refresh #about .about-col-side { grid-column: 1 / -1; }
+body.portfolio-refresh #about .about-col-side {
+    grid-column: 1 / -1;
+    display: grid !important;
+    grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 16px;
+}
+body.portfolio-refresh main > :is(#home, #about).section-content {
+    min-height: 0 !important;
+    padding: 0 !important;
+}
+body.portfolio-refresh #home > .relative {
+    min-height: 0 !important;
+    height: auto !important;
+    padding: clamp(28px, 4vw, 52px) clamp(20px, 4vw, 48px) !important;
+    align-items: center !important;
+}
+body.portfolio-refresh #home > .relative > .grid { align-items: center; }
+body.portfolio-refresh #about .about-inner {
+    min-height: 0 !important;
+    padding-block: 24px 32px !important;
+}
+body.portfolio-refresh #about .about-exp-timeline,
+body.portfolio-refresh #about .about-edu-body { justify-content: flex-start; }
 body.portfolio-refresh #about .about-exp-desc-wrap { max-height: none; overflow: visible; }
 body.portfolio-refresh #about .about-exp-desc { display: block !important; -webkit-line-clamp: unset; line-clamp: unset; overflow: visible; font-size: 13px; line-height: 1.7; }
 body.portfolio-refresh #about .about-exp-toggle { display: none; }
-.profile-summary { max-width: 900px; margin: 18px 0 28px; color: #bcc8d8; font-size: 15px; line-height: 1.8; }
-.profile-summary p + p { margin-top: 12px; }
+.profile-summary { max-width: 900px; margin: 12px 0 20px; color: #bcc8d8; font-size: 14px; line-height: 1.7; }
+.profile-summary p + p { margin-top: 8px; }
 .profile-summary strong { color: #f8fafc; font-weight: 600; }
 .skills-editorial { position: relative; padding: clamp(24px, 4vw, 52px) clamp(20px, 4vw, 48px); }
 .skills-editorial h2 { font-size: clamp(28px, 3vw, 40px); font-weight: 750; color: #f8fafc; margin: 8px 0; }
@@ -92,7 +119,8 @@ body.portfolio-refresh .section-content > .projects-inner { transition: opacity 
 @media (max-width: 1050px) { .skills-evidence-grid { grid-template-columns: 1fr; } }
 @media (max-width: 767px) {
     body.portfolio-refresh main { scroll-snap-type: none; }
-    body.portfolio-refresh #about .about-columns { grid-template-columns: 1fr; }
+    body.portfolio-refresh #about .about-columns,
+    body.portfolio-refresh #about .about-col-side { grid-template-columns: minmax(0, 1fr); }
     body.portfolio-refresh #projects .projects-layout { min-height: 0; }
     body.portfolio-refresh #projects .projects-carousel { height: auto !important; min-height: 350px !important; }
     body.portfolio-refresh #projects .project-card.active > .project-content:not(.is-details-expanded) .project-tech,
