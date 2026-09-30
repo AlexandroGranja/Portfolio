@@ -8,7 +8,7 @@ A aplicação está na raiz, com instalação por `npm ci` e exportação estát
 
 1. Revisar e enviar a reorganização para `AlexandroGranja/Portfolio`.
 2. Na Vercel, escolher **Add New → Project** e importar o repositório.
-3. Usar **Root Directory: `./`** e **Framework Preset: Next.js**. Os comandos estão em `vercel.json`.
+3. Usar **Root Directory: `./`**, **Framework Preset: Next.js** e **Output Directory: `.next`**. Os comandos estão em `vercel.json`. O adaptador Next.js da Vercel lê os manifestos em `.next` e identifica a exportação estática; não configurar `out` como diretório de saída desse preset.
 4. Não definir `NEXT_PUBLIC_BASE_PATH`; ele só serve para hospedagem em subdiretório.
 5. Publicar e conferir as páginas, os idiomas, os temas e os PDFs.
 

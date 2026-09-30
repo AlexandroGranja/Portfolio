@@ -40,7 +40,7 @@ O build estático gera `out/`. Não usar `next start` neste modo.
 
 ## Vercel
 
-Importe `AlexandroGranja/Portfolio`, com **Root Directory `./`** e framework **Next.js**. `vercel.json` configura instalação, build e saída `out`. Não configure `NEXT_PUBLIC_BASE_PATH` na Vercel.
+Importe `AlexandroGranja/Portfolio`, com **Root Directory `./`** e framework **Next.js**. `vercel.json` configura instalação, build e o diretório `.next` usado pelo adaptador da Vercel. O export estático local continua em `out/`. Não configure `NEXT_PUBLIC_BASE_PATH` na Vercel.
 
 Veja [publicação e domínio](docs/VERCEL.md).
 
