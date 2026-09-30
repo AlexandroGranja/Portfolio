@@ -41,16 +41,16 @@ export function homeShapePose(
     },
   ];
   if (mode === "rest") return resting[index];
-  const compact = Math.min(width / 12, height / 8);
   const mobile = width / height < 1.2;
+  const compact = mobile && mode === "menu" ? Math.min(width / 4.2, height / 5) : Math.min(width / 12, height / 8);
   if (mode === "name" || mode === "signature")
     return {
-      position: [mobile ? 0 : width * (mode === "name" ? -0.29 : 0.27), mobile ? -height * 0.34 : 0, -0.4],
+      position: [mobile ? 0 : width * (mode === "name" ? -0.29 : 0.27), mobile ? height * 0.04 : 0, -0.4],
       rotation: [0, 0, 0],
-      scale: mobile ? width / 5.5 : compact * 1.2,
+      scale: mobile ? width / 4.2 : compact * 1.2,
     };
   const centerX = mobile ? 0 : -width * 0.36;
-  const centerY = mobile ? -height * 0.34 : 0;
+  const centerY = 0;
   const cluster = [
     [-0.35, 1.55, 0.35],
     [0.95, 0.05, 0.8],

@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { useHomeInteraction } from "./home-interaction";
+import { useLanguage } from "./language-provider";
 
 export function HomeName({
   children,
@@ -10,6 +11,7 @@ export function HomeName({
   kind: "name" | "signature";
 }) {
   const { activeName, setActiveName } = useHomeInteraction();
+  const { language } = useLanguage();
   const timeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const clear = () => {
     if (timeout.current) clearTimeout(timeout.current);
@@ -24,7 +26,7 @@ export function HomeName({
     <button
       type="button"
       className="home-name"
-      aria-label={typeof children === "string" ? `${children}: animar as formas do fundo` : undefined}
+      aria-label={typeof children === "string" ? `${children}: ${language === 'en' ? 'animate the background shapes' : 'animar as formas do fundo'}` : undefined}
       onPointerEnter={(event) => {
         if (event.pointerType !== "touch") {
           clear();
@@ -46,7 +48,7 @@ export function HomeName({
       onClick={() => {
         clear();
         setActiveName(kind);
-        timeout.current = setTimeout(() => setActiveName(null), 1800);
+        timeout.current = setTimeout(() => setActiveName(null), 3200);
       }}
       data-active={activeName === kind}
     >

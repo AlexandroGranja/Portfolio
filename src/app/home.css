@@ -728,3 +728,39 @@ body[data-home-interaction="signature"] .scene-home .static-art {
   .home-menu li a { font-size: min(36px, 9vh); padding-block: 0; line-height: 1.1; }
   .home-menu-socials { margin-top: 10px; }
 }
+
+.static-name-sculpture { display: none; }
+@media (max-width: 760px) {
+  body:is([data-home-interaction="name"], [data-home-interaction="signature"]) .scene-home .static-art { opacity: 0; }
+  .static-name-sculpture {
+    position: absolute;
+    width: min(92vw, 480px);
+    height: auto;
+    top: 46%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: .8;
+  }
+  body[data-home-interaction="name"] .static-name-sculpture--name,
+  body[data-home-interaction="signature"] .static-name-sculpture--signature { display: block; }
+  html[data-theme="dark"] .static-name-sculpture { filter: grayscale(1) brightness(.35); }
+  .home-name:focus:not(:focus-visible) { outline: none; }
+}
+
+.static-menu-sculptures { display: none; }
+@media (max-width: 760px) {
+  .home-menu-content { justify-content: center; }
+  .home-menu-header .menu-identity { display: none; }
+  body[data-home-interaction="menu"] .scene-home .static-art { opacity: 0; }
+  body[data-home-interaction="menu"] .static-menu-sculptures {
+    display: block;
+    position: absolute;
+    width: min(100vw, 480px);
+    height: min(80svh, 600px);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: .8;
+  }
+  html[data-theme="dark"] .static-menu-sculptures { filter: grayscale(1) brightness(.35); }
+}
