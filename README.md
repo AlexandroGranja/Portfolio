@@ -1,5 +1,7 @@
 # Alexandro Granja · Portfólio
 
+Site publicado: https://alexandro-granja.vercel.app/
+
 Portfólio em Next.js, React e TypeScript, com português e inglês, temas claro e escuro, seis projetos e currículos em PDF. A aplicação atual está na raiz.
 
 ## Desenvolvimento

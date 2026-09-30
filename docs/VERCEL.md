@@ -1,5 +1,7 @@
 # Publicação na Vercel
 
+Endereço atual: https://alexandro-granja.vercel.app/
+
 ## Preparação concluída
 
 A aplicação está na raiz, com instalação por `npm ci` e exportação estática para `out/`. Não precisa de chaves nem variáveis de ambiente. O arquivo local foi excluído do Git e do envio à Vercel.
@@ -22,7 +24,7 @@ Para domínio próprio: `alexandrogranja.com.br`; alternativa: `alexandrogranja.
 
 Após registrar, abra **Project → Settings → Domains**, adicione o domínio e copie para o registrador os registros DNS indicados pela Vercel para esse projeto. Aguarde a validação e defina o domínio principal e o redirecionamento de `www`.
 
-Depois de confirmar o endereço final, atualize o link nos dois currículos, no LinkedIn e no GitHub. Os PDFs atuais ainda citam o endereço anterior do GitHub Pages.
+Os currículos em português e inglês já usam o endereço da Vercel. Ao mudar de domínio no futuro, atualize os dois PDFs e os links dos perfis profissionais.
 
 Referências oficiais:
 - https://vercel.com/docs/domains/set-up-custom-domain
