@@ -12,6 +12,18 @@ export function homeShapePose(
   mode: HomeMode,
   menuItem = -1,
 ): HomePose {
+  const mobile = width / height < 1.2;
+  if (mobile && mode === "rest") {
+    const scale = width / 4.8;
+    const poses: HomePose[] = [
+      { position: [-width * .3, height * .37, -.4], rotation: [.05, .12, 1.05], scale },
+      { position: [width * .47, height * .44, -.5], rotation: [.12, .15, 1.1], scale },
+      { position: [-width * .43, -height * .43, -.35], rotation: [.1, .1, -.7], scale },
+      { position: [width * .35, -height * .43, -.4], rotation: [.1, -.15, .1], scale },
+      { position: [0, height * .32, -.5], rotation: [0, 0, 0], scale: scale * .43 },
+    ];
+    return poses[index];
+  }
   const size = Math.min(width / 9.4, height / 4.3);
   const resting: HomePose[] = [
     {
@@ -41,7 +53,6 @@ export function homeShapePose(
     },
   ];
   if (mode === "rest") return resting[index];
-  const mobile = width / height < 1.2;
   const compact = mobile && mode === "menu" ? Math.min(width / 4.2, height / 5) : Math.min(width / 12, height / 8);
   if (mode === "name" || mode === "signature")
     return {

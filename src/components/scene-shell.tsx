@@ -5,7 +5,7 @@ import { BrandMark } from "./brand-mark";
 import { usePathname } from "next/navigation";
 import { Component, useEffect, useState } from "react";
 import { useHomeInteraction } from "./home-interaction";
-import { StaticNameSculpture, StaticMenuSculptures } from "./static-name-sculpture";
+import { StaticNameSculpture, StaticMenuSculptures, StaticHomeSculptures } from "./static-name-sculpture";
 
 const Scene = dynamic(() => import("./scene"), { ssr: false });
 
@@ -64,7 +64,7 @@ export function SceneShell({ onReady }: { onReady?: () => void }) {
 
   return (
     <div className="scene-shell scene-home" style={{ visibility: visible ? "visible" : "hidden" }} aria-hidden="true">
-      {(enabled === false || failed) && <><StaticNameSculpture kind="name" /><StaticNameSculpture kind="signature" /><StaticMenuSculptures /></>}
+      {(enabled === false || failed) && <><StaticHomeSculptures /><StaticNameSculpture kind="name" /><StaticNameSculpture kind="signature" /><StaticMenuSculptures /></>}
       {(enabled === false || failed) && <div className="static-art">
         <span className="art-orbit" />
         <span className="art-pill" />

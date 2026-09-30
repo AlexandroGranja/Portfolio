@@ -38,3 +38,16 @@ export function StaticMenuSculptures() {
     </g><circle cx="221" cy="108" r="24" fill={`url(#${id})`}/>
   </svg>;
 }
+
+export function StaticHomeSculptures() {
+  const id = useId().replace(/:/g, '');
+  return <svg className="static-home-sculptures" viewBox="0 0 320 600" preserveAspectRatio="none" aria-hidden="true">
+    <defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop stopColor="#a8eeb9"/><stop offset=".3" stopColor="#80e1d9"/><stop offset=".6" stopColor="#b7b5ef"/><stop offset="1" stopColor="#efb5ce"/></linearGradient></defs>
+    <g fill="none" stroke={`url(#${id})`} strokeWidth="56" strokeLinecap="round">
+      <path d="M-24 171 C107 157 9 62 120 -8"/>
+      <path d="M276 -15 C217 34 355 60 283 117"/>
+      <path d="M-28 452 C119 437 99 549 23 577"/>
+      <path d="M222 482 C149 585 331 619 319 496"/>
+    </g><circle cx="162" cy="100" r="27" fill={`url(#${id})`}/>
+  </svg>;
+}
