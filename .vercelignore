@@ -1,0 +1,9 @@
+archive/
+tmp/
+output/
+.git/
+.next/
+out/
+.test-build/
+node_modules/
+*.tsbuildinfo

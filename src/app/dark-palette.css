@@ -1,0 +1,31 @@
+/* Shared dark palette: lavender headings, soft white copy, light gray controls. */
+html[data-theme="dark"] body,
+html[data-theme="dark"] body:has(.work-case--editorial) {
+  --paper: #2b2b33;
+  --ink: #e8e7ee;
+  --muted: #d5d4df;
+  --accent: #b0b2ce;
+  --line: #606577;
+  --panel: #353640;
+  --dark-heading: #b0b2ce;
+  --dark-control: #cdccd2;
+}
+html[data-theme="dark"] body :is(h1, h2, h3, .work-name, .work-next-name, .work-next strong) {
+  color: var(--dark-heading);
+}
+html[data-theme="dark"] .home-intro .intro-outline {
+  color: transparent;
+  -webkit-text-stroke-color: var(--dark-heading);
+}
+html[data-theme="dark"] :is(.home-intro p, .home-actions, .home-menu, .about-editorial, .contact-editorial, .work-case--editorial) {
+  color: var(--ink);
+}
+html[data-theme="dark"] :is(.home-intro p, .home-actions) { color: #e8e7ee; }
+html[data-theme="dark"] body .home-header {
+  color: var(--dark-control);
+  --ink: #cdccd2;
+  --accent: #cdccd2;
+}
+html[data-theme="dark"] .contact-editorial a,
+html[data-theme="dark"] .about-editorial-links a,
+html[data-theme="dark"] .home-menu a { color: #e8e7ee; }

@@ -1,0 +1,24 @@
+body:has(.contact-editorial) main#conteudo { padding: 0; min-height: 100svh; }
+body:has(.contact-editorial) .site-footer { display: none; }
+.contact-editorial { min-height: 100svh; display: grid; place-items: center; padding: 150px 24px 110px; color: var(--ink); font-family: var(--font-space), Arial, sans-serif; }
+.contact-editorial-content { width: min(100%, 890px); }
+.contact-editorial h1 { margin: 0; padding-bottom: 16px; border-bottom: 2px solid var(--line); font-family: var(--font-space), Arial, sans-serif; font-size: clamp(36px, 4vw, 50px); line-height: 1.15; text-transform: uppercase; letter-spacing: -.045em; }
+.contact-editorial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 42px; margin-top: 24px; }
+.contact-editorial-group { display: grid; grid-template-columns: auto 1fr; align-items: start; gap: 32px; }
+.contact-editorial h2 { font-family: var(--font-space), Arial, sans-serif; font-size: 20px; line-height: 1.5; letter-spacing: -.035em; text-transform: uppercase; }
+.contact-editorial a { display: flex; align-items: baseline; gap: 8px; width: fit-content; max-width: 100%; min-width: 0; font-size: 20px; line-height: 1.5; overflow-wrap: anywhere; }
+.contact-editorial a::after { content: none; }
+.contact-link-label {
+  min-width: 0;
+  padding-bottom: 2px;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size .35s cubic-bezier(.22,.61,.36,1);
+}
+.contact-editorial a:is(:hover, :focus-visible) .contact-link-label { background-size: 100% 1px; }
+.contact-editorial-socials { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+@media (prefers-reduced-motion: reduce) { .contact-link-label { transition: none; } }
+@media (max-width: 900px) { .contact-editorial-content { max-width: 690px; } .contact-editorial-grid { gap: 30px; } .contact-editorial-group { grid-template-columns: 1fr; gap: 10px; } }
+@media (max-width: 600px) { .contact-editorial { padding: 130px 28px 70px; } .contact-editorial-grid { grid-template-columns: 1fr; gap: 28px; } .contact-editorial h2 { font-size: 16px; } .contact-editorial a { font-size: 18px; } }

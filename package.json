@@ -1,0 +1,32 @@
+{
+  "name": "alexandro-granja-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1",
+    "build": "next build --webpack",
+    "typecheck": "tsc --noEmit",
+    "test": "tsc -p tsconfig.test.json && node --test .test-build/tests",
+    "verify:archive": "node scripts/verify-archive.mjs",
+    "verify:export": "node scripts/verify-export.mjs"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "dependencies": {
+    "@react-three/fiber": "9.7.0",
+    "motion": "13.3.0",
+    "next": "16.3.5",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "three": "0.186.0"
+  },
+  "devDependencies": {
+    "@types/node": "20.19.43",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.7",
+    "@types/three": "0.186.0",
+    "opentype.js": "^2.0.0",
+    "typescript": "5.9.3"
+  }
+}

@@ -1,0 +1,76 @@
+export type HomePose = {
+  position: [number, number, number];
+  rotation: [number, number, number];
+  scale: number;
+};
+export type HomeMode = "rest" | "name" | "signature" | "menu";
+
+export function homeShapePose(
+  index: number,
+  width: number,
+  height: number,
+  mode: HomeMode,
+  menuItem = -1,
+): HomePose {
+  const size = Math.min(width / 9.4, height / 4.3);
+  const resting: HomePose[] = [
+    {
+      position: [-width * 0.37, height * 0.48, -0.4],
+      rotation: [0.05, 0.12, -0.25],
+      scale: size,
+    },
+    {
+      position: [width * 0.36, height * 0.48, -0.5],
+      rotation: [0.12, 0.15, -0.65],
+      scale: size,
+    },
+    {
+      position: [-width * 0.32, -height * 0.49, -0.35],
+      rotation: [0.1, 0.1, 0.15],
+      scale: size,
+    },
+    {
+      position: [width * 0.34, -height * 0.41, -0.4],
+      rotation: [0.1, -0.15, 0.25],
+      scale: size,
+    },
+    {
+      position: [0, height * 0.49, -0.5],
+      rotation: [0, 0, 0],
+      scale: size * 0.48,
+    },
+  ];
+  if (mode === "rest") return resting[index];
+  const compact = Math.min(width / 12, height / 8);
+  const mobile = width / height < 1.2;
+  if (mode === "name" || mode === "signature")
+    return {
+      position: [mobile ? 0 : width * (mode === "name" ? -0.29 : 0.27), mobile ? -height * 0.34 : 0, -0.4],
+      rotation: [0, 0, 0],
+      scale: mobile ? width / 5.5 : compact * 1.2,
+    };
+  const centerX = mobile ? 0 : -width * 0.36;
+  const centerY = mobile ? -height * 0.34 : 0;
+  const cluster = [
+    [-0.35, 1.55, 0.35],
+    [0.95, 0.05, 0.8],
+    [-0.85, -0.5, -1.35],
+    [0.2, -1.8, Math.PI],
+    [0.95, 1.3, 0],
+  ];
+  const [x, y, angle] = cluster[index];
+  const spread = menuItem < 0 ? 1 : 1.08;
+  return {
+    position: [
+      centerX + x * compact * spread,
+      centerY + y * compact * spread,
+      -0.5 + index * 0.16,
+    ],
+    rotation: [
+      0.12,
+      0.1,
+      angle + Math.max(menuItem, 0) * 0.12,
+    ],
+    scale: compact * (index === 4 ? 0.43 : 0.66),
+  };
+}

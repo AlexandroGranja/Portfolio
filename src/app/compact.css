@@ -1,0 +1,347 @@
+/* Natural overflow remains available on small screens and at browser zoom. */
+body {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+.site-header {
+  min-height: 88px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  width: 100%;
+  flex-shrink: 0;
+}
+main {
+  flex: 1;
+  min-height: 0;
+}
+.site-footer {
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  flex-shrink: 0;
+}
+.page {
+  padding-top: clamp(16px, 3vh, 32px);
+  padding-bottom: 24px;
+}
+.home-page {
+  min-height: calc(100svh - 133px);
+  padding-top: 14px;
+  padding-bottom: 24px;
+}
+.hero-title {
+  font-size: clamp(68px, min(9vw, 14vh), 132px);
+  margin: 20px 0 22px;
+}
+.hero-title .outline-text {
+  margin-bottom: 10px;
+}
+.hero-bottom {
+  gap: clamp(30px, 6vw, 90px);
+}
+.hero-bottom p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+.home-note {
+  bottom: 20px;
+}
+.page-heading {
+  margin-bottom: 24px;
+}
+.page-heading h1 {
+  font-size: clamp(48px, 6vw, 82px);
+}
+.page-heading .eyebrow {
+  margin-bottom: 10px;
+}
+.project-preview {
+  min-height: 350px;
+  height: clamp(350px, 56vh, 500px);
+  padding: 30px;
+}
+.project-row {
+  padding: 15px 0;
+}
+.row-title {
+  font-size: clamp(22px, 2.1vw, 30px);
+}
+.project-list-note {
+  margin-top: 16px;
+}
+.about-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1.4fr);
+  gap: clamp(25px, 5vw, 70px);
+  align-items: start;
+}
+.about-layout .portrait {
+  margin: 0;
+  max-width: 340px;
+  width: 100%;
+}
+.about-layout .portrait img {
+  height: clamp(280px, 43vh, 400px);
+  aspect-ratio: auto;
+  border-radius: 5px;
+  object-fit: cover;
+}
+.about-layout .portrait figcaption {
+  font-size: 9px;
+}
+.biography .body-copy {
+  margin: 12px 0;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.biography .text-link {
+  margin-top: 8px;
+}
+.about-information .tab-panel {
+  min-height: 280px;
+}
+.contact-page {
+  min-height: calc(100svh - 133px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.contact-page h1 {
+  font-size: clamp(60px, min(8.5vw, 12vh), 112px);
+  margin-top: 25px;
+}
+.contact-intro {
+  margin: 22px 0;
+  font-size: 15px;
+  line-height: 1.65;
+}
+.contact-email {
+  padding: 18px 0;
+  font-size: clamp(23px, 3vw, 40px);
+}
+.contact-bottom {
+  margin-top: 20px;
+}
+.detail-page .back-link {
+  margin-bottom: 14px;
+}
+.detail-heading {
+  margin-bottom: 20px;
+}
+.detail-heading .eyebrow {
+  margin-bottom: 9px;
+}
+.detail-heading h1 {
+  font-size: clamp(42px, 5vw, 70px);
+}
+.detail-summary {
+  margin-top: 10px;
+  font-size: 15px;
+  max-width: 850px;
+  line-height: 1.5;
+}
+.next-project {
+  margin-top: 20px;
+  padding-top: 14px;
+}
+.next-project > span:first-child {
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+.next-project strong {
+  font-size: 23px;
+  letter-spacing: -0.04em;
+}
+.next-project > span:last-child {
+  font-size: 32px;
+}
+@media (min-width: 761px) and (max-height: 720px) {
+  .site-header {
+    min-height: 74px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .page {
+    padding-top: 10px;
+    padding-bottom: 16px;
+  }
+  .hero-title {
+    font-size: clamp(60px, 13vh, 95px);
+    margin: 12px 0 16px;
+  }
+  .home-page,
+  .contact-page {
+    min-height: calc(100svh - 119px);
+  }
+  .page-heading h1 {
+    font-size: 52px;
+  }
+  .project-preview {
+    height: 320px;
+    min-height: 320px;
+  }
+  .project-row {
+    padding: 11px 0;
+  }
+  .row-title {
+    font-size: 24px;
+  }
+  .about-information {
+    padding: 16px;
+  }
+  .about-layout .portrait img {
+    height: 290px;
+  }
+  .about-information .tab-panel {
+    min-height: 250px;
+  }
+  .biography h2 {
+    font-size: 25px;
+  }
+  .biography .body-copy {
+    font-size: 13px;
+    line-height: 1.65;
+  }
+  .project-media-frame img {
+    height: 200px;
+  }
+  .project-information .tab-panel {
+    min-height: 150px;
+  }
+  .detail-heading h1 {
+    font-size: 48px;
+  }
+}
+@media (max-width: 760px) {
+  .site-header {
+    min-height: 76px;
+  }
+  .navigation {
+    top: 70px;
+  }
+  .page {
+    padding-top: 18px;
+    padding-bottom: 24px;
+  }
+  .home-page,
+  .contact-page {
+    min-height: calc(100svh - 124px);
+    justify-content: center;
+  }
+  .hero-title {
+    font-size: clamp(62px, 13vw, 92px);
+    margin: 22px 0;
+  }
+  .hero-bottom {
+    gap: 16px;
+  }
+  .hero-bottom p {
+    font-size: 13px;
+  }
+  .hero-links {
+    gap: 4px;
+  }
+  .page-heading {
+    margin-bottom: 18px;
+  }
+  .page-heading h1 {
+    font-size: clamp(40px, 10vw, 58px);
+  }
+  .project-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 16px;
+  }
+  .project-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 18px;
+    gap: 9px;
+    align-content: start;
+    padding: 12px 0;
+  }
+  .mobile-project-image {
+    aspect-ratio: 1.6;
+    padding: 6px;
+  }
+  .row-number {
+    display: none;
+  }
+  .row-title {
+    font-size: clamp(15px, 4vw, 21px);
+    letter-spacing: -0.04em;
+  }
+  .row-category {
+    font-size: 9px;
+    line-height: 1.5;
+  }
+  .row-arrow {
+    font-size: 20px;
+  }
+  .project-list-note {
+    grid-column: 1/-1;
+    margin-top: 6px;
+  }
+  .about-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .about-layout .portrait {
+    display: flex;
+    gap: 16px;
+    align-items: flex-end;
+    max-width: none;
+  }
+  .about-layout .portrait img {
+    width: 105px;
+    height: 125px;
+    flex-shrink: 0;
+  }
+  .about-layout .portrait figcaption {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 10px;
+    margin: 0 0 5px;
+  }
+  .about-information .tab-panel {
+    min-height: 0;
+  }
+  .biography h2 {
+    font-size: 23px;
+  }
+  .biography .body-copy {
+    font-size: 13px;
+  }
+  .compact-resume .resume-links {
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .contact-page h1 {
+    font-size: clamp(54px, 11.5vw, 86px);
+  }
+  .contact-email {
+    font-size: clamp(18px, 5.5vw, 32px);
+  }
+  .contact-bottom {
+    gap: 12px;
+  }
+  .contact-bottom > div {
+    gap: 25px;
+  }
+  .detail-heading h1 {
+    font-size: clamp(38px, 10vw, 58px);
+  }
+  .detail-summary {
+    font-size: 14px;
+  }
+  .next-project > span:first-child {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .next-project strong {
+    font-size: 22px;
+  }
+}
